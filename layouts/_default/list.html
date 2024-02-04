@@ -18,6 +18,7 @@
 				<li class="post-item">
 					<a href="{{.Permalink}}">
 						<span class="post-title">{{.Title}}</span>
+            <span class="post-day">{{ .Date.Format .Site.Params.dateformShort }}</span>
 					</a>
 				</li>
 				{{- end }}
