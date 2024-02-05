@@ -12,7 +12,7 @@ theme = 'hermit-v2'
 
 [params.author]
   name = "deval deliwala"
-  about = "about-hugo"
+  about = "about-me"
 
 [params]
   themeColor = "#494f5c"
