@@ -1,6 +1,6 @@
 baseURL = 'https://dev-undergrad.dev'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'dev-undergrad'
 theme = 'hermit-v2'
 
 [languages]
@@ -31,7 +31,7 @@ theme = 'hermit-v2'
 
   homeSubtitlePrinter = true
   scrollToTop = true 
-  global_mathjax = false
+  global_mathjax = true
   readTime = true
   readTimeSeparator = "\u2026 \u23F2 Reading Time:"
   shareSocial = true
