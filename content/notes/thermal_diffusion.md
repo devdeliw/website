@@ -14,4 +14,5 @@ date : 2024-02-05T00:51:05-08:00
 ![](/7_thermal_diffusion.png)
 ![](/8_thermal_diffusion.png)
 ![](/9_thermal_diffusion.png)
+![](/10_thermal_diffusion.png)
 
