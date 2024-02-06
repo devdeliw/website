@@ -1,5 +1,5 @@
 ---
-title: "137A -- Properties of the Wave Function & The Uncertainty Principle"
+title: "137A -- The Uncertainty Principle"
 draft: false
 description : "Expectation values of operators, Normalization, Ehrenfest's Theorem"
 date : 2024-02-06T00:43:15-08:00
