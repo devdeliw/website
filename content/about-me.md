@@ -1,6 +1,6 @@
 +++
 title = "About"
-date = "2024-02-24"
+date : 2024-02-02T17:21:05-08:00"
 custom_css = ["custom_css/foo.css","custom_css/bar.css"]
 custom_js = ["custom_js/custom-about.js"]
 +++
