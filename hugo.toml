@@ -51,5 +51,10 @@ theme = 'hermit-v2'
   [[menu.main]]
     name = "notes"
     url = "notes"
-    weight = 10
+    weight = 5
+
+  [[menu.main]]
+    name = "table_of_contents"
+    url = "table_of_contents"
+    weight = 6
 
