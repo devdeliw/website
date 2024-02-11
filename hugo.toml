@@ -54,7 +54,7 @@ theme = 'hermit-v2'
     weight = 5
 
   [[menu.main]]
-    name = "table\ of\ contents"
+    name = "contents"
     url = "contents"
     weight = 6
 
