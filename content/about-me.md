@@ -1,9 +1,9 @@
-+++
-title = "About"
-date = 2024-02-02T17:21:05-08:00"
-custom_css = ["custom_css/foo.css","custom_css/bar.css"]
-custom_js = ["custom_js/custom-about.js"]
-+++
+---
+title : "About"
+date : 2024-02-02T17:21:05-08:00"
+custom_css : ["custom_css/foo.css","custom_css/bar.css"]
+custom_js : ["custom_js/custom-about.js"]
+---
 
 Hi, I am currently a sophomore in college. In my free time I like to code
 elegant math & physics explanatory videos on my youtube
