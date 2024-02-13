@@ -3,28 +3,28 @@
 
 9:30am 
 
-- [ ] wake up, get ready for day, 50 push-ups
+- [ ] ------------------wake up, get ready for day, 50 push-ups
 
 11am
 
-- [ ] gym
+- [ ] ------------------gym
 
 1:30pm 
 
-- [ ] head home, shower, lunch
+- [ ] ------------------head home, shower, lunch
 
 3pm 
 
-- [ ] library, work 
+- [ ] ------------------library, work 
 
 8pm 
 
-- [ ] head home, dinner, relax
+- [ ] ------------------head home, dinner, relax
 
 10pm 
 
-- [ ] work 
+- [ ] ------------------work 
 
 12-12:30am 
 
-- [ ] sleep
+- [ ] ------------------sleep

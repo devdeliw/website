@@ -3,46 +3,46 @@
 
 8am
 
-- [ ] wake up, get ready for the day, pack lunch, 50 push-ups
+- [ ] ------------------wake up, get ready for the day, pack lunch, 50 push-ups
 
 9am
 
-- [ ] 5C lecture
+- [ ] ------------------5C lecture
 
 10am
 
-- [ ] evans library LaTeX notes
+- [ ] ------------------evans library LaTeX notes
 
 11am
 
-- [ ] 5CL lab
+- [ ] ------------------5CL lab
 
 1:30-2:30pm
 
-- [ ] gym
+- [ ] ------------------gym
 
 3pm
 
-- [ ] head to way west & eat lunch
+- [ ] ------------------head to way west & eat lunch
 
 5pm
 
-- [ ] 137A lecture
+- [ ] ------------------137A lecture
 
 6pm
 
-- [ ] head home & relax
+- [ ] ------------------head home & relax
 
 8pm
 
-- [ ] dinner & shower
+- [ ] ------------------dinner & shower
 
 9pm
 
-- [ ] work
+- [ ] ------------------work
 
 11:30 - 12pm
 
-- [ ] sleep
+- [ ] ------------------sleep
 
 
