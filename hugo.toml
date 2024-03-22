@@ -59,7 +59,7 @@ theme = 'hermit-v2'
     weight = 6
 
   [[menu.main]]
-    name = "research "
+    name = "research"
     url = "research/"
     weight = 7
 
