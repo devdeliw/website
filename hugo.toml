@@ -7,7 +7,7 @@ theme = 'hermit-v2'
   [languages.en]
     title = 'dev-undergrad'
     [languages.en.params]
-      homeSubtitle = "astrophysics & math notes @ uc berkeley"
+      homeSubtitle = "astrophysics, math, & research notes @ uc berkeley"
     weight = 1
 
 [params.author]
@@ -50,11 +50,16 @@ theme = 'hermit-v2'
 
   [[menu.main]]
     name = "notes"
-    url = "notes"
+    url = "notes/"
     weight = 5
 
   [[menu.main]]
     name = "contents"
-    url = "contents/contents/"
+    url = "contents/"
     weight = 6
+
+  [[menu.main]]
+    name = "research"
+    url = "research/"
+    weight = 7
 
