@@ -274,7 +274,8 @@ fig.tight_layout()
 ![](/CMDs.png)
 
 Beautiful! These CMDs have a clear main-sequence track and a very prominent RC
-bar with a definite slope. The region NRCB3 is of particular interest since its
+bar with a definite slope. The NRCB1 (top row) CMDs match exactly to the CMDs
+we saw originally. The region NRCB3 is of particular interest since its
 the region containing Sagittarius A\*. 
 
 We will now work on seeing how well past
