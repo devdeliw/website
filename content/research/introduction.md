@@ -1,8 +1,10 @@
 +++
-title = 'Moving Universe Lab -- My Research Overview'
+title = 'Moving Universe Lab - Introduction'
 date = 2024-03-21T23:36:41-07:00
 draft = false
 +++
+
+
 
 Berkeley's Moving Universe Lab, led by Prof. Jessica Lu @ AC Berkeley focuses
 on the study of stars and black holes in the *nearby* universe. 
