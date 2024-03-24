@@ -1,5 +1,5 @@
 +++
-title = 'James Webb Space Telescope NIRCAM Catalogs'
+title = 'James Webb Space Telescope NIRCam Catalogs'
 date = 2024-03-22T23:14:44-07:00
 draft = false
 +++
@@ -60,13 +60,13 @@ we should see something similar...
 ![](/f212n_plot.png)
 *F212N NRCB1 $(x, y)$ centroid coordinates*
 ---
-
+---
 ehhh I don't really see it, maybe if I overplot the two and look closely? 
 
 ![](/f212_zoom.png)
 
 Here each miniscule green circle represents a star the catalog contains. If you
-look closely it actually matches really well!. Almost every star in the zoomed
+look closely it actually matches really well! Almost every star in the zoomed
 image has a green circle overlaying it. This is true for all the F115W, F212N,
 and F323N catalogs I work with. We are now able to perform some data analysis
 and work with these catalogs. The first task is to generate the relevant color-magnitude
