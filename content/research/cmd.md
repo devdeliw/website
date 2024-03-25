@@ -14,9 +14,9 @@ one catalog ($y$) and plot it relative to the difference in magnitudes between t
 different catalogs ($x$). An example for both F115W vs. (F115W - F212N) and
 F212N vs. (F115W - F212N) is shown below.
 
-![](/f115-f212_cmd.png)i
+![](/f115-f212_cmd.png)
 
-It is standardized to plot the (smaller $\lambda$ - larger $\lambda$) on thei
+It is standardized to plot the (smaller $\lambda$ - larger $\lambda$) on the
 $x$-axis. 
 
 Now without getting into too much detail, different types
