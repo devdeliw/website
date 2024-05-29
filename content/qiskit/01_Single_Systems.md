@@ -508,6 +508,8 @@ display(ket1.evolve(PhasePi3).draw("latex"))
 
 ![](/35.png) 
 
+[Next](https://dev-undergrad.dev/qiskit/02_multi_qubit/)
+
 
 
 
