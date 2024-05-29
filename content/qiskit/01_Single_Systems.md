@@ -21,7 +21,7 @@ exercises at the end. To fully master Qiskit, it is important to play and mess a
 Qiskit yourself at the end of each lesson, so you get a better grasp before
 starting the next lesson. 
 
-For any typos, issues, or suggestions on this tutorial, please fork to the `website` repo (.md files under `/content/qiskit/`), or
+For any typos, issues, or suggestions on this tutorial, please fork to the `website`  [repo](https://github.com/devdeliw/website/) (.md files under `/content/qiskit/`), or
 [email me](mailto:devaldeliwala@berkeley.edu). Thanks! 
 
 ___
