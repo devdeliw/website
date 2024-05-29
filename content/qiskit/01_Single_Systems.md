@@ -1,5 +1,5 @@
 ---
-title: '§ 1. Single Qubit Operations'
+title: '§ 1. Single Qubit'
 date: 2024-05-28T21:08:06-07:00
 description: 'Understanding the Statevector Class & Single-Qubit Operations'
 draft: false
@@ -20,6 +20,9 @@ I provide lessons covering the same rough topics as IBM's textbook with
 exercises at the end. To fully master Qiskit, it is important to play and mess around with
 Qiskit yourself at the end of each lesson, so you get a better grasp before
 starting the next lesson. 
+
+For any typos, issues, or suggestions on this tutorial, please fork to the `website` repo, or
+[email me](mailto:devaldeliwala@berkeley.edu). Thanks! 
 
 ___
 
@@ -51,7 +54,7 @@ The `Statevector` class also provides a `draw()` method for displaying statevect
 ```python
 display(u.draw('latex'))
 display(v.draw('latex'))
-```i
+```
 
 ![](/screenshot1.png)
 
@@ -220,7 +223,7 @@ The Hadamard Gates puts the standard basis states {\\( |0\rangle, |1\rangle \\)}
 
 ![](/s12.png)
 
-Performing the same operations instead on $|+\rangle$ and $|-\rangle$, $$ H|0\rangle = |+\rangle $$ $$ H|1\rangle = |-\rangle $$
+Performing the same operations instead on $|+\rangle$ and $|-\rangle$, $$ H|+\rangle = |0\rangle $$ $$ H|-\rangle = |1\rangle $$
 
 Since both $ |+\rangle $ and $ |-\rangle $ carry the same probability distributions for measuring 0 or 1, measuring either $|+\rangle$ or $|-\rangle$ provides no information on what the initial state actually was. But by performing the $H$ gate like you see above, we obtain 0 with certainty that the initial state was $|+\rangle$ and we obtain 1 with certainty that the initial state was $|-\rangle$.
 
@@ -438,7 +441,9 @@ display(plot_histogram(minus_stats))
  
  #### Problem 2. 
  
- Let's define a `QuantumCircuit` with one Hadamard Gate. 
+ Let's define a `QuantumCircuit` with one Hadamard Gate. This way we do not
+ have to define the Hadamard matrix with the `Operator()` method. Though that
+ still works. 
  
  ```python
 from qiskit.quantum_info import Statevector
