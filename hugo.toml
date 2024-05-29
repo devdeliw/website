@@ -57,12 +57,17 @@ theme = 'hermit-v2'
     weight = 5
 
   [[menu.main]]
-    name = "contents"
-    url = "contents/contents/"
-    weight = 6
+    name = "qiskit"
+    url = "qiskit/"
+    weight = 4
 
   [[menu.main]]
-    name = "research"
-    url = "research/"
+    name = "contents"
+    url = "contents/contents/"
     weight = 7
+
+  [[menu.main]]
+    name = "research / not currently updated "
+    url = "research/"
+    weight = 8
 
