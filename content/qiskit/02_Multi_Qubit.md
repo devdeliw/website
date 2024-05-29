@@ -324,8 +324,7 @@ display(plus.evolve(X).tensor(minus.evolve(Y)).draw('latex'))
 ![](/56.png)
 
 
-[Previous](https://dev-undergrad.dev/qiskit/01_single_systems/)  
-[Next](https://dev-undergrad.dev/qiskit/03_quantum_circuits/)
+[Previous](https://dev-undergrad.dev/qiskit/01_single_systems/) $\sim$ [Next](https://dev-undergrad.dev/qiskit/03_quantum_circuits/)
 
 
 
