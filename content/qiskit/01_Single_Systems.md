@@ -1,5 +1,5 @@
 ---
-title: '§ 1. Single Qubit'
+title: '§ 1. Single-Qubit States'
 date: 2024-05-28T21:08:06-07:00
 description: 'Understanding the Statevector Class & Single-Qubit Operations'
 draft: false
@@ -14,7 +14,7 @@ Computing, although some math will be necessary. For learning the math along
 with Qiskit, visit IBM's [Qiskit Textbook](https://learning.quantum.ibm.com).
 
 If you do not know the math yet...**do not use this tutorial**.
-Understanding the math is essential for understanding how the code works. 
+Understanding the math iis essential for understanding how the code works. 
 
 I provide lessons covering the same rough topics as IBM's textbook with
 exercises at the end. To fully master Qiskit, it is important to play and mess around with
@@ -508,7 +508,7 @@ display(ket1.evolve(PhasePi3).draw("latex"))
 
 ![](/35.png) 
 
-[Next](https://dev-undergrad.dev/qiskit/02_multi_qubit/)
+[Next -- Multi-Qubit States](https://dev-undergrad.dev/qiskit/02_multi_qubit/)
 
 
 

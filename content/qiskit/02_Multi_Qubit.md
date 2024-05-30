@@ -1,5 +1,5 @@
 ---
-title : '§ 2. Multiple Qubits'
+title : '§ 2. Multiple-Qubit States'
 date : 2024-05-29T11:59:11-07:00
 draft : False
 description : 'Working with Multi-Qubit Quantum Gates'
@@ -20,7 +20,7 @@ Let's discuss the important Quantum Gates that deal with Multi-Qubit states.
 ### SWAP 
 $$ \text{SWAP} |a\rangle |b\rangle = |b\rangle |a\rangle $$
 
-It's matrix representation 
+Its matrix representation 
 
 ![](/57.png)
 
@@ -40,12 +40,12 @@ The action of a CNOT gate flips the target qubit if the control qubit is in the 
 
 ![](/37.png)
 
-It leaves the control qubit alone regardless. In matrix representation 
+It leaves the control qubit alone regardless. Its matrix representation 
 
 ![](/38.png)
 
 
-Controlled-Operations can be performed on both single and multi-qubit states. The control or target could be a system of qubits. For example the CCNOT (controlled-controlled NOT) gate, also known as the Toffoli Gate -- a CNOT gate with *2* control qubits and *1* target qubit. That is, the target qubit gets inverted if and only if *both* control qubits are in the state $|1\rangle$. 
+Controlled-Operations can be performed on both single and multi-qubit states. The control or target could be a system of qubits. For example the CCNOT (controlled-controlled NOT) gate, also known as the Toffoli Gate -- is a CNOT gate with *2* control qubits and *1* target qubit. That is, the target qubit gets inverted if and only if *both* control qubits are in the state $|1\rangle$. 
 
 Now it is time to discuss how to generate multi-qubit states. We already learned how to generate single-qubit states using the `Statevector` class in the previous lesson. To generate a multi-qubit state we have to understand how to perform tensor products. 
 
@@ -104,7 +104,7 @@ print(C)
 
 ![](/44.png)
 
-Let's show that applying $X$ on qubit $|0\rangle$ and $Y$ on qubit $|1\rangle$ is the same as applying $C = X \otimes Y$ to $|01\rangle = |0\rangle \otimes |1\rangle$. 
+Let's show that applying $X$ on qubit $|0\rangle$ and $Y$ on qubit $|1\rangle$ and taking the resulting tensor product is the same as applying $C = X \otimes Y$ to $|01\rangle = |0\rangle \otimes |1\rangle$. 
 
 ```python
 ket0 = Statevector([1, 0])
@@ -324,7 +324,7 @@ display(plus.evolve(X).tensor(minus.evolve(Y)).draw('latex'))
 ![](/56.png)
 
 
-[Previous](https://dev-undergrad.dev/qiskit/01_single_systems/) $\sim$ [Next](https://dev-undergrad.dev/qiskit/03_quantum_circuits/)
+[Previous -- Single-Qubit States](https://dev-undergrad.dev/qiskit/01_single_systems/) $\sim$ [Next -- Quantum Circuits](https://dev-undergrad.dev/qiskit/03_quantum_circuits/)
 
 
 
