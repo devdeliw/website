@@ -238,8 +238,7 @@ The T gate is the equivalent to a $P_{\pi/4}$ phase operation. That is,
 ### Quantum Gates Review
 
 Let's define a quantum circuit using `qiskit.QuantumCircuit()` and implement
-some gates we've discussed on $|0\rangle$. We will fully discuss the `QuantumCircuit()` method
-soon. 
+some gates we've discussed on $|0\rangle$. We will fully discuss the `QuantumCircuit()` method in lesson 3.
 
 ```python 
 from qiskit import QuantumCircuit 
@@ -436,8 +435,7 @@ display(plot_histogram(minus_stats))
 
 ![](/28.png) 
   
- We see the probabilities for measuring 0 and 1i are roughly equal for both $|+\rangle$ and
- $|-\rangle$ -- as they should be.
+ We see the probabilities for measuring 0 and 1 are roughly equal for both $|+\rangle$ and $|-\rangle$ -- as they should be.
  
  #### Problem 2. 
  
