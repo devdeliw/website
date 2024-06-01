@@ -1,11 +1,11 @@
 ---
-title : '§ 2. Multiple-Qubit States'
+title : 'Ch.2 Multiple-Qubit States'
 date : 2024-05-29T11:59:11-07:00
 draft : False
 description : 'Working with Multi-Qubit Quantum Gates'
 ---
 
-## Multi-Qubit Quantum Gates / Operators
+### § 4. Multi-Qubit Quantum Gates / Operators
 
 Now that we know how to work with single-qubit gates, we can move on to multi-qubit operators which act on more than one qubit/statevector. 
 
@@ -17,14 +17,14 @@ Let's discuss the important Quantum Gates that deal with Multi-Qubit states.
 
 ---
 
-### SWAP 
+#### SWAP 
 $$ \text{SWAP} |a\rangle |b\rangle = |b\rangle |a\rangle $$
 
 Its matrix representation 
 
 ![](/57.png)
 
-### Controlled Operations
+#### Controlled Operations
 
 A controlled $U$ operator performs an action on a **target** qubit depending on the state of a **control** qubit. 
 
@@ -51,7 +51,7 @@ Now it is time to discuss how to generate multi-qubit states. We already learned
 
 ---
 
-### Tensor Products
+#### Tensor Products
 
 Let's create the multi-qubit statevector $|01\rangle$ as a tensor product from $|0\rangle \otimes |1\rangle$. 
 
@@ -161,7 +161,7 @@ Now that we have some understanding on how to implement operators on multi-qubit
 
 ---
 
-### Partial Measurements
+#### Partial Measurements
 
 In the previous chapter, we used the `measure` method to simulate a measurement of a quantum statevector. This method returned the measured eigenvalue, and the resultant collapsed statevector post-measurement. 
 

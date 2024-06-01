@@ -1,5 +1,5 @@
 ---
-title : '§ 3. Quantum Circuits'
+title : 'Ch. 3 Quantum Circuits'
 date : 2024-05-29T18:49:50-07:00
 draft : false
 description : 'Generating Quantum Circuits using qiskit.QuantumCircuit()'
@@ -16,6 +16,8 @@ from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
 from qiskit.primitives import Sampler
 from qiskit.visualization import plot_histogram
 ```
+
+### § 5. Building Quantum Circuits
 
 We build a circuit using the `QuantumCircuit()` method. 
 

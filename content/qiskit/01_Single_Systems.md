@@ -1,5 +1,5 @@
 ---
-title: '§ 1. Single-Qubit States'
+title: 'Ch.1 Single-Qubit States'
 date: 2024-05-28T21:08:06-07:00
 description: 'Understanding the Statevector Class & Single-Qubit Operations'
 draft: false
@@ -29,7 +29,7 @@ ___
 To begin learning Qiskit, the software used to work with quantum circuits, we
 need to understand how to define and work with qubits. 
 
-### States, Measurements, & Operations
+### § 1. States, Measurements, & Operations
 #### Defining Qubit Statevectors
 
 The `Statevector` class provides functionality for defining and manipulating
@@ -142,7 +142,7 @@ By now you should start to feel that Qiskit is just plain and simple python. Of 
 
 ---
 
-### Single-Qubit Quantum Gates / Operators
+### § 2. Single-Qubit Quantum Gates / Operators
 
 We start with the Pauli Operators that are used when measuring spins of elementary particles. Spin is one of the ways qubits are defined in real-life. (spin up $|\uparrow\rangle$ could mean $|0\rangle$ and spin down $|\downarrow\rangle$ could mean $|1\rangle$).
 
@@ -235,7 +235,7 @@ The T gate is the equivalent to a $P_{\pi/4}$ phase operation. That is,
 
 ---
 
-### Quantum Gates Review
+### § 3. Quantum Gates Review
 
 Let's define a quantum circuit using `qiskit.QuantumCircuit()` and implement
 some gates we've discussed on $|0\rangle$. We will fully discuss the `QuantumCircuit()` method in lesson 3.
