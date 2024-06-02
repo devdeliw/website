@@ -24,11 +24,11 @@ $$ \sim * \backsim $$
 ## Table of Contents
 1. [§ 1. States, Measurements, & Operations](#-1-states-measurements--operations)
 2. [§ 2. Single Qubit Quantum Gates](#-2-single-qubit-quantum-gates)
-   - [Pauli $X$ (NOT) Operator](#pauli-x-not-operator)
-   - [Pauli $Y$ Operator](#pauli-y-operator)
-   - [Pauli $Z$ Operator](#pauli-z-operator)
-   - [Hadamard Operator](#hadamard-operator)
-   - [T Gate](#t-gate)
+   - [Pauli $X$ (NOT) Operator](#--pauli-x-not-operator)
+   - [Pauli $Y$ Operator](#--pauli-y-operator)
+   - [Pauli $Z$ Operator](#--pauli-z-operator)
+   - [Hadamard Operator](#--hadamard-operator)
+   - [T Gate](#--t-gate)
 3. [§ 3. Quantum Gates Review](#-3-quantum-gates-review)
 4. [Exercises](#exercises)
 5. [Solutions](#solutions)
@@ -156,7 +156,7 @@ By now you should start to feel that Qiskit is just plain and simple python. Whi
 We start with the Pauli Operators, used to measure the spins of elementary particles. Spin is one way to define qubits in real life (spin up $|\uparrow\rangle$ represents $|0\rangle$, and spin down $|\downarrow\rangle$ represents $|1\rangle$).
 
 
-### Pauli $X$ (NOT) Operator
+### - Pauli $X$ (NOT) Operator
 
 
 
@@ -207,12 +207,12 @@ display(v_final.draw("latex"))
 
 Next, let's introduce the other 2 Pauli Operators (besides the identity matrix).
 
-### Pauli $Y$ Operator 
+### - Pauli $Y$ Operator 
 
 ![](/screenshot8.png)
 *Figure 2: Pauli $Y$ Gate*
 
-### Pauli $Z$ Operator
+### - Pauli $Z$ Operator
 
 ![](/screenshot9.png)
 *Figure 3: Pauli $Z$ Gate*
@@ -227,7 +227,7 @@ The $Y$ gate performs both a bit-flip and a phase-flip. Phase operations are   d
 
 Other important operators include:
 
-### Hadamard Operator
+### - Hadamard Operator
 
 ![](/screenshot11.png)
 *Figure 4: Hadamard Gate*
@@ -243,7 +243,7 @@ $$ H|-\rangle = |1\rangle $$
 
 Since $|+\rangle$ and $|-\rangle$ have the same probability distributions for measuring 0 or 1, measuring either provides no information about the initial state. By applying the $H$ gate, we obtain 0 if the initial state was $|+\rangle$ and 1 if it was $|-\rangle$.
 
-### T Operator
+### - T Operator
 
 The T gate is equivalent to a $P_{\pi/4}$ phase operation. 
 
