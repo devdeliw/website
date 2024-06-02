@@ -24,12 +24,14 @@ starting the next lesson.
 For any typos, issues, or suggestions on this tutorial, please fork to the `website`  [repo](https://github.com/devdeliw/website/) (.md files under `/content/qiskit/`), or
 [email me](mailto:devaldeliwala@berkeley.edu). Thanks! 
 
-___
+$$ \rule{18.3cm}{0.2pt} $$
 
 To begin learning Qiskit, the software used to work with quantum circuits, we
 need to understand how to define and work with qubits. 
 
 ### § 1. States, Measurements, & Operations
+---
+
 #### Defining Qubit Statevectors
 
 The `Statevector` class provides functionality for defining and manipulating
