@@ -7,32 +7,41 @@ draft: false
 
 ## Preliminary Info
 
-This tutorial series assumes you are already knowledgable of basic quantum
-mechanics, statistics, linear algebra, and python. This is for people who want to focus
-on directly learning IBM Qiskit, the python library, and not so much the math behind Quantum
-Computing, although some math will be necessary. For learning the math along
-with Qiskit, visit IBM's [Qiskit Textbook](https://learning.quantum.ibm.com).
+This tutorial series assumes you are already knowledgeable in basic quantum mechanics (state vectors/wave functions), statistics, linear algebra, and Python.
 
-If you do not know the math yet...**do not use this tutorial**.
-Understanding the math iis essential for understanding how the code works. 
+This series is for those who want to focus on directly learning IBM Qiskit, the Python library. To learn Qiskit along with the necessary math, visit [IBM Quantum Learning](https://learning.quantum.ibm.com). 
 
-I provide lessons covering the same rough topics as IBM's textbook with
-exercises at the end. To fully master Qiskit, it is important to play and mess around with
-Qiskit yourself at the end of each lesson, so you get a better grasp before
-starting the next lesson. 
+Once the necessary Qiskit concepts are introduced, we will delve directly into quantum computing theory, where lessons will become more math-intensive.
 
-For any typos, issues, or suggestions on this tutorial, please fork to the `website`  [repo](https://github.com/devdeliw/website/) (.md files under `/content/qiskit/`), or
-[email me](mailto:devaldeliwala@berkeley.edu). Thanks! 
+If you do not know the math yet, do not use this tutorial. Understanding the math is essential for understanding how the code works.
 
-$$ \rule{18.3cm}{0.2pt} $$
+I provide lessons covering the same rough topics as IBM's textbook, with exercises at the end. To fully master Qiskit, it is important to experiment with Qiskit yourself at the end of each lesson to get a better grasp before starting the next one.
+
+For any typos, issues, or suggestions on this tutorial, please fork the [website repo](https://github.com/devdeliw/website/tree/main/content/qiskit) (.md files under `/content/qiskit/`), or email me. Thanks!
+
+$$ \sim * \backsim $$
+
+## Table of Contents
+1. [§ 1. States, Measurements, & Operations](#-1-states-measurements--operations)
+2. [§ 2. Single Qubit Quantum Gates](#-2-single-qubit-quantum-gates)
+   - [Pauli $X$ (NOT) Operator](#pauli-x-not-operator)
+   - [Pauli $Y$ Operator](#pauli-y-operator)
+   - [Pauli $Z$ Operator](#pauli-z-operator)
+   - [Hadamard Operator](#hadamard-operator)
+   - [T Gate](#t-gate)
+3. [§ 3. Quantum Gates Review](#-3-quantum-gates-review)
+4. [Exercises](#exercises)
+5. [Solutions](#solutions)
+
+$$ \backsim * \sim $$
 
 To begin learning Qiskit, the software used to work with quantum circuits, we
 need to understand how to define and work with qubits. 
 
-### § 1. States, Measurements, & Operations
+## § 1. States, Measurements, & Operations
 ---
 
-#### Defining Qubit Statevectors
+### Defining Qubit Statevectors
 
 The `Statevector` class provides functionality for defining and manipulating
 quantum statevectors (or wave functions, if you are a physicist like me). 
@@ -51,7 +60,7 @@ v = Statevector([(1 + 2.0j)/3, -2/3])
 w = Statevector([1/3, 2/3])
 ```
 
-The `Statevector` class also provides a `draw()` method for displaying statevectors in $\LaTeX$ format (or just plain text if you want). 
+The `Statevector` class also provides a `draw()` method for displaying statevectors in $\LaTeX$ format (or just plain text if you prepfer). 
 
 ```python
 display(u.draw('latex'))
@@ -60,8 +69,7 @@ display(v.draw('latex'))
 
 ![](/screenshot1.png)
 
-The `Statevector` class by default uses the computational basis. {$\{|0\rangle,
-|1\rangle\}$}. We can check if these statevectors are valid using the `is_valid` method. 
+The `Statevector()` class uses the computational basis by default: {${|0\rangle, |1\rangle}$}. We can check if these statevectors are valid using the `is_valid()` method.
 
 ```python
 print(f"Statevector u is valid? {u.is_valid()}")
@@ -69,9 +77,9 @@ print(f"Statevector w is valid? {w.is_valid()}")
 ```
 ![](/screenshot.png)
 
-Remember, as the norm of components squared $|c_i|^2$ of the statevector represent the probabilities to yield the eigenvalue for the basis we define the statevectors in -- the probabilities $|c_i|^2$ for each eigenvalue must sum to one: $$\sum_i |c_i|^2 = 1 $$ To put it simply, **the Euclidean norm must equal 1.**
+A valid statevector is one who's Euclidean norm equals 1. The norm of all the coefficients *squared* must equate to 1. 
 
-#### Simulating Measurements
+### Simulating Measurements
 
 Using the `measure()` method is one way to measure statevectors in Qiskit. 
 
@@ -86,21 +94,18 @@ v.measure()
 
 ![](/screenshot2.png)
 
-Note that as the result of measurements is probabilistic, measuring the above
-statevector could yield different results. 
+Since the result of measurements is probabilistic, measuring the above statevector could yield different results.
 
-Upon measurement, the qubit collapses into either $|0\rangle$ or $|1\rangle$,
-since we have been using the computational basis {$\{ |0\rangle, |1\rangle \}$}
-to define our statevectors thus far.
+Upon measurement, the qubit collapses into either $|0\rangle$ or $|1\rangle$, since we have been using the computational basis {${ |0\rangle, |1\rangle }$} to define our statevectors so far.
 
-`v.measure()` returns a `tuple` which stores info on the eigenvalue measured, the collapsed wave function, and the dimension of the wave function.
+`v.measure()` returns a tuple which stores information on the eigenvalue measured, the collapsed wave function, and the dimension of the wave function.
 
 ```python
 v.measure()[0] # measured eigenvalue
 v.measure()[1] # collapsed resultant wave function 
 ```
 
-If we run many iterations of `v.measure()` we should yield a graph that comes close to the intrinsic probabilities of each eigenvalue.
+If we run many iterations of `v.measure()` we should get a graph that approximates the intrinsic probabilities of each component.
 
 ```python
 import matplotlib.pyplot as plt
@@ -125,7 +130,7 @@ print("{:>3} | {:>3}".format(num_0, num_1))
 ```
 ![](/screenshot3.png)
 
-Qiskit provides a way to visualize probabilities in a much *simpler* and *direct* way using the `plot_histogram()` method in `qiskit.visualization`.
+Qiskit provides a *simpler* and more direct way to visualize probabilities using the `plot_histogram()` method in `qiskit.visualization`.
 
 ```python
 from qiskit.visualization import plot_histogram
@@ -138,24 +143,30 @@ plot_histogram(statistics, figsize = (5, 5)) # makes histogram directly
 
 ![](/screenshot4.png)
 
-We see the results are almost identical. If we took an infinite number of measurements and collected all the results, we would see the probabilities match with what is predicted from the statevector. 
+We see the results are almost identical. If we took an infinite number of measurements and collected all the results, the probabilities would match what is predicted by the statevector. 
 
-By now you should start to feel that Qiskit is just plain and simple python. Of course, it is known Qiskit is just a python library, however for many it seems like an entire new language. One just has to understand how *to work* with all the features of Qiskit *within* python. The first step is understanding all the quantum gates/operators. 
+
+By now you should start to feel that Qiskit is just plain and simple python. While Qiskit is indeed a Python library, it may seem like a whole new language to many. One just has to understand how to work with all the features of Qiskit within Python. The first step is understanding all the quantum gates/operators.
 
 ---
 
-### § 2. Single-Qubit Quantum Gates / Operators
+## § 2. Single Qubit Quantum Gates
+---
 
-We start with the Pauli Operators that are used when measuring spins of elementary particles. Spin is one of the ways qubits are defined in real-life. (spin up $|\uparrow\rangle$ could mean $|0\rangle$ and spin down $|\downarrow\rangle$ could mean $|1\rangle$).
+We start with the Pauli Operators, used to measure the spins of elementary particles. Spin is one way to define qubits in real life (spin up $|\uparrow\rangle$ represents $|0\rangle$, and spin down $|\downarrow\rangle$ represents $|1\rangle$).
 
-#### Pauli $X$ (NOT) Operator
 
-The simplest logic gate is the Pauli-$X$ / NOT operator. It inverts a value of a qubit from $0\rightarrow 1$ or $1\rightarrow0$, assuming we are in the computational basis. Its matrix representation is accordingly, 
+### Pauli $X$ (NOT) Operator
+
+
+
+The simplest logic gate is the Pauli-$X$ or NOT operator. It inverts the value of a qubit from $0 \rightarrow 1$ or $1 \rightarrow 0$ in the computational basis. Its matrix representation is:
 
 ![](/screenshot5.png)
+*Figure 1: Pauli $X$ Gate*
 
 
-We can see its action on the following statevector $|0\rangle = v= \left(1 \atop 0\right)$
+We can see its effect on the statevector $|0\rangle = v= \left(1 \atop 0\right)$
 
 ```python
 from qiskit.quantum_info import Operator
@@ -175,7 +186,7 @@ display(v_final.draw("latex"))
 
 ![](/screenshot6.png)
 
-If we apply two $X$-gates in succession, we see the qubit flip back to its
+If we apply two $X$-gates in succession, the qubit flips back to its
 original state $|0\rangle$. 
 
 ```python
@@ -194,53 +205,58 @@ display(v_final.draw("latex"))
 
 ![](/screenshot7.png)
 
-Let's introduce the other 2 Pauli Operators (besides the identity matrix --
-which you already know).
+Next, let's introduce the other 2 Pauli Operators (besides the identity matrix).
 
-#### Pauli $Y$ Operator 
+### Pauli $Y$ Operator 
 
 ![](/screenshot8.png)
+*Figure 2: Pauli $Y$ Gate*
 
-#### Pauli $Z$ Operator
+### Pauli $Z$ Operator
 
 ![](/screenshot9.png)
-
-While not important right now, just like how we saw previously the $X$ gate performs the "bit-flip" operation,
+*Figure 3: Pauli $Z$ Gate*
 
 The $Z$ gate performs a "phase-flip" operation: $$ Z|0\rangle = |0\rangle \qquad Z|1\rangle = -|1\rangle $$
 
-The $Y$ gate performs both a bit-flip and a phase-flip. Phase operations are any operation described by the matrix
+The $Y$ gate performs both a bit-flip and a phase-flip. Phase operations are   described by the matrix
 
 ![](/screenshot10.png)
 
-(i.e. they leave the $|0\rangle$ constant and tack on a phase to the
-$|1\rangle$ component). The $Z$ operator is the case of $P_\pi$. There are also
-some other operators important enough to have a name: 
+(i.e., they leave the $|0\rangle$ constant and add a phase to the $|1\rangle$ component). The $Z$ operator is the case of $P_\pi$.
 
-#### Hadamard Operator
+Other important operators include:
+
+### Hadamard Operator
 
 ![](/screenshot11.png)
+*Figure 4: Hadamard Gate*
 
 The Hadamard Gates puts the standard basis states {\\( |0\rangle, |1\rangle \\)} into a superposition. 
 
 ![](/s12.png)
 
-Performing the same operations instead on $|+\rangle$ and $|-\rangle$, $$ H|+\rangle = |0\rangle $$ $$ H|-\rangle = |1\rangle $$
+Applying the same operations to $|+\rangle$ and $|-\rangle$, 
 
-Since both $ |+\rangle $ and $ |-\rangle $ carry the same probability distributions for measuring 0 or 1, measuring either $|+\rangle$ or $|-\rangle$ provides no information on what the initial state actually was. But by performing the $H$ gate like you see above, we obtain 0 with certainty that the initial state was $|+\rangle$ and we obtain 1 with certainty that the initial state was $|-\rangle$.
+$$ H|+\rangle = |0\rangle $$ 
+$$ H|-\rangle = |1\rangle $$
 
-#### T Gate
+Since $|+\rangle$ and $|-\rangle$ have the same probability distributions for measuring 0 or 1, measuring either provides no information about the initial state. By applying the $H$ gate, we obtain 0 if the initial state was $|+\rangle$ and 1 if it was $|-\rangle$.
 
-The T gate is the equivalent to a $P_{\pi/4}$ phase operation. That is, 
+### T Operator
+
+The T gate is equivalent to a $P_{\pi/4}$ phase operation. 
 
 ![](/14.png)
+*Figure 5: T Gate*
 
 ---
 
-### § 3. Quantum Gates Review
+## § 3. Quantum Gates Review
+---
 
 Let's define a quantum circuit using `qiskit.QuantumCircuit()` and implement
-some gates we've discussed on $|0\rangle$. We will fully discuss the `QuantumCircuit()` method in lesson 3.
+some gates on $|0\rangle$. We will fully discuss the `QuantumCircuit()` method in lesson 3.
 
 ```python 
 from qiskit import QuantumCircuit 
@@ -281,7 +297,7 @@ display(v.draw("latex"))
 
 Let's apply the Hadamard Gate $H$ on $|0\rangle$. 
 
-For the following code segments, predict first what the output will be based on information about the gates provided above.
+For the following code segments, predict what the output will be based on information provided about the gates. 
 
 ```python
 circuit = QuantumCircuit(1) 
@@ -299,7 +315,7 @@ v.draw("latex")
 
 ![](/20.png) 
 
-Applying the Hadamard Gate on `v` = $|+\rangle$ (same as applying two Hadamard Gates on `ket0` = $|0\rangle$: 
+Applying the Hadamard Gate on `v` = $|+\rangle$ (the same as applying two Hadamard Gates on `ket0` = $|0\rangle$: 
 
 ```python
 w = v.evolve(circuit) # Applying the same circuit on v 
@@ -311,7 +327,7 @@ w.draw("latex")
 
 We get back the original statevector $|0\rangle$. 
 
-Now let's build some random circuit with a bunch of gates and apply it on
+Now let's build a random circuit with a bunch of gates and apply it on
 $|0\rangle$. 
 
 ```python
@@ -337,8 +353,7 @@ v.draw("latex")
 
 ![](/23.png) 
 
-We get a very ugly statevector. Perhaps seeing its probability distribution
-will help. 
+We get a complex statevector. Let's check its probability distribution
 
 ```python
 statistics = v.sample_counts(4000)
@@ -351,35 +366,32 @@ plot_histogram(statistics)
 
 ## Exercises
 
+
 > 1. Plot the probability distribution from measuring the $|+\rangle$ and
    $|-\rangle$ statevectors. 
-   
-> 2. Perform a Hadamard Gate on $|0\rangle$ twice. What is the final statevector? 
-   
-> 3. Perform a Phase $P_\frac{\pi}{3}$ operation on $|1\rangle$. What is the final
+>
+>   2. Perform a Hadamard Gate on $|0\rangle$ twice. What is the final statevector? 
+>
+>   3. Perform a Phase $P_\frac{\pi}{3}$ operation on $|1\rangle$. What is the final
    statevector? 
-  
-  .
-  
-  .
-  
-  .
-  
-  .
-  
-  .
-  
-  .
-  
-  .
-  
-  .
+> 
+> $\hspace{1px}$
+> 
+> $\hspace{1px}$
+> 
+> $\hspace{1px}$
+> 
+> $\hspace{1px}$
+> 
+> $\hspace{1px}$
+> 
+> $\hspace{1px}$
   
 ## Solutions 
 
 First attempt the problems! 
 
-#### Problem 1. 
+### Problem 1. 
 
 ```python
 from qiskit.quantum_info import Statevector
@@ -439,11 +451,10 @@ display(plot_histogram(minus_stats))
   
  We see the probabilities for measuring 0 and 1 are roughly equal for both $|+\rangle$ and $|-\rangle$ -- as they should be.
  
- #### Problem 2. 
+ ### Problem 2. 
  
  Let's define a `QuantumCircuit` with one Hadamard Gate. This way we do not
- have to define the Hadamard matrix with the `Operator()` method. Though that
- still works. 
+ have to define the Hadamard matrix with the `Operator()` method. 
  
  ```python
 from qiskit.quantum_info import Statevector
@@ -484,7 +495,7 @@ display(plus.evolve(circuit).draw("latex"))
 
 We see that applying two Hadamard gates to the $|0\rangle$ statevector re-yields $|0\rangle$.
 
-#### Problem 3. 
+### Problem 3. 
 
 Recall that a *Phase* operation is given by 
 
@@ -507,6 +518,8 @@ display(ket1.evolve(PhasePi3).draw("latex"))
 ```
 
 ![](/35.png) 
+
+---
 
 [Next -- Multi-Qubit States](https://dev-undergrad.dev/qiskit/02_multi_qubit/)
 
