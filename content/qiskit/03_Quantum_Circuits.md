@@ -1,23 +1,36 @@
 ---
-title : 'Ch. 3 Quantum Circuits'
+title : 'Ch.3 Quantum Circuits'
 date : 2024-05-29T18:49:50-07:00
 draft : false
 description : 'Generating Quantum Circuits using qiskit.QuantumCircuit()'
 ---
 
-So far we have discussed working with single-qubit and multi-qubit states. We have discussed many different operators and used the `.evolve()` method to apply these operators on statevectors. 
+$$ \sim * \backsim $$
 
-Now it is finally time to start building our own QuantumCircuits that can contain a series of operators. Of course, you could simply generate *one* matrix that is a result of compounding all the matrices via matrix multiplication tensor product. However, generating circuits allows us to visualize the change of information and trace the *evolution* of qubits through a *series* of quantum gates. 
+## Table of Contents
+1. [§ 7. Building Quantum Circuits](#-7-building-quantum-circuits)
+2. [§ 8. Quantum Circuits Review](#-8-quantum-circuits-review)
+4. [Exercises](#exercises)
+5. [Solutions](#solutions)
 
-Let's first import all the important tools for working with quantum circuits: 
+$$ \backsim * \sim $$
+
+
+So far, we've discussed working with single-qubit and multi-qubit states. We've also covered various operators and used the `.evolve()` method to apply these operators to statevectors.
+
+Now it's time to start building our own Quantum Circuits. These circuits allow us to visualize the change of information and trace the evolution of qubits through a series of quantum gates.
+
+First, let's the essential tools for working with quantum circuits: 
 
 ```python
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
 from qiskit.primitives import Sampler
 from qiskit.visualization import plot_histogram
 ```
+---
 
-### § 5. Building Quantum Circuits
+## § 7. Building Quantum Circuits
+---
 
 We build a circuit using the `QuantumCircuit()` method. 
 
@@ -36,7 +49,7 @@ display(circuit.draw()) # Gates are performed left-to-right
 
 In Qiskit, the *topmost* qubit in a circuit diagram has index 0 and corresponds to the *rightmost* position in a tuple of qubits. Qiskit's default names for the qubits in an $n$-qubit circuit are represented by the $n$-tuple $(q_{n-1}, \cdots, q_0)$, with $q_0$ being the qubit on top and $q_{n-1}$ on the bottom in quantum circuit diagrams. 
 
-We can also create a 2-qubit gate like so: 
+We can also create a 2-qubit gate as follows: 
 
 ```python
 # Generating Identical 2-qubit circuits 
@@ -65,9 +78,9 @@ display(circuit_named.draw())
 
 ![](/59.png)
 
-We have created two identical circuits, one default-named, and the other custom. Both circuits contain a Hadamard Gate on the first qubit and a CNOT gate with the first qubit as the control and the second as the target. 
+We have created two identical circuits, one with default names and the other with custom names. Both circuits contain a Hadamard Gate on the first qubit and a CNOT gate with the first qubit as the control and the second as the target.
 
-Let's see the action of the above circuit on the standard computational basis states for a 2-qubit system: 
+Let's see the action of the above circuit on the standard computational basis states for a 2-qubit system:
 
 $$|00\rangle \quad |01\rangle \quad |10\rangle \quad |11\rangle$$
 
@@ -87,18 +100,16 @@ for i in range(len(standard_basis_states)):
 
 ![](/60.png)
 
-The cool thing about the circuit above, as you see, it generates the bell states. (entangled states that form a basis): 
+The circuit above generates the Bell states (entangled states that form a basis):
 
 $$|\phi^+\rangle = \frac{1}{\sqrt{2}}|00\rangle + \frac{1}{\sqrt{2}}|11\rangle $$
 $$|\phi^-\rangle = \frac{1}{\sqrt{2}}|00\rangle - \frac{1}{\sqrt{2}}|11\rangle $$
 $$|\psi^+\rangle = \frac{1}{\sqrt{2}}|01\rangle + \frac{1}{\sqrt{2}}|10\rangle $$
 $$|\psi^-\rangle = \frac{1}{\sqrt{2}}|01\rangle - \frac{1}{\sqrt{2}}|10\rangle $$
 
-except the final $|11\rangle$ state becomes the negative of the fourth $|\psi^-\rangle$ bell state. 
+except the final $|11\rangle$ state becomes the negative of the fourth $|\psi^-\rangle$ Bell state.
 
-So this circuit gives us a way to convert the standard computational basis into the Bell Basis. The -1 phase factor on the last state, $-|\psi^-\rangle$ could be eliminated if we wanted. For instance, we could add a controlled-Z gate at the beginning. (The Z gate performs the bit-flip operation. So a controlled-Z would perform a bit-flip if the first qubit is 1 $\rightarrow$ turning $-|11\rangle$ into $|11\rangle$)
-
-Here is the altered circuit shown: 
+This circuit provides a way to convert the standard computational basis into the Bell Basis. To eliminate the -1 phase factor on the last state ($-|\psi^-\rangle$), we can add a controlled-$Z$ gate at the beginning.
 
 ```python
 circuit = QuantumCircuit(2)
@@ -113,7 +124,7 @@ circuit.draw()
 
 ![](/61.png)
 
-Implementing the above circuit on the standard computational basis states: 
+Implementing the above altered circuit on the standard computational basis states: 
 
 ```python
 for i in range(len(standard_basis_states)):
@@ -123,9 +134,9 @@ for i in range(len(standard_basis_states)):
 
 ![](/62.png)
 
-which is identical to the Bell Basis! 
+This results in the Bell Basis. 
 
-In general, quantum circuits can contain any number of qubit wires. We may also include classical bit wires, indicated by **double** lines:
+Quantum circuits can contain any number of qubit wires and may also include classical bit wires, indicated by **double** lines:
 
 ```python
 X = QuantumRegister(1, "X")
@@ -145,9 +156,7 @@ circuit.draw()
 
 ![](/63.png)
 
-In the above circuit, we have the same Hadamard & CNOT configuration on two qubits. However now we also have two *classical* bits A & B along with two measurement `M` gates. 
-
-The measurement gates represent standard basis measurements (resulting in either $|0\rangle$ or $|1\rangle$ as the eigenvectors/post-measurement states). The measurement gate changes the qubits into their post-measurement states, while the classical measurement outcomes ($0 for |0\rangle$ or 1 for $|1\rangle$) are *overwritten* onto the classical bits to which the arrows point. 
+The measurement gates represent standard basis measurements, resulting in either $|0\rangle$ or $|1\rangle$ as the eigenvectors/post-measurement states. The measurement gate changes the qubits into their post-measurement states, while the classical measurement outcomes (0 for $|0\rangle$ or 1 for $|1\rangle$) are overwritten onto the classical bits to which the arrows point.
 
 The above circuit can be simulated using the `Sampler()` primitive. 
 
@@ -162,15 +171,18 @@ plot_histogram(statistics)
 
 ![](/64.png)
 
-It is not *super* important to understand primitives yet...but for those who are interested, 
+It is not essential to understand primitives yet, but for those interested:
 
-The `Sampler()` primitive samples outputs of quantum circuits. It basically runs a simulation on a bunch of statevectors and stores the results. It displays the **exact** measurement probabilities of a circuit if the `Sampler().run(shots = ...)` parameter is unspecified. We use it by calling its `run()` method with the circuit. This results a `BasePrimitiveJob` object, where calling the method `result()` results in output samples and corresponding metadata. (We'll get to this in the future -- if you are confused do not worry, still continue onwards -- you are doing great!). 
+The `Sampler()` primitive samples outputs of quantum circuits. It simulates multiple statevectors and stores the results, displaying the exact measurement probabilities of a circuit if the `Sampler().run(shots=...)` parameter is unspecified. We use it by calling its `run()` method with the circuit, which returns a `BasePrimitiveJob` object. Calling the `result()` method on this object provides output samples and corresponding metadata.
 
-It is mainly important to see how the the results show an equal probability for the measurement yielding the *classical* values of 00 and 11. 
+The main takeaway is that the results show an equal probability for the measurement yielding the classical values of 00 and 11.
 
-### Quantum Circuits Review
+---
 
-Let's play with some qubits and bits in a complicated circuit and plot the resultant probabilities. 
+## § 8. Quantum Circuits Review
+---
+
+Let's experiment with a complex quantum circuit, involving both qubits and classical bits, and observe the resultant probabilities.
 
 ```python
 q = QuantumRegister(2, name = 'qubit')
@@ -202,7 +214,9 @@ plot_histogram(statistics)
 
 ![](/66.png)
 
-We see we get roughly an equal 1/4 probabilitiy to yield each computational basis state in its classical form. Let us see this result more closely by performing this circuit on the computational basis states: 
+The results show that each computational basis state has approximately equal probability (1/4). The measurement outputs are now defined as classical bits.
+
+Let's apply the same circuit (excluding measurement gates) to the standard computational basis states to observe the outcomes.
 
 ```python
 # Generating the same circuit, but without the measurement gates
@@ -226,9 +240,9 @@ for i in range(len(standard_basis_states)):
 
 ![](/67.png)
 
-Here we can clearly see the probabilities for yielding each state is 1/4. 
+Each state has an equal probability of 1/4.
 
-However, let's apply the circuit on a different, more complicated statevector. 
+Now, let's apply the circuit to a more complex state vector.
 
 ```python
 plus = Statevector.from_label("+")
@@ -249,7 +263,7 @@ display(statevec.evolve(circuit).draw('latex'))
 
 ![](/69.png)
 
-Now the only possible measurement outcomes are either $|00\rangle$ or $|11\rangle$. 
+After applying the circuit, the possible measurement outcomes are only $|00\rangle$ or $|11\rangle$. 
 
 ---
 
@@ -260,32 +274,29 @@ Now the only possible measurement outcomes are either $|00\rangle$ or $|11\rangl
 ![](/70.png)
 
 > 2. Implement the circuit from Problem 1 on the statevector given by $|+-+-\rangle$. What is the resultant statevector? Plot the probability distributions for 4000 samples using `plot_histogram()`.
-
+>
 > 3. Add a measurement gate to all the qubits using the `circuit.measure_all()` method. You should yield the following circuit: 
 
 ![](/71.png)
 
 > Afterwards use a sampler primitive to visualize the classical probabilities resulting from this circuit. What are the possible classical results? 
+>
+> $\hspace{1px}$
+> 
+> $\hspace{1px}$
+> 
+> $\hspace{1px}$
+> 
+> $\hspace{1px}$
+> 
+> $\hspace{1px}$
+> 
+> $\hspace{1px}$
 
-. 
-
-.
- 
-.
-
-.
-
-.
-
-.
-
-.
-
-.
 
 ## Solutions 
 
-#### Problem 1.
+### Problem 1.
 
 ```python
 from qiskit import QuantumCircuit
@@ -302,7 +313,7 @@ circuit.draw()
 
 ![](/70.png)
 
-#### Problem 2. 
+### Problem 2. 
 
 Let's first generate the statevector for $|+-+-\rangle$. To do this I first generate the tensor product $|+\rangle |-\rangle$. I then take its tensor product with itself to yield $|+\rangle|-\rangle|+\rangle|-\rangle = |+-+-\rangle$. 
 
@@ -341,7 +352,7 @@ plot_histogram(results)
 
 From 4000 sample runs we get a rough 500 yields for each state -- a 1/8th probability. 
 
-#### Problem 3
+### Problem 3
 
 Let's add the measurement gates to the circuit from Problem 1 using `measure_all()`
 
@@ -383,8 +394,9 @@ plot_histogram(statistics)
 ```
 
 ![](/76.png)
+---
 
-[Previous -- Multi-Qubit States](https://dev-undergrad.dev/qiskit/02_multi_qubit/) $\sim$ [Next -- Quantum Entanglement](https://dev-undergrad.dev/qiskit/04_entanglement/)
+[Previous -- Multi-Qubit States](https://dev-undergrad.dev/qiskit/02_multi_qubit/)  $\sim$*$\backsim$ [Next -- Quantum Teleportation](https://dev-undergrad.dev/qiskit/04_entanglement/)
 
 
 
