@@ -5,55 +5,78 @@ draft : False
 description : 'Working with Multi-Qubit Quantum Gates'
 ---
 
-### § 4. Multi-Qubit Quantum Gates / Operators
 
-Now that we know how to work with single-qubit gates, we can move on to multi-qubit operators which act on more than one qubit/statevector. 
+$$ \sim * \backsim $$
 
-Remember a multi-qubit state $$|XY\rangle$$ is the tensor product
+## Table of Contents
+1. [§ 4. Multi-Qubit Quantum Gates](#-4-multi-qubit-quantum-gates)
+   - [SWAP Gate](#--swap-gate)
+   - [Controlled Operations](#controlled-operations)
+      - [CX / CNOT](#--cx--cnot-gate)
+2. [§ 5. Tensor Products](#-5-tensor-products)
+3. [§ 6. Partial Measurements](#-6-partial-measurements)
+4. [Exercises](#exercises)
+5. [Solutions](#solutions)
+
+$$ \backsim * \sim $$
+
+
+## § 4. Multi-Qubit Quantum Gates
+---
+
+Now that we understand single-qubit gates, let's explore multi-qubit operators, which act on more than one qubit / statevector.
+
+A multi-qubit state $$|XY\rangle$$ is the tensor product of two single-qubit states: 
 
 $$ |XY\rangle = |X\rangle \otimes |Y\rangle = |X\rangle|Y\rangle$$
 
-Let's discuss the important Quantum Gates that deal with Multi-Qubit states.
+Let's discuss some crucial Quantum Gates that operaton on multi-qubit states.
 
----
+### - SWAP Gate
 
-#### SWAP 
+The SWAP gate exchanges the states of two qubits:
+
 $$ \text{SWAP} |a\rangle |b\rangle = |b\rangle |a\rangle $$
 
-Its matrix representation 
+Its matrix representation is shown below
 
 ![](/57.png)
+*Figure 6: SWAP Gate*
 
-#### Controlled Operations
+# Controlled Operations
 
-A controlled $U$ operator performs an action on a **target** qubit depending on the state of a **control** qubit. 
+A controlled $U$ operator performs an action on a **target** qubit based on the state of a **control** qubit. 
 
-When dealing with the computational basis of $|0\rangle$ and $|1\rangle$ that defines each statevector, a controlled $U$ operation takes the form 
+For qubits defined in the computational basis states $|0\rangle$ and $|1\rangle$, a controlled $U$ operation can be represented as:
 
 $$ CU = |0\rangle \langle 0| \otimes I_R + |1\rangle\langle 1| \otimes U $$
 
-To make this idea clearer, let's discuss the CNOT gate. 
+To illustrate this, let's discuss the Controlled NOT (CNOT) gate.
 
-#### CX / CNOT
+### - CX / CNOT Gate
 
-The action of a CNOT gate flips the target qubit if the control qubit is in the state $|1\rangle$ and leaves the target qubit alone if the control qubit is $|0\rangle$. To put it cleanly, 
+The CNOT gate flips the target qubit if the control qubit is in state $|1\rangle$, and leaves the target qubit unchanged if the control qubit is in state $|0\rangle$.
+
+The action of a CNOT gate is depicted as: 
 
 ![](/37.png)
 
-It leaves the control qubit alone regardless. Its matrix representation 
+It leaves the control qubit unchanged regardless. Its matrix representation is:
 
 ![](/38.png)
+*Figure 7: CNOT Gate*
 
 
-Controlled-Operations can be performed on both single and multi-qubit states. The control or target could be a system of qubits. For example the CCNOT (controlled-controlled NOT) gate, also known as the Toffoli Gate -- is a CNOT gate with *2* control qubits and *1* target qubit. That is, the target qubit gets inverted if and only if *both* control qubits are in the state $|1\rangle$. 
+Controlled operations can be performed on both single and multi-qubit states. The control or target can be a system of qubits. For example, the CCNOT (controlled-controlled NOT) gate, also known as the Toffoli Gate, is a CNOT gate with 2 control qubits and 1 target qubit. The target qubit gets inverted if and only if both control qubits are in state $|1\rangle$.
 
-Now it is time to discuss how to generate multi-qubit states. We already learned how to generate single-qubit states using the `Statevector` class in the previous lesson. To generate a multi-qubit state we have to understand how to perform tensor products. 
+Now, let's discuss how to generate multi-qubit states. We have already learned how to generate single-qubit states using the `Statevector()` class in the previous lesson. To generate a multi-qubit state, we need to understand how to perform tensor products. 
 
 ---
 
-#### Tensor Products
+## § 5. Tensor Products
+---
 
-Let's create the multi-qubit statevector $|01\rangle$ as a tensor product from $|0\rangle \otimes |1\rangle$. 
+First, let's create the multi-qubit statevector $|01\rangle$ as a tensor product of $|0\rangle \otimes |1\rangle$:
 
 ```python
 zero, one = Statevector.from_label("0"), Statevector.from_label("1")
@@ -63,7 +86,7 @@ zero.tensor(one).draw("latex")
 ![](/40.png)
 
 
-Let's create the vectors representing the states $|+\rangle$ and $\frac{1}{\sqrt{2}}(|0\rangle + i|1\rangle)$ states and combine them to form a new state vector $|\psi\rangle$. 
+Next, let's create the statevectors $|+\rangle$ and $\frac{1}{\sqrt{2}}(|0\rangle + i|1\rangle)$, and combine them to form a new statevector $|\psi\rangle$:
 
 ```python
 plus = Statevector.from_label("+")
@@ -75,9 +98,9 @@ psi.draw("latex")
 
 ![](/42.png)
 
-We can also take the tensor product of *operators*. The tensor product $C$ of the operators $C = X \otimes Y$ is an operator that can act on simultaneously on the 2 qubit system that is equivalent  to applying $X$ on the first qubit and $Y$ on the second and taking the tensor product after. 
+We can also take the tensor product of operators. The tensor product $C$ of the operators $X$ and $Y$, where $C = X \otimes Y$, can act simultaneously on a 2-qubit system. This is equivalent to applying $X$ to the first qubit and $Y$ to the second qubit, and then taking the tensor product.
 
-To put it cleanly, the following circuit: 
+To illustrate this, consider the following circuit:
 
 ```python
 circuit = QuantumCircuit(2)
@@ -90,7 +113,7 @@ display(circuit.draw())
 ![](/43.png)
 
 
-is the same as applying the $C = X \otimes Y$ gate on the tensor product `q_0` $\otimes$ `q_1`.  
+This is the same as applying the $C = X \otimes Y$ gate on the tensor product $q_0 \otimes q_1$. 
 
 We can generate tensor products between *operators* in the same way as with statevectors: 
 
@@ -104,7 +127,7 @@ print(C)
 
 ![](/44.png)
 
-Let's show that applying $X$ on qubit $|0\rangle$ and $Y$ on qubit $|1\rangle$ and taking the resulting tensor product is the same as applying $C = X \otimes Y$ to $|01\rangle = |0\rangle \otimes |1\rangle$. 
+Let's show that applying $X$ on qubit $|0\rangle$ and $Y$ on qubit $|1\rangle$ and then taking the resulting tensor product, is the same as applying $C = X \otimes Y$ to $|01\rangle = |0\rangle \otimes |1\rangle$. 
 
 ```python
 ket0 = Statevector([1, 0])
@@ -138,7 +161,7 @@ psi.draw("latex")
 ![](/47.png)
 
 
-Let's create a CNOT operator and calculate CNOT $|\psi\rangle$, or $CX|\psi\rangle$
+Now, let's create a CNOT operator and calculate $CNOT|\psi\rangle$. 
 
 ```python
 CX = Operator(
@@ -157,17 +180,22 @@ psi.evolve(CX).draw("latex")
 
 Compare the coefficients of the $|10\rangle$ and $|11\rangle$ states. 
 
-Now that we have some understanding on how to implement operators on multi-qubit states, let's move to how to implement *partial measurements* on individual qubits of multi-qubit state.
+Now that we understand how to implement operators on multi-qubit states, let's move on to implementing partial measurements on individual qubits of a multi-qubit state.
 
 ---
 
-#### Partial Measurements
+## § 6. Partial Measurements
+---
 
-In the previous chapter, we used the `measure` method to simulate a measurement of a quantum statevector. This method returned the measured eigenvalue, and the resultant collapsed statevector post-measurement. 
+In the previous chapter, we used the `measure()` method to simulate a measurement of a quantum statevector. This method returned the measured qubit value, and the resultant collapsed statevector post-measurement. 
 
-By default, `measure` measures all qubits in the statevector, but we can provide a list of integers to *only* measure the qubits *at* those indices. To demonstrate, the cell below creates the state 
+By default, `measure()`` measures all qubits in the statevector. However, we can provide a list of integers to measure only the qubits at those indices.
+
+The following example demonstrates how to create and partially measure a specific state. We will create the state
 
 $$ W = \frac{1}{\sqrt{3}} ( |001\rangle + |010\rangle + |100\rangle). $$
+
+using the `Statevector()` class:
 
 ```python
 W = Statevector([0, 1, 1, 0, 1, 0, 0, 0] / sqrt(3))
@@ -175,55 +203,62 @@ W.draw("latex")
 ```
 ![](/50.png)
 
-If you are confused how the above state was generated using `Statevector()` -- each parameter indicy of 0 or 1 indicates which of the possible 3-qubit states we define: 
+To understand how the above state was generated using Statevector(), note that each parameter index (0 or 1) represents a possible 3-qubit state:
 
 - $|000\rangle$ (index 0)
 - $|001\rangle$ (index 1)
 - $|010\rangle$ (index 2)
 - $|011\rangle$ (index 3)
 - $|100\rangle$ (index 4)
-- $\vdots$ $\vdots$
+- $|101\rangle$ (index 5)
+- $|110\rangle$ (index 6)
+- $|111\rangle$ (index 7)
 
-As you can see, where each of these indices have a 1, defines which 3-qubits state we have. The above statevector $W$ has a 1 in index 1, 2, and 4. 
+The statevector $W$ has a value of 1 at indices 1, 2, and 4, indicating the presence of the states $|001\rangle$, $|010\rangle$, and $|100\rangle$.
 
-Let's simulate a measurement on the **rightmost** qubit (which has index 0) -- the opposite of normal convention (I don't know why, but there's probably a reason). 
+Let's simulate a measurement on the **rightmost** qubit (which has index 0). Note that this is the opposite of the usual convention, where qubit indices start *from the right*. 
+
 
 ```python
-eigenvalue, new_statevector = W.measure([0]) # measure qubit 0
+result, new_statevector = W.measure([0]) # measure qubit 0
 
-print(f"Measured: {eigenvalue}\nState after measurement:")
+print(f"Measured: {result}\nState after measurement:")
 new_statevector.draw("latex")
 ```
 
 ![](/51.png)
 
-Run the above cell a few times to see different results. Notice that measuring a `1` means we know both the other qubits are $|0\rangle$, but measuring a `0` means the remaining two qubits are in the state $$ \frac{1}{\sqrt{2}}(|01\rangle + |10\rangle). $$
 
-The next lesson -- on `QuantumCircuit()` -- will allow us to fully manipulate and work with any `n`-qubit state. Before moving on, attempt the following exercises to ensure you understand how to generate and measure multi-qubit states. 
+Run the above cell multiple times to observe different results. Notice the following:
+
+- Measuring a `1` means both the other qubits are $|0\rangle$
+- Meausring a `0` leaves the remaining two qubits in the state $$\frac{1}{\sqrt{2}}(|01\rangle + |10\rangle). 
+
+In the next lesson, we will explore `QuantumCircuit()``, which allows us to fully manipulate and work with any $n$-qubit state. Before moving on, try the following exercises to ensure you understand how to generate and measure multi-qubit states.
 
 ---
 
 ## Exercises
 
 > 1. Generate the tensor product $|+\rangle |-\rangle$ and implement a CNOT gate on the result. The CNOT gate should have the first, left-most qubit as the control. 
-
+>
 > 2. Generate the tensor product operator $U$ between the Pauli-$X$ and Pauli-$Y$ operators ($U = X \otimes Y$). Show that applying $U |+\rangle |-\rangle$ yields the same result as $X|+\rangle \otimes Y|-\rangle$.
-
-. 
-
-.
-
-.
-
-.
-
-.
-
-.
+>
+> $\hspace{1px}$
+> 
+> $\hspace{1px}$
+> 
+> $\hspace{1px}$
+> 
+> $\hspace{1px}$
+> 
+> $\hspace{1px}$
+> 
+> $\hspace{1px}$
 
 ## Solutions 
 
-#### Problem 1. 
+### Problem 1. 
 
 Let's first generate the $|+\rangle |-\rangle$ statevector.
 
@@ -276,7 +311,7 @@ plusminus.evolve(circuit).draw('latex')
 
 ![](/54.png)
 
-#### Problem 2. 
+### Problem 2. 
 
 Let's first create the Pauli-$X$ and Pauli-$Y$ operators as well as the operator $U = X\otimes Y.$
 
@@ -324,7 +359,7 @@ display(plus.evolve(X).tensor(minus.evolve(Y)).draw('latex'))
 ![](/56.png)
 
 
-[Previous -- Single-Qubit States](https://dev-undergrad.dev/qiskit/01_single_systems/) $\sim$ [Next -- Quantum Circuits](https://dev-undergrad.dev/qiskit/03_quantum_circuits/)
+[Previous -- Single-Qubit States](https://dev-undergrad.dev/qiskit/01_single_systems/) $\sim$*$\backsim$ [Next -- Quantum Circuits](https://dev-undergrad.dev/qiskit/03_quantum_circuits/)
 
 
 
