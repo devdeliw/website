@@ -9,6 +9,8 @@ $$ \sim * \backsim $$
 
 ## Table of Contents
 1. [§ 7. Building Quantum Circuits](#-7-building-quantum-circuits)
+    - [Classical Bits](#classical-bits)
+    - [Sampler Primitive](#sampler-primitive)
 2. [§ 8. Quantum Circuits Review](#-8-quantum-circuits-review)
 4. [Exercises](#exercises)
 5. [Solutions](#solutions)
@@ -46,6 +48,8 @@ display(circuit.draw()) # Gates are performed left-to-right
 ```
 
 ![](/58.png)
+
+By default, the `QuantumCircuit()` method initializes every qubit to the $|0\rangle$ state. 
 
 In Qiskit, the *topmost* qubit in a circuit diagram has index 0 and corresponds to the *rightmost* position in a tuple of qubits. Qiskit's default names for the qubits in an $n$-qubit circuit are represented by the $n$-tuple $(q_{n-1}, \cdots, q_0)$, with $q_0$ being the qubit on top and $q_{n-1}$ on the bottom in quantum circuit diagrams. 
 
@@ -136,6 +140,8 @@ for i in range(len(standard_basis_states)):
 
 This results in the Bell Basis. 
 
+### Classical Bits
+
 Quantum circuits can contain any number of qubit wires and may also include classical bit wires, indicated by **double** lines:
 
 ```python
@@ -158,6 +164,12 @@ circuit.draw()
 
 The measurement gates represent standard basis measurements, resulting in either $|0\rangle$ or $|1\rangle$ as the eigenvectors/post-measurement states. The measurement gate changes the qubits into their post-measurement states, while the classical measurement outcomes (0 for $|0\rangle$ or 1 for $|1\rangle$) are overwritten onto the classical bits to which the arrows point.
 
+### Sampler Primitive
+
+A *primitive* is the smallest processing instruction for a certain level of abstraction. It allows a user to write quantum algorithms without having to worry about hardware details. 
+
+The `Sampler()` primitive calculates probabilities of bitstrings outputted from quantum circuits. 
+
 The above circuit can be simulated using the `Sampler()` primitive. 
 
 ```python
@@ -171,11 +183,11 @@ plot_histogram(statistics)
 
 ![](/64.png)
 
-It is not essential to understand primitives yet, but for those interested:
+We use the primitive by calling its `run()` method with the circuit. If the `run(shots = )` parameter is unspecified, it returns the *exact* probabilities. 
 
-The `Sampler()` primitive samples outputs of quantum circuits. It simulates multiple statevectors and stores the results, displaying the exact measurement probabilities of a circuit if the `Sampler().run(shots=...)` parameter is unspecified. We use it by calling its `run()` method with the circuit, which returns a `BasePrimitiveJob` object. Calling the `result()` method on this object provides output samples and corresponding metadata.
+Calling the `result()` method afterwards provides output samples and corresponding metadata.
 
-The main takeaway is that the results show an equal probability for the measurement yielding the classical values of 00 and 11.
+The main takeaway is that the results show an equal probability for the measurement yielding the classical values of 00 and 11. 
 
 ---
 
@@ -263,7 +275,9 @@ display(statevec.evolve(circuit).draw('latex'))
 
 ![](/69.png)
 
-After applying the circuit, the possible measurement outcomes are only $|00\rangle$ or $|11\rangle$. 
+After applying the circuit, the possible measurement outcomes are only $|00\rangle$ or $|11\rangle$.
+
+This differs from the sampler results above because the sampler runs on the defined quantum circuit, which initializes all the qubits to $|0\rangle$. In contrast, we ran the circuit on a more complex statevector, leading to different possible measurement outcomes.
 
 ---
 
@@ -395,6 +409,8 @@ plot_histogram(statistics)
 
 ![](/76.png)
 ---
+
+
 
 [Previous -- Multi-Qubit States](https://dev-undergrad.dev/qiskit/02_multi_qubit/)  $\sim$*$\backsim$ [Next -- Quantum Teleportation](https://dev-undergrad.dev/qiskit/04_entanglement/)
 
