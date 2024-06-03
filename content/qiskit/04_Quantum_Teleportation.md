@@ -300,7 +300,7 @@ $$(\alpha|1\rangle -\beta|1\rangle)|11\rangle$$
 Bob then performs the operation $ZX$ on qubit $B$. The state ($B, A, Q$) becomes
 $$(\alpha|0\rangle + \beta|1\rangle)|11\rangle$$  
 
-This is the final state of these qubits: $$ |BAQ\rangle_{11} =\underline{(\alpha|0\rangle + \beta|1\rangle)}|11\rangle $$.
+This is the final state of these qubits: $$ |BAQ\rangle_{11} =\underline{(\alpha|0\rangle + \beta|1\rangle)}|11\rangle. $$
 
 As you have probably noticed, in all four cases, Bob's qubit $B$ is left in the state:
 
