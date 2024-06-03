@@ -3,7 +3,7 @@
 title : 'Ch.4 Quantum Teleportation'
 date : 2024-05-30T17:19:09-07:00
 draft : false
-description: Understanding and programming quantum teleportation. 
+description: 'Understanding and programming quantum teleportation'
 ---
 
 
@@ -26,7 +26,7 @@ $$ \backsim * \sim $$
 
 By this point, you should have a good understanding of Qiskit as a language. We know how to define any `n`-qubit state and build a circuit to operate on it.
 
-The lessons will now start to contain *more information* outside of purely code cells. We are moving directly into quantum computing theory.
+The chapters will now start to contain *more information* outside of purely code cells. We are moving directly into quantum computing theory.
 
 ---
 
@@ -85,7 +85,7 @@ Entanglement is usually described in one of two ways:
 
 These statements are true for entangled states, but why are they not true for the *un-entangled* state (2)? The two bits represented in (2) are intimately connected: each one has a perfect memory of the other in a literal sense. Nevertheless, it is not an entangled state.
 
-This lesson will explain what makes the quantum state (1) very different from the probabilistic state (2). Specifically, we'll explore what can be done with entanglement that cannot be achieved with any classically correlated state like (2).
+This chapter will explain what makes the quantum state (1) very different from the probabilistic state (2). Specifically, we'll explore what can be done with entanglement that cannot be achieved with any classically correlated state like (2).
 
 For terminology, we refer to entangled states like (1) as an e-bit. Even though (1) consists of two qubits, due to entanglement, we can represent it as one e-bit.
 
@@ -157,7 +157,7 @@ Here is the quantum circuit diagram that describes the teleportation protocol:
 
 *Retrieved from IBM Quantum Learning*
 
-The upper half of the circuit diagram is essentially the inverse of the circuit we used to construct the Bell basis from the computational basis at the beginning of lesson 3. The protocol is as follows:
+The upper half of the circuit diagram is essentially the inverse of the circuit we used to construct the Bell basis from the computational basis at the beginning of chapter 3. The protocol is as follows:
 
 1. Alice performs a CNOT operation on the pair ($A, Q$), with $Q$ as the control and $A$ as the target. She then performs a Hadamard gate on $Q$.
 
@@ -456,7 +456,7 @@ b = ClassicalRegister(1, "b")
 protocol = QuantumCircuit(qubit, ebit0, ebit1, a, b)
 
 # Entangles qubits A and B into the |Φ+> state. 
-# Bell circuit from the beginning of Lesson 3. 
+# Bell circuit from the beginning of Chapter 3. 
 protocol.h(ebit0)
 protocol.cx(ebit0, ebit1)
 protocol.barrier() # aesthetic barrier

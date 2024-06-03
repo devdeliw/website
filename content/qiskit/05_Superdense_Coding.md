@@ -81,7 +81,7 @@ $$ \begin{align}
 |\psi^-\rangle &\rightarrow &-|11\rangle \\\ 
 \end{align} $$
 
-which after a measurement gate, become $cd$. 
+which after a measurement gate, becomes $cd$. 
 
 ---
 
