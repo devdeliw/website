@@ -251,74 +251,77 @@ $$
 
 Check for yourself by expanding this and comparing it to the long version of $|\pi_2\rangle$ above. 
 
-Now the leftmost qubit $B$ has the coefficients $\alpha$ and $\beta$. You may be super confused -- how does $B$ depend on $\alpha$ and $\beta$, even though there hasn't been any communication between Alice and Bob yet?? This is just an illusion. All we have done is use algebra to express the $|\pi_2\rangle$ state in a way that facilitates the analysis. $\alpha$ and $\beta$ are neither more nor less associated with the leftmost qubit $B$ than they are with the other qubits. 
+Now, the leftmost qubit $B$ has the coefficients $\alpha$ and $\beta$. You might be very confused—how can $B$ depend on $\alpha$ and $\beta$ when there hasn't been any communication between Alice and Bob yet? This is just an illusion. All we have done is use algebra to express the $|\pi_2\rangle$ state in a way that makes the analysis easier. $\alpha$ and $\beta$ are not specifically associated with the leftmost qubit $B$ any more than they are with the other qubits.
 
 Now let's consider the four possible outcomes of Alice's standard basis measurements, along with the gates Bob performs as a result. 
 
-#### Possible Measurement Outcomes
-
-Remember the probabilities for yielding a certain eigenvalue (component) correspond to the norm of its coefficient squared. 
+#### Possible Measurement Outcomes 
 
 ##### $(ab) = 00$ case 
 
-- The outcome of Alice's measurement is $ab = 00$ with probability 1/4. In this case the state ($B, A, Q$) collapses into 
+The outcome of Alice's measurement is $ab = 00$ with probability 1/4. In this case the state ($B, A, Q$) collapses into 
 
 $$ (\alpha |0\rangle + \beta|1\rangle)|00\rangle $$
 
 Bob does nothing in this case (identity operation).
 
-This is the final state of these qubits. $ |BAQ\rangle_{00} =\underline{(\alpha|0\rangle + \beta|1\rangle)}|00\rangle $.
+This is the final state of these qubits: $$ |BAQ\rangle_{00} =\underline{(\alpha|0\rangle + \beta|1\rangle)}|00\rangle .$$
 
 ##### $(ab) = 01$ case 
 
-- The outcome of Alice's measurement is $ab = 01$ with probability 1/4. In this case the state ($B, A, Q$) collapses into 
+The outcome of Alice's measurement is $ab = 01$ with probability 1/4. In this case, the state ($B, A, Q$) collapses into
 
 $$ (\alpha|0\rangle - \beta|1\rangle)|01\rangle$$
 
-In this case Bob applies a $Z$ gate to qubit $B$. The state ($B, A, Q$) thus becomes 
+Bob then applies a $Z$ gate to qubit $B$. The state ($B, A, Q$) becomes
+
 $$ (\alpha|0\rangle + \beta|1\rangle)|01\rangle $$
 
-This is the final state of these qubits. $ |BAQ\rangle_{01} =\underline{(\alpha|0\rangle + \beta|1\rangle)}|01\rangle $.
+This is the final state of these qubits: $$ |BAQ\rangle_{01} =\underline{(\alpha|0\rangle + \beta|1\rangle)}|01\rangle .$$
 
 ##### $(ab) = 10$ case 
 
-- The outcome of Alice's measurement is $ab = 10$ with probability 1/4. In this case the state ($B, A, Q$) collapses into 
+The outcome of Alice's measurement is $ab = 10$ with probability 1/4. In this case the state ($B, A, Q$) collapses into 
 
 $$ (\alpha|1\rangle + \beta|0\rangle)|10\rangle$$ 
 
-In this case Bob applies an $X$ gate to qubit $B$. The state ($B, A, Q$) thus becomes 
+Bob then applies an $X$ gate to qubit $B$. The state ($B, A, Q$) becomes 
 
 $$ (\alpha|0\rangle + \beta |1\rangle)|10\rangle $$
 
-This is the final state of these qubits. $ |BAQ\rangle_{10} =\underline{(\alpha|0\rangle + \beta|1\rangle)}|10\rangle $.
+This is the final state of these qubits: $$ |BAQ\rangle_{10} =\underline{(\alpha|0\rangle + \beta|1\rangle)}|10\rangle .$$
 
 ##### $(ab) = 11$ case 
 
-- The outcome of Alice's measurement is $ab = 11$ with probability 1/4. In this case the state ($B, A, Q$) collapses into 
+The outcome of Alice's measurement is $ab = 11$ with probability 1/4. In this case the state ($B, A, Q$) collapses into 
 
 $$(\alpha|1\rangle -\beta|1\rangle)|11\rangle$$ 
 
-In this case, Bob performs the operation $ZX$ on qubit $B$. The state ($B, A, Q$) thus becomes 
-
+Bob then performs the operation $ZX$ on qubit $B$. The state ($B, A, Q$) becomes
 $$(\alpha|0\rangle + \beta|1\rangle)|11\rangle$$  
 
-This is the final state of these qubits. $ |BAQ\rangle_{11} =\underline{(\alpha|0\rangle + \beta|1\rangle)}|11\rangle $.
+This is the final state of these qubits: $$ |BAQ\rangle_{11} =\underline{(\alpha|0\rangle + \beta|1\rangle)}|11\rangle $$.
 
-As you have probably noticed we get, for all four cases, that Bob's qubit $B$ is left in the state $|B\rangle = \underline{\alpha|0\rangle + \beta|1\rangle}$. This is the same state as $Q$ was originally. The teleportation protocol worked! 
+As you have probably noticed, in all four cases, Bob's qubit $B$ is left in the state:
 
-Alice no longer has the state $\alpha|0\rangle + \beta|1\rangle$, abiding by the no-cloning theorem. Most importantly, Alice's classical measurements performed yield absolutely no information about the state $\alpha|0\rangle + \beta|1\rangle$. That is, the probability for each outcome is 1/4, irrespective of $\alpha$ and $\beta$. 
+ $$|B\rangle = \underline{\alpha|0\rangle + \beta|1\rangle}.$$
+
+
+This is the same state as $Q$ was originally in. The teleportation protocol worked! 
+
+Alice no longer has the state $\alpha|0\rangle + \beta|1\rangle$, in accordance with the no-cloning theorem. Most importantly, Alice's classical measurements yield absolutely no information about the state $\alpha|0\rangle + \beta|1\rangle$. The probability for each outcome is 1/4, irrespective of $\alpha$ and $\beta$.
 
 
 ### General $Q$ case
 
-Let's consider the general situation in which the qubit $Q$ is initially entangled with another system, which we will name $R$. A similar analysis to the one above reveals that the teleportation protocol functions correctly even in the general case. At the end, the qubit $B$ held by Bob is entangled with $R$ in the same way $Q$ was originally. How the hell is this possible? 
+Let's consider the general situation in which the qubit $Q$ is initially entangled with another system, which we will name $R$. A similar analysis to the one above reveals that the teleportation protocol functions correctly even in the general case. At the end, the qubit $B$ held by Bob is entangled with $R$ in the same way $Q$ was originally. How is this possible?
 
-Suppose the state of the pair ($Q, R$) is initially given by the quantum state vector of the form 
+Suppose the state of the pair ($Q, R$) is initially given by the quantum state vector of the form
 
 $$ \underline{\alpha|0\rangle_Q |\gamma_0\rangle_R + \beta|1\rangle_Q |\gamma_1\rangle_R }$$
 
 
-where $|\psi_0\rangle$ and $|\psi_1\rangle$ are unit vectors and $\alpha$ and $\beta$ are complex numbers satisfying the normalization condition $|\alpha|^2 + |\beta|^2 = 1$. We implement the same circuit diagram, with the addition of the system $R$, represented by a collection of qubits at the top where nothing happens. 
+where $|\gamma_0\rangle$ and $|\gamma_1\rangle$ are unit vectors and $\alpha$ and $\beta$ are complex numbers satisfying the normalization condition $|\alpha|^2 + |\beta|^2 = 1$. We implement the same circuit diagram, with the addition of the system $R$, represented by a collection of qubits at the top where nothing happens.
 
 ![](/79.png)
 *Figure 10: General Q Teleportation Protocol* 
@@ -364,7 +367,7 @@ Just like before, let's consider the four possible outcomes of Alice's standard 
 
 #### Possible Measurement Outcomes
 
-The probabilities for yielding $|00\rangle_{AQ} \to |11\rangle_{AQ}$ are all 1/4. Again, let's consider the classical result of measuring qubit $A$ to be $a$, and the result of measuring qubit $Q$ to be $b$.  
+The probabilities for yielding $|00\rangle_{AQ}$ to $|11\rangle_{AQ}$ are all 1/4. Again, let's consider the classical result of measuring qubit $A$ to be $a$, and the result of measuring qubit $Q$ to be $b$.
 
 ##### $(ab) = 00$ case 
 
@@ -372,7 +375,7 @@ If $(ab) = 00$, the state $|\pi_2\rangle$ collapses into
 
 $$ (\underline{\alpha|0\rangle_B |\gamma_0\rangle_R) + \beta|1\rangle_B |\gamma_1\rangle_R})|00\rangle_{AQ} $$
 
-We do nothing to this state since $a, b$ are both 0. This is the final state for this case. 
+We do nothing to this state since $a, b$ are both 0. This is the final state for this case.
 
 ##### $(ab) = 01$ case 
 
@@ -414,11 +417,11 @@ $$ \underline{\alpha|0\rangle_B|\gamma_0\rangle_R + \beta|1\rangle_B|\gamma_1\ra
 
 which is the initial entangled state between $Q$ and $R$. Except this time, the entanglement is between $B$ and $R$. 
 
-Isn't that cool as hell? The math makes sense, but how does that even work? Just by transmitting classical information you can build your own state that is automatically entangled with some other state you don't even know about? Quantum mechanics is crazy weird -- but cool! Teleportation succeeds in creating a perfect quantum communications channel. 
+Isn't that cool? The math makes sense, but it’s mind-blowing how it works. Just by transmitting classical information, you can recreate a state that is automatically entangled with another state you don't even know about. Quantum mechanics is crazy weird but also incredibly fascinating! Teleportation succeeds in creating a perfect quantum communication channel.
 
-Since this protocol creates a *perfect* copy of any arbitrary state, entangled or not -- it *must* reduce to be the identity matrix. I won't present a proper proof of this yet (probably for a while), but if you are interested in the math look it up! 
+Since this protocol creates a perfect copy of any arbitrary state, entangled or not, it *must* reduce to the identity matrix. I won't present a proper proof of this yet (probably for a while), but if you are interested in the math, look it up! 
 
-Teleportation is probably gonna became the way to communicate quantum information, just like how we communicate using bits everyday. The future quantum web will just be a bunch of CNOT's and Hadamard Gates. (Probably not...but who knows!)
+Teleportation might become the way to communicate quantum information, just like how we use bits for classical communication today. The future quantum web might be full of CNOT and Hadamard gates. (Probably not exactly, but who knows!)
 
 Let's finally code the teleportation circuit using Qiskit!
 
@@ -483,21 +486,21 @@ protocol.draw('mpl')
 
 ![](/81.png)
 
-Before moving on -- make sure you *understand* the code. Optimally, you should try to build it yourself based on what we learned about the protocol. But just understanding it is fine for now. (I will test you at the end). 
+Before we proceed further, it's crucial to have a solid understanding of the code we've discussed. While it's ideal if you can try building it yourself based on what we've learned, simply comprehending it is a good start. I'll test your understanding later.
 
-This circuit includes the `barrier()` function I hinted on a little earlier. It also includes the `if_test` functions (just an `if a == 1` python statement essentially). 
+The circuit we're discussing includes the `barrier()` function I mentioned earlier, along with `if_test` functions, which essentially check if a condition `a == 1` is met.
 
-The circuit first initializes $(A, B)$ to be in the $|\phi^+\rangle$ state. This is just to entangle the qubits *for* the protocol and is not a part of the protocol itself. 
+The circuit first initializes $(A, B)$ to be in the $|\phi^+\rangle$ state. This entanglement step is crucial for the protocol but isn't part of the actual teleportation protocol.
 
 ### Testing Teleportation
 
 Even though the math works you probably are still confused and skeptical. Me too. Let's actually test that the protocol we programmed works. 
 
-To ensure I am not bullshitting with a pre-set qubit I *know* works, we will apply a randomly generated single-qubit gate to the initialized $|0\rangle$ state of $Q$ to obtain a **randomized** statevector $Q$ -- the statevector we wish to teleport into $B$. 
+To validate our protocol, let's apply a randomly generated single-qubit gate to the initialized $|0\rangle$ state of $Q$, creating a *randomized* statevector $Q$. This new randomized state is the state we aim to teleport into $B$. 
 
-After the protocol finishes, we can afterwards apply the inverse of the random gate we originally implemented on $B$. If $B$ becomes the $|0\rangle$ state -- the protocol works (i.e. $B$ became the randomized $Q$). Double check everything I just said makes sense. 
+After running the protocol, we'll reverse the random gate applied to $B$. If $B$ returns to the $|0\rangle$ state, it confirms that the protocol has worked together, meaning $B$ held the randomized $Q$. 
 
-Let's generate the random unitary gate we wish to use to randomize $Q$. 
+Now, let's proceed to generate the random unitary gate needed to randomize $Q$. 
 
 ```python
 random_gate = UGate( 
@@ -513,7 +516,7 @@ Here was my output, yours is most certainly different:
 
 ![](/80.png)
 
-Now we'll create a new testing circuit that first applies our random gate to $Q$, *then* runs the teleportation circuit, and finally applies the inverse of our random gate to the qubit $B$ and measures it. The outcome should be 0, ***with certainty***. 
+Now we'll create a new testing circuit that first applies our random gate to $Q$. It then runs the teleportation circuit and afterwards applies the inverse of our randomized unitary gate to the qubit $B$ and measures it. The outcome should be $|0\rangle$. 
 
 ```python
 # Create a new circuit including the same bits and qubits used in the
@@ -546,9 +549,11 @@ test.draw('mpl')
 
 Make sure you understand the circuit, with the additions we made. 
 
-Finally, let's run the `AerSimulator()` function on the circuit and plot a histogram of the outputs. The `AerSimulator()` simulates the circuit. Qiskit `Aer` as a whole is a "high-performance quantum computing simulator with realistic noise models." It just does what we want to -- to see if the circuit/protocol works or not. 
+Finally, let's run the `AerSimulator()` function on the circuit and plot a histogram of the outputs. The `AerSimulator()` simulates the circuit. 
 
-The histogram will show us the statistics for all three classical bits. The bottom/leftmost bit should always be 0 -- indicating $Q$ was successfully teleported into $B$, while the other two bits should be roughly uniform. 
+Qiskit `Aer` as a whole is a "high-performance quantum computing simulator with realistic noise models." We'll use it to see if the circuit/protocol works or not. 
+
+The histogram will show us the statistics for all three classical bits. The bottom/leftmost bit should always be 0 -- indicating $Q$ was successfully teleported into $B$. 
 
 ```python
 result = AerSimulator().run(test).result()
