@@ -1,0 +1,614 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="robots" content="index, follow">
+<meta name="revisit-after" content="15 days">
+<link rel="author" href="/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="deval deliwala"><meta name="description" content="Understanding and programming quantum teleportation">
+<meta itemprop="name" content="Ch.4 Quantum Teleportation">
+<meta itemprop="description" content="Understanding and programming quantum teleportation"><meta itemprop="datePublished" content="2024-05-30T17:19:09-07:00" />
+<meta itemprop="dateModified" content="2024-05-30T17:19:09-07:00" />
+<meta itemprop="wordCount" content="4443">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Ch.4 Quantum Teleportation" />
+<meta property="og:description" content="Understanding and programming quantum teleportation" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dev-undergrad.dev/qiskit/04_quantum_teleportation/" /><meta property="article:section" content="qiskit" />
+<meta property="article:published_time" content="2024-05-30T17:19:09-07:00" />
+<meta property="article:modified_time" content="2024-05-30T17:19:09-07:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ch.4 Quantum Teleportation"/>
+<meta name="twitter:description" content="Understanding and programming quantum teleportation"/>
+<title>Ch.4 Quantum Teleportation</title>
+<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="https://dev-undergrad.dev/css/style.min.d94d17fff76195615e45620612329cd6061ec826914f387a6f846a5ba132dc2d.css" integrity="sha256-2U0X//dhlWFeRWIGEjKc1gYeyCaRTzh6b4RqW6Ey3C0=" crossorigin="anonymous">
+	</head>
+<body id="page">
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://dev-undergrad.dev">dev-undergrad</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="https://dev-undergrad.dev/qiskit/">qiskit</a><a href="https://dev-undergrad.dev/notes/">notes</a><a href="https://dev-undergrad.dev/contents/contents/">contents</a><a href="https://dev-undergrad.dev/research/">research / not currently updated </a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/devdeliw/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://youtube.com/@devdeliw/" target="_blank" rel="noopener me" title="Youtube"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a><a href="https://www.linkedin.com/in/deval-deliwala-554749219/" target="_blank" rel="noopener me" title="Linked"><svg xmlns="http://www.w3.org/2000/svg" class="feather feather-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></span><button id="share-btn" class="hdr-btn" title="Share"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f04_quantum_teleportation%2f&amp;text=Ch.4%20Quantum%20Teleportation" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f04_quantum_teleportation%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Ch.4%20Quantum%20Teleportation&amp;body=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f04_quantum_teleportation%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f04_quantum_teleportation%2f&amp;source=https%3a%2f%2fdev-undergrad.dev&amp;title=Ch.4%20Quantum%20Teleportation&amp;summary=Ch.4%20Quantum%20Teleportation%2c%20by%20deval%20deliwala%0a%0aUnderstanding%20and%20programming%20quantum%20teleportation%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;Ch.4 Quantum Teleportation&#34;,&#34;https://dev-undergrad.dev/qiskit/04_quantum_teleportation/&#34;,&#34;Ch.4 Quantum Teleportation, by deval deliwala\n\nUnderstanding and programming quantum teleportation\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://dev-undergrad.dev/qiskit/">qiskit</a></li>
+			<li><a href="https://dev-undergrad.dev/notes/">notes</a></li>
+			<li><a href="https://dev-undergrad.dev/contents/contents/">contents</a></li>
+			<li><a href="https://dev-undergrad.dev/research/">research / not currently updated </a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>Ch.4 Quantum Teleportation</h1>
+		<div class="content">
+			<p>$$ \sim * \backsim $$</p>
+<h2 id="table-of-contents">Table of Contents<a href="#table-of-contents" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<ol>
+<li><a href="#-9-quantum-entanglement">§ 9. Quantum Entanglement</a></li>
+<li><a href="#-10-entanglement-as-a-resource">§ 10. Entanglement as a resource</a></li>
+<li><a href="#-11-teleportation">§ 11. Teleportation</a>
+<ul>
+<li><a href="#no-cloning-theorem">No-Cloning Theorem</a></li>
+<li><a href="#protocol">Protocol</a></li>
+<li><a href="#analysis">Analysis</a></li>
+</ul>
+</li>
+<li><a href="#-12-teleportation-using-qiskit">§ 12. Teleportation using Qiskit</a>
+<ul>
+<li><a href="#testing-teleportation">Testing Teleportation</a></li>
+</ul>
+</li>
+<li><a href="#exercises">Exercises</a></li>
+<li><a href="#solutions">Solutions</a></li>
+</ol>
+<p>$$ \backsim * \sim $$</p>
+<p>By this point, you should have a good understanding of Qiskit as a language. We know how to define any <code>n</code>-qubit state and build a circuit to operate on it.</p>
+<p>The chapters will now start to contain <em>more information</em> outside of purely code cells. We are moving directly into quantum computing theory.</p>
+<hr>
+<h2 id="-9-quantum-entanglement">§ 9. Quantum Entanglement<a href="#-9-quantum-entanglement" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<hr>
+<p>I will provide a quick lesson on understanding quantum entanglement. For those who already know, skip to the next section.</p>
+<p>Suppose that $|\phi\rangle$ is a quantum statevector of a system $X$ and $|\psi\rangle$ is a quantum statevector of a system $Y$. The tensor product $|\phi\psi\rangle = |\phi\rangle \otimes |\psi\rangle$ is a valid quantum statevector of the joint system $(X, Y)$. We refer to a state of this form as a product state—a state that can be simplified to a tensor product of two other states.</p>
+<p>Intuitively, when a pair $(X, Y)$ is in a product state $|\phi\rangle \otimes |\psi\rangle$, we can interpret this as $X$ being in the state $|\phi\rangle$ and $Y$ being in the state $|\psi\rangle$. The states are independent of each other; they simply exist in a joint system $(X, Y)$.</p>
+<p>However, not all statevectors of multiple systems are product states (i.e., they cannot be reduced to a tensor product of other statevectors). For example, consider the following Bell state:</p>
+<p>$$\frac{1}{\sqrt{2}}|00\rangle + \frac{1}{\sqrt{2}}|11\rangle$$</p>
+<p>This is not a product state. If it were, there would exist statevectors $|\phi\rangle$ and $|\psi\rangle$ such that</p>
+<p>$$|\phi\rangle \otimes |\psi\rangle = \frac{1}{\sqrt{2}}|00\rangle + \frac{1}{\sqrt{2}}|11\rangle$$</p>
+<p>However, if this were the case, it would mean that</p>
+<p>$$ \langle 0 |\phi\rangle \langle 1 | \psi \rangle = \langle 01 | \phi \otimes \psi \rangle = 0$$</p>
+<p>(since there is no $|01\rangle$ component). This implies that either $\langle 0 | \phi\rangle = 0$ or $\langle 1 | \psi \rangle = 0$ (or both). But if this were the case,</p>
+<p>$$ \langle 0 |\phi \rangle \langle 0 | \psi \rangle = \langle 00 | \phi \otimes \psi \rangle = \frac{1}{\sqrt{2}}$$</p>
+<p>and</p>
+<p>$$ \langle 1 |\phi \rangle \langle 1 | \psi \rangle = \langle 11 | \phi \otimes \psi \rangle = \frac{1}{\sqrt{2}}$$</p>
+<p>would not <em><strong>both</strong></em> be able to be nonzero. It follows that the Bell state represents a <em>correlation</em> between two systems &ndash; we call this <em><strong>entanglement</strong></em>.</p>
+<hr>
+<h2 id="-10-entanglement-as-a-resource">§ 10. Entanglement as a resource<a href="#-10-entanglement-as-a-resource" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<hr>
+<p>Recall the bell state $|\phi^+\rangle$, an entangled quantum state given by</p>
+<p>$$|\phi^+\rangle = \frac{1}{\sqrt{2}}|00\rangle + \frac{1}{\sqrt{2}}|11\rangle \qquad \qquad (1)$$</p>
+<p>Let&rsquo;s also consider the following probabilistic 2-qubit state:</p>
+<p>$$\frac{1}{2}|00\rangle + \frac{1}{2}|11\rangle \qquad \qquad \qquad \qquad \quad (2)$$</p>
+<p>In some sense, (2) is similar to the Bell state, though it is not normalized. It represents a probabilistic state in which the two qubits are correlated. However, since it is not normalized (not a valid quantum state), we do not regard (2) as entangled. Entanglement is a uniquely quantum phenomenon.</p>
+<p>Entanglement is usually described in one of two ways:</p>
+<ol>
+<li>
+<p>If one of two entangled qubits is measured, then the state of the other qubit is somehow instantaneously affected.</p>
+</li>
+<li>
+<p>The state of the two qubits together cannot be described separately; the qubits somehow maintain a memory of each other.</p>
+</li>
+</ol>
+<p>These statements are true for entangled states, but why are they not true for the <em>un-entangled</em> state (2)? The two bits represented in (2) are intimately connected: each one has a perfect memory of the other in a literal sense. Nevertheless, it is not an entangled state.</p>
+<p>This chapter will explain what makes the quantum state (1) very different from the probabilistic state (2). Specifically, we&rsquo;ll explore what can be done with entanglement that cannot be achieved with any classically correlated state like (2).</p>
+<p>For terminology, we refer to entangled states like (1) as an e-bit. Even though (1) consists of two qubits, due to entanglement, we can represent it as one e-bit.</p>
+<hr>
+<h2 id="-11-teleportation">§ 11. Teleportation<a href="#-11-teleportation" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<hr>
+<p>Quantum teleportation is a protocol where a sender (Alice) sends a qubit to a receiver (Bob) using a shared entangled quantum state (one e-bit) and two bits of classical information. The term teleportation does not refer to quantum tunneling or the teleportation of matter. Instead, what is teleported is <em>quantum information</em>.</p>
+<p>Here is the setup for teleportation:</p>
+<p>We assume Alice and Bob share an e-bit: Alice holds qubit $A$, Bob holds qubit $B$, and together the pair ($A, B$) is in the state $|\phi^+\rangle$, as given by (1). For example, Alice and Bob might have been in the same location in the past, where they prepared qubits $A$ and $B$ in the state $|\phi^+\rangle$, and then separated with one qubit each.</p>
+<p>Alice then comes into possession of a third qubit $Q$ that she wishes to send to Bob. The state of qubit $Q$ is considered to be unknown to both Alice and Bob, with no assumptions made. $Q$ could even be entangled with other systems that Alice and Bob have no knowledge of.</p>
+<p>In the context of teleportation, Alice cannot physically send qubit $Q$ to Bob. However, she can send classical information to him. This is practical since we know how to send classical information over long distances via the internet.</p>
+<p>No one knows how to transmit a qubit over a long distance (without its wave function de-localizing). But <strong>everyone</strong> knows how to send classical information via the web.</p>
+<p>You might wonder why we need an e-bit at all. Is it possible to communicate quantum information using only classical communication? The answer is no. To understand why, let&rsquo;s discuss the <strong>no-cloning theorem</strong>.</p>
+<h3 id="no-cloning-theorem">No-Cloning Theorem<a href="#no-cloning-theorem" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The <em>no-cloning</em> theorem shows that it is impossible to create a perfect copy of an unknown quantum state.</p>
+<blockquote>
+<p>Let $X$ and $Y$ be systems sharing the same classical state set $\Sigma$. (Could be the computational basis {${|0\rangle, |1\rangle}$}, but doesn&rsquo;t have to be). There does not exist a quantum state $|\phi\rangle$ of $Y$ and a unitary operation $U$ on the pair $(X, Y)$ such that $U(|\psi\rangle \otimes |\phi\rangle) = |\psi\rangle \otimes |\psi\rangle$ for every state $|\psi\rangle$ of $X$.</p>
+</blockquote>
+<p>In other words, there is no way to initialize the system $Y$ (to any state $|\phi\rangle$) and perform a unitary operation $U$ on the joint system $(X, Y)$, such that the state $|\psi\rangle$ is <em>cloned</em>—resulting in $(X, Y)$ being in the state $|\psi\rangle \otimes |\psi\rangle$.</p>
+<h4 id="proof"><em>Proof</em><a href="#proof" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Let&rsquo;s assume there exists a quantum state $|\phi\rangle$ of $Y$ and a unitary operation $U$ on the pair $(X, Y)$, such that $U(|\psi\rangle \otimes |\phi\rangle) = |\psi\rangle \otimes |\psi\rangle$ for every quantum state $|\psi\rangle$ of $X$.</p>
+<p>Then it would be the case that:</p>
+<p>$$U(|a\rangle \otimes |\phi\rangle) = |a\rangle \otimes |b\rangle \qquad \text{and} \qquad U(|b\rangle \otimes |\phi\rangle) = |b\rangle \otimes |b\rangle$$</p>
+<p>However, a property of the tensor product is that it is linear. Therefore, we must also have:</p>
+<p>$$U \left( \left( \frac{1}{\sqrt{2}}|a\rangle + \frac{1}{\sqrt{2}} |b\rangle \right) \otimes |\phi\rangle \right) = \frac{1}{\sqrt{2}}|a\rangle \otimes |a\rangle + \frac{1}{\sqrt{2}}|b\rangle \otimes |b\rangle.$$</p>
+<p>But the requirement that $U(|\psi \rangle \otimes |\phi\rangle) = |\psi\rangle \otimes |\psi\rangle$ for every state $|\psi\rangle$ demands that:</p>
+<p>$$
+\begin{aligned}
+U &amp;\left( \left( \frac{1}{\sqrt{2}}|a\rangle + \frac{1}{\sqrt{2}} |b\rangle \right) \otimes |\phi\rangle \right)  \\
+&amp;= \left( \frac{1}{\sqrt{2}} |a\rangle + \frac{1}{\sqrt{2}} |b\rangle \right)\otimes \left( \frac{1}{\sqrt{2}} |a\rangle + \frac{1}{\sqrt{2}}|b\rangle\right) \\
+&amp;= \frac{1}{2}|a\rangle \otimes |a\rangle + \frac{1}{2}|a\rangle \otimes |b\rangle + \frac{1}{2}|b\rangle \otimes |a\rangle + \frac{1}{2}|b\rangle \otimes |b\rangle \\
+&amp;\neq \frac{1}{\sqrt{2}} |a\rangle \otimes |a\rangle + \frac{1}{\sqrt{2}}|b\rangle \otimes |b\rangle.
+\end{aligned}
+$$</p>
+<p>Therefore, there can&rsquo;t exist a state $|\phi\rangle$ and a unitary operation $U$ for which $U(|\psi\rangle \otimes |\phi\rangle) = |\psi\rangle \otimes |\psi\rangle$ for every quantum state vector $|\psi\rangle$. Perfect cloning is impossible, though there are ways to clone with limited accuracy—which we won&rsquo;t get into here.</p>
+<p>This should give you some intuition as to why it is impossible to communicate quantum information using classical communication alone. Any classical transmission from Alice to Bob might also potentially be received by a second receiver (call him Charlie). But if Charlie receives the same information that Bob received, would he not also be able to obtain a copy of the qubit $Q$? This would suggest $Q$ was cloned—which we know is impossible from the no-cloning theorem.</p>
+<p>However, when the assumption that Alice and Bob share an e-bit is in place, it is possible for Alice and Bob to accomplish their task. <em>This</em> is known as the quantum teleportation protocol.</p>
+<h3 id="protocol">Protocol<a href="#protocol" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Here is the quantum circuit diagram that describes the teleportation protocol:</p>
+<p><img src="/77.png" alt="">
+<em>Figure 8: Teleportation Protocol</em></p>
+<p><em>Retrieved from IBM Quantum Learning</em></p>
+<p>The upper half of the circuit diagram is essentially the inverse of the circuit we used to construct the Bell basis from the computational basis at the beginning of chapter 3. The protocol is as follows:</p>
+<ol>
+<li>
+<p>Alice performs a CNOT operation on the pair ($A, Q$), with $Q$ as the control and $A$ as the target. She then performs a Hadamard gate on $Q$.</p>
+</li>
+<li>
+<p>Alice measures both $A$ and $Q$ using standard basis measurement gates and transmits the classical outcomes to Bob. Let&rsquo;s call the outcome of measuring $A$ as $a$ and the outcome of measuring $Q$ as $b$.</p>
+</li>
+<li>
+<p>Bob receives $a$ and $b$ from Alice. Depending on the values of these bits, he performs the following operations:</p>
+</li>
+</ol>
+<ul>
+<li>if $a=1$, Bob performs a bit-flip ($X$ gate) on his qubit $B$.</li>
+<li>if $b=1$, Bob performs a phase-flip ($Z$ gate) on his qubit $B$</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">(ab)</th>
+<th style="text-align:center">Operation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">00</td>
+<td style="text-align:center">Identity</td>
+</tr>
+<tr>
+<td style="text-align:center">01</td>
+<td style="text-align:center">Z</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">X</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">ZX</td>
+</tr>
+</tbody>
+</table>
+<p>After these operations, $B$ will be in the same state that $Q$ was in before the protocol was executed, including any correlations it had with other systems. This means the protocol has effectively created a perfect qubit communication channel, where the state of $Q$ has been teleported into $B$.</p>
+<p>This protocol does not succeed in cloning the state of $Q$, which we know is impossible. Instead, the state of the qubit $Q$ becomes $|b\rangle$ after being measured. The e-bit also gets destroyed as $A$ becomes $|a\rangle$, losing its entanglement with $B$. Let&rsquo;s actually do the math behind how teleportation works.</p>
+<h3 id="analysis">Analysis<a href="#analysis" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Let&rsquo;s analyze the circuit described above, one step at a time. Beginning with the situation in which $Q$ is some arbitrary state $\underline{\alpha|0\rangle + \beta|1\rangle}$. This does not capture the possibility of $Q$ being entangled with other systems, but let&rsquo;s start with it for now.</p>
+<p>Let&rsquo;s consider the states of the qubits $(B, A, Q)$ at the times suggested by the figure:</p>
+<p><img src="/78.png" alt="">
+<em>Figure 9: Three $|\pi\rangle$ states to analyze</em></p>
+<p><em>Retrieved from IBM Quantum Learning</em></p>
+<p>Note this analysis is directly from IBM Quantum Learning (with a bit of improvement in clarity and explanation). I am providing the information here as well so you don&rsquo;t have to go back and forth.</p>
+<p>The state of the three qubits ($B, A, Q$) together at the start of the protocol is</p>
+<h5 id="starting-state-pi_0rangle">Starting State $|\pi_0\rangle$<a href="#starting-state-pi_0rangle" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>$$
+\begin{aligned}
+|\pi_0\rangle &amp;= |B\rangle \otimes |A\rangle \otimes |Q\rangle \\
+&amp;= |\phi^+\rangle \otimes (\alpha|0\rangle + \beta|1\rangle) = \left(\frac{1}{\sqrt{2}}|00\rangle + \frac{1}{\sqrt{2}}|11\rangle \right) \otimes (\alpha|0\rangle + \beta|1\rangle) \\
+&amp;= \frac{1}{\sqrt{2}} (\alpha|000\rangle + \alpha|110\rangle + \beta|001\rangle + \beta|111\rangle)
+\end{aligned}
+$$</p>
+<h5 id="second-state-pi_1rangle">Second State $|\pi_1\rangle$<a href="#second-state-pi_1rangle" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>The first gate that is performed is the CNOT gate, where the $Q$ (third qubit) component is the control, and the $A$ (second qubit) component is the target. Remember we are in the system ($B, A, Q$).</p>
+<p>This transforms $|\pi_0\rangle$ into</p>
+<p>$$ |\pi_0\rangle = \frac{1}{\sqrt{2}} (\alpha|000\rangle + \alpha|110\rangle + \beta|001\rangle + \beta|111\rangle) $$</p>
+<p>$$ \downarrow $$</p>
+<p>$$ |\pi_1\rangle = \frac{1}{\sqrt{2}} (\alpha|000\rangle + \alpha|110\rangle + \beta|011\rangle + \beta|101\rangle) $$</p>
+<p>when the third qubit $Q$ is 1, the second qubit $A$ bit-flips.</p>
+<h5 id="third-state-pi_3rangle">Third State $|\pi_3\rangle$<a href="#third-state-pi_3rangle" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>Afterwards a Hadamard Gate is applied on $Q$, the third qubit. This transforms $|\pi_1\rangle$ into</p>
+<p>$$ |\pi_1\rangle = \frac{1}{\sqrt{2}} (\alpha|000\rangle + \alpha|110\rangle + \beta|011\rangle + \beta|101\rangle) $$</p>
+<p>$$ \downarrow $$</p>
+<p>$$
+\begin{align}
+|\pi_2\rangle &amp;= \frac{1}{\sqrt{2}} (\alpha |00\rangle |+\rangle + \alpha|11\rangle|+\rangle + \beta|01\rangle |-\rangle + \beta|10\rangle|-\rangle) \\
+&amp;= \frac{1}{2} (\alpha|000\rangle + \alpha|001\rangle + \alpha|110\rangle + \alpha|111\rangle + \beta|010\rangle - \beta|011\rangle + \beta|100\rangle - \beta|101\rangle)
+\end{align}
+$$</p>
+<p>This makes sense since the Hadamard Gate turns $|0\rangle \to |+\rangle$ and
+$|1\rangle \to | - \rangle$. The rest is just algebraic manipulation - expanding $|+\rangle$ and $|-\rangle$ in terms of {$|0\rangle, |1\rangle$} and performing all the tensor products.</p>
+<p>Using the multi-linearity of the tensor product, we may alternatively state $|\pi_2\rangle$ as follows:</p>
+<p>$$
+\begin{align}
+|\pi_2\rangle &amp;= \frac{1}{2}(\alpha|0\rangle + \beta|1\rangle)|00\rangle \\
+&amp;+ \frac{1}{2}(\alpha|0\rangle - \beta|1\rangle)|01\rangle \\
+&amp;+ \frac{1}{2}(\alpha|1\rangle + \beta|0\rangle)|10\rangle \\
+&amp;+ \frac{1}{2}(\alpha|1\rangle - \beta|0\rangle)|11\rangle
+\end{align}
+$$</p>
+<p>Check for yourself by expanding this and comparing it to the long version of $|\pi_2\rangle$ above.</p>
+<p>Now, the leftmost qubit $B$ has the coefficients $\alpha$ and $\beta$. You might be very confused—how can $B$ depend on $\alpha$ and $\beta$ when there hasn&rsquo;t been any communication between Alice and Bob yet? This is just an illusion. All we have done is use algebra to express the $|\pi_2\rangle$ state in a way that makes the analysis easier. $\alpha$ and $\beta$ are not specifically associated with the leftmost qubit $B$ any more than they are with the other qubits.</p>
+<p>Now let&rsquo;s consider the four possible outcomes of Alice&rsquo;s standard basis measurements, along with the gates Bob performs as a result.</p>
+<h4 id="possible-measurement-outcomes">Possible Measurement Outcomes<a href="#possible-measurement-outcomes" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h5 id="ab--00-case">$(ab) = 00$ case<a href="#ab--00-case" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>The outcome of Alice&rsquo;s measurement is $ab = 00$ with probability 1/4. In this case the state ($B, A, Q$) collapses into</p>
+<p>$$ (\alpha |0\rangle + \beta|1\rangle)|00\rangle $$</p>
+<p>Bob does nothing in this case (identity operation).</p>
+<p>This is the final state of these qubits: $$ |BAQ\rangle_{00} =\underline{(\alpha|0\rangle + \beta|1\rangle)}|00\rangle .$$</p>
+<h5 id="ab--01-case">$(ab) = 01$ case<a href="#ab--01-case" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>The outcome of Alice&rsquo;s measurement is $ab = 01$ with probability 1/4. In this case, the state ($B, A, Q$) collapses into</p>
+<p>$$ (\alpha|0\rangle - \beta|1\rangle)|01\rangle$$</p>
+<p>Bob then applies a $Z$ gate to qubit $B$. The state ($B, A, Q$) becomes</p>
+<p>$$ (\alpha|0\rangle + \beta|1\rangle)|01\rangle $$</p>
+<p>This is the final state of these qubits: $$ |BAQ\rangle_{01} =\underline{(\alpha|0\rangle + \beta|1\rangle)}|01\rangle .$$</p>
+<h5 id="ab--10-case">$(ab) = 10$ case<a href="#ab--10-case" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>The outcome of Alice&rsquo;s measurement is $ab = 10$ with probability 1/4. In this case the state ($B, A, Q$) collapses into</p>
+<p>$$ (\alpha|1\rangle + \beta|0\rangle)|10\rangle$$</p>
+<p>Bob then applies an $X$ gate to qubit $B$. The state ($B, A, Q$) becomes</p>
+<p>$$ (\alpha|0\rangle + \beta |1\rangle)|10\rangle $$</p>
+<p>This is the final state of these qubits: $$ |BAQ\rangle_{10} =\underline{(\alpha|0\rangle + \beta|1\rangle)}|10\rangle .$$</p>
+<h5 id="ab--11-case">$(ab) = 11$ case<a href="#ab--11-case" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>The outcome of Alice&rsquo;s measurement is $ab = 11$ with probability 1/4. In this case the state ($B, A, Q$) collapses into</p>
+<p>$$(\alpha|1\rangle -\beta|1\rangle)|11\rangle$$</p>
+<p>Bob then performs the operation $ZX$ on qubit $B$. The state ($B, A, Q$) becomes
+$$(\alpha|0\rangle + \beta|1\rangle)|11\rangle$$</p>
+<p>This is the final state of these qubits: $$ |BAQ\rangle_{11} =\underline{(\alpha|0\rangle + \beta|1\rangle)}|11\rangle. $$</p>
+<p>As you have probably noticed, in all four cases, Bob&rsquo;s qubit $B$ is left in the state:</p>
+<p>$$|B\rangle = \underline{\alpha|0\rangle + \beta|1\rangle}.$$</p>
+<p>This is the same state as $Q$ was originally in. The teleportation protocol worked!</p>
+<p>Alice no longer has the state $\alpha|0\rangle + \beta|1\rangle$, in accordance with the no-cloning theorem. Most importantly, Alice&rsquo;s classical measurements yield absolutely no information about the state $\alpha|0\rangle + \beta|1\rangle$. The probability for each outcome is 1/4, irrespective of $\alpha$ and $\beta$.</p>
+<h3 id="general-q-case">General $Q$ case<a href="#general-q-case" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Let&rsquo;s consider the general situation in which the qubit $Q$ is initially entangled with another system, which we will name $R$. A similar analysis to the one above reveals that the teleportation protocol functions correctly even in the general case. At the end, the qubit $B$ held by Bob is entangled with $R$ in the same way $Q$ was originally. How is this possible?</p>
+<p>Suppose the state of the pair ($Q, R$) is initially given by the quantum state vector of the form</p>
+<p>$$ \underline{\alpha|0\rangle_Q |\gamma_0\rangle_R + \beta|1\rangle_Q |\gamma_1\rangle_R }$$</p>
+<p>where $|\gamma_0\rangle$ and $|\gamma_1\rangle$ are unit vectors and $\alpha$ and $\beta$ are complex numbers satisfying the normalization condition $|\alpha|^2 + |\beta|^2 = 1$. We implement the same circuit diagram, with the addition of the system $R$, represented by a collection of qubits at the top where nothing happens.</p>
+<p><img src="/79.png" alt="">
+<em>Figure 10: General Q Teleportation Protocol</em></p>
+<p><em>Retrieved from IBM Quantum Learning</em></p>
+<p>We will consider the state of the system in the order ($B, R, A, Q$). The names of the various systems will be included as subscripts for clarity.</p>
+<h5 id="starting-state-pi_0rangle-1">Starting State $|\pi_0\rangle$<a href="#starting-state-pi_0rangle-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>At the start of the protocol, the state of the system is as follows:</p>
+<p>$$
+\begin{align}
+|\pi_0\rangle &amp;= |\phi^+\rangle_{BA} \otimes (\alpha|0\rangle_Q |\gamma_0\rangle_R + \beta|1\rangle_Q |\gamma_1\rangle_R) \\
+&amp;= \frac{1}{\sqrt{2}} (\alpha|0\rangle_B |\gamma_0\rangle_R |00\rangle_{AQ} + \alpha|1\rangle_B |\gamma_0\rangle_R |10\rangle_{AQ} + \beta|0\rangle_B |\gamma_1\rangle_R |01\rangle_{AQ} + \beta|1\rangle_B |\gamma_1\rangle_R |11\rangle_{AQ}
+\end{align}
+$$</p>
+<h5 id="second-state-pi_1rangle-1">Second State $|\pi_1\rangle$<a href="#second-state-pi_1rangle-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>First the CNOT gate is applied, with qubit $Q$ as the control and $A$ as the target. This transforms the state into $|\pi_1\rangle$:</p>
+<p>$$ |\pi_1\rangle = \frac{1}{\sqrt{2}} (\alpha|0\rangle_B |\gamma_0\rangle_R |00\rangle_{AQ} + \alpha|1\rangle_B |\gamma_0\rangle_R |10\rangle_{AQ} + \beta|0\rangle_B |\gamma_1\rangle_R |11\rangle_{AQ} + \beta|1\rangle_B |\gamma_1\rangle_R |01\rangle_{AQ} $$</p>
+<h5 id="second-state-pi_2rangle">Second State $|\pi_2\rangle$<a href="#second-state-pi_2rangle" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>Then the Hadamard Gate is applied. Post-tensor product and algebraic simplification, we get</p>
+<p>$$
+\begin{align}
+|\pi_2\rangle &amp;= \frac{1}{2}(\alpha|0\rangle_B |\gamma_0\rangle_R + \beta|1\rangle_B |\gamma_1\rangle_R |00\rangle_{AQ}) \\
+&amp;= \frac{1}{2}(\alpha|0\rangle_B |\gamma_0\rangle_R - \beta|1\rangle_B |\gamma_1\rangle_R |01\rangle_{AQ}) \\
+&amp;= \frac{1}{2}(\alpha|1\rangle_B |\gamma_0\rangle_R + \beta|0\rangle_B |\gamma_1\rangle_R |10\rangle_{AQ}) \\
+&amp;= \frac{1}{2}(\alpha|1\rangle_B |\gamma_0\rangle_R + \beta|0\rangle_B |\gamma_1\rangle_R |11\rangle_{AQ})
+\end{align}
+$$</p>
+<p>Just like before, let&rsquo;s consider the four possible outcomes of Alice&rsquo;s standard basis measurements, along with the gates Bob performs as a result.</p>
+<h4 id="possible-measurement-outcomes-1">Possible Measurement Outcomes<a href="#possible-measurement-outcomes-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>The probabilities for yielding $|00\rangle_{AQ}$ to $|11\rangle_{AQ}$ are all 1/4. Again, let&rsquo;s consider the classical result of measuring qubit $A$ to be $a$, and the result of measuring qubit $Q$ to be $b$.</p>
+<h5 id="ab--00-case-1">$(ab) = 00$ case<a href="#ab--00-case-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>If $(ab) = 00$, the state $|\pi_2\rangle$ collapses into</p>
+<p>$$ (\underline{\alpha|0\rangle_B |\gamma_0\rangle_R) + \beta|1\rangle_B |\gamma_1\rangle_R})|00\rangle_{AQ} $$</p>
+<p>We do nothing to this state since $a, b$ are both 0. This is the final state for this case.</p>
+<h5 id="ab--01-case-1">$(ab) = 01$ case<a href="#ab--01-case-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>If $(ab) = 01$, the state $|\pi_2\rangle$ collapses into</p>
+<p>$$ (\alpha|0\rangle_B |\gamma_0\rangle_R - \beta|1\rangle_B |\gamma_1\rangle_R)|01\rangle_{AQ} $$</p>
+<p>Since $b = 1$, we perform a $Z$ (-1 phase-flip) gate to qubit $B$. This transforms the state into</p>
+<p>$$ (\underline{\alpha|0\rangle_B |\gamma_0\rangle_R + \beta|1\rangle_B |\gamma_1\rangle_R})|01\rangle_{AQ} $$</p>
+<p>This is the final state for this case.</p>
+<h5 id="ab--10-case-1">$(ab) = 10$ case<a href="#ab--10-case-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>If $(ab) = 10$, the state $|\pi_2\rangle$ collapses into</p>
+<p>$$ (\alpha|1\rangle_B |\gamma_0\rangle_R + \beta|0\rangle_B |\gamma_1\rangle_R)|10\rangle_{AQ}$$</p>
+<p>Since $a = 1$, we perform a $X$ (bit-flip) operation on qubit $B$. This transforms the state into</p>
+<p>$$ (\underline{\alpha|0\rangle_B |\gamma_0\rangle_R + \beta|1\rangle_B |\gamma_1\rangle_R})|10\rangle_{AQ} $$</p>
+<h5 id="ab--11-case-1">$(ab) = 11$ case<a href="#ab--11-case-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>If $(ab) = 11$, the state $|\pi_2\rangle$ collapses into</p>
+<p>$$ (\alpha|1\rangle_B |\gamma_0\rangle_R - \beta|0\rangle_B |\gamma_1\rangle_R)|11\rangle_{AQ}$$</p>
+<p>Since both $a, b = 1$, we perform a $ZX$ (-1 phase flip &amp; bit-flip) operation on qubit $B$. This transforms the state into</p>
+<p>$$ (\underline{\alpha|0\rangle_B |\gamma_0\rangle_R + \beta|1\rangle_B |\gamma_1\rangle_R})|11\rangle_{AQ} $$</p>
+<p>We find that at the end of the protocol, the state of $(B, R)$ is <em>always</em></p>
+<p>$$ \underline{\alpha|0\rangle_B|\gamma_0\rangle_R + \beta|1\rangle_B|\gamma_1\rangle_R} $$</p>
+<p>which is the initial entangled state between $Q$ and $R$. Except this time, the entanglement is between $B$ and $R$.</p>
+<p>Isn&rsquo;t that cool? The math makes sense, but it’s mind-blowing how it works. Just by transmitting classical information, you can recreate a state that is automatically entangled with another state you don&rsquo;t even know about. Quantum mechanics is crazy weird but also incredibly fascinating! Teleportation succeeds in creating a perfect quantum communication channel.</p>
+<p>Since this protocol creates a perfect copy of any arbitrary state, entangled or not, it <em>must</em> reduce to the identity matrix. I won&rsquo;t present a proper proof of this yet (probably for a while), but if you are interested in the math, look it up!</p>
+<p>Teleportation might become the way to communicate quantum information, just like how we use bits for classical communication today. The future quantum web might be full of CNOT and Hadamard gates. (Probably not exactly, but who knows!)</p>
+<p>Let&rsquo;s finally code the teleportation circuit using Qiskit!</p>
+<hr>
+<h2 id="-12-teleportation-using-qiskit">§ 12. Teleportation using Qiskit<a href="#-12-teleportation-using-qiskit" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<hr>
+<p>Let&rsquo;s first import the necessary <code>QuantumCircuit()</code> imports.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit <span style="color:#f92672">import</span> QuantumCircuit, QuantumRegister, ClassicalRegister
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit_aer <span style="color:#f92672">import</span> AerSimulator
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.visualization <span style="color:#f92672">import</span> plot_histogram
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.result <span style="color:#f92672">import</span> marginal_distribution
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.circuit.library <span style="color:#f92672">import</span> UGate
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> numpy <span style="color:#f92672">import</span> pi, random
+</span></span></code></pre></div><p><em>Note &ndash; you may get an import error saying <code>imported module qiskit_aer</code> not found. This is because <code>qiskit_aer</code> is a separate installation from Qiskit. Run <code>pip install qiskit_aer</code> and ensure you are using the python kernel where it gets installed</em>.</p>
+<p>If all is in order&hellip;let&rsquo;s continue. The following code generates the teleportation protocol we spent an hour learning about.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>qubit <span style="color:#f92672">=</span> QuantumRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;Q&#34;</span>)
+</span></span><span style="display:flex;"><span>ebit0 <span style="color:#f92672">=</span> QuantumRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;A&#34;</span>)
+</span></span><span style="display:flex;"><span>ebit1 <span style="color:#f92672">=</span> QuantumRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;B&#34;</span>) <span style="color:#75715e">#ebit0 and ebit1 will be entangled</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> ClassicalRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;a&#34;</span>)
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> ClassicalRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;b&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>protocol <span style="color:#f92672">=</span> QuantumCircuit(qubit, ebit0, ebit1, a, b)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Entangles qubits A and B into the |Φ+&gt; state. </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Bell circuit from the beginning of Chapter 3. </span>
+</span></span><span style="display:flex;"><span>protocol<span style="color:#f92672">.</span>h(ebit0)
+</span></span><span style="display:flex;"><span>protocol<span style="color:#f92672">.</span>cx(ebit0, ebit1)
+</span></span><span style="display:flex;"><span>protocol<span style="color:#f92672">.</span>barrier() <span style="color:#75715e"># aesthetic barrier</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Alice&#39;s operations </span>
+</span></span><span style="display:flex;"><span>protocol<span style="color:#f92672">.</span>cx(qubit, ebit0)
+</span></span><span style="display:flex;"><span>protocol<span style="color:#f92672">.</span>h(qubit)
+</span></span><span style="display:flex;"><span>protocol<span style="color:#f92672">.</span>barrier() 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Alice&#39;s measurements, placing the results in classical bits </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># `a` and `b` for Bob</span>
+</span></span><span style="display:flex;"><span>protocol<span style="color:#f92672">.</span>measure(ebit0, a)
+</span></span><span style="display:flex;"><span>protocol<span style="color:#f92672">.</span>measure(qubit, b)
+</span></span><span style="display:flex;"><span>protocol<span style="color:#f92672">.</span>barrier() 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Bob uses classical results from `a` and `b` to conditionally </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># apply gates </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> protocol<span style="color:#f92672">.</span>if_test((a, <span style="color:#ae81ff">1</span>)): 
+</span></span><span style="display:flex;"><span>    protocol<span style="color:#f92672">.</span>x(ebit1)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> protocol<span style="color:#f92672">.</span>if_test((b, <span style="color:#ae81ff">1</span>)): 
+</span></span><span style="display:flex;"><span>    protocol<span style="color:#f92672">.</span>z(ebit1)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>protocol<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;mpl&#39;</span>)
+</span></span></code></pre></div><p><img src="/81.png" alt=""></p>
+<p>Before we proceed further, it&rsquo;s crucial to have a solid understanding of the code we&rsquo;ve discussed. While it&rsquo;s ideal if you can try building it yourself based on what we&rsquo;ve learned, simply comprehending it is a good start. I&rsquo;ll test your understanding later.</p>
+<p>The circuit we&rsquo;re discussing includes the <code>barrier()</code> function I mentioned earlier, along with <code>if_test</code> functions, which essentially check if a condition <code>a == 1</code> is met.</p>
+<p>The circuit first initializes $(A, B)$ to be in the $|\phi^+\rangle$ state. This entanglement step is crucial for the protocol but isn&rsquo;t part of the actual teleportation protocol.</p>
+<h3 id="testing-teleportation">Testing Teleportation<a href="#testing-teleportation" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Even though the math works you probably are still confused and skeptical. Me too. Let&rsquo;s actually test that the protocol we programmed works.</p>
+<p>To validate our protocol, let&rsquo;s apply a randomly generated single-qubit gate to the initialized $|0\rangle$ state of $Q$, creating a <em>randomized</em> statevector $Q$. This new randomized state is the state we aim to teleport into $B$.</p>
+<p>After running the protocol, we&rsquo;ll reverse the random gate applied to $B$. If $B$ returns to the $|0\rangle$ state, it confirms that the protocol has worked together, meaning $B$ held the randomized $Q$.</p>
+<p>Now, let&rsquo;s proceed to generate the random unitary gate needed to randomize $Q$.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>random_gate <span style="color:#f92672">=</span> UGate( 
+</span></span><span style="display:flex;"><span>    theta <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> pi, 
+</span></span><span style="display:flex;"><span>    phi <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> pi, 
+</span></span><span style="display:flex;"><span>    lam <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> pi
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>display(random_gate<span style="color:#f92672">.</span>to_matrix())
+</span></span></code></pre></div><p>Here was my output, yours is most certainly different:</p>
+<p><img src="/80.png" alt=""></p>
+<p>Now we&rsquo;ll create a new testing circuit that first applies our random gate to $Q$. It then runs the teleportation circuit and afterwards applies the inverse of our randomized unitary gate to the qubit $B$ and measures it. The outcome should be $|0\rangle$.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Create a new circuit including the same bits and qubits used in the</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># teleportation protocol.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>test <span style="color:#f92672">=</span> QuantumCircuit(qubit, ebit0, ebit1, a, b)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Start with the randomly selected gate on Q</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>test<span style="color:#f92672">.</span>append(random_gate, qubit)
+</span></span><span style="display:flex;"><span>test<span style="color:#f92672">.</span>barrier()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Append the entire teleportation protocol from above.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>test <span style="color:#f92672">=</span> test<span style="color:#f92672">.</span>compose(protocol)
+</span></span><span style="display:flex;"><span>test<span style="color:#f92672">.</span>barrier()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Finally, apply the inverse of the random unitary to B and measure.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>test<span style="color:#f92672">.</span>append(random_gate<span style="color:#f92672">.</span>inverse(), ebit1)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> ClassicalRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;Result&#34;</span>)
+</span></span><span style="display:flex;"><span>test<span style="color:#f92672">.</span>add_register(result)
+</span></span><span style="display:flex;"><span>test<span style="color:#f92672">.</span>measure(ebit1, result)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>test<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;mpl&#39;</span>)
+</span></span></code></pre></div><p><img src="/82.png" alt=""></p>
+<p>Make sure you understand the circuit, with the additions we made.</p>
+<p>Finally, let&rsquo;s run the <code>AerSimulator()</code> function on the circuit and plot a histogram of the outputs. The <code>AerSimulator()</code> simulates the circuit.</p>
+<p>Qiskit <code>Aer</code> as a whole is a &ldquo;high-performance quantum computing simulator with realistic noise models.&rdquo; We&rsquo;ll use it to see if the circuit/protocol works or not.</p>
+<p>The histogram will show us the statistics for all three classical bits. The bottom/leftmost bit should always be 0 &ndash; indicating $Q$ was successfully teleported into $B$.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>result <span style="color:#f92672">=</span> AerSimulator()<span style="color:#f92672">.</span>run(test)<span style="color:#f92672">.</span>result()
+</span></span><span style="display:flex;"><span>statistics <span style="color:#f92672">=</span> result<span style="color:#f92672">.</span>get_counts()
+</span></span><span style="display:flex;"><span>plot_histogram(statistics)
+</span></span></code></pre></div><p><img src="/83.png" alt=""></p>
+<p>Your bars may look a little different than mine. What is important is that the bottom/leftmost qubit is always 0. This shows the protocol worked.</p>
+<p>We can also filter the statistics to focus on just the qubit we want. The bottom/leftmost qubit is, by Qiskit convention, index 2.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>filtered_statistics <span style="color:#f92672">=</span> marginal_distribution(statistics, [<span style="color:#ae81ff">2</span>]) <span style="color:#75715e"># only 2nd index qubit</span>
+</span></span><span style="display:flex;"><span>plot_histogram(filtered_statistics)
+</span></span></code></pre></div><p><img src="/84.png" alt=""></p>
+<p>The teleportation protocol worked.</p>
+<hr>
+<h2 id="exercises">Exercises<a href="#exercises" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<blockquote>
+<ol>
+<li>
+<p>Build the $|\phi^+\rangle$ state via the Bell circuit using a Hadamard and CNOT gate. Then, place two measurement gates to map the measurement results of both qubits onto two separate classical bits. Finally, run <code>AerSimulator()</code> and display a histogram of the results. What are the two classical result possibilities? What are their respective probabilities?</p>
+</li>
+<li>
+<p>Initialize a 2-qubit custom-named circuit. Apply a randomized unitary gate using <code>UGate()</code> to <code>q_0</code>, the qubit of index 0. Afterwards add the Bell circuit and measurement gates from problem 1. Finally, run <code>AerSimulator()</code> and display a histogram of the results.</p>
+</li>
+</ol>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+</blockquote>
+<h2 id="solutions">Solutions<a href="#solutions" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h3 id="problem-1">Problem 1.<a href="#problem-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The Bell circuit is generated as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit <span style="color:#f92672">import</span> QuantumCircuit, QuantumRegister, ClassicalRegister
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.quantum_info <span style="color:#f92672">import</span> Statevector
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit_aer <span style="color:#f92672">import</span> AerSimulator
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.visualization <span style="color:#f92672">import</span> plot_histogram
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.result <span style="color:#f92672">import</span> marginal_distribution
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.circuit.library <span style="color:#f92672">import</span> UGate
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> numpy <span style="color:#f92672">import</span> pi, random
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>qubits <span style="color:#f92672">=</span> QuantumRegister(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;qubit&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bell_circuit <span style="color:#f92672">=</span> QuantumCircuit(qubits) <span style="color:#75715e"># only including qubits right now</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bell_circuit<span style="color:#f92672">.</span>h(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>bell_circuit<span style="color:#f92672">.</span>cx(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bell_circuit<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;mpl&#39;</span>)
+</span></span></code></pre></div><p><img src="/92.png" alt=""></p>
+<p>Both qubits in <code>QuantumCircuit()</code> are initialized by default to $|0\rangle$ state. Thus the 2-qubit state we begin with is $|00\rangle$. Applying the bell circuit defined above transforms $|00\rangle \rightarrow |\phi^+\rangle$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>zerozero <span style="color:#f92672">=</span> Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#34;0&#34;</span>)<span style="color:#f92672">.</span>tensor(Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#34;0&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>zerozero<span style="color:#f92672">.</span>evolve(bell_circuit)<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>)
+</span></span></code></pre></div><p><img src="/86.png" alt=""></p>
+<p>Now let&rsquo;s add the measurement gates to map the measurement results of both qubits onto two separate classical bits.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bit1 <span style="color:#f92672">=</span> ClassicalRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;bit1&#34;</span>) <span style="color:#75715e"># Creating the classical bits</span>
+</span></span><span style="display:flex;"><span>bit2 <span style="color:#f92672">=</span> ClassicalRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;bit2&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> QuantumCircuit(qubits, bit1, bit2)
+</span></span><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> circuit<span style="color:#f92672">.</span>compose(bell_circuit) <span style="color:#75715e"># appending the Bell Circuit to the new </span>
+</span></span><span style="display:flex;"><span>										<span style="color:#75715e"># initialized circuit</span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>barrier()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>measure(qubits[<span style="color:#ae81ff">0</span>], bit1)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>measure(qubits[<span style="color:#ae81ff">1</span>], bit2)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;mpl&#39;</span>)
+</span></span></code></pre></div><p>Let&rsquo;s run <code>AerSimulator()</code> and display a histogram of the measurement results</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>job <span style="color:#f92672">=</span> AerSimulator()<span style="color:#f92672">.</span>run(circuit, shots <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>) <span style="color:#75715e"># 1000 samples</span>
+</span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> job<span style="color:#f92672">.</span>result()
+</span></span><span style="display:flex;"><span>statistics <span style="color:#f92672">=</span> results<span style="color:#f92672">.</span>get_counts()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plot_histogram(statistics)
+</span></span></code></pre></div><p><img src="/96.png" alt=""></p>
+<p>We see a perfect 50/50 probabilitiy of yielding the classical measurements
+<code>00</code> or <code>11</code>. This is expected from the $|\phi^+\rangle$ state.</p>
+<h2 id="problem-2">Problem 2.<a href="#problem-2" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>We initialize a 2-qubit custom-named circuit as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>qubit0 <span style="color:#f92672">=</span> QuantumRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;qubit0&#34;</span>)
+</span></span><span style="display:flex;"><span>qubit1 <span style="color:#f92672">=</span> QuantumRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;qubit1&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> QuantumCircuit(qubit0, qubit1)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;mpl&#39;</span>)
+</span></span></code></pre></div><p><img src="/93.png" alt=""></p>
+<p>Now let&rsquo;s generate a random unitary gate using <code>UGate()</code> and apply it to <code>qubit0</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>random_gate <span style="color:#f92672">=</span> UGate( 
+</span></span><span style="display:flex;"><span>    theta <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> pi, 
+</span></span><span style="display:flex;"><span>    phi <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> pi, 
+</span></span><span style="display:flex;"><span>    lam <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>random() <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> pi
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>random_gate<span style="color:#f92672">.</span>to_matrix()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>append(random_gate, qubit0)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;mpl&#39;</span>)
+</span></span></code></pre></div><p><img src="/94.png" alt=""></p>
+<p>Let&rsquo;s add the Bell circuit and measurement gates from Problem 1.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bit0 <span style="color:#f92672">=</span> ClassicalRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;bit0&#34;</span>)
+</span></span><span style="display:flex;"><span>bit1 <span style="color:#f92672">=</span> ClassicalRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;bit1&#34;</span>)
+</span></span><span style="display:flex;"><span>bits <span style="color:#f92672">=</span> QuantumCircuit(bit0, bit1) <span style="color:#75715e"># Initializing Empty Circuit with 2 Bits</span>
+</span></span><span style="display:flex;"><span>                            
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> circuit<span style="color:#f92672">.</span>compose(bell_circuit) <span style="color:#75715e"># Adding the Bell Circuit </span>
+</span></span><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> circuit<span style="color:#f92672">.</span>compose(bits) <span style="color:#75715e"># Adding the two bits to measure onto </span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>barrier()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>measure(qubit0, bit0)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>measure(qubit1, bit1)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;mpl&#39;</span>)
+</span></span></code></pre></div><p><img src="/95.png" alt=""></p>
+<p>Now let&rsquo;s run <code>AerSimulator()</code> and display a histogram of the results.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>job <span style="color:#f92672">=</span> AerSimulator()<span style="color:#f92672">.</span>run(circuit, shots <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>) <span style="color:#75715e"># 1000 samples</span>
+</span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> job<span style="color:#f92672">.</span>result()
+</span></span><span style="display:flex;"><span>statistics <span style="color:#f92672">=</span> results<span style="color:#f92672">.</span>get_counts()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plot_histogram(statistics)
+</span></span></code></pre></div><p><img src="/97.png" alt=""></p>
+<p>If I generate a different unitary gate and re-run the <code>AerSimulator()</code>,</p>
+<p><img src="/98.png" alt=""></p>
+<p>I get something completely different!</p>
+<hr>
+<p><a href="https://dev-undergrad.dev/qiskit/03_quantum_circuits/">Previous &ndash; Quantum Circuits</a>
+$\sim$*$\backsim$ <a href="https://dev-undergrad.dev/qiskit/05_superdense_coding/">Next &ndash; Superdense Coding</a></p>
+
+		</div>
+	</main>
+
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+  <p>
+    &copy; 2024 <a href="https://dev-undergrad.dev/">deval deliwala</a>
+    &#183;  <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+    &#183; Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>
+    &#183; Theme <a href="https://github.com/1bl4z3r/hermit-V2" target="_blank" rel="noopener">Hermit-V2</a>
+    
+    &#183; <a href="https://dev-undergrad.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+    
+  </p>
+
+</footer>
+
+
+<script async src="https://dev-undergrad.dev/js/bundle.min.038214de9d568246fadcfeb06c69349925de3209f332ec123861b6aa031d63c6.js" integrity="sha256-A4IU3p1Wgkb63P6wbGk0mSXeMgnzMuwSOGG2qgMdY8Y=" crossorigin="anonymous"></script><script async src="https://dev-undergrad.dev/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script>
+    <script type="text/javascript" async src="https://polyfill.io/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+    
+    
+    <script type="text/javascript" id="MathJax-script" async src="https://dev-undergrad.dev/js/mathjaxs.min.4b88b5f9e9f39bf5f45b77eb5cf3fb4f929d6a58f92f06f780397ad8ee2a3c6c.js" integrity="sha256-S4i1+enzm/X0W3frXPP7T5Kdalj5Lwb3gDl62O4qPGw=" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

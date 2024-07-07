@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="robots" content="index, follow">
+<meta name="revisit-after" content="15 days">
+<link rel="author" href="/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="deval deliwala"><meta name="description" content="Working with Multi-Qubit Quantum Gates">
+<meta itemprop="name" content="Ch.2 Multiple-Qubit States">
+<meta itemprop="description" content="Working with Multi-Qubit Quantum Gates"><meta itemprop="datePublished" content="2024-05-29T11:59:11-07:00" />
+<meta itemprop="dateModified" content="2024-05-29T11:59:11-07:00" />
+<meta itemprop="wordCount" content="1305">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Ch.2 Multiple-Qubit States" />
+<meta property="og:description" content="Working with Multi-Qubit Quantum Gates" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dev-undergrad.dev/qiskit/02_multi_qubit/" /><meta property="article:section" content="qiskit" />
+<meta property="article:published_time" content="2024-05-29T11:59:11-07:00" />
+<meta property="article:modified_time" content="2024-05-29T11:59:11-07:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ch.2 Multiple-Qubit States"/>
+<meta name="twitter:description" content="Working with Multi-Qubit Quantum Gates"/>
+<title>Ch.2 Multiple-Qubit States</title>
+<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="https://dev-undergrad.dev/css/style.min.d94d17fff76195615e45620612329cd6061ec826914f387a6f846a5ba132dc2d.css" integrity="sha256-2U0X//dhlWFeRWIGEjKc1gYeyCaRTzh6b4RqW6Ey3C0=" crossorigin="anonymous">
+	</head>
+<body id="page">
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://dev-undergrad.dev">dev-undergrad</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="https://dev-undergrad.dev/qiskit/">qiskit</a><a href="https://dev-undergrad.dev/notes/">notes</a><a href="https://dev-undergrad.dev/contents/contents/">contents</a><a href="https://dev-undergrad.dev/research/">research / not currently updated </a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/devdeliw/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://youtube.com/@devdeliw/" target="_blank" rel="noopener me" title="Youtube"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a><a href="https://www.linkedin.com/in/deval-deliwala-554749219/" target="_blank" rel="noopener me" title="Linked"><svg xmlns="http://www.w3.org/2000/svg" class="feather feather-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></span><button id="share-btn" class="hdr-btn" title="Share"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f02_multi_qubit%2f&amp;text=Ch.2%20Multiple-Qubit%20States" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f02_multi_qubit%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Ch.2%20Multiple-Qubit%20States&amp;body=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f02_multi_qubit%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f02_multi_qubit%2f&amp;source=https%3a%2f%2fdev-undergrad.dev&amp;title=Ch.2%20Multiple-Qubit%20States&amp;summary=Ch.2%20Multiple-Qubit%20States%2c%20by%20deval%20deliwala%0a%0aWorking%20with%20Multi-Qubit%20Quantum%20Gates%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;Ch.2 Multiple-Qubit States&#34;,&#34;https://dev-undergrad.dev/qiskit/02_multi_qubit/&#34;,&#34;Ch.2 Multiple-Qubit States, by deval deliwala\n\nWorking with Multi-Qubit Quantum Gates\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://dev-undergrad.dev/qiskit/">qiskit</a></li>
+			<li><a href="https://dev-undergrad.dev/notes/">notes</a></li>
+			<li><a href="https://dev-undergrad.dev/contents/contents/">contents</a></li>
+			<li><a href="https://dev-undergrad.dev/research/">research / not currently updated </a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>Ch.2 Multiple-Qubit States</h1>
+		<div class="content">
+			<p>$$ \sim * \backsim $$</p>
+<h2 id="table-of-contents">Table of Contents<a href="#table-of-contents" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<ol>
+<li><a href="#-4-multi-qubit-quantum-gates">§ 4. Multi-Qubit Quantum Gates</a>
+<ul>
+<li><a href="#--swap-gate">SWAP Gate</a></li>
+<li><a href="#controlled-operations">Controlled Operations</a>
+<ul>
+<li><a href="#--cx--cnot-gate">CX / CNOT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#-5-tensor-products">§ 5. Tensor Products</a></li>
+<li><a href="#-6-partial-measurements">§ 6. Partial Measurements</a></li>
+<li><a href="#exercises">Exercises</a></li>
+<li><a href="#solutions">Solutions</a></li>
+</ol>
+<p>$$ \backsim * \sim $$</p>
+<h2 id="-4-multi-qubit-quantum-gates">§ 4. Multi-Qubit Quantum Gates<a href="#-4-multi-qubit-quantum-gates" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<hr>
+<p>Now that we understand single-qubit gates, let&rsquo;s explore multi-qubit operators, which act on more than one qubit / statevector.</p>
+<p>A multi-qubit state $$|XY\rangle$$ is the tensor product of two single-qubit states:</p>
+<p>$$ |XY\rangle = |X\rangle \otimes |Y\rangle = |X\rangle|Y\rangle$$</p>
+<p>Let&rsquo;s discuss some crucial Quantum Gates that operaton on multi-qubit states.</p>
+<h3 id="--swap-gate">- SWAP Gate<a href="#--swap-gate" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The SWAP gate exchanges the states of two qubits:</p>
+<p>$$ \text{SWAP} |a\rangle |b\rangle = |b\rangle |a\rangle $$</p>
+<p>Its matrix representation is shown below</p>
+<p><img src="/57.png" alt="">
+<em>Figure 6: SWAP Gate</em></p>
+<h1 id="controlled-operations">Controlled Operations<a href="#controlled-operations" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>A controlled $U$ operator performs an action on a <strong>target</strong> qubit based on the state of a <strong>control</strong> qubit.</p>
+<p>For qubits defined in the computational basis states $|0\rangle$ and $|1\rangle$, a controlled $U$ operation can be represented as:</p>
+<p>$$ CU = |0\rangle \langle 0| \otimes I_R + |1\rangle\langle 1| \otimes U $$</p>
+<p>To illustrate this, let&rsquo;s discuss the Controlled NOT (CNOT) gate.</p>
+<h3 id="--cx--cnot-gate">- CX / CNOT Gate<a href="#--cx--cnot-gate" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The CNOT gate flips the target qubit if the control qubit is in state $|1\rangle$, and leaves the target qubit unchanged if the control qubit is in state $|0\rangle$.</p>
+<p>The action of a CNOT gate is depicted as:</p>
+<p><img src="/37.png" alt=""></p>
+<p>It leaves the control qubit unchanged regardless. Its matrix representation is:</p>
+<p><img src="/38.png" alt="">
+<em>Figure 7: CNOT Gate</em></p>
+<p>Controlled operations can be performed on both single and multi-qubit states. The control or target can be a system of qubits. For example, the CCNOT (controlled-controlled NOT) gate, also known as the Toffoli Gate, is a CNOT gate with 2 control qubits and 1 target qubit. The target qubit gets inverted if and only if both control qubits are in state $|1\rangle$.</p>
+<p>Now, let&rsquo;s discuss how to generate multi-qubit states. We have already learned how to generate single-qubit states using the <code>Statevector()</code> class in the previous chapter. To generate a multi-qubit state, we need to understand how to perform tensor products.</p>
+<hr>
+<h2 id="-5-tensor-products">§ 5. Tensor Products<a href="#-5-tensor-products" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<hr>
+<p>First, let&rsquo;s create the multi-qubit statevector $|01\rangle$ as a tensor product of $|0\rangle \otimes |1\rangle$:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>zero, one <span style="color:#f92672">=</span> Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#34;0&#34;</span>), Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#34;1&#34;</span>)
+</span></span><span style="display:flex;"><span>zero<span style="color:#f92672">.</span>tensor(one)<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>)
+</span></span></code></pre></div><p><img src="/40.png" alt=""></p>
+<p>Next, let&rsquo;s create the statevectors $|+\rangle$ and $\frac{1}{\sqrt{2}}(|0\rangle + i|1\rangle)$, and combine them to form a new statevector $|\psi\rangle$:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plus <span style="color:#f92672">=</span> Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#34;+&#34;</span>)
+</span></span><span style="display:flex;"><span>i_state <span style="color:#f92672">=</span> Statevector([<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>sqrt(<span style="color:#ae81ff">2</span>), <span style="color:#ae81ff">1</span>j<span style="color:#f92672">/</span>sqrt(<span style="color:#ae81ff">2</span>)])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>psi <span style="color:#f92672">=</span> plus<span style="color:#f92672">.</span>tensor(i_state)
+</span></span><span style="display:flex;"><span>psi<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>)
+</span></span></code></pre></div><p><img src="/42.png" alt=""></p>
+<p>We can also take the tensor product of operators. The tensor product $C$ of the operators $X$ and $Y$, where $C = X \otimes Y$, can act simultaneously on a 2-qubit system. This is equivalent to applying $X$ to the first qubit and $Y$ to the second qubit, and then taking the tensor product.</p>
+<p>To illustrate this, consider the following circuit:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> QuantumCircuit(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>x(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>y(<span style="color:#ae81ff">1</span>) 
+</span></span><span style="display:flex;"><span>display(circuit<span style="color:#f92672">.</span>draw())
+</span></span></code></pre></div><p><img src="/43.png" alt=""></p>
+<p>This is the same as applying the $C = X \otimes Y$ gate on the tensor product $q_0 \otimes q_1$.</p>
+<p>We can generate tensor products between <em>operators</em> in the same way as with statevectors:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>X <span style="color:#f92672">=</span> Operator([[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>]])
+</span></span><span style="display:flex;"><span>Y <span style="color:#f92672">=</span> Operator([[<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>j], [<span style="color:#ae81ff">1</span>j, <span style="color:#ae81ff">0</span>]])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>C <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>tensor(Y)
+</span></span><span style="display:flex;"><span>print(C)
+</span></span></code></pre></div><p><img src="/44.png" alt=""></p>
+<p>Let&rsquo;s show that applying $X$ on qubit $|0\rangle$ and $Y$ on qubit $|1\rangle$ and then taking the resulting tensor product, is the same as applying $C = X \otimes Y$ to $|01\rangle = |0\rangle \otimes |1\rangle$.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ket0 <span style="color:#f92672">=</span> Statevector([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>ket1 <span style="color:#f92672">=</span> Statevector([<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>ket_combined <span style="color:#f92672">=</span> ket0<span style="color:#f92672">.</span>tensor(ket1)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># individually applying X and Y to |0&gt; and |1&gt; separately</span>
+</span></span><span style="display:flex;"><span>ket0f <span style="color:#f92672">=</span> ket0<span style="color:#f92672">.</span>evolve(X)
+</span></span><span style="display:flex;"><span>ket1f <span style="color:#f92672">=</span> ket1<span style="color:#f92672">.</span>evolve(Y)
+</span></span><span style="display:flex;"><span>ket_combinedf <span style="color:#f92672">=</span> ket0f<span style="color:#f92672">.</span>tensor(ket1f) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;X|0&gt; ⊗ Y|1&gt; &#34;</span>)
+</span></span><span style="display:flex;"><span>display(ket_combinedf<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># applying combined operator to both, </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># redefining ket_combinedf using ket_combined </span>
+</span></span><span style="display:flex;"><span>ket_combinedf <span style="color:#f92672">=</span> ket_combined<span style="color:#f92672">.</span>evolve(X <span style="color:#f92672">^</span> Y) <span style="color:#75715e"># X ^ Y = X ⊗ Y = C</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;(X ⊗ Y)|01&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>display(ket_combinedf<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span></code></pre></div><p><img src="/45.png" alt=""></p>
+<p>They&rsquo;re the same! Let&rsquo;s go back to the $|\psi\rangle$ vector we defined earlier,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>psi<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>)
+</span></span></code></pre></div><p><img src="/47.png" alt=""></p>
+<p>Now, let&rsquo;s create a CNOT operator and calculate $CNOT|\psi\rangle$.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>CX <span style="color:#f92672">=</span> Operator(
+</span></span><span style="display:flex;"><span>    [
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>], 
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>], 
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>],
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>], 
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>psi<span style="color:#f92672">.</span>evolve(CX)<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>)
+</span></span></code></pre></div><p><img src="/49.png" alt=""></p>
+<p>Compare the coefficients of the $|10\rangle$ and $|11\rangle$ states.</p>
+<p>Now that we understand how to implement operators on multi-qubit states, let&rsquo;s move on to implementing partial measurements on individual qubits of a multi-qubit state.</p>
+<hr>
+<h2 id="-6-partial-measurements">§ 6. Partial Measurements<a href="#-6-partial-measurements" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<hr>
+<p>In the previous chapter, we used the <code>measure()</code> method to simulate a measurement of a quantum statevector. This method returned the measured qubit value, and the resultant collapsed statevector post-measurement.</p>
+<p>By default, `measure()`` measures all qubits in the statevector. However, we can provide a list of integers to measure only the qubits at those indices.</p>
+<p>The following example demonstrates how to create and partially measure a specific state. We will create the state</p>
+<p>$$ W = \frac{1}{\sqrt{3}} ( |001\rangle + |010\rangle + |100\rangle). $$</p>
+<p>using the <code>Statevector()</code> class:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>W <span style="color:#f92672">=</span> Statevector([<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">/</span> sqrt(<span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>W<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>)
+</span></span></code></pre></div><p><img src="/50.png" alt=""></p>
+<p>To understand how the above state was generated using Statevector(), note that each parameter index (0 or 1) represents a possible 3-qubit state:</p>
+<ul>
+<li>$|000\rangle$ (index 0)</li>
+<li>$|001\rangle$ (index 1)</li>
+<li>$|010\rangle$ (index 2)</li>
+<li>$|011\rangle$ (index 3)</li>
+<li>$|100\rangle$ (index 4)</li>
+<li>$|101\rangle$ (index 5)</li>
+<li>$|110\rangle$ (index 6)</li>
+<li>$|111\rangle$ (index 7)</li>
+</ul>
+<p>The statevector $W$ has a value of 1 at indices 1, 2, and 4, indicating the presence of the states $|001\rangle$, $|010\rangle$, and $|100\rangle$.</p>
+<p>Let&rsquo;s simulate a measurement on the <strong>rightmost</strong> qubit (which has index 0). Note that this is the opposite of the usual convention, where qubit indices start <em>from the right</em>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>result, new_statevector <span style="color:#f92672">=</span> W<span style="color:#f92672">.</span>measure([<span style="color:#ae81ff">0</span>]) <span style="color:#75715e"># measure qubit 0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Measured: </span><span style="color:#e6db74">{</span>result<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">State after measurement:&#34;</span>)
+</span></span><span style="display:flex;"><span>new_statevector<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>)
+</span></span></code></pre></div><p><img src="/51.png" alt=""></p>
+<p>Run the above cell multiple times to observe different results. Notice the following:</p>
+<ul>
+<li>Measuring a <code>1</code> means both the other qubits are $|0\rangle$</li>
+<li>Meausring a <code>0</code> leaves the remaining two qubits in the state $$\frac{1}{\sqrt{2}}(|01\rangle + |10\rangle).</li>
+</ul>
+<p>In the next chapter, we will explore `QuantumCircuit()``, which allows us to fully manipulate and work with any $n$-qubit state. Before moving on, try the following exercises to ensure you understand how to generate and measure multi-qubit states.</p>
+<hr>
+<h2 id="exercises">Exercises<a href="#exercises" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<blockquote>
+<ol>
+<li>
+<p>Generate the tensor product $|+\rangle |-\rangle$ and implement a CNOT gate on the result. The CNOT gate should have the first, left-most qubit as the control.</p>
+</li>
+<li>
+<p>Generate the tensor product operator $U$ between the Pauli-$X$ and Pauli-$Y$ operators ($U = X \otimes Y$). Show that applying $U |+\rangle |-\rangle$ yields the same result as $X|+\rangle \otimes Y|-\rangle$.</p>
+</li>
+</ol>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+</blockquote>
+<h2 id="solutions">Solutions<a href="#solutions" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h3 id="problem-1">Problem 1.<a href="#problem-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Let&rsquo;s first generate the $|+\rangle |-\rangle$ statevector.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.quantum_info <span style="color:#f92672">import</span> Statevector, Operator
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plus <span style="color:#f92672">=</span> Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#34;+&#34;</span>)
+</span></span><span style="display:flex;"><span>minus <span style="color:#f92672">=</span> Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#34;-&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plusminus <span style="color:#f92672">=</span> plus<span style="color:#f92672">.</span>tensor(minus) <span style="color:#75715e"># Generating |+&gt;|-&gt;</span>
+</span></span><span style="display:flex;"><span>plusminus<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;latex&#39;</span>)
+</span></span></code></pre></div><p><img src="/52.png" alt=""></p>
+<p>Let&rsquo;s build the CNOT matrix and apply it on $|+\rangle |-\rangle$.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>CNOT <span style="color:#f92672">=</span> Operator(
+</span></span><span style="display:flex;"><span>    [ 
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>], 
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>], 
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>], 
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plusminus<span style="color:#f92672">.</span>evolve(CNOT)<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>)
+</span></span></code></pre></div><p><img src="/53.png" alt=""></p>
+<p>We see that the coefficients in front of the $|10\rangle$ and $|11\rangle$ switched. (The $|11\rangle$ state became $|10\rangle$ and vice versa).</p>
+<p>I present a second method using <code>qiskit.QuantumCircuit()</code>. We have not fully discussed QuantumCircuit yet, so consider this a sneak peek.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit <span style="color:#f92672">import</span> QuantumCircuit <span style="color:#75715e"># We have not done fully introduced QuantumCircuits yet</span>
+</span></span><span style="display:flex;"><span>                                  <span style="color:#75715e"># You can consider this a sneak-peek</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> QuantumCircuit(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>cx(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>) <span style="color:#75715e"># CNOT gate with the left-most (index 1) qubit as the control</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>display(circuit<span style="color:#f92672">.</span>draw())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plusminus <span style="color:#f92672">=</span> Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#34;+&#34;</span>)<span style="color:#f92672">.</span>tensor(Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#34;-&#34;</span>)) <span style="color:#75715e"># Generating |+&gt;|-&gt;</span>
+</span></span><span style="display:flex;"><span>plusminus<span style="color:#f92672">.</span>evolve(circuit)<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;latex&#39;</span>)
+</span></span></code></pre></div><p><img src="/54.png" alt=""></p>
+<h3 id="problem-2">Problem 2.<a href="#problem-2" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Let&rsquo;s first create the Pauli-$X$ and Pauli-$Y$ operators as well as the operator $U = X\otimes Y.$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.quantum_info <span style="color:#f92672">import</span> Operator
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> Operator(
+</span></span><span style="display:flex;"><span>    [
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>], 
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Y <span style="color:#f92672">=</span> Operator(
+</span></span><span style="display:flex;"><span>    [
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>j], 
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">1</span>j, <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>U <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>tensor(Y) 
+</span></span><span style="display:flex;"><span>U<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>)
+</span></span></code></pre></div><p><img src="/55.png" alt=""></p>
+<p>Now let&rsquo;s generate the $|+\rangle$ and $|-\rangle$ states, along with their tensor product $|+\rangle |-\rangle$ and get the results of each operation from the question.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plus <span style="color:#f92672">=</span> Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#39;+&#39;</span>)
+</span></span><span style="display:flex;"><span>minus <span style="color:#f92672">=</span> Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#39;-&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plusminus <span style="color:#f92672">=</span> plus<span style="color:#f92672">.</span>tensor(minus)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#Implementing U|+&gt;|-&gt; </span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;U|+&gt;|-&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>display(plusminus<span style="color:#f92672">.</span>evolve(U)<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;latex&#39;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Implementing X|+&gt; ⊗ Y|-&gt;</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;X|+&gt; ⊗ Y|-&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>display(plus<span style="color:#f92672">.</span>evolve(X)<span style="color:#f92672">.</span>tensor(minus<span style="color:#f92672">.</span>evolve(Y))<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;latex&#39;</span>))
+</span></span></code></pre></div><p><img src="/56.png" alt=""></p>
+<p><a href="https://dev-undergrad.dev/qiskit/01_single_systems/">Previous &ndash; Single-Qubit States</a> $\sim$*$\backsim$ <a href="https://dev-undergrad.dev/qiskit/03_quantum_circuits/">Next &ndash; Quantum Circuits</a></p>
+
+		</div>
+	</main>
+
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+  <p>
+    &copy; 2024 <a href="https://dev-undergrad.dev/">deval deliwala</a>
+    &#183;  <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+    &#183; Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>
+    &#183; Theme <a href="https://github.com/1bl4z3r/hermit-V2" target="_blank" rel="noopener">Hermit-V2</a>
+    
+    &#183; <a href="https://dev-undergrad.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+    
+  </p>
+
+</footer>
+
+
+<script async src="https://dev-undergrad.dev/js/bundle.min.038214de9d568246fadcfeb06c69349925de3209f332ec123861b6aa031d63c6.js" integrity="sha256-A4IU3p1Wgkb63P6wbGk0mSXeMgnzMuwSOGG2qgMdY8Y=" crossorigin="anonymous"></script><script async src="https://dev-undergrad.dev/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script>
+    <script type="text/javascript" async src="https://polyfill.io/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+    
+    
+    <script type="text/javascript" id="MathJax-script" async src="https://dev-undergrad.dev/js/mathjaxs.min.4b88b5f9e9f39bf5f45b77eb5cf3fb4f929d6a58f92f06f780397ad8ee2a3c6c.js" integrity="sha256-S4i1+enzm/X0W3frXPP7T5Kdalj5Lwb3gDl62O4qPGw=" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

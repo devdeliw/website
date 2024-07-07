@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Contents on dev-undergrad</title>
+    <link>https://dev-undergrad.dev/contents/</link>
+    <description>Recent content in Contents on dev-undergrad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 11 Feb 2024 14:10:04 -0800</lastBuildDate>
+    <atom:link href="https://dev-undergrad.dev/contents/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>table of contents</title>
+      <link>https://dev-undergrad.dev/contents/contents/</link>
+      <pubDate>Sun, 11 Feb 2024 14:10:04 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/contents/contents/</guid>
+      <description>Sophomore Physics 137A &amp;ndash; Quantum Mechanics I
+Physics 5C &amp;ndash; Statistical Mechanics</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>137As on dev-undergrad</title>
+    <link>https://dev-undergrad.dev/137a/</link>
+    <description>Recent content in 137As on dev-undergrad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 11 Mar 2024 22:40:59 -0700</lastBuildDate>
+    <atom:link href="https://dev-undergrad.dev/137a/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>137A -- Quantum Mechanics Beyond 1D</title>
+      <link>https://dev-undergrad.dev/137a/quantum_beyond1d/</link>
+      <pubDate>Mon, 11 Mar 2024 22:40:59 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/137a/quantum_beyond1d/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- Transmission &amp; Reflection</title>
+      <link>https://dev-undergrad.dev/137a/transmission_reflection/</link>
+      <pubDate>Tue, 20 Feb 2024 01:53:47 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/137a/transmission_reflection/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Delta Function Potential</title>
+      <link>https://dev-undergrad.dev/137a/delta/</link>
+      <pubDate>Mon, 19 Feb 2024 02:39:17 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/137a/delta/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- Finite Square Well Ctd.</title>
+      <link>https://dev-undergrad.dev/137a/finite_square_well_ctd/</link>
+      <pubDate>Wed, 14 Feb 2024 20:04:44 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/finite_square_well_ctd/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Finite Square Well</title>
+      <link>https://dev-undergrad.dev/137a/finite_square_well/</link>
+      <pubDate>Sat, 10 Feb 2024 03:41:51 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/finite_square_well/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Free Particle</title>
+      <link>https://dev-undergrad.dev/137a/free_particle/</link>
+      <pubDate>Sat, 10 Feb 2024 02:17:48 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/free_particle/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Harmonic Oscillator</title>
+      <link>https://dev-undergrad.dev/137a/harmonic_oscillator/</link>
+      <pubDate>Thu, 08 Feb 2024 03:43:32 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/harmonic_oscillator/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Infinite Square Well</title>
+      <link>https://dev-undergrad.dev/137a/infinite_square_well/</link>
+      <pubDate>Wed, 07 Feb 2024 16:21:32 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/infinite_square_well/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- Stationary States &amp; The Prime Directive</title>
+      <link>https://dev-undergrad.dev/137a/prime_directive/</link>
+      <pubDate>Tue, 06 Feb 2024 17:09:16 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/prime_directive/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Uncertainty Principle</title>
+      <link>https://dev-undergrad.dev/137a/expectation/</link>
+      <pubDate>Tue, 06 Feb 2024 00:43:15 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/expectation/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- Correspondence, Superposition, and Quanta</title>
+      <link>https://dev-undergrad.dev/137a/correspondence/</link>
+      <pubDate>Sun, 04 Feb 2024 19:56:55 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/correspondence/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- Deriving Schrodinger&#39;s Equation</title>
+      <link>https://dev-undergrad.dev/137a/schrodinger_derivation/</link>
+      <pubDate>Sun, 04 Feb 2024 16:18:20 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/schrodinger_derivation/</guid>
+      <description> </description>
+    </item>
+  </channel>
+</rss>

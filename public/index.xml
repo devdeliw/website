@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dev-undergrad</title>
+    <link>https://dev-undergrad.dev/</link>
+    <description>Recent content on dev-undergrad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 04 Jun 2024 22:52:33 -0700</lastBuildDate>
+    <atom:link href="https://dev-undergrad.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ch.6 The CHSH Game</title>
+      <link>https://dev-undergrad.dev/qiskit/06_chsh_game/</link>
+      <pubDate>Tue, 04 Jun 2024 22:52:33 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/qiskit/06_chsh_game/</guid>
+      <description>$$ \sim * \backsim $$
+Table of Contents § 15. Nonlocal Games § 16. The CHSH Game Exercises Solutions $$ \backsim * \sim $$
+§ 15. Nonlocal Games The CHSH game falls within the class of nonlocal games.
+The game is a cooperative game where Alice and Bob work together to achieve an outcome. There also exists a referee who ensures Alice and Bob abide by a strict set of guidelines.</description>
+    </item>
+    <item>
+      <title>Ch.5 Superdense Coding</title>
+      <link>https://dev-undergrad.dev/qiskit/05_superdense_coding/</link>
+      <pubDate>Mon, 03 Jun 2024 01:29:28 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/qiskit/05_superdense_coding/</guid>
+      <description>$$ \sim * \backsim $$
+Table of Contents § 13. Superdense Coding Protocol Analysis § 14. Qiskit Implementation Exercises Solutions $$ \backsim * \sim $$
+In the last chapter, we studied the quantum teleportation protocol, which transmitted one qubit using two classical bits of communication, at the cost of one entangled e-bit.
+The superdense coding protocol achieves the exact inverse. It allows for the transmission of two classical bits using on qubit of quantum information, at the cost of one e-bit.</description>
+    </item>
+    <item>
+      <title>Ch.4 Quantum Teleportation</title>
+      <link>https://dev-undergrad.dev/qiskit/04_quantum_teleportation/</link>
+      <pubDate>Thu, 30 May 2024 17:19:09 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/qiskit/04_quantum_teleportation/</guid>
+      <description>$$ \sim * \backsim $$
+Table of Contents § 9. Quantum Entanglement § 10. Entanglement as a resource § 11. Teleportation No-Cloning Theorem Protocol Analysis § 12. Teleportation using Qiskit Testing Teleportation Exercises Solutions $$ \backsim * \sim $$
+By this point, you should have a good understanding of Qiskit as a language. We know how to define any n-qubit state and build a circuit to operate on it.
+The chapters will now start to contain more information outside of purely code cells.</description>
+    </item>
+    <item>
+      <title>Ch.3 Quantum Circuits</title>
+      <link>https://dev-undergrad.dev/qiskit/03_quantum_circuits/</link>
+      <pubDate>Wed, 29 May 2024 18:49:50 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/qiskit/03_quantum_circuits/</guid>
+      <description>$$ \sim * \backsim $$
+Table of Contents § 7. Building Quantum Circuits Classical Bits Sampler Primitive § 8. Quantum Circuits Review Exercises Solutions $$ \backsim * \sim $$
+So far, we&amp;rsquo;ve discussed working with single-qubit and multi-qubit states. We&amp;rsquo;ve also covered various operators and used the .evolve() method to apply these operators to statevectors.
+Now it&amp;rsquo;s time to start building our own Quantum Circuits. These circuits allow us to visualize the change of information and trace the evolution of qubits through a series of quantum gates.</description>
+    </item>
+    <item>
+      <title>Ch.2 Multiple-Qubit States</title>
+      <link>https://dev-undergrad.dev/qiskit/02_multi_qubit/</link>
+      <pubDate>Wed, 29 May 2024 11:59:11 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/qiskit/02_multi_qubit/</guid>
+      <description>$$ \sim * \backsim $$
+Table of Contents § 4. Multi-Qubit Quantum Gates SWAP Gate Controlled Operations CX / CNOT § 5. Tensor Products § 6. Partial Measurements Exercises Solutions $$ \backsim * \sim $$
+§ 4. Multi-Qubit Quantum Gates Now that we understand single-qubit gates, let&amp;rsquo;s explore multi-qubit operators, which act on more than one qubit / statevector.
+A multi-qubit state $$|XY\rangle$$ is the tensor product of two single-qubit states:</description>
+    </item>
+    <item>
+      <title>Ch.1 Single-Qubit States</title>
+      <link>https://dev-undergrad.dev/qiskit/01_single_systems/</link>
+      <pubDate>Tue, 28 May 2024 21:08:06 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/qiskit/01_single_systems/</guid>
+      <description>Preliminary Info This tutorial series assumes you are already knowledgeable in basic quantum mechanics (state vectors/wave functions), statistics, linear algebra, and Python.
+This series is for those who want to focus on directly learning IBM Qiskit, the Python library. To learn Qiskit along with the necessary math, visit IBM Quantum Learning.
+Once the necessary Qiskit concepts are introduced, we will delve directly into quantum computing theory, where chapters will become more math-intensive.</description>
+    </item>
+    <item>
+      <title>F115W  - F212N Color-Magnitude Diagrams</title>
+      <link>https://dev-undergrad.dev/research/cmd/</link>
+      <pubDate>Sat, 23 Mar 2024 23:58:21 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/research/cmd/</guid>
+      <description>Let&amp;rsquo;s start performing some data analysis with our beautiful JWST near-infrared catalogs. But first! let&amp;rsquo;s go over what color-magnitude diagrams (CMDs) are. CMDs are the life and blood for astronomers. If you are familiar with the Hertzsprung Russell (HR) diagram, CMDs are a subset of these plots.
+They are actually fairly simple. You merely take magnitudes of stars from one catalog ($y$) and plot it relative to the difference in magnitudes between two different catalogs ($x$).</description>
+    </item>
+    <item>
+      <title>James Webb Space Telescope NIRCam Catalogs</title>
+      <link>https://dev-undergrad.dev/research/catalogs/</link>
+      <pubDate>Fri, 22 Mar 2024 23:14:44 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/research/catalogs/</guid>
+      <description>I use JWST NIRCAM catalogs of the Galactic Center for my research. These catalogs contain extremely high quality photometric data of tens of thousands of stars detected in the region around Sagittarius A*.
+At the time of writing, I have access to photometry-calibrated catalogs for the F115W, F212N, and F323N GC catalogs. The name F115W refers to the catalog of stars taken in from a $1.15µm$ infrared wavelength. F212N is therefore the catalog of stars detected from a $2.</description>
+    </item>
+    <item>
+      <title>Moving Universe Lab - Introduction</title>
+      <link>https://dev-undergrad.dev/research/introduction/</link>
+      <pubDate>Thu, 21 Mar 2024 23:36:41 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/research/introduction/</guid>
+      <description>Berkeley&amp;rsquo;s Moving Universe Lab, led by Prof. Jessica Lu @ AC Berkeley focuses on the study of stars and black holes in the nearby universe.
+My research primarily deals with determining the extinction law of the Galactic Center, the region of stars in the center of the milky way near Sagittarius A*.
+Extinction Interstellar extinction occurs when light, during its transit between some emitting astronomical object and earth, gets scattered by intermediary dust and gas particles.</description>
+    </item>
+    <item>
+      <title>137A -- Quantum Mechanics Beyond 1D</title>
+      <link>https://dev-undergrad.dev/137a/quantum_beyond1d/</link>
+      <pubDate>Mon, 11 Mar 2024 22:40:59 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/137a/quantum_beyond1d/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- Quantum Mechanics Beyond 1D</title>
+      <link>https://dev-undergrad.dev/notes/quantum_beyond1d/</link>
+      <pubDate>Mon, 11 Mar 2024 22:40:59 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/notes/quantum_beyond1d/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- Transmission &amp; Reflection</title>
+      <link>https://dev-undergrad.dev/137a/transmission_reflection/</link>
+      <pubDate>Tue, 20 Feb 2024 01:53:47 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/137a/transmission_reflection/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- Transmission &amp; Reflection</title>
+      <link>https://dev-undergrad.dev/notes/transmission_reflection/</link>
+      <pubDate>Tue, 20 Feb 2024 01:53:47 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/notes/transmission_reflection/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Delta Function Potential</title>
+      <link>https://dev-undergrad.dev/137a/delta/</link>
+      <pubDate>Mon, 19 Feb 2024 02:39:17 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/137a/delta/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Delta Function Potential</title>
+      <link>https://dev-undergrad.dev/notes/delta/</link>
+      <pubDate>Mon, 19 Feb 2024 02:39:17 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/notes/delta/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>5C -- First and Second Law of Thermodynamics / Heat Engines</title>
+      <link>https://dev-undergrad.dev/5c/laws_thermodynamics/</link>
+      <pubDate>Mon, 19 Feb 2024 00:42:53 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/5c/laws_thermodynamics/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>5C -- First and Second Law of Thermodynamics / Heat Engines</title>
+      <link>https://dev-undergrad.dev/notes/laws_thermodynamics/</link>
+      <pubDate>Mon, 19 Feb 2024 00:42:53 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/notes/laws_thermodynamics/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- Finite Square Well Ctd.</title>
+      <link>https://dev-undergrad.dev/137a/finite_square_well_ctd/</link>
+      <pubDate>Wed, 14 Feb 2024 20:04:44 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/finite_square_well_ctd/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- Finite Square Well Ctd.</title>
+      <link>https://dev-undergrad.dev/notes/finite_square_well_ctd/</link>
+      <pubDate>Wed, 14 Feb 2024 20:04:44 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/notes/finite_square_well_ctd/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>table of contents</title>
+      <link>https://dev-undergrad.dev/contents/contents/</link>
+      <pubDate>Sun, 11 Feb 2024 14:10:04 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/contents/contents/</guid>
+      <description>Sophomore Physics 137A &amp;ndash; Quantum Mechanics I
+Physics 5C &amp;ndash; Statistical Mechanics</description>
+    </item>
+    <item>
+      <title>137A -- The Finite Square Well</title>
+      <link>https://dev-undergrad.dev/137a/finite_square_well/</link>
+      <pubDate>Sat, 10 Feb 2024 03:41:51 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/finite_square_well/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Finite Square Well</title>
+      <link>https://dev-undergrad.dev/notes/finite_square_well/</link>
+      <pubDate>Sat, 10 Feb 2024 03:41:51 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/notes/finite_square_well/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Free Particle</title>
+      <link>https://dev-undergrad.dev/137a/free_particle/</link>
+      <pubDate>Sat, 10 Feb 2024 02:17:48 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/free_particle/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Free Particle</title>
+      <link>https://dev-undergrad.dev/notes/free_particle/</link>
+      <pubDate>Sat, 10 Feb 2024 02:17:48 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/notes/free_particle/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>5C -- Specific Heat &amp; Calorimetry</title>
+      <link>https://dev-undergrad.dev/5c/heat_calorimetry/</link>
+      <pubDate>Fri, 09 Feb 2024 19:18:27 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/5c/heat_calorimetry/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>5C -- Specific Heat &amp; Calorimetry</title>
+      <link>https://dev-undergrad.dev/notes/heat_calorimetry/</link>
+      <pubDate>Fri, 09 Feb 2024 19:18:27 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/notes/heat_calorimetry/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Harmonic Oscillator</title>
+      <link>https://dev-undergrad.dev/137a/harmonic_oscillator/</link>
+      <pubDate>Thu, 08 Feb 2024 03:43:32 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/harmonic_oscillator/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Harmonic Oscillator</title>
+      <link>https://dev-undergrad.dev/notes/harmonic_oscillator/</link>
+      <pubDate>Thu, 08 Feb 2024 03:43:32 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/notes/harmonic_oscillator/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Infinite Square Well</title>
+      <link>https://dev-undergrad.dev/137a/infinite_square_well/</link>
+      <pubDate>Wed, 07 Feb 2024 16:21:32 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/infinite_square_well/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Infinite Square Well</title>
+      <link>https://dev-undergrad.dev/notes/infinite_square_well/</link>
+      <pubDate>Wed, 07 Feb 2024 16:21:32 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/notes/infinite_square_well/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- Stationary States &amp; The Prime Directive</title>
+      <link>https://dev-undergrad.dev/137a/prime_directive/</link>
+      <pubDate>Tue, 06 Feb 2024 17:09:16 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/prime_directive/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- Stationary States &amp; The Prime Directive</title>
+      <link>https://dev-undergrad.dev/notes/prime_directive/</link>
+      <pubDate>Tue, 06 Feb 2024 17:09:16 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/notes/prime_directive/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Uncertainty Principle</title>
+      <link>https://dev-undergrad.dev/137a/expectation/</link>
+      <pubDate>Tue, 06 Feb 2024 00:43:15 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/expectation/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- The Uncertainty Principle</title>
+      <link>https://dev-undergrad.dev/notes/expectation/</link>
+      <pubDate>Tue, 06 Feb 2024 00:43:15 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/notes/expectation/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>5C -- Transport Properties of Gases</title>
+      <link>https://dev-undergrad.dev/5c/thermal_diffusion/</link>
+      <pubDate>Mon, 05 Feb 2024 00:51:05 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/5c/thermal_diffusion/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>5C -- Transport Properties of Gases</title>
+      <link>https://dev-undergrad.dev/notes/thermal_diffusion/</link>
+      <pubDate>Mon, 05 Feb 2024 00:51:05 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/notes/thermal_diffusion/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- Correspondence, Superposition, and Quanta</title>
+      <link>https://dev-undergrad.dev/137a/correspondence/</link>
+      <pubDate>Sun, 04 Feb 2024 19:56:55 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/correspondence/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- Correspondence, Superposition, and Quanta</title>
+      <link>https://dev-undergrad.dev/notes/correspondence/</link>
+      <pubDate>Sun, 04 Feb 2024 19:56:55 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/notes/correspondence/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- Deriving Schrodinger&#39;s Equation</title>
+      <link>https://dev-undergrad.dev/137a/schrodinger_derivation/</link>
+      <pubDate>Sun, 04 Feb 2024 16:18:20 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/137a/schrodinger_derivation/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>137A -- Deriving Schrodinger&#39;s Equation</title>
+      <link>https://dev-undergrad.dev/notes/schrodinger_derivation/</link>
+      <pubDate>Sun, 04 Feb 2024 16:18:20 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/notes/schrodinger_derivation/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>5C -- Molecular Effusion &amp; Mean Free Path</title>
+      <link>https://dev-undergrad.dev/5c/effusion/</link>
+      <pubDate>Sat, 03 Feb 2024 17:21:05 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/5c/effusion/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>5C -- Molecular Effusion &amp; Mean Free Path</title>
+      <link>https://dev-undergrad.dev/notes/effusion/</link>
+      <pubDate>Sat, 03 Feb 2024 17:21:05 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/notes/effusion/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>5C -- Kinetic Theory of Gases</title>
+      <link>https://dev-undergrad.dev/5c/kinetic_theory/</link>
+      <pubDate>Fri, 02 Feb 2024 17:21:05 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/5c/kinetic_theory/</guid>
+      <description> </description>
+    </item>
+    <item>
+      <title>5C -- Kinetic Theory of Gases</title>
+      <link>https://dev-undergrad.dev/notes/kinetic_theory/</link>
+      <pubDate>Fri, 02 Feb 2024 17:21:05 -0800</pubDate>
+      <guid>https://dev-undergrad.dev/notes/kinetic_theory/</guid>
+      <description> </description>
+    </item>
+  </channel>
+</rss>

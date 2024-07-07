@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="robots" content="index, follow">
+<meta name="revisit-after" content="15 days">
+<link rel="author" href="/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="deval deliwala"><meta name="description" content="Understanding the Statevector Class &amp; Single-Qubit Operations">
+<meta itemprop="name" content="Ch.1 Single-Qubit States">
+<meta itemprop="description" content="Understanding the Statevector Class &amp; Single-Qubit Operations"><meta itemprop="datePublished" content="2024-05-28T21:08:06-07:00" />
+<meta itemprop="dateModified" content="2024-05-28T21:08:06-07:00" />
+<meta itemprop="wordCount" content="1628">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Ch.1 Single-Qubit States" />
+<meta property="og:description" content="Understanding the Statevector Class &amp; Single-Qubit Operations" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dev-undergrad.dev/qiskit/01_single_systems/" /><meta property="article:section" content="qiskit" />
+<meta property="article:published_time" content="2024-05-28T21:08:06-07:00" />
+<meta property="article:modified_time" content="2024-05-28T21:08:06-07:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ch.1 Single-Qubit States"/>
+<meta name="twitter:description" content="Understanding the Statevector Class &amp; Single-Qubit Operations"/>
+<title>Ch.1 Single-Qubit States</title>
+<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="https://dev-undergrad.dev/css/style.min.d94d17fff76195615e45620612329cd6061ec826914f387a6f846a5ba132dc2d.css" integrity="sha256-2U0X//dhlWFeRWIGEjKc1gYeyCaRTzh6b4RqW6Ey3C0=" crossorigin="anonymous">
+	</head>
+<body id="page">
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://dev-undergrad.dev">dev-undergrad</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="https://dev-undergrad.dev/qiskit/">qiskit</a><a href="https://dev-undergrad.dev/notes/">notes</a><a href="https://dev-undergrad.dev/contents/contents/">contents</a><a href="https://dev-undergrad.dev/research/">research / not currently updated </a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/devdeliw/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://youtube.com/@devdeliw/" target="_blank" rel="noopener me" title="Youtube"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a><a href="https://www.linkedin.com/in/deval-deliwala-554749219/" target="_blank" rel="noopener me" title="Linked"><svg xmlns="http://www.w3.org/2000/svg" class="feather feather-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></span><button id="share-btn" class="hdr-btn" title="Share"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f01_single_systems%2f&amp;text=Ch.1%20Single-Qubit%20States" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f01_single_systems%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Ch.1%20Single-Qubit%20States&amp;body=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f01_single_systems%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f01_single_systems%2f&amp;source=https%3a%2f%2fdev-undergrad.dev&amp;title=Ch.1%20Single-Qubit%20States&amp;summary=Ch.1%20Single-Qubit%20States%2c%20by%20deval%20deliwala%0a%0aUnderstanding%20the%20Statevector%20Class%20%26%20Single-Qubit%20Operations%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;Ch.1 Single-Qubit States&#34;,&#34;https://dev-undergrad.dev/qiskit/01_single_systems/&#34;,&#34;Ch.1 Single-Qubit States, by deval deliwala\n\nUnderstanding the Statevector Class \u0026 Single-Qubit Operations\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://dev-undergrad.dev/qiskit/">qiskit</a></li>
+			<li><a href="https://dev-undergrad.dev/notes/">notes</a></li>
+			<li><a href="https://dev-undergrad.dev/contents/contents/">contents</a></li>
+			<li><a href="https://dev-undergrad.dev/research/">research / not currently updated </a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>Ch.1 Single-Qubit States</h1>
+		<div class="content">
+			<h2 id="preliminary-info">Preliminary Info<a href="#preliminary-info" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>This tutorial series assumes you are already knowledgeable in basic quantum mechanics (state vectors/wave functions), statistics, linear algebra, and Python.</p>
+<p>This series is for those who want to focus on directly learning IBM Qiskit, the Python library. To learn Qiskit along with the necessary math, visit <a href="https://learning.quantum.ibm.com">IBM Quantum Learning</a>.</p>
+<p>Once the necessary Qiskit concepts are introduced, we will delve directly into quantum computing theory, where chapters will become more math-intensive.</p>
+<p>If you do not know the math yet, do not use this tutorial. Understanding the math is essential for understanding how the code works.</p>
+<p>I provide chapters covering the same rough topics as IBM&rsquo;s textbook, with exercises at the end. To fully master Qiskit, it is important to experiment with Qiskit yourself at the end of each chapter to get a better grasp before starting the next one.</p>
+<p>For any typos, issues, or suggestions on this tutorial, please fork the <a href="https://github.com/devdeliw/website/tree/main/content/qiskit">website repo</a> (.md files under <code>/content/qiskit/</code>), or email me. Thanks!</p>
+<p>$$ \sim * \backsim $$</p>
+<h2 id="table-of-contents">Table of Contents<a href="#table-of-contents" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<ol>
+<li><a href="#-1-states-measurements--operations">§ 1. States, Measurements, &amp; Operations</a></li>
+<li><a href="#-2-single-qubit-quantum-gates">§ 2. Single Qubit Quantum Gates</a>
+<ul>
+<li><a href="#--pauli-x-not-operator">Pauli $X$ (NOT) Operator</a></li>
+<li><a href="#--pauli-y-operator">Pauli $Y$ Operator</a></li>
+<li><a href="#--pauli-z-operator">Pauli $Z$ Operator</a></li>
+<li><a href="#--hadamard-operator">Hadamard Operator</a></li>
+<li><a href="#--t-gate">T Gate</a></li>
+</ul>
+</li>
+<li><a href="#-3-quantum-gates-review">§ 3. Quantum Gates Review</a></li>
+<li><a href="#exercises">Exercises</a></li>
+<li><a href="#solutions">Solutions</a></li>
+</ol>
+<p>$$ \backsim * \sim $$</p>
+<p>To begin learning Qiskit, the software used to work with quantum circuits, we
+need to understand how to define and work with qubits.</p>
+<h2 id="-1-states-measurements--operations">§ 1. States, Measurements, &amp; Operations<a href="#-1-states-measurements--operations" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<hr>
+<h3 id="defining-qubit-statevectors">Defining Qubit Statevectors<a href="#defining-qubit-statevectors" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The <code>Statevector</code> class provides functionality for defining and manipulating
+quantum statevectors (or wave functions, if you are a physicist like me).</p>
+<p>Below I import the <code>Statevector</code> class from <code>qiskit.quantum_info</code> and generate three statevectors <code>u</code>, <code>v</code>and <code>w</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.quantum_info <span style="color:#f92672">import</span> Statevector
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> numpy <span style="color:#f92672">import</span> sqrt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>u <span style="color:#f92672">=</span> Statevector([<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>sqrt(<span style="color:#ae81ff">2</span>), <span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>sqrt(<span style="color:#ae81ff">2</span>)])
+</span></span><span style="display:flex;"><span>v <span style="color:#f92672">=</span> Statevector([(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2.0</span>j)<span style="color:#f92672">/</span><span style="color:#ae81ff">3</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">/</span><span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>w <span style="color:#f92672">=</span> Statevector([<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span><span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">/</span><span style="color:#ae81ff">3</span>])
+</span></span></code></pre></div><p>The <code>Statevector</code> class also provides a <code>draw()</code> method for displaying statevectors in $\LaTeX$ format (or just plain text if you prepfer).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>display(u<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;latex&#39;</span>))
+</span></span><span style="display:flex;"><span>display(v<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;latex&#39;</span>))
+</span></span></code></pre></div><p><img src="/screenshot1.png" alt=""></p>
+<p>The <code>Statevector()</code> class uses the computational basis by default: {${|0\rangle, |1\rangle}$}. We can check if these statevectors are valid using the <code>is_valid()</code> method.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Statevector u is valid? </span><span style="color:#e6db74">{</span>u<span style="color:#f92672">.</span>is_valid()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Statevector w is valid? </span><span style="color:#e6db74">{</span>w<span style="color:#f92672">.</span>is_valid()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p><img src="/screenshot.png" alt=""></p>
+<p>A valid statevector is one who&rsquo;s Euclidean norm equals 1. The norm of all the coefficients <em>squared</em> must equate to 1.</p>
+<h3 id="simulating-measurements">Simulating Measurements<a href="#simulating-measurements" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Using the <code>measure()</code> method is one way to measure statevectors in Qiskit.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># creating qubit wave function &amp; displaying it</span>
+</span></span><span style="display:flex;"><span>v <span style="color:#f92672">=</span> Statevector([(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2.0</span>j)<span style="color:#f92672">/</span><span style="color:#ae81ff">3</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">/</span><span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>display(v<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># measuring</span>
+</span></span><span style="display:flex;"><span>v<span style="color:#f92672">.</span>measure()
+</span></span></code></pre></div><p><img src="/screenshot2.png" alt=""></p>
+<p>Since the result of measurements is probabilistic, measuring the above statevector could yield different results.</p>
+<p>Upon measurement, the qubit collapses into either $|0\rangle$ or $|1\rangle$, since we have been using the computational basis {${ |0\rangle, |1\rangle }$} to define our statevectors so far.</p>
+<p><code>v.measure()</code> returns a tuple which stores information on the eigenvalue measured, the collapsed wave function, and the dimension of the wave function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>v<span style="color:#f92672">.</span>measure()[<span style="color:#ae81ff">0</span>] <span style="color:#75715e"># measured eigenvalue</span>
+</span></span><span style="display:flex;"><span>v<span style="color:#f92672">.</span>measure()[<span style="color:#ae81ff">1</span>] <span style="color:#75715e"># collapsed resultant wave function </span>
+</span></span></code></pre></div><p>If we run many iterations of <code>v.measure()</code> we should get a graph that approximates the intrinsic probabilities of each component.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>empty([<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>num_runs <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(num_runs): 
+</span></span><span style="display:flex;"><span>    results <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>append(results, v<span style="color:#f92672">.</span>measure()[<span style="color:#ae81ff">0</span>]) <span style="color:#75715e"># storing resulting eigenvalues</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>num_0 <span style="color:#f92672">=</span> len(np<span style="color:#f92672">.</span>where(results <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;0&#39;</span>)[<span style="color:#ae81ff">0</span>]) <span style="color:#75715e"># # measurements yielding 0</span>
+</span></span><span style="display:flex;"><span>num_1 <span style="color:#f92672">=</span> len(np<span style="color:#f92672">.</span>where(results <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;1&#39;</span>)[<span style="color:#ae81ff">0</span>]) <span style="color:#75715e"># # measurements yielding 1 </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig, axis <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, figsize <span style="color:#f92672">=</span> (<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>hist(results) 
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Results from measuring </span><span style="color:#e6db74">{</span>num_runs<span style="color:#e6db74">}</span><span style="color:#e6db74"> times&#34;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#34;Count&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{:&gt;3}</span><span style="color:#e6db74"> | </span><span style="color:#e6db74">{:&gt;3}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(<span style="color:#e6db74">&#34;# 0&#34;</span>, <span style="color:#e6db74">&#34;# 1&#34;</span>))
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{:&gt;3}</span><span style="color:#e6db74"> | </span><span style="color:#e6db74">{:&gt;3}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(num_0, num_1))
+</span></span></code></pre></div><p><img src="/screenshot3.png" alt=""></p>
+<p>Qiskit provides a <em>simpler</em> and more direct way to visualize probabilities using the <code>plot_histogram()</code> method in <code>qiskit.visualization</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.visualization <span style="color:#f92672">import</span> plot_histogram
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>statistics <span style="color:#f92672">=</span> v<span style="color:#f92672">.</span>sample_counts(<span style="color:#ae81ff">1000</span>) <span style="color:#75715e"># directly make 1000 measurements </span>
+</span></span><span style="display:flex;"><span>                                   <span style="color:#75715e"># and store results in `statistics`</span>
+</span></span><span style="display:flex;"><span>print(statistics) 
+</span></span><span style="display:flex;"><span>plot_histogram(statistics, figsize <span style="color:#f92672">=</span> (<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>)) <span style="color:#75715e"># makes histogram directly</span>
+</span></span></code></pre></div><p><img src="/screenshot4.png" alt=""></p>
+<p>We see the results are almost identical. If we took an infinite number of measurements and collected all the results, the probabilities would match what is predicted by the statevector.</p>
+<p>By now you should start to feel that Qiskit is just plain and simple python. While Qiskit is indeed a Python library, it may seem like a whole new language to many. One just has to understand how to work with all the features of Qiskit within Python. The first step is understanding all the quantum gates/operators.</p>
+<hr>
+<h2 id="-2-single-qubit-quantum-gates">§ 2. Single Qubit Quantum Gates<a href="#-2-single-qubit-quantum-gates" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<hr>
+<p>We start with the Pauli Operators, used to measure the spins of elementary particles. Spin is one way to define qubits in real life (spin up $|\uparrow\rangle$ represents $|0\rangle$, and spin down $|\downarrow\rangle$ represents $|1\rangle$).</p>
+<h3 id="--pauli-x-not-operator">- Pauli $X$ (NOT) Operator<a href="#--pauli-x-not-operator" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The simplest logic gate is the Pauli-$X$ or NOT operator. It inverts the value of a qubit from $0 \rightarrow 1$ or $1 \rightarrow 0$ in the computational basis. Its matrix representation is:</p>
+<p><img src="/screenshot5.png" alt="">
+<em>Figure 1: Pauli $X$ Gate</em></p>
+<p>We can see its effect on the statevector $|0\rangle = v= \left(1 \atop 0\right)$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.quantum_info <span style="color:#f92672">import</span> Operator
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> Operator([[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>]]) <span style="color:#75715e"># Pauli X Operator</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>v_initial <span style="color:#f92672">=</span> Statevector([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>]) <span style="color:#75715e"># Statevector</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Starting Statevector:&#34;</span>)
+</span></span><span style="display:flex;"><span>display(v_initial<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>v_final <span style="color:#f92672">=</span> v_initial<span style="color:#f92672">.</span>evolve(X) <span style="color:#75715e"># applies X on v_i</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Post Pauli-X Operator:&#34;</span>)
+</span></span><span style="display:flex;"><span>display(v_final<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span></code></pre></div><p><img src="/screenshot6.png" alt=""></p>
+<p>If we apply two $X$-gates in succession, the qubit flips back to its
+original state $|0\rangle$.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>v_intermediate <span style="color:#f92672">=</span> v_initial<span style="color:#f92672">.</span>evolve(X)
+</span></span><span style="display:flex;"><span>v_final <span style="color:#f92672">=</span> v_intermediate<span style="color:#f92672">.</span>evolve(X)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Starting statevector:&#34;</span>) 
+</span></span><span style="display:flex;"><span>display(v_initial<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Post 1 Pauli-X Operator:&#34;</span>) 
+</span></span><span style="display:flex;"><span>display(v_intermediate<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Post 2 Pauli-X Operators:&#34;</span>)
+</span></span><span style="display:flex;"><span>display(v_final<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span></code></pre></div><p><img src="/screenshot7.png" alt=""></p>
+<p>Next, let&rsquo;s introduce the other 2 Pauli Operators (besides the identity matrix).</p>
+<h3 id="--pauli-y-operator">- Pauli $Y$ Operator<a href="#--pauli-y-operator" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><img src="/screenshot8.png" alt="">
+<em>Figure 2: Pauli $Y$ Gate</em></p>
+<h3 id="--pauli-z-operator">- Pauli $Z$ Operator<a href="#--pauli-z-operator" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><img src="/screenshot9.png" alt="">
+<em>Figure 3: Pauli $Z$ Gate</em></p>
+<p>The $Z$ gate performs a &ldquo;phase-flip&rdquo; operation: $$ Z|0\rangle = |0\rangle \qquad Z|1\rangle = -|1\rangle $$</p>
+<p>The $Y$ gate performs both a bit-flip and a phase-flip. Phase operations are   described by the matrix</p>
+<p><img src="/screenshot10.png" alt=""></p>
+<p>(i.e., they leave the $|0\rangle$ constant and add a phase to the $|1\rangle$ component). The $Z$ operator is the case of $P_\pi$.</p>
+<p>Other important operators include:</p>
+<h3 id="--hadamard-operator">- Hadamard Operator<a href="#--hadamard-operator" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><img src="/screenshot11.png" alt="">
+<em>Figure 4: Hadamard Gate</em></p>
+<p>The Hadamard Gates puts the standard basis states {\( |0\rangle, |1\rangle \)} into a superposition.</p>
+<p><img src="/s12.png" alt=""></p>
+<p>Applying the same operations to $|+\rangle$ and $|-\rangle$,</p>
+<p>$$ H|+\rangle = |0\rangle $$
+$$ H|-\rangle = |1\rangle $$</p>
+<p>Since $|+\rangle$ and $|-\rangle$ have the same probability distributions for measuring 0 or 1, measuring either provides no information about the initial state. By applying the $H$ gate, we obtain 0 if the initial state was $|+\rangle$ and 1 if it was $|-\rangle$.</p>
+<h3 id="--t-operator">- T Operator<a href="#--t-operator" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>The T gate is equivalent to a $P_{\pi/4}$ phase operation.</p>
+<p><img src="/14.png" alt="">
+<em>Figure 5: T Gate</em></p>
+<hr>
+<h2 id="-3-quantum-gates-review">§ 3. Quantum Gates Review<a href="#-3-quantum-gates-review" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<hr>
+<p>Let&rsquo;s define a quantum circuit using <code>qiskit.QuantumCircuit()</code> and implement
+some gates on $|0\rangle$. We will fully discuss the <code>QuantumCircuit()</code> method in chapter 3.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit <span style="color:#f92672">import</span> QuantumCircuit 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> QuantumCircuit(<span style="color:#ae81ff">1</span>) <span style="color:#75715e"># initialize circuit with 1 qubit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>x(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>y(<span style="color:#ae81ff">0</span>) 
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>z(<span style="color:#ae81ff">0</span>) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>draw()
+</span></span></code></pre></div><p><img src="/15.png" alt=""></p>
+<p>You can also display the circuit more colorfully using the <code>output = 'mpl'</code> parameter:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;mpl&#39;</span>)
+</span></span></code></pre></div><p><img src="/16.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ket0 <span style="color:#f92672">=</span> Statevector([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>v <span style="color:#f92672">=</span> ket0<span style="color:#f92672">.</span>evolve(circuit) <span style="color:#75715e"># Apply the circuit above on the |0&gt; statevector</span>
+</span></span><span style="display:flex;"><span>                         <span style="color:#75715e"># Note the operations are applied sequentially</span>
+</span></span><span style="display:flex;"><span>                         <span style="color:#75715e"># left-to-right</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;The initial vector:&#34;</span>) 
+</span></span><span style="display:flex;"><span>display(ket0<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;The resultant vector:&#34;</span>)
+</span></span><span style="display:flex;"><span>display(v<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span></code></pre></div><p><img src="/17.png" alt=""></p>
+<p>Let&rsquo;s apply the Hadamard Gate $H$ on $|0\rangle$.</p>
+<p>For the following code segments, predict what the output will be based on information provided about the gates.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> QuantumCircuit(<span style="color:#ae81ff">1</span>) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>h(<span style="color:#ae81ff">0</span>) 
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>draw()
+</span></span></code></pre></div><p><img src="/19.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>v <span style="color:#f92672">=</span> ket0<span style="color:#f92672">.</span>evolve(circuit) 
+</span></span><span style="display:flex;"><span>v<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>)
+</span></span></code></pre></div><p><img src="/20.png" alt=""></p>
+<p>Applying the Hadamard Gate on <code>v</code> = $|+\rangle$ (the same as applying two Hadamard Gates on <code>ket0</code> = $|0\rangle$:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>w <span style="color:#f92672">=</span> v<span style="color:#f92672">.</span>evolve(circuit) <span style="color:#75715e"># Applying the same circuit on v </span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#75715e"># (a second hadamard gate on |0&gt;)</span>
+</span></span><span style="display:flex;"><span>w<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>)
+</span></span></code></pre></div><p><img src="/21.png" alt=""></p>
+<p>We get back the original statevector $|0\rangle$.</p>
+<p>Now let&rsquo;s build a random circuit with a bunch of gates and apply it on
+$|0\rangle$.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> QuantumCircuit(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>h(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>t(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>h(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>t(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>z(<span style="color:#ae81ff">0</span>) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>draw()
+</span></span></code></pre></div><p><img src="/22.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ket0 <span style="color:#f92672">=</span> Statevector([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>v <span style="color:#f92672">=</span> ket0<span style="color:#f92672">.</span>evolve(circuit)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>v<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>)
+</span></span></code></pre></div><p><img src="/23.png" alt=""></p>
+<p>We get a complex statevector. Let&rsquo;s check its probability distribution</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>statistics <span style="color:#f92672">=</span> v<span style="color:#f92672">.</span>sample_counts(<span style="color:#ae81ff">4000</span>)
+</span></span><span style="display:flex;"><span>plot_histogram(statistics)
+</span></span></code></pre></div><p><img src="/24.png" alt=""></p>
+<hr>
+<h2 id="exercises">Exercises<a href="#exercises" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<blockquote>
+<ol>
+<li>
+<p>Plot the probability distribution from measuring the $|+\rangle$ and
+$|-\rangle$ statevectors.</p>
+</li>
+<li>
+<p>Perform a Hadamard Gate on $|0\rangle$ twice. What is the final statevector?</p>
+</li>
+<li>
+<p>Perform a Phase $P_\frac{\pi}{3}$ operation on $|1\rangle$. What is the final
+statevector?</p>
+</li>
+</ol>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+</blockquote>
+<h2 id="solutions">Solutions<a href="#solutions" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>First attempt the problems!</p>
+<h3 id="problem-1">Problem 1.<a href="#problem-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.quantum_info <span style="color:#f92672">import</span> Statevector
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit <span style="color:#f92672">import</span> QuantumCircuit
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># We can generate the plus and minus vectors via two different ways. </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1. Implementing an H gate on the |0&gt; and |1&gt; vectors, respectively</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. Calling directly from Statevector.from_label(&#34;+&#34;) and .from_label(&#34;-&#34;) </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Method 1 ---------------</span>
+</span></span><span style="display:flex;"><span>ket0 <span style="color:#f92672">=</span> Statevector([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>]) <span style="color:#75715e"># We could also say ket0 = Statevector.from_label(&#34;0&#34;)</span>
+</span></span><span style="display:flex;"><span>ket1 <span style="color:#f92672">=</span> Statevector([<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>]) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit_with_a_hadamard_gate <span style="color:#f92672">=</span> QuantumCircuit(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>circuit_with_a_hadamard_gate<span style="color:#f92672">.</span>h(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>circuit_with_a_hadamard_gate<span style="color:#f92672">.</span>draw()
+</span></span></code></pre></div><p><img src="/25.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plus <span style="color:#f92672">=</span> ket0<span style="color:#f92672">.</span>evolve(circuit_with_a_hadamard_gate)
+</span></span><span style="display:flex;"><span>minus <span style="color:#f92672">=</span> ket1<span style="color:#f92672">.</span>evolve(circuit_with_a_hadamard_gate)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>display(plus<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span><span style="display:flex;"><span>display(minus<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span></code></pre></div><p><img src="/26.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Method 2 -----------------------</span>
+</span></span><span style="display:flex;"><span>plus <span style="color:#f92672">=</span> Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#34;+&#34;</span>)
+</span></span><span style="display:flex;"><span>minus <span style="color:#f92672">=</span> Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#34;-&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>display(plus<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span><span style="display:flex;"><span>display(minus<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span></code></pre></div><p><img src="/27.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.visualization <span style="color:#f92672">import</span> plot_histogram
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plus_stats <span style="color:#f92672">=</span> plus<span style="color:#f92672">.</span>sample_counts(<span style="color:#ae81ff">1000</span>)
+</span></span><span style="display:flex;"><span>minus_stats <span style="color:#f92672">=</span> minus<span style="color:#f92672">.</span>sample_counts(<span style="color:#ae81ff">1000</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;|+&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>display(plot_histogram(plus_stats))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;|-&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>display(plot_histogram(minus_stats))
+</span></span></code></pre></div><p><img src="/28.png" alt=""></p>
+<p>We see the probabilities for measuring 0 and 1 are roughly equal for both $|+\rangle$ and $|-\rangle$ &ndash; as they should be.</p>
+<h3 id="problem-2">Problem 2.<a href="#problem-2" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Let&rsquo;s define a <code>QuantumCircuit</code> with one Hadamard Gate. This way we do not
+have to define the Hadamard matrix with the <code>Operator()</code> method.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.quantum_info <span style="color:#f92672">import</span> Statevector
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit <span style="color:#f92672">import</span> QuantumCircuit
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> QuantumCircuit(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>h(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>draw()
+</span></span></code></pre></div><p><img src="/29.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ket0 <span style="color:#f92672">=</span> Statevector([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>]) <span style="color:#75715e"># or you could call ket0 = Statevector.from_label(&#34;0&#34;)</span>
+</span></span><span style="display:flex;"><span>ket0<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;latex&#39;</span>)
+</span></span></code></pre></div><p><img src="/30.png" alt=""></p>
+<p>Let&rsquo;s implement the circuit <em>once</em> (one Hadamard gate) on $|0\rangle$ and see the result.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>display(ket0<span style="color:#f92672">.</span>evolve(circuit)<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span></code></pre></div><p><img src="/31.png" alt=""></p>
+<p>We get the $|+\rangle$ as expected. Now let&rsquo;s run this new statevector back through the circuit. (This is the same as applying a Hadamard gate twice on $|0\rangle$).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plus <span style="color:#f92672">=</span> ket0<span style="color:#f92672">.</span>evolve(circuit)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>display(plus<span style="color:#f92672">.</span>evolve(circuit)<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span></code></pre></div><p><img src="/32.png" alt=""></p>
+<p>We see that applying two Hadamard gates to the $|0\rangle$ statevector re-yields $|0\rangle$.</p>
+<h3 id="problem-3">Problem 3.<a href="#problem-3" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Recall that a <em>Phase</em> operation is given by</p>
+<p><img src="/33.png" alt=""></p>
+<p>Therefore, $P_{\pi/3}$</p>
+<p><img src="/34.png" alt=""></p>
+<p>Let&rsquo;s define this operator in Qiskit and see its effect on $|1\rangle$.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.quantum_info <span style="color:#f92672">import</span> Operator
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> math
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ket1 <span style="color:#f92672">=</span> Statevector([<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>]) <span style="color:#75715e"># or you could call Statevector.from_label(&#34;1&#34;)</span>
+</span></span><span style="display:flex;"><span>PhasePi3 <span style="color:#f92672">=</span> Operator([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>], [<span style="color:#ae81ff">0</span>, math<span style="color:#f92672">.</span>cos(math<span style="color:#f92672">.</span>pi <span style="color:#f92672">/</span> <span style="color:#ae81ff">3</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>j <span style="color:#f92672">*</span> math<span style="color:#f92672">.</span>sin(math<span style="color:#f92672">.</span>pi <span style="color:#f92672">/</span> <span style="color:#ae81ff">3</span>)]]) <span style="color:#75715e"># using Euler&#39;s formula</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>display(ket1<span style="color:#f92672">.</span>evolve(PhasePi3)<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span></code></pre></div><p><img src="/35.png" alt=""></p>
+<hr>
+<p><a href="https://dev-undergrad.dev/qiskit/02_multi_qubit/">Next &ndash; Multi-Qubit States</a></p>
+
+		</div>
+	</main>
+
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+  <p>
+    &copy; 2024 <a href="https://dev-undergrad.dev/">deval deliwala</a>
+    &#183;  <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+    &#183; Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>
+    &#183; Theme <a href="https://github.com/1bl4z3r/hermit-V2" target="_blank" rel="noopener">Hermit-V2</a>
+    
+    &#183; <a href="https://dev-undergrad.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+    
+  </p>
+
+</footer>
+
+
+<script async src="https://dev-undergrad.dev/js/bundle.min.038214de9d568246fadcfeb06c69349925de3209f332ec123861b6aa031d63c6.js" integrity="sha256-A4IU3p1Wgkb63P6wbGk0mSXeMgnzMuwSOGG2qgMdY8Y=" crossorigin="anonymous"></script><script async src="https://dev-undergrad.dev/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script>
+    <script type="text/javascript" async src="https://polyfill.io/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+    
+    
+    <script type="text/javascript" id="MathJax-script" async src="https://dev-undergrad.dev/js/mathjaxs.min.4b88b5f9e9f39bf5f45b77eb5cf3fb4f929d6a58f92f06f780397ad8ee2a3c6c.js" integrity="sha256-S4i1+enzm/X0W3frXPP7T5Kdalj5Lwb3gDl62O4qPGw=" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

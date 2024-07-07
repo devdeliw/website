@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="robots" content="index, follow">
+<meta name="revisit-after" content="15 days">
+<link rel="author" href="/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="deval deliwala"><meta name="description" content="The CHSH Game">
+<meta itemprop="name" content="Ch.6 The CHSH Game">
+<meta itemprop="description" content="The CHSH Game"><meta itemprop="datePublished" content="2024-06-04T22:52:33-07:00" />
+<meta itemprop="dateModified" content="2024-06-04T22:52:33-07:00" />
+<meta itemprop="wordCount" content="1448">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Ch.6 The CHSH Game" />
+<meta property="og:description" content="The CHSH Game" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dev-undergrad.dev/qiskit/06_chsh_game/" /><meta property="article:section" content="qiskit" />
+<meta property="article:published_time" content="2024-06-04T22:52:33-07:00" />
+<meta property="article:modified_time" content="2024-06-04T22:52:33-07:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ch.6 The CHSH Game"/>
+<meta name="twitter:description" content="The CHSH Game"/>
+<title>Ch.6 The CHSH Game</title>
+<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="https://dev-undergrad.dev/css/style.min.d94d17fff76195615e45620612329cd6061ec826914f387a6f846a5ba132dc2d.css" integrity="sha256-2U0X//dhlWFeRWIGEjKc1gYeyCaRTzh6b4RqW6Ey3C0=" crossorigin="anonymous">
+	</head>
+<body id="page">
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://dev-undergrad.dev">dev-undergrad</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="https://dev-undergrad.dev/qiskit/">qiskit</a><a href="https://dev-undergrad.dev/notes/">notes</a><a href="https://dev-undergrad.dev/contents/contents/">contents</a><a href="https://dev-undergrad.dev/research/">research / not currently updated </a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/devdeliw/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://youtube.com/@devdeliw/" target="_blank" rel="noopener me" title="Youtube"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a><a href="https://www.linkedin.com/in/deval-deliwala-554749219/" target="_blank" rel="noopener me" title="Linked"><svg xmlns="http://www.w3.org/2000/svg" class="feather feather-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></span><button id="share-btn" class="hdr-btn" title="Share"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f06_chsh_game%2f&amp;text=Ch.6%20The%20CHSH%20Game" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f06_chsh_game%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Ch.6%20The%20CHSH%20Game&amp;body=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f06_chsh_game%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f06_chsh_game%2f&amp;source=https%3a%2f%2fdev-undergrad.dev&amp;title=Ch.6%20The%20CHSH%20Game&amp;summary=Ch.6%20The%20CHSH%20Game%2c%20by%20deval%20deliwala%0a%0aThe%20CHSH%20Game%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;Ch.6 The CHSH Game&#34;,&#34;https://dev-undergrad.dev/qiskit/06_chsh_game/&#34;,&#34;Ch.6 The CHSH Game, by deval deliwala\n\nThe CHSH Game\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://dev-undergrad.dev/qiskit/">qiskit</a></li>
+			<li><a href="https://dev-undergrad.dev/notes/">notes</a></li>
+			<li><a href="https://dev-undergrad.dev/contents/contents/">contents</a></li>
+			<li><a href="https://dev-undergrad.dev/research/">research / not currently updated </a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>Ch.6 The CHSH Game</h1>
+		<div class="content">
+			<p>$$ \sim * \backsim $$</p>
+<h2 id="table-of-contents">Table of Contents<a href="#table-of-contents" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<ol>
+<li><a href="#-15-nonlocal-games">§ 15. Nonlocal Games </a></li>
+<li><a href="#-16-the-chsh-game">§ 16. The CHSH Game</a></li>
+<li><a href="#exercises">Exercises</a></li>
+<li><a href="#solutions">Solutions</a></li>
+</ol>
+<p>$$ \backsim * \sim $$</p>
+<h2 id="-15-nonlocal-games">§ 15. Nonlocal Games<a href="#-15-nonlocal-games" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<hr>
+<p>The CHSH game falls within the class of <em>nonlocal</em> games.</p>
+<p>The game is a <em>cooperative</em> game where Alice and Bob work together to achieve an outcome. There also exists a <em>referee</em> who ensures Alice and Bob abide by a strict set of guidelines.</p>
+<p>Nonlocality implies Alice and Bob are outside of each other&rsquo;s light cones. That is, it is <em>impossible</em> to communicate.</p>
+<p>The referee first asks Alice and Bob a question. The letter $x$ refers to Alice&rsquo;s question and the letter $y$ refers to Bob&rsquo;s question. In the CHSH game we think of $x$ and $y$ as being classical bits.</p>
+<p>The referee uses <em>randomness</em> to select these questions. There is some probability $p(x, y)$ associated with each possible pair $(x, y)$ of questions. Everyone in the game knows these probabilities, but no one knows <em>exactly</em> which pair ($x, y$) will be chosen until the game begins and they can&rsquo;t communicate.</p>
+<p>When the game begins, Alice and Bob receive their questions. They provide answeres $a$ and $b$, respectively. Again, these are classical bits in the CHSH game.</p>
+<p>At this point the referee decides whether Alice and Bob <em>win</em> or <em>lose</em> depending on whether or not the pair of answers ($a, b$) is deemed correct for the pair of questions $(x, y)$ according to the rules. Different rules mean different games; the rules for the CHSH game will be described below.</p>
+<p>The following diagram illustrates the interactions in nonlocal games.</p>
+<p><img src="/104.png" alt=""></p>
+<p>Again, Alice and Bob do not know which questions will be asked, and what each other&rsquo;s responses are. This is what makes the nonlocal game a <em>game</em>.</p>
+<hr>
+<h2 id="-16-the-chsh-game">§ 16. The CHSH Game<a href="#-16-the-chsh-game" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<hr>
+<p>The letters CHSH refer to the authors &ndash; John Clauser, Michael Horne, Abner Shimony, and Richard Holt who presented the idea in their 1969 paper. (I actually had the pleasure of attending a lecture by John Clauser &ndash; interesting guy.)</p>
+<p>Here is the rigid description of the CHSH game. Again, $x$ is Alice&rsquo;s question, $y$ is Bob&rsquo;s question, $a$ is Alice&rsquo;s answer, and $b$ is Bob&rsquo;s answer:</p>
+<ol>
+<li>$x, y, a, b \in$ {0, 1} are all classical bits.</li>
+<li>The referee chooses the questions $(x, y)$ at random. Each of the four possibilities (0,0), (0,1), (1,0), (1,1) are selected uniformly with probability $\frac{1}{4}$.</li>
+<li>The answers $(a, b)$ <em>win</em> for the questions $(x, y)$ if and only if $a \oplus b = x \wedge y$.</li>
+</ol>
+<p>In logic the $\wedge$ operator is the same as <code>and</code> in python. That is, $x \wedge y$ is the same as <code>x and y</code>. If either $x$ or $y$ is 0, $x \wedge y$ is false / 0.</p>
+<p>The $\oplus$ operator represents the exclusive-or (XOR) operation which returns True if $x$ and $y$ are different, and False if they are the same.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">(<em>x, y</em>)</th>
+<th style="text-align:center">win</th>
+<th style="text-align:center">lose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">(0, 0)</td>
+<td style="text-align:center">a = b</td>
+<td style="text-align:center">a ≠ b</td>
+</tr>
+<tr>
+<td style="text-align:center">(0, 1)</td>
+<td style="text-align:center">a = b</td>
+<td style="text-align:center">a ≠ b</td>
+</tr>
+<tr>
+<td style="text-align:center">(1, 0)</td>
+<td style="text-align:center">a = b</td>
+<td style="text-align:center">a ≠ b</td>
+</tr>
+<tr>
+<td style="text-align:center">(1, 1)</td>
+<td style="text-align:center">a ≠ b</td>
+<td style="text-align:center">a = b</td>
+</tr>
+</tbody>
+</table>
+<p>Check to make sure you understand everything so far.</p>
+<h3 id="limitations-of-classical-strategies">Limitations of Classical Strategies<a href="#limitations-of-classical-strategies" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Let&rsquo;s consider the classical strategies for Alice and Bob in the CHSH game.</p>
+<h4 id="deterministic-strategies">Deterministic Strategies<a href="#deterministic-strategies" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p><em>Deterministic</em> strategies are the most intuitive. Alice&rsquo;s answer $a$ is a function $a(x)$ of the question $x$ she recieves, and likewise for Bob.</p>
+<p>No deterministic strategy can win the CHSH game every time. You could brute force show this by going one-by-one through all possible functions $a(x)$ and $b(y)$ that give Alice and Bob their answer for each pair $(x, y)$.</p>
+<p>We can also derive this fact analytically:</p>
+<ul>
+<li>
+<p>If Alice and Bob&rsquo;s strategy wins for $(x, y) = (0, 0)$, then $a(0)$ must equal $b(0)$</p>
+</li>
+<li>
+<p>If Alice and Bob&rsquo;s strategy wins for $(x, y) = (0, 1)$, then $a(0)$ must equal $b(1)$</p>
+</li>
+<li>
+<p>If Alice and Bob&rsquo;s strategy wins for $(x, y) = (1, 0)$, then $a(1)$ must equal $b(0)$</p>
+</li>
+</ul>
+<p>If their strategy wins for all three cases, we have</p>
+<p>$$ b(1) = b(0) = a(1) = a(0) $$</p>
+<p>Which would make Alice and Bob lose in the final case $(x, y) = (1, 1)$ which requires that $a(1) \neq b(1)$. Therefore, the <em>maximum</em> probability for Alice and Bob to win a given $(x, y)$ is 3/4.</p>
+<h4 id="probabilisic-strategies">Probabilisic Strategies<a href="#probabilisic-strategies" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Perhaps including the possibility of Alice&rsquo;s and Bob&rsquo;s answers having a <em>shared randomness</em>, correlation could help? No.</p>
+<p>Every probabilistic strategy is essentially just a random mix of deterministic strategies.</p>
+<p>Since a random mix cannot surpass the maximum success probability of a deterministic strategy, we conclude that any classical strategy has a maximum probability of 3/4 for Alice and Bob to win.</p>
+<h3 id="chsh-game-strategy">CHSH Game Strategy<a href="#chsh-game-strategy" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>What if Alice and Bob shared an entangled quantum state which they prepared prior to the game? Could that improve their chances above 3/4?</p>
+<p><img src="/105.png" alt=""></p>
+<p>Yes. Let&rsquo;s see how entanglement helps.</p>
+<h4 id="required-knowledge">Required knowledge<a href="#required-knowledge" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h5 id="statevector-definition">Statevector Definition<a href="#statevector-definition" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>Let&rsquo;s define an arbitrary qubit statevector $|\psi_\theta\rangle, for each real number $\theta$.</p>
+<p>$$ |\psi_\theta\rangle = \cos\theta |0\rangle + \sin\theta |1\rangle $$. Therefore, some simple examples:</p>
+<p>$$
+\begin{align}
+|\psi_0\rangle &amp;= |0\rangle \\
+|\psi_{\pi / 2} &amp;= |1\rangle \\
+|\psi_{\pi / 4} &amp;= |+\rangle \\
+|\psi_{-\pi / 4} &amp;= |-\rangle
+\end{align}
+$$</p>
+<h5 id="inner-product">Inner Product<a href="#inner-product" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>Looking at the general formula for $|\psi_\theta\rangle$, we see the inner product between any two of these statevectors has the formula:</p>
+<p>$$ \langle \psi_\alpha | \psi_\beta \rangle = \cos\alpha \cos \beta + \sin\alpha \sin\beta = \cos (\alpha - \beta) $$</p>
+<p>This result follows from the trigonometric angle addition formula. Thus, the inner product is equal to the cosine of the angle between the two state vectors.</p>
+<p>Now let&rsquo;s compute the inner product of the <em>tensor product</em> of any two of these vectors with the $|\phi^+\rangle$ state:</p>
+<p>$$ \langle \psi_\alpha \otimes \psi_\beta| \phi^+\rangle = \frac{1}{\sqrt{2}}(\cos\alpha \cos \beta + \sin\alpha \sin\beta) = \frac{1}{\sqrt{2}}\cos(\alpha - \beta) $$</p>
+<p>We get a similar expression, just with a factor of $\sqrt{2}$ in the denominator. The significance of this inner product will become clear shortly.</p>
+<h5 id="unitary-matrix">Unitary Matrix<a href="#unitary-matrix" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>Next, let&rsquo;s define a unitary matrix $U_\theta$ for each angle $\theta$ as follows:</p>
+<p>$$ U_\theta = |0\rangle \langle \psi_\theta | + |1\rangle \langle \psi_{\theta + \pi/2} | $$</p>
+<p>This operation essentially maps $|\psi_\theta\rangle to $|0\rangle$ and $|\psi_{\theta + \pi/2}\rangle$ to $|1\rangle$. Taking the inner product of $U_\theta$, we find that</p>
+<p>$$
+\begin{align}
+U_\theta U_\theta^\dagger &amp;= (|0\rangle\langle \psi_\theta| + |1\rangle \langle \psi_{\theta + \pi/2} |)(|\psi_\theta\rangle\langle 0 | + |\psi_{\theta + \pi/2}\rangle\langle 1|)\\
+&amp;= |0\rangle\langle \psi_\theta | \psi_\theta \rangle \langle 0 | + |0\rangle\langle \psi_\theta | \psi_{\theta + \pi/2}\rangle \langle 1 | + |1\rangle \langle \psi_{\theta + \pi/2} | \psi_\theta \rangle \langle 0 | + |1\rangle \langle \psi_{\theta + \pi/2} | \psi_{\theta + \pi/2} \rangle \langle 1 \rangle \\
+&amp;= |0\rangle\langle 0 | + |1\rangle \langle 1| \\
+&amp;= \mathbb{1}
+\end{align}
+$$</p>
+<p>The matrix representation of $U_\theta$:</p>
+<p><img src="/108.png" alt=""></p>
+<p>Which is a <em>rotation matrix</em> that rotates 2d vectors by an angle of $-\theta$ about the origin. Using the standard convention for defining rotations, we have $U_\theta = R_y(-2\theta)$, where</p>
+<p><img src="/109.png" alt=""></p>
+<p>Is a rotation matrix about the $y$-axis.</p>
+<h4 id="strategy-description">Strategy description<a href="#strategy-description" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Now we can describe the quantum strategy.</p>
+<ul>
+<li>Alice and Bob start the game sharing and e-bit. Alice holds qubit $A$, Bob holds qubit $B$, and together the two qubits $(A, B)$ are in the $|\psi^+\rangle$ state.</li>
+</ul>
+<h5 id="alices-operations">Alice&rsquo;s Operations<a href="#alices-operations" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>$$&mdash;\sim*\backsim&mdash;$$</p>
+<p>Alice&rsquo;s actions are as follows:</p>
+<ul>
+<li>If her question is $x = 0$, she applies $U_0$ to her qubit $A$.</li>
+<li>If her question is $x = 1$, she applies $U_{\pi/4}$ to her qubit $A$.</li>
+</ul>
+<p>$$
+\begin{cases}
+U_0 &amp;\qquad x = 0 \\
+U_{\pi/4} &amp;\qquad x = 1
+\end{cases}
+$$</p>
+<p>After she applies this operation, she measures $A$ with a standard basis measurement and sets her answer $a$ to be the measurement outcome.</p>
+<h5 id="bobs-operations">Bob&rsquo;s Operations<a href="#bobs-operations" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h5>
+<p>$$&mdash;\sim*\backsim&mdash;$$</p>
+<p>Bob&rsquo;s actions are as follows:</p>
+<ul>
+<li>If his question is $y = 0$, he applies $U_{\pi/8}$ to his qubit $B$.</li>
+<li>If his question is $y = 1$, he applies $U_{-\pi/8}$ to his qubit $B$.</li>
+</ul>
+<p>$$
+\begin{cases}
+U_{\pi/8} &amp;\qquad y = 0 \\
+U_{-\pi/8} &amp;\qquad y = 1
+\end{cases}
+$$</p>
+<p>After he applies this operation, he measures $B$ with a standard basis measurement and sets his answer $b$ to the measurement outcome.</p>
+<p>$$&mdash;\sim*\backsim&mdash;$$</p>
+<p>Here is the quantum circuit diagram illustrating the strategy:</p>
+<p><img src="/110.png" alt=""></p>
+<p>In the diagram, we see two ordinary controlled gates where the control is represented by a filled-in circle. Additionally, there are two other controlled gates with an open circle. The open circle indicates a different type of control gate: one where the gate is performed when the control qubit is in the $|0\rangle$ state, the inverse of an ordinary controlled gate.</p>
+<p>Now let&rsquo;s go through the analysis case-by-case.</p>
+<h3 id="analysis">Analysis<a href="#analysis" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ul>
+<li>Case 1: $(x, y) = (0, 0)$.</li>
+</ul>
+
+		</div>
+	</main>
+
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+  <p>
+    &copy; 2024 <a href="https://dev-undergrad.dev/">deval deliwala</a>
+    &#183;  <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+    &#183; Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>
+    &#183; Theme <a href="https://github.com/1bl4z3r/hermit-V2" target="_blank" rel="noopener">Hermit-V2</a>
+    
+    &#183; <a href="https://dev-undergrad.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+    
+  </p>
+
+</footer>
+
+
+<script async src="https://dev-undergrad.dev/js/bundle.min.038214de9d568246fadcfeb06c69349925de3209f332ec123861b6aa031d63c6.js" integrity="sha256-A4IU3p1Wgkb63P6wbGk0mSXeMgnzMuwSOGG2qgMdY8Y=" crossorigin="anonymous"></script><script async src="https://dev-undergrad.dev/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script>
+    <script type="text/javascript" async src="https://polyfill.io/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+    
+    
+    <script type="text/javascript" id="MathJax-script" async src="https://dev-undergrad.dev/js/mathjaxs.min.4b88b5f9e9f39bf5f45b77eb5cf3fb4f929d6a58f92f06f780397ad8ee2a3c6c.js" integrity="sha256-S4i1+enzm/X0W3frXPP7T5Kdalj5Lwb3gDl62O4qPGw=" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

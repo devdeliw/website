@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="robots" content="index, follow">
+<meta name="revisit-after" content="15 days">
+<link rel="author" href="/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="deval deliwala"><meta name="description" content="Generating Quantum Circuits using qiskit.QuantumCircuit()">
+<meta itemprop="name" content="Ch.3 Quantum Circuits">
+<meta itemprop="description" content="Generating Quantum Circuits using qiskit.QuantumCircuit()"><meta itemprop="datePublished" content="2024-05-29T18:49:50-07:00" />
+<meta itemprop="dateModified" content="2024-05-29T18:49:50-07:00" />
+<meta itemprop="wordCount" content="1401">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Ch.3 Quantum Circuits" />
+<meta property="og:description" content="Generating Quantum Circuits using qiskit.QuantumCircuit()" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dev-undergrad.dev/qiskit/03_quantum_circuits/" /><meta property="article:section" content="qiskit" />
+<meta property="article:published_time" content="2024-05-29T18:49:50-07:00" />
+<meta property="article:modified_time" content="2024-05-29T18:49:50-07:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ch.3 Quantum Circuits"/>
+<meta name="twitter:description" content="Generating Quantum Circuits using qiskit.QuantumCircuit()"/>
+<title>Ch.3 Quantum Circuits</title>
+<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="https://dev-undergrad.dev/css/style.min.d94d17fff76195615e45620612329cd6061ec826914f387a6f846a5ba132dc2d.css" integrity="sha256-2U0X//dhlWFeRWIGEjKc1gYeyCaRTzh6b4RqW6Ey3C0=" crossorigin="anonymous">
+	</head>
+<body id="page">
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://dev-undergrad.dev">dev-undergrad</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="https://dev-undergrad.dev/qiskit/">qiskit</a><a href="https://dev-undergrad.dev/notes/">notes</a><a href="https://dev-undergrad.dev/contents/contents/">contents</a><a href="https://dev-undergrad.dev/research/">research / not currently updated </a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/devdeliw/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://youtube.com/@devdeliw/" target="_blank" rel="noopener me" title="Youtube"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a><a href="https://www.linkedin.com/in/deval-deliwala-554749219/" target="_blank" rel="noopener me" title="Linked"><svg xmlns="http://www.w3.org/2000/svg" class="feather feather-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></span><button id="share-btn" class="hdr-btn" title="Share"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f03_quantum_circuits%2f&amp;text=Ch.3%20Quantum%20Circuits" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f03_quantum_circuits%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=Ch.3%20Quantum%20Circuits&amp;body=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f03_quantum_circuits%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fdev-undergrad.dev%2fqiskit%2f03_quantum_circuits%2f&amp;source=https%3a%2f%2fdev-undergrad.dev&amp;title=Ch.3%20Quantum%20Circuits&amp;summary=Ch.3%20Quantum%20Circuits%2c%20by%20deval%20deliwala%0a%0aGenerating%20Quantum%20Circuits%20using%20qiskit.QuantumCircuit%28%29%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;Ch.3 Quantum Circuits&#34;,&#34;https://dev-undergrad.dev/qiskit/03_quantum_circuits/&#34;,&#34;Ch.3 Quantum Circuits, by deval deliwala\n\nGenerating Quantum Circuits using qiskit.QuantumCircuit()\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://dev-undergrad.dev/qiskit/">qiskit</a></li>
+			<li><a href="https://dev-undergrad.dev/notes/">notes</a></li>
+			<li><a href="https://dev-undergrad.dev/contents/contents/">contents</a></li>
+			<li><a href="https://dev-undergrad.dev/research/">research / not currently updated </a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>Ch.3 Quantum Circuits</h1>
+		<div class="content">
+			<p>$$ \sim * \backsim $$</p>
+<h2 id="table-of-contents">Table of Contents<a href="#table-of-contents" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<ol>
+<li><a href="#-7-building-quantum-circuits">§ 7. Building Quantum Circuits</a>
+<ul>
+<li><a href="#classical-bits">Classical Bits</a></li>
+<li><a href="#sampler-primitive">Sampler Primitive</a></li>
+</ul>
+</li>
+<li><a href="#-8-quantum-circuits-review">§ 8. Quantum Circuits Review</a></li>
+<li><a href="#exercises">Exercises</a></li>
+<li><a href="#solutions">Solutions</a></li>
+</ol>
+<p>$$ \backsim * \sim $$</p>
+<p>So far, we&rsquo;ve discussed working with single-qubit and multi-qubit states. We&rsquo;ve also covered various operators and used the <code>.evolve()</code> method to apply these operators to statevectors.</p>
+<p>Now it&rsquo;s time to start building our own Quantum Circuits. These circuits allow us to visualize the change of information and trace the evolution of qubits through a series of quantum gates.</p>
+<p>First, let&rsquo;s the essential tools for working with quantum circuits:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit <span style="color:#f92672">import</span> QuantumCircuit, QuantumRegister, ClassicalRegister
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.primitives <span style="color:#f92672">import</span> Sampler
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.visualization <span style="color:#f92672">import</span> plot_histogram
+</span></span></code></pre></div><hr>
+<h2 id="-7-building-quantum-circuits">§ 7. Building Quantum Circuits<a href="#-7-building-quantum-circuits" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<hr>
+<p>We build a circuit using the <code>QuantumCircuit()</code> method.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> QuantumCircuit(<span style="color:#ae81ff">1</span>) <span style="color:#75715e"># Quantum Circuit with 1 Qubit</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>h(<span style="color:#ae81ff">0</span>) <span style="color:#75715e"># Apply a Hadamard Gate</span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>s(<span style="color:#ae81ff">0</span>) <span style="color:#75715e"># Apply an S Gate</span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>h(<span style="color:#ae81ff">0</span>) <span style="color:#75715e"># Apply another Hadamard Gate</span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>t(<span style="color:#ae81ff">0</span>) <span style="color:#75715e"># Apply a T gate</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>display(circuit<span style="color:#f92672">.</span>draw()) <span style="color:#75715e"># Gates are performed left-to-right</span>
+</span></span></code></pre></div><p><img src="/58.png" alt=""></p>
+<p>By default, the <code>QuantumCircuit()</code> method initializes every qubit to the $|0\rangle$ state.</p>
+<p>In Qiskit, the <em>topmost</em> qubit in a circuit diagram has index 0 and corresponds to the <em>rightmost</em> position in a tuple of qubits. Qiskit&rsquo;s default names for the qubits in an $n$-qubit circuit are represented by the $n$-tuple $(q_{n-1}, \cdots, q_0)$, with $q_0$ being the qubit on top and $q_{n-1}$ on the bottom in quantum circuit diagrams.</p>
+<p>We can also create a 2-qubit gate as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Generating Identical 2-qubit circuits </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># circuit_default has default q_0, q_1 names</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># circuit_named allows us to define the names of the qubit using `QuantumRegister()`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit_default <span style="color:#f92672">=</span> QuantumCircuit(<span style="color:#ae81ff">2</span>) <span style="color:#75715e"># 2 Qubits</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit_default<span style="color:#f92672">.</span>h(<span style="color:#ae81ff">0</span>) <span style="color:#75715e"># Hadamard Gate on the topmost qubit</span>
+</span></span><span style="display:flex;"><span>circuit_default<span style="color:#f92672">.</span>cx(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>) <span style="color:#75715e"># CNOT gate (control, target)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>display(circuit_default<span style="color:#f92672">.</span>draw())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#-----------------------------#</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> QuantumRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;X&#34;</span>)
+</span></span><span style="display:flex;"><span>Y <span style="color:#f92672">=</span> QuantumRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;Y&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit_named <span style="color:#f92672">=</span> QuantumCircuit(X, Y)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit_named<span style="color:#f92672">.</span>h(X)
+</span></span><span style="display:flex;"><span>circuit_named<span style="color:#f92672">.</span>cx(X, Y)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>display(circuit_named<span style="color:#f92672">.</span>draw())
+</span></span></code></pre></div><p><img src="/59.png" alt=""></p>
+<p>We have created two identical circuits, one with default names and the other with custom names. Both circuits contain a Hadamard Gate on the first qubit and a CNOT gate with the first qubit as the control and the second as the target.</p>
+<p>Let&rsquo;s see the action of the above circuit on the standard computational basis states for a 2-qubit system:</p>
+<p>$$|00\rangle \quad |01\rangle \quad |10\rangle \quad |11\rangle$$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>zero <span style="color:#f92672">=</span> Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#34;0&#34;</span>)
+</span></span><span style="display:flex;"><span>one <span style="color:#f92672">=</span> Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#34;1&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>standard_basis_states <span style="color:#f92672">=</span> [zero<span style="color:#f92672">.</span>tensor(zero), zero<span style="color:#f92672">.</span>tensor(one), 
+</span></span><span style="display:flex;"><span>                         one<span style="color:#f92672">.</span>tensor(zero), one<span style="color:#f92672">.</span>tensor(one)]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>names <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;|00&gt;&#34;</span>, <span style="color:#e6db74">&#34;|01&gt;&#34;</span>, <span style="color:#e6db74">&#34;|10&gt;&#34;</span>, <span style="color:#e6db74">&#34;|11&gt;&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(standard_basis_states)): 
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>names[i]<span style="color:#e6db74">}</span><span style="color:#e6db74"> --&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>    display(standard_basis_states[i]<span style="color:#f92672">.</span>evolve(circuit_named)<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span></code></pre></div><p><img src="/60.png" alt=""></p>
+<p>The circuit above generates the Bell states (entangled states that form a basis):</p>
+<p>$$|\phi^+\rangle = \frac{1}{\sqrt{2}}|00\rangle + \frac{1}{\sqrt{2}}|11\rangle $$
+$$|\phi^-\rangle = \frac{1}{\sqrt{2}}|00\rangle - \frac{1}{\sqrt{2}}|11\rangle $$
+$$|\psi^+\rangle = \frac{1}{\sqrt{2}}|01\rangle + \frac{1}{\sqrt{2}}|10\rangle $$
+$$|\psi^-\rangle = \frac{1}{\sqrt{2}}|01\rangle - \frac{1}{\sqrt{2}}|10\rangle $$</p>
+<p>except the final $|11\rangle$ state becomes the negative of the fourth $|\psi^-\rangle$ Bell state.</p>
+<p>This circuit provides a way to convert the standard computational basis into the Bell Basis. To eliminate the -1 phase factor on the last state ($-|\psi^-\rangle$), we can add a controlled-$Z$ gate at the beginning.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> QuantumCircuit(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>cz(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>h(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>cx(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>draw()
+</span></span></code></pre></div><p><img src="/61.png" alt=""></p>
+<p>Implementing the above altered circuit on the standard computational basis states:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(standard_basis_states)):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>names[i]<span style="color:#e6db74">}</span><span style="color:#e6db74"> --&gt; &#34;</span>)
+</span></span><span style="display:flex;"><span>    display(standard_basis_states[i]<span style="color:#f92672">.</span>evolve(circuit)<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span></code></pre></div><p><img src="/62.png" alt=""></p>
+<p>This results in the Bell Basis.</p>
+<h3 id="classical-bits">Classical Bits<a href="#classical-bits" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Quantum circuits can contain any number of qubit wires and may also include classical bit wires, indicated by <strong>double</strong> lines:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>X <span style="color:#f92672">=</span> QuantumRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;X&#34;</span>)
+</span></span><span style="display:flex;"><span>Y <span style="color:#f92672">=</span> QuantumRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;Y&#34;</span>)
+</span></span><span style="display:flex;"><span>A <span style="color:#f92672">=</span> ClassicalRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;A&#34;</span>)
+</span></span><span style="display:flex;"><span>B <span style="color:#f92672">=</span> ClassicalRegister(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;B&#34;</span>) <span style="color:#75715e"># Using `Classical Register` to customize the name</span>
+</span></span><span style="display:flex;"><span>                              <span style="color:#75715e"># for two separate classical bits</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> QuantumCircuit(X, Y, A, B)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>h(X)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>cx(X, Y)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>measure(X, A)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>measure(Y, B)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>draw()
+</span></span></code></pre></div><p><img src="/63.png" alt=""></p>
+<p>The measurement gates represent standard basis measurements, resulting in either $|0\rangle$ or $|1\rangle$ as the eigenvectors/post-measurement states. The measurement gate changes the qubits into their post-measurement states, while the classical measurement outcomes (0 for $|0\rangle$ or 1 for $|1\rangle$) are overwritten onto the classical bits to which the arrows point.</p>
+<h3 id="sampler-primitive">Sampler Primitive<a href="#sampler-primitive" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>A <em>primitive</em> is the smallest processing instruction for a certain level of abstraction. It allows a user to write quantum algorithms without having to worry about hardware details.</p>
+<p>The <code>Sampler()</code> primitive calculates probabilities of bitstrings outputted from quantum circuits.</p>
+<p>The above circuit can be simulated using the <code>Sampler()</code> primitive.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sampler <span style="color:#f92672">=</span> Sampler() <span style="color:#75715e"># Initialize Sampler</span>
+</span></span><span style="display:flex;"><span>job <span style="color:#f92672">=</span> sampler<span style="color:#f92672">.</span>run(circuit) 
+</span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> job<span style="color:#f92672">.</span>result()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>statistics <span style="color:#f92672">=</span> results<span style="color:#f92672">.</span>quasi_dists[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>binary_probabilities()
+</span></span><span style="display:flex;"><span>plot_histogram(statistics)
+</span></span></code></pre></div><p><img src="/64.png" alt=""></p>
+<p>We use the primitive by calling its <code>run()</code> method with the circuit. If the <code>run(shots = )</code> parameter is unspecified, it returns the <em>exact</em> probabilities.</p>
+<p>Calling the <code>result()</code> method afterwards provides output samples and corresponding metadata.</p>
+<p>The main takeaway is that the results show an equal probability for the measurement yielding the classical values of 00 and 11.</p>
+<hr>
+<h2 id="-8-quantum-circuits-review">§ 8. Quantum Circuits Review<a href="#-8-quantum-circuits-review" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<hr>
+<p>Let&rsquo;s experiment with a complex quantum circuit, involving both qubits and classical bits, and observe the resultant probabilities.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>q <span style="color:#f92672">=</span> QuantumRegister(<span style="color:#ae81ff">2</span>, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;qubit&#39;</span>)
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> ClassicalRegister(<span style="color:#ae81ff">2</span>, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;bit&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> QuantumCircuit(q, c)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>h(q[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>cx(q[<span style="color:#ae81ff">0</span>], q[<span style="color:#ae81ff">1</span>])      <span style="color:#75715e"># Note you do not have to specify q[...]</span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>cz(q[<span style="color:#ae81ff">1</span>], q[<span style="color:#ae81ff">0</span>])      <span style="color:#75715e"># I just do it for readability</span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>h(q[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>cz(q[<span style="color:#ae81ff">0</span>], q[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>measure(q, c)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;mpl&#39;</span>)
+</span></span></code></pre></div><p><img src="/65.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sampler <span style="color:#f92672">=</span> Sampler() <span style="color:#75715e"># sampler initialization</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>job <span style="color:#f92672">=</span> sampler<span style="color:#f92672">.</span>run(circuit, shots <span style="color:#f92672">=</span> <span style="color:#ae81ff">128</span>) <span style="color:#75715e"># sampling 128 runs</span>
+</span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> job<span style="color:#f92672">.</span>result()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>statistics <span style="color:#f92672">=</span> results<span style="color:#f92672">.</span>quasi_dists[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>binary_probabilities()
+</span></span><span style="display:flex;"><span>plot_histogram(statistics)
+</span></span></code></pre></div><p><img src="/66.png" alt=""></p>
+<p>The results show that each computational basis state has approximately equal probability (1/4). The measurement outputs are now defined as classical bits.</p>
+<p>Let&rsquo;s apply the same circuit (excluding measurement gates) to the standard computational basis states to observe the outcomes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Generating the same circuit, but without the measurement gates</span>
+</span></span><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> QuantumCircuit(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>h(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>cx(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)      
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>cz(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>)      
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>h(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>cz(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>zero, one <span style="color:#f92672">=</span> Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#34;0&#34;</span>), Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#34;1&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>standard_basis_states <span style="color:#f92672">=</span> [zero<span style="color:#f92672">.</span>tensor(zero), zero<span style="color:#f92672">.</span>tensor(one), 
+</span></span><span style="display:flex;"><span>                         one<span style="color:#f92672">.</span>tensor(zero), one<span style="color:#f92672">.</span>tensor(one)]
+</span></span><span style="display:flex;"><span>names <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;|00&gt;&#34;</span>, <span style="color:#e6db74">&#34;|01&gt;&#34;</span>, <span style="color:#e6db74">&#34;|10&gt;&#34;</span>, <span style="color:#e6db74">&#34;|11&gt;&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(standard_basis_states)): 
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>names[i]<span style="color:#e6db74">}</span><span style="color:#e6db74"> --&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>    display(standard_basis_states[i]<span style="color:#f92672">.</span>evolve(circuit)<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>))
+</span></span></code></pre></div><p><img src="/67.png" alt=""></p>
+<p>Each state has an equal probability of 1/4.</p>
+<p>Now, let&rsquo;s apply the circuit to a more complex state vector.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plus <span style="color:#f92672">=</span> Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#34;+&#34;</span>)
+</span></span><span style="display:flex;"><span>vec <span style="color:#f92672">=</span> Statevector([(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2.0</span>j)<span style="color:#f92672">/</span><span style="color:#ae81ff">3</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">/</span><span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>statevec <span style="color:#f92672">=</span> plus<span style="color:#f92672">.</span>tensor(vec)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>statevec<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;latex&#39;</span>)
+</span></span></code></pre></div><p><img src="/68.png" alt=""></p>
+<p>The post-circuit statevector:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>display(statevec<span style="color:#f92672">.</span>evolve(circuit)<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;latex&#39;</span>))
+</span></span></code></pre></div><p><img src="/69.png" alt=""></p>
+<p>After applying the circuit, the possible measurement outcomes are only $|00\rangle$ or $|11\rangle$.</p>
+<p>This differs from the sampler results above because the sampler runs on the defined quantum circuit, which initializes all the qubits to $|0\rangle$. In contrast, we ran the circuit on a more complex statevector, leading to different possible measurement outcomes.</p>
+<hr>
+<h2 id="exercises">Exercises<a href="#exercises" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<blockquote>
+<ol>
+<li>Generate the following circuit using the diagram below.</li>
+</ol>
+</blockquote>
+<p><img src="/70.png" alt=""></p>
+<blockquote>
+<ol start="2">
+<li>
+<p>Implement the circuit from Problem 1 on the statevector given by $|+-+-\rangle$. What is the resultant statevector? Plot the probability distributions for 4000 samples using <code>plot_histogram()</code>.</p>
+</li>
+<li>
+<p>Add a measurement gate to all the qubits using the <code>circuit.measure_all()</code> method. You should yield the following circuit:</p>
+</li>
+</ol>
+</blockquote>
+<p><img src="/71.png" alt=""></p>
+<blockquote>
+<p>Afterwards use a sampler primitive to visualize the classical probabilities resulting from this circuit. What are the possible classical results?</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+<p>$\hspace{1px}$</p>
+</blockquote>
+<h2 id="solutions">Solutions<a href="#solutions" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h3 id="problem-1">Problem 1.<a href="#problem-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit <span style="color:#f92672">import</span> QuantumCircuit
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> QuantumCircuit(<span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>h(range(<span style="color:#ae81ff">4</span>)) <span style="color:#75715e"># Applying Hadamard on all four Qubits</span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>cx(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>cx(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>h(range(<span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>draw()
+</span></span></code></pre></div><p><img src="/70.png" alt=""></p>
+<h3 id="problem-2">Problem 2.<a href="#problem-2" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Let&rsquo;s first generate the statevector for $|+-+-\rangle$. To do this I first generate the tensor product $|+\rangle |-\rangle$. I then take its tensor product with itself to yield $|+\rangle|-\rangle|+\rangle|-\rangle = |+-+-\rangle$.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.quantum_info <span style="color:#f92672">import</span> Statevector
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plus <span style="color:#f92672">=</span> Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#39;+&#39;</span>)
+</span></span><span style="display:flex;"><span>minus <span style="color:#f92672">=</span> Statevector<span style="color:#f92672">.</span>from_label(<span style="color:#e6db74">&#39;-&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plusminus <span style="color:#f92672">=</span> plus<span style="color:#f92672">.</span>tensor(minus) <span style="color:#75715e"># Generating |+&gt;|-&gt;</span>
+</span></span><span style="display:flex;"><span>plusminus_twice <span style="color:#f92672">=</span> plusminus<span style="color:#f92672">.</span>tensor(plusminus) <span style="color:#75715e"># Generating |+&gt;|-&gt;|+&gt;|-&gt; = |+-+-&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plusminus_twice<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#34;latex&#34;</span>)
+</span></span></code></pre></div><p><img src="/72.png" alt=""></p>
+<p>Applying the circuit from Problem 1,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plusminus_twice<span style="color:#f92672">.</span>evolve(circuit)<span style="color:#f92672">.</span>draw(<span style="color:#e6db74">&#39;latex&#39;</span>)
+</span></span></code></pre></div><p><img src="/73.png" alt=""></p>
+<p>We don&rsquo;t <em>really</em> need to plot a histogram of the probabilities for each eigenvector &ndash; we can see clearly they are all 1/8th. But let&rsquo;s do it anyways for practice.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.visualization <span style="color:#f92672">import</span> plot_histogram
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> plusminus_twice<span style="color:#f92672">.</span>evolve(circuit)<span style="color:#f92672">.</span>sample_counts(<span style="color:#ae81ff">4000</span>)
+</span></span><span style="display:flex;"><span>plot_histogram(results)
+</span></span></code></pre></div><p><img src="/74.png" alt=""></p>
+<p>From 4000 sample runs we get a rough 500 yields for each state &ndash; a 1/8th probability.</p>
+<h3 id="problem-3">Problem 3<a href="#problem-3" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Let&rsquo;s add the measurement gates to the circuit from Problem 1 using <code>measure_all()</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>circuit <span style="color:#f92672">=</span> QuantumCircuit(<span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>h(range(<span style="color:#ae81ff">4</span>)) <span style="color:#75715e"># Applying Hadamard on all four Qubits</span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>cx(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>cx(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>h(range(<span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ---- same as problem 1 thus far ---- #</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>measure_all() <span style="color:#75715e"># Apply a measurement gate on all four Qubits</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#75715e"># Stores the results as classical bits</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#75715e"># Notice how we did not specify any classical wire </span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#75715e"># Calling .measure() automatically produced appropriate </span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#75715e"># classical wires to store the results</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>circuit<span style="color:#f92672">.</span>draw()
+</span></span></code></pre></div><p><img src="/75.png" alt=""></p>
+<p>Notice the rectangular barrier that was automatically placed to separate the measurement gates from the quantum circuit. This <code>circuit.barrier()</code> is used for visualization and aesthetic purposes.</p>
+<p>Let&rsquo;s use the sampler primitive to visualize the probabilities resulting from this circuit.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> qiskit.primitives <span style="color:#f92672">import</span> Sampler
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sampler <span style="color:#f92672">=</span> Sampler() <span style="color:#75715e"># initilialize Sampler</span>
+</span></span><span style="display:flex;"><span>job <span style="color:#f92672">=</span> sampler<span style="color:#f92672">.</span>run(circuit, shots <span style="color:#f92672">=</span> <span style="color:#ae81ff">4000</span>) <span style="color:#75715e"># 4000 samples</span>
+</span></span><span style="display:flex;"><span>results <span style="color:#f92672">=</span> job<span style="color:#f92672">.</span>result()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>statistics <span style="color:#f92672">=</span> results<span style="color:#f92672">.</span>quasi_dists[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>binary_probabilities()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plot_histogram(statistics)
+</span></span></code></pre></div><h2 id="76png"><img src="/76.png" alt=""><a href="#76png" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p><a href="https://dev-undergrad.dev/qiskit/02_multi_qubit/">Previous &ndash; Multi-Qubit States</a>  $\sim$*$\backsim$ <a href="https://dev-undergrad.dev/qiskit/04_entanglement/">Next &ndash; Quantum Teleportation</a></p>
+
+		</div>
+	</main>
+
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+  <p>
+    &copy; 2024 <a href="https://dev-undergrad.dev/">deval deliwala</a>
+    &#183;  <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+    &#183; Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>
+    &#183; Theme <a href="https://github.com/1bl4z3r/hermit-V2" target="_blank" rel="noopener">Hermit-V2</a>
+    
+    &#183; <a href="https://dev-undergrad.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+    
+  </p>
+
+</footer>
+
+
+<script async src="https://dev-undergrad.dev/js/bundle.min.038214de9d568246fadcfeb06c69349925de3209f332ec123861b6aa031d63c6.js" integrity="sha256-A4IU3p1Wgkb63P6wbGk0mSXeMgnzMuwSOGG2qgMdY8Y=" crossorigin="anonymous"></script><script async src="https://dev-undergrad.dev/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script>
+    <script type="text/javascript" async src="https://polyfill.io/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+    
+    
+    <script type="text/javascript" id="MathJax-script" async src="https://dev-undergrad.dev/js/mathjaxs.min.4b88b5f9e9f39bf5f45b77eb5cf3fb4f929d6a58f92f06f780397ad8ee2a3c6c.js" integrity="sha256-S4i1+enzm/X0W3frXPP7T5Kdalj5Lwb3gDl62O4qPGw=" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

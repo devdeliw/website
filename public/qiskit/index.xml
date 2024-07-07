@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Qiskits on dev-undergrad</title>
+    <link>https://dev-undergrad.dev/qiskit/</link>
+    <description>Recent content in Qiskits on dev-undergrad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 04 Jun 2024 22:52:33 -0700</lastBuildDate>
+    <atom:link href="https://dev-undergrad.dev/qiskit/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ch.6 The CHSH Game</title>
+      <link>https://dev-undergrad.dev/qiskit/06_chsh_game/</link>
+      <pubDate>Tue, 04 Jun 2024 22:52:33 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/qiskit/06_chsh_game/</guid>
+      <description>$$ \sim * \backsim $$
+Table of Contents § 15. Nonlocal Games § 16. The CHSH Game Exercises Solutions $$ \backsim * \sim $$
+§ 15. Nonlocal Games The CHSH game falls within the class of nonlocal games.
+The game is a cooperative game where Alice and Bob work together to achieve an outcome. There also exists a referee who ensures Alice and Bob abide by a strict set of guidelines.</description>
+    </item>
+    <item>
+      <title>Ch.5 Superdense Coding</title>
+      <link>https://dev-undergrad.dev/qiskit/05_superdense_coding/</link>
+      <pubDate>Mon, 03 Jun 2024 01:29:28 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/qiskit/05_superdense_coding/</guid>
+      <description>$$ \sim * \backsim $$
+Table of Contents § 13. Superdense Coding Protocol Analysis § 14. Qiskit Implementation Exercises Solutions $$ \backsim * \sim $$
+In the last chapter, we studied the quantum teleportation protocol, which transmitted one qubit using two classical bits of communication, at the cost of one entangled e-bit.
+The superdense coding protocol achieves the exact inverse. It allows for the transmission of two classical bits using on qubit of quantum information, at the cost of one e-bit.</description>
+    </item>
+    <item>
+      <title>Ch.4 Quantum Teleportation</title>
+      <link>https://dev-undergrad.dev/qiskit/04_quantum_teleportation/</link>
+      <pubDate>Thu, 30 May 2024 17:19:09 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/qiskit/04_quantum_teleportation/</guid>
+      <description>$$ \sim * \backsim $$
+Table of Contents § 9. Quantum Entanglement § 10. Entanglement as a resource § 11. Teleportation No-Cloning Theorem Protocol Analysis § 12. Teleportation using Qiskit Testing Teleportation Exercises Solutions $$ \backsim * \sim $$
+By this point, you should have a good understanding of Qiskit as a language. We know how to define any n-qubit state and build a circuit to operate on it.
+The chapters will now start to contain more information outside of purely code cells.</description>
+    </item>
+    <item>
+      <title>Ch.3 Quantum Circuits</title>
+      <link>https://dev-undergrad.dev/qiskit/03_quantum_circuits/</link>
+      <pubDate>Wed, 29 May 2024 18:49:50 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/qiskit/03_quantum_circuits/</guid>
+      <description>$$ \sim * \backsim $$
+Table of Contents § 7. Building Quantum Circuits Classical Bits Sampler Primitive § 8. Quantum Circuits Review Exercises Solutions $$ \backsim * \sim $$
+So far, we&amp;rsquo;ve discussed working with single-qubit and multi-qubit states. We&amp;rsquo;ve also covered various operators and used the .evolve() method to apply these operators to statevectors.
+Now it&amp;rsquo;s time to start building our own Quantum Circuits. These circuits allow us to visualize the change of information and trace the evolution of qubits through a series of quantum gates.</description>
+    </item>
+    <item>
+      <title>Ch.2 Multiple-Qubit States</title>
+      <link>https://dev-undergrad.dev/qiskit/02_multi_qubit/</link>
+      <pubDate>Wed, 29 May 2024 11:59:11 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/qiskit/02_multi_qubit/</guid>
+      <description>$$ \sim * \backsim $$
+Table of Contents § 4. Multi-Qubit Quantum Gates SWAP Gate Controlled Operations CX / CNOT § 5. Tensor Products § 6. Partial Measurements Exercises Solutions $$ \backsim * \sim $$
+§ 4. Multi-Qubit Quantum Gates Now that we understand single-qubit gates, let&amp;rsquo;s explore multi-qubit operators, which act on more than one qubit / statevector.
+A multi-qubit state $$|XY\rangle$$ is the tensor product of two single-qubit states:</description>
+    </item>
+    <item>
+      <title>Ch.1 Single-Qubit States</title>
+      <link>https://dev-undergrad.dev/qiskit/01_single_systems/</link>
+      <pubDate>Tue, 28 May 2024 21:08:06 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/qiskit/01_single_systems/</guid>
+      <description>Preliminary Info This tutorial series assumes you are already knowledgeable in basic quantum mechanics (state vectors/wave functions), statistics, linear algebra, and Python.
+This series is for those who want to focus on directly learning IBM Qiskit, the Python library. To learn Qiskit along with the necessary math, visit IBM Quantum Learning.
+Once the necessary Qiskit concepts are introduced, we will delve directly into quantum computing theory, where chapters will become more math-intensive.</description>
+    </item>
+  </channel>
+</rss>

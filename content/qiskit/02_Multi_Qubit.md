@@ -69,7 +69,7 @@ It leaves the control qubit unchanged regardless. Its matrix representation is:
 
 Controlled operations can be performed on both single and multi-qubit states. The control or target can be a system of qubits. For example, the CCNOT (controlled-controlled NOT) gate, also known as the Toffoli Gate, is a CNOT gate with 2 control qubits and 1 target qubit. The target qubit gets inverted if and only if both control qubits are in state $|1\rangle$.
 
-Now, let's discuss how to generate multi-qubit states. We have already learned how to generate single-qubit states using the `Statevector()` class in the previous lesson. To generate a multi-qubit state, we need to understand how to perform tensor products. 
+Now, let's discuss how to generate multi-qubit states. We have already learned how to generate single-qubit states using the `Statevector()` class in the previous chapter. To generate a multi-qubit state, we need to understand how to perform tensor products. 
 
 ---
 
@@ -234,7 +234,7 @@ Run the above cell multiple times to observe different results. Notice the follo
 - Measuring a `1` means both the other qubits are $|0\rangle$
 - Meausring a `0` leaves the remaining two qubits in the state $$\frac{1}{\sqrt{2}}(|01\rangle + |10\rangle). 
 
-In the next lesson, we will explore `QuantumCircuit()``, which allows us to fully manipulate and work with any $n$-qubit state. Before moving on, try the following exercises to ensure you understand how to generate and measure multi-qubit states.
+In the next chapter, we will explore `QuantumCircuit()``, which allows us to fully manipulate and work with any $n$-qubit state. Before moving on, try the following exercises to ensure you understand how to generate and measure multi-qubit states.
 
 ---
 

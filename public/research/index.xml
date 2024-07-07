@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Researches on dev-undergrad</title>
+    <link>https://dev-undergrad.dev/research/</link>
+    <description>Recent content in Researches on dev-undergrad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 23 Mar 2024 23:58:21 -0700</lastBuildDate>
+    <atom:link href="https://dev-undergrad.dev/research/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>F115W  - F212N Color-Magnitude Diagrams</title>
+      <link>https://dev-undergrad.dev/research/cmd/</link>
+      <pubDate>Sat, 23 Mar 2024 23:58:21 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/research/cmd/</guid>
+      <description>Let&amp;rsquo;s start performing some data analysis with our beautiful JWST near-infrared catalogs. But first! let&amp;rsquo;s go over what color-magnitude diagrams (CMDs) are. CMDs are the life and blood for astronomers. If you are familiar with the Hertzsprung Russell (HR) diagram, CMDs are a subset of these plots.
+They are actually fairly simple. You merely take magnitudes of stars from one catalog ($y$) and plot it relative to the difference in magnitudes between two different catalogs ($x$).</description>
+    </item>
+    <item>
+      <title>James Webb Space Telescope NIRCam Catalogs</title>
+      <link>https://dev-undergrad.dev/research/catalogs/</link>
+      <pubDate>Fri, 22 Mar 2024 23:14:44 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/research/catalogs/</guid>
+      <description>I use JWST NIRCAM catalogs of the Galactic Center for my research. These catalogs contain extremely high quality photometric data of tens of thousands of stars detected in the region around Sagittarius A*.
+At the time of writing, I have access to photometry-calibrated catalogs for the F115W, F212N, and F323N GC catalogs. The name F115W refers to the catalog of stars taken in from a $1.15µm$ infrared wavelength. F212N is therefore the catalog of stars detected from a $2.</description>
+    </item>
+    <item>
+      <title>Moving Universe Lab - Introduction</title>
+      <link>https://dev-undergrad.dev/research/introduction/</link>
+      <pubDate>Thu, 21 Mar 2024 23:36:41 -0700</pubDate>
+      <guid>https://dev-undergrad.dev/research/introduction/</guid>
+      <description>Berkeley&amp;rsquo;s Moving Universe Lab, led by Prof. Jessica Lu @ AC Berkeley focuses on the study of stars and black holes in the nearby universe.
+My research primarily deals with determining the extinction law of the Galactic Center, the region of stars in the center of the milky way near Sagittarius A*.
+Extinction Interstellar extinction occurs when light, during its transit between some emitting astronomical object and earth, gets scattered by intermediary dust and gas particles.</description>
+    </item>
+  </channel>
+</rss>

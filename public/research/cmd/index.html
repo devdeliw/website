@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="robots" content="index, follow">
+<meta name="revisit-after" content="15 days">
+<link rel="author" href="/humans.txt">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="theme-color" content="#494f5c">
+<meta name="msapplication-TileColor" content="#494f5c">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#494f5c"><meta name="author" content="deval deliwala">
+<meta itemprop="name" content="F115W  - F212N Color-Magnitude Diagrams">
+<meta itemprop="description" content="Let&rsquo;s start performing some data analysis with our beautiful JWST near-infrared catalogs. But first! let&rsquo;s go over what color-magnitude diagrams (CMDs) are. CMDs are the life and blood for astronomers. If you are familiar with the Hertzsprung Russell (HR) diagram, CMDs are a subset of these plots.
+They are actually fairly simple. You merely take magnitudes of stars from one catalog ($y$) and plot it relative to the difference in magnitudes between two different catalogs ($x$)."><meta itemprop="datePublished" content="2024-03-23T23:58:21-07:00" />
+<meta itemprop="dateModified" content="2024-03-23T23:58:21-07:00" />
+<meta itemprop="wordCount" content="1441">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="F115W  - F212N Color-Magnitude Diagrams" />
+<meta property="og:description" content="Let&rsquo;s start performing some data analysis with our beautiful JWST near-infrared catalogs. But first! let&rsquo;s go over what color-magnitude diagrams (CMDs) are. CMDs are the life and blood for astronomers. If you are familiar with the Hertzsprung Russell (HR) diagram, CMDs are a subset of these plots.
+They are actually fairly simple. You merely take magnitudes of stars from one catalog ($y$) and plot it relative to the difference in magnitudes between two different catalogs ($x$)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dev-undergrad.dev/research/cmd/" /><meta property="article:section" content="research" />
+<meta property="article:published_time" content="2024-03-23T23:58:21-07:00" />
+<meta property="article:modified_time" content="2024-03-23T23:58:21-07:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="F115W  - F212N Color-Magnitude Diagrams"/>
+<meta name="twitter:description" content="Let&rsquo;s start performing some data analysis with our beautiful JWST near-infrared catalogs. But first! let&rsquo;s go over what color-magnitude diagrams (CMDs) are. CMDs are the life and blood for astronomers. If you are familiar with the Hertzsprung Russell (HR) diagram, CMDs are a subset of these plots.
+They are actually fairly simple. You merely take magnitudes of stars from one catalog ($y$) and plot it relative to the difference in magnitudes between two different catalogs ($x$)."/>
+<title>F115W  - F212N Color-Magnitude Diagrams</title>
+<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="https://dev-undergrad.dev/css/style.min.d94d17fff76195615e45620612329cd6061ec826914f387a6f846a5ba132dc2d.css" integrity="sha256-2U0X//dhlWFeRWIGEjKc1gYeyCaRTzh6b4RqW6Ey3C0=" crossorigin="anonymous">
+	</head>
+<body id="page">
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://dev-undergrad.dev">dev-undergrad</a>
+				</div>
+				<nav class="site-nav hide-in-mobile"><a href="https://dev-undergrad.dev/qiskit/">qiskit</a><a href="https://dev-undergrad.dev/notes/">notes</a><a href="https://dev-undergrad.dev/contents/contents/">contents</a><a href="https://dev-undergrad.dev/research/">research / not currently updated </a></nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/devdeliw/" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://youtube.com/@devdeliw/" target="_blank" rel="noopener me" title="Youtube"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a><a href="https://www.linkedin.com/in/deval-deliwala-554749219/" target="_blank" rel="noopener me" title="Linked"><svg xmlns="http://www.w3.org/2000/svg" class="feather feather-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></span><button id="share-btn" class="hdr-btn" title="Share"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg></button>
+ 
+<div id="share-links" class="animated fast">
+    
+    
+    
+    
+    <ul>
+        <li>
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=https%3a%2f%2fdev-undergrad.dev%2fresearch%2fcmd%2f&amp;text=F115W%20%20-%20F212N%20Color-Magnitude%20Diagrams" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6"/></svg></a>
+        </li>
+        <li>
+            <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fdev-undergrad.dev%2fresearch%2fcmd%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        </li>
+        <li>
+            <a href="mailto:?subject=F115W%20%20-%20F212N%20Color-Magnitude%20Diagrams&amp;body=https%3a%2f%2fdev-undergrad.dev%2fresearch%2fcmd%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fdev-undergrad.dev%2fresearch%2fcmd%2f&amp;source=https%3a%2f%2fdev-undergrad.dev&amp;title=F115W%20%20-%20F212N%20Color-Magnitude%20Diagrams&amp;summary=F115W%20%20-%20F212N%20Color-Magnitude%20Diagrams%2c%20by%20deval%20deliwala%0a%0a%3cnil%3e%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+        </li>
+        <li>
+            <a href="#" onclick="linkShare(&#34;F115W  - F212N Color-Magnitude Diagrams&#34;,&#34;https://dev-undergrad.dev/research/cmd/&#34;,&#34;F115W  - F212N Color-Magnitude Diagrams, by deval deliwala\n\n\u003cnil\u003e\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></a>
+        </li>
+    </ul>
+</div><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://dev-undergrad.dev/qiskit/">qiskit</a></li>
+			<li><a href="https://dev-undergrad.dev/notes/">notes</a></li>
+			<li><a href="https://dev-undergrad.dev/contents/contents/">contents</a></li>
+			<li><a href="https://dev-undergrad.dev/research/">research / not currently updated </a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>F115W  - F212N Color-Magnitude Diagrams</h1>
+		<div class="content">
+			<p>Let&rsquo;s start performing some data analysis with our beautiful JWST near-infrared
+catalogs. But first! let&rsquo;s go over what color-magnitude diagrams (CMDs) are.
+CMDs are the life and blood for astronomers. If you are familiar with the
+Hertzsprung Russell (HR) diagram, CMDs are a subset of these plots.</p>
+<p>They are actually fairly simple. You merely take magnitudes of stars from
+one catalog ($y$) and plot it relative to the difference in magnitudes between two
+different catalogs ($x$). An example for both F115W vs. (F115W - F212N) and
+F212N vs. (F115W - F212N) is shown below.</p>
+<p><img src="/f115-f212_cmd.png" alt=""></p>
+<p>It is standardized to plot the (smaller $\lambda$ - larger $\lambda$) on the
+$x$-axis.</p>
+<p>Now without getting into too much detail, different types
+of stars occupy different regions of the CMD. The large dense cluster of stars
+in the plots above showcase the <em>main-sequence</em> track of the CMD, and the
+linear streak above the main-sequence cluster contains the <em>Red Clump (RC)</em>
+stars &ndash; which are the stars I will be using in my research.</p>
+<p>Let&rsquo;s actually build the above CMDs for the F115W and F212N catalogs. As the
+catalogs are of different size, with a vastly different # of stars, we first
+have to determine which stars are <em>common</em> to both catalogs.</p>
+<p>As the catalogs are close in wavelength and were taken at approximately the
+same time, we can assume these catalogs place the star&rsquo;s $x$ and $y$
+coordinates on the same coordinate system. Indeed, if we overplot both the
+F212N and F115W catalog centroid coordinates on top of each other, with an
+very zoomed in image in the background&hellip;</p>
+<p><img src="/image.png" alt=""></p>
+<p>Here, the red squares indicate stars from the <em>F212N</em> catalog, and the green
+squares indicate stars from the <em>F115W</em> catalog.</p>
+<p>As there are <code>121349</code> F212N
+stars but only <code>53620</code> F115W stars for this image, there are a lot more red
+markers than green. However, if you look closely you can see for the very
+luminous stars, the green and red markers exist on top of one another. Indeed,
+the two catalogs are on roughly the same coordinate system. (<em>Note* for future work,
+I do perform coordinate transformations on all my catalogs&hellip;this is
+preliminary work</em>).</p>
+<p>Finally, with all the introductions out of the way, we can start doing some
+research.</p>
+<hr>
+<h2 id="finding-common-stars-across-f115w--f212n"><em>Finding Common Stars Across F115W &amp; F212N</em><a href="#finding-common-stars-across-f115w--f212n" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>To determine the stars common to both F115w and F212n, I employ
+a nearest-neighbor KDTree algorithm.</p>
+<p>No transformations are done and it
+is assumed that the two catalogs are already on the same coordinate system
+and magnitude system.</p>
+<p>For two stars to be matched, they must be within a specified radius (<code>dr_tol</code>) and
+delta-magnitude (<code>dm_tol</code>). For stars with more than 1 neighbor (within the tolerances),
+if one is found that is the best match in both brightness and positional offsets
+(closest in both), then the match is made. Otherwise,
+their is a conflict and no match is returned for the star.</p>
+<p>The entire code is shown on my <a href="https://github.com/devdeliw/">GitHub</a>, but
+I will lay out some here.</p>
+<p>I first start by making coordinate pairs for each star in both catalogs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> x1<span style="color:#f92672">.</span>shape <span style="color:#f92672">!=</span> y1<span style="color:#f92672">.</span>shape:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#39;x1 and y1 do not match!&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> x2<span style="color:#f92672">.</span>shape <span style="color:#f92672">!=</span> y2<span style="color:#f92672">.</span>shape:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#39;x2 and y2 do not match!&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Setup coords1 pairs and coords 2 pairs</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># this is equivalent to, but faster than just doing np.array([x1, y1])</span>
+</span></span><span style="display:flex;"><span>coords1 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>empty((x1<span style="color:#f92672">.</span>size, <span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span>coords1[:, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> x1
+</span></span><span style="display:flex;"><span>coords1[:, <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> y1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># this is equivalent to, but faster than just doing np.array([x1, y1])</span>
+</span></span><span style="display:flex;"><span>coords2 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>empty((x2<span style="color:#f92672">.</span>size, <span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span>coords2[:, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> x2
+</span></span><span style="display:flex;"><span>coords2[:, <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> y2
+</span></span></code></pre></div><p>I then implement a KDTree using <code>scipy.spatial</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>kdt <span style="color:#f92672">=</span> KDT(coords2, balanced_tree<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># This returns the number of neighbors within the specified</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># radius. We will use this to find those stars that have no or one</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># match and deal with them easily. The more complicated conflict</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># cases will be dealt with afterward.</span>
+</span></span><span style="display:flex;"><span>i2_match <span style="color:#f92672">=</span> kdt<span style="color:#f92672">.</span>query_ball_point(coords1, dr_tol)
+</span></span><span style="display:flex;"><span>Nmatch <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([len(idxs) <span style="color:#66d9ef">for</span> idxs <span style="color:#f92672">in</span> i2_match])
+</span></span></code></pre></div><p>Afterwards, I loop through and handle all the different matches within <code>dr_tol</code>
+and <code>dm_tol</code> and place the indices of each star in NumPy Arrays <code>idxs1</code> and <code>idxs2</code>,
+for the first and second catalogs respectively. I then deal with duplicates</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Deal with duplicates</span>
+</span></span><span style="display:flex;"><span>duplicates <span style="color:#f92672">=</span> [item <span style="color:#66d9ef">for</span> item, count <span style="color:#f92672">in</span> list(Counter(idxs2)<span style="color:#f92672">.</span>items()) <span style="color:#66d9ef">if</span> count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> verbose <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>    print(( <span style="color:#e6db74">&#39;    Found </span><span style="color:#e6db74">{0:d}</span><span style="color:#e6db74"> duplicates out of </span><span style="color:#e6db74">{1:d}</span><span style="color:#e6db74"> matches&#39;</span><span style="color:#f92672">.</span>format(len(duplicates), len(dm))))
+</span></span><span style="display:flex;"><span>keep <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(len(idxs1), dtype<span style="color:#f92672">=</span>bool)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> dd <span style="color:#f92672">in</span> range(len(duplicates)):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Index into the idxs1, idxs2 array of this duplicate.</span>
+</span></span><span style="display:flex;"><span>    dups <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>where(idxs2 <span style="color:#f92672">==</span> duplicates[dd])[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Assume the duplicates are confused first... see if we</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># can resolve the confusion below.</span>
+</span></span><span style="display:flex;"><span>    keep[dups] <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    dm_dups <span style="color:#f92672">=</span> m1[idxs1[dups]] <span style="color:#f92672">-</span> m2[idxs2[dups]]
+</span></span><span style="display:flex;"><span>    dr_dups <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>hypot(x1[idxs1[dups]] <span style="color:#f92672">-</span> x2[idxs2[dups]], y1[idxs1[dups]] <span style="color:#f92672">-</span> y2[idxs2[dups]])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    dm_min <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>abs(dm_dups)<span style="color:#f92672">.</span>argmin()
+</span></span><span style="display:flex;"><span>    dr_min <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>abs(dr_dups)<span style="color:#f92672">.</span>argmin()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># If there is a clearly preferred match (closest in distance and brightness), then</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># keep it and dump the other duplicates.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> dm_min <span style="color:#f92672">==</span> dr_min:
+</span></span><span style="display:flex;"><span>        keep[dups[dm_min]] <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> verbose:
+</span></span><span style="display:flex;"><span>              print(<span style="color:#e6db74">&#39;confused, dropping&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Clean up the duplicates</span>
+</span></span><span style="display:flex;"><span>idxs1 <span style="color:#f92672">=</span> idxs1[keep]
+</span></span><span style="display:flex;"><span>idxs2 <span style="color:#f92672">=</span> idxs2[keep]
+</span></span></code></pre></div><p>I use the above algorithm with the F115w and F212n catalogs, with a <code>dr_tol</code> of
+0.5 and a <code>dm_tol</code> of 99 (I don&rsquo;t care about <code>dm_tol</code> right now).</p>
+<p>And since the algorithm returns the indices of matched stars from their
+respective catalogs, I can get the magnitudes for the matched stars by just
+taking the values from the <code>m</code> column when the index is in <code>idxs1</code> or <code>idxs2</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x1 <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;x&#39;</span>]        <span style="color:#75715e"># x centroid position of catalog1 stars</span>
+</span></span><span style="display:flex;"><span>y1 <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;y&#39;</span>]        <span style="color:#75715e"># y centroid position of catalog1 stars</span>
+</span></span><span style="display:flex;"><span>m1 <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;m&#39;</span>]        <span style="color:#75715e"># vega magnitude of catalog1 stars</span>
+</span></span><span style="display:flex;"><span>me1 <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;me&#39;</span>]      <span style="color:#75715e"># error in vega magnitude of catalog1 stars</span>
+</span></span><span style="display:flex;"><span>x2 <span style="color:#f92672">=</span> df2[<span style="color:#e6db74">&#39;x&#39;</span>]
+</span></span><span style="display:flex;"><span>y2 <span style="color:#f92672">=</span> df2[<span style="color:#e6db74">&#39;y&#39;</span>]
+</span></span><span style="display:flex;"><span>m2 <span style="color:#f92672">=</span> df2[<span style="color:#e6db74">&#39;m&#39;</span>]
+</span></span><span style="display:flex;"><span>me2 <span style="color:#f92672">=</span> df2[<span style="color:#e6db74">&#39;me&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>m1_error <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>m2_error <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>m1_matched <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>m2_matched <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>m_difference <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> idxs1:
+</span></span><span style="display:flex;"><span>    m1_error <span style="color:#f92672">+=</span> [me1[i]]
+</span></span><span style="display:flex;"><span>    m1_matched <span style="color:#f92672">+=</span> [m1[i]]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> idxs2:
+</span></span><span style="display:flex;"><span>    m2_error <span style="color:#f92672">+=</span> [me2[i]]
+</span></span><span style="display:flex;"><span>    m2_matched <span style="color:#f92672">+=</span> [m2[i]]
+</span></span></code></pre></div><p>And since the CMDs are a plot of a magnitude vs mag-difference, I subtract the
+<code>m1_matched</code> and <code>m2_matched</code> NumPy arrays to get the $x$-axis for all the
+CMDs.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>m_difference <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>subtract(m1_matched, m2_matched)
+</span></span></code></pre></div><p>Now we have everything we need to generate the CMDs for our catalogs.
+I implement every step above for all the NRCB1 - NRCB4 catalogs for F115W and
+F212N.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>N1_115_catalog <span style="color:#f92672">=</span> Table<span style="color:#f92672">.</span>read(<span style="color:#e6db74">&#34;catalogs/dr2/NRCB1_catalog115w.csv&#34;</span>)<span style="color:#f92672">.</span>to_pandas()
+</span></span><span style="display:flex;"><span>N1_212_catalog <span style="color:#f92672">=</span> Table<span style="color:#f92672">.</span>read(<span style="color:#e6db74">&#34;catalogs/dr2/NRCB1_catalog212n.csv&#34;</span>)<span style="color:#f92672">.</span>to_pandas()
+</span></span><span style="display:flex;"><span>N1_115_matched, N1_212_matched, N1_115_error, N1_212_error, N1_115_212_difference <span style="color:#f92672">=</span> matched(N1_115_catalog, N1_212_catalog, <span style="color:#e6db74">&#34;NRCB1_F115W&#34;</span>, <span style="color:#e6db74">&#34;NRCB1_F212N&#34;</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">99</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>N2_115_catalog <span style="color:#f92672">=</span> Table<span style="color:#f92672">.</span>read(<span style="color:#e6db74">&#34;catalogs/dr2/NRCB2_catalog115w.csv&#34;</span>)<span style="color:#f92672">.</span>to_pandas()
+</span></span><span style="display:flex;"><span>N2_212_catalog <span style="color:#f92672">=</span> Table<span style="color:#f92672">.</span>read(<span style="color:#e6db74">&#34;catalogs/dr2/NRCB2_catalog212n.csv&#34;</span>)<span style="color:#f92672">.</span>to_pandas()
+</span></span><span style="display:flex;"><span>N2_115_matched, N2_212_matched, N2_115_error, N2_212_error, N2_115_212_difference <span style="color:#f92672">=</span> matched(N2_115_catalog, N2_212_catalog, <span style="color:#e6db74">&#34;NRCB2_F115W&#34;</span>, <span style="color:#e6db74">&#34;NRCB2_F212N&#34;</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">99</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>N3_115_catalog <span style="color:#f92672">=</span> Table<span style="color:#f92672">.</span>read(<span style="color:#e6db74">&#34;catalogs/dr2/NRCB3_catalog115w.csv&#34;</span>)<span style="color:#f92672">.</span>to_pandas()
+</span></span><span style="display:flex;"><span>N3_212_catalog <span style="color:#f92672">=</span> Table<span style="color:#f92672">.</span>read(<span style="color:#e6db74">&#34;catalogs/dr2/NRCB3_catalog212n.csv&#34;</span>)<span style="color:#f92672">.</span>to_pandas()
+</span></span><span style="display:flex;"><span>N3_115_matched, N3_212_matched, N3_115_error, N3_212_error, N3_115_212_difference <span style="color:#f92672">=</span> matched(N3_115_catalog, N3_212_catalog, <span style="color:#e6db74">&#34;NRCB3_F115W&#34;</span>, <span style="color:#e6db74">&#34;NRCB3_F212N&#34;</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">99</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>N4_115_catalog <span style="color:#f92672">=</span> Table<span style="color:#f92672">.</span>read(<span style="color:#e6db74">&#34;catalogs/dr2/NRCB4_catalog115w.csv&#34;</span>)<span style="color:#f92672">.</span>to_pandas()
+</span></span><span style="display:flex;"><span>N4_212_catalog <span style="color:#f92672">=</span> Table<span style="color:#f92672">.</span>read(<span style="color:#e6db74">&#34;catalogs/dr2/NRCB4_catalog212n.csv&#34;</span>)<span style="color:#f92672">.</span>to_pandas()
+</span></span><span style="display:flex;"><span>N4_115_matched, N4_212_matched, N4_115_error, N4_212_error, N4_115_212_difference <span style="color:#f92672">=</span> matched(N4_115_catalog, N4_212_catalog, <span style="color:#e6db74">&#34;NRCB4_F115W&#34;</span>, <span style="color:#e6db74">&#34;NRCB4_F212N&#34;</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">99</span>)
+</span></span></code></pre></div><p>Generating the CMDs</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fig, axis <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">2</span>, figsize <span style="color:#f92672">=</span> (<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">20</span>))
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>suptitle(<span style="color:#e6db74">&#39; NRCB1-NRCB4 All Color-Magnitude Diagrams &#39;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>invert_yaxis()
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>invert_yaxis()
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>invert_yaxis()
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>invert_yaxis()
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>invert_yaxis()
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>invert_yaxis()
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>invert_yaxis()
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>invert_yaxis()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>xy <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>vstack([N1_115_212_difference, N1_115_matched])
+</span></span><span style="display:flex;"><span>z <span style="color:#f92672">=</span> gaussian_kde(xy)(xy)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>scatter(N1_115_212_difference, N1_115_matched, c <span style="color:#f92672">=</span> z, s <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;NRCB1 F115W - F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#39;NRCB1 F115W&#39;</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;NRCB1 F115W vs. F115W - F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>xy <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>vstack([N1_115_212_difference, N1_212_matched])
+</span></span><span style="display:flex;"><span>z <span style="color:#f92672">=</span> gaussian_kde(xy)(xy)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>scatter(N1_115_212_difference, N1_212_matched, c <span style="color:#f92672">=</span> z, s <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;NRCB1 F115W - F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#39;NRCB1 F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;NRCB1 F212N vs. F115W - F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>xy <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>vstack([N2_115_212_difference, N2_115_matched])
+</span></span><span style="display:flex;"><span>z <span style="color:#f92672">=</span> gaussian_kde(xy)(xy)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>scatter(N2_115_212_difference, N2_115_matched, c <span style="color:#f92672">=</span> z, s <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;NRCB2 F115W - F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#39;NRCB2 F115W&#39;</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;NRCB2 F115W vs. F115W - F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>xy <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>vstack([N2_115_212_difference, N2_212_matched])
+</span></span><span style="display:flex;"><span>z <span style="color:#f92672">=</span> gaussian_kde(xy)(xy)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>scatter(N2_115_212_difference, N2_212_matched, c <span style="color:#f92672">=</span> z, s <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;NRCB2 F115W - F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#39;NRCB2 F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;NRCB2 F212N vs. F115W - F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>xy <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>vstack([N3_115_212_difference, N3_115_matched])
+</span></span><span style="display:flex;"><span>z <span style="color:#f92672">=</span> gaussian_kde(xy)(xy)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>scatter(N3_115_212_difference, N3_115_matched, c <span style="color:#f92672">=</span> z, s <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;NRCB3 F115W - F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#39;NRCB3 F115W&#39;</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;NRCB3 F115W vs. F115W - F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>xy <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>vstack([N3_115_212_difference, N3_212_matched])
+</span></span><span style="display:flex;"><span>z <span style="color:#f92672">=</span> gaussian_kde(xy)(xy)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>scatter(N3_115_212_difference, N3_212_matched, c <span style="color:#f92672">=</span> z, s <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;NRCB3 F212N vs. F115W - F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;NRCB3 F115W - F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#39;NRCB3 F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>xy <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>vstack([N4_115_212_difference, N4_115_matched])
+</span></span><span style="display:flex;"><span>z <span style="color:#f92672">=</span> gaussian_kde(xy)(xy)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>scatter(N4_115_212_difference, N4_115_matched, c <span style="color:#f92672">=</span> z, s <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;NRCB4 F115W - F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#39;NRCB4 F115W&#39;</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;NRCB4 F115W vs. F115W - F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>xy <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>vstack([N4_115_212_difference, N4_212_matched])
+</span></span><span style="display:flex;"><span>z <span style="color:#f92672">=</span> gaussian_kde(xy)(xy)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>scatter(N4_115_212_difference, N4_212_matched, c <span style="color:#f92672">=</span> z, s <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;NRCB4 F115W - F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#39;NRCB4 F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>axis[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;NRCB4 F212N vs. F115W - F212N&#39;</span>)
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>tight_layout()
+</span></span></code></pre></div><p><img src="/CMDs.png" alt=""></p>
+<p>Beautiful! These CMDs have a clear main-sequence track and a very prominent RC
+bar with a definite slope. The NRCB1 (top row) CMDs match exactly to the CMDs
+we saw originally. The region NRCB3 is of particular interest since its
+the region containing Sagittarius A*.</p>
+<p>We will now work on seeing how well past
+extinction laws match the slope of the RC Bar by utilizing theoretical synthetic isochrones for the Galactic Center. Eventually, we&rsquo;ll derive our own, newer, more accurate extinction laws.</p>
+
+		</div>
+	</main>
+
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+  <p>
+    &copy; 2024 <a href="https://dev-undergrad.dev/">deval deliwala</a>
+    &#183;  <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+    &#183; Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>
+    &#183; Theme <a href="https://github.com/1bl4z3r/hermit-V2" target="_blank" rel="noopener">Hermit-V2</a>
+    
+    &#183; <a href="https://dev-undergrad.dev/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+    
+  </p>
+
+</footer>
+
+
+<script async src="https://dev-undergrad.dev/js/bundle.min.038214de9d568246fadcfeb06c69349925de3209f332ec123861b6aa031d63c6.js" integrity="sha256-A4IU3p1Wgkb63P6wbGk0mSXeMgnzMuwSOGG2qgMdY8Y=" crossorigin="anonymous"></script><script async src="https://dev-undergrad.dev/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script>
+    <script type="text/javascript" async src="https://polyfill.io/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+    
+    
+    <script type="text/javascript" id="MathJax-script" async src="https://dev-undergrad.dev/js/mathjaxs.min.4b88b5f9e9f39bf5f45b77eb5cf3fb4f929d6a58f92f06f780397ad8ee2a3c6c.js" integrity="sha256-S4i1+enzm/X0W3frXPP7T5Kdalj5Lwb3gDl62O4qPGw=" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

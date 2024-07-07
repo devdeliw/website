@@ -11,11 +11,11 @@ This tutorial series assumes you are already knowledgeable in basic quantum mech
 
 This series is for those who want to focus on directly learning IBM Qiskit, the Python library. To learn Qiskit along with the necessary math, visit [IBM Quantum Learning](https://learning.quantum.ibm.com). 
 
-Once the necessary Qiskit concepts are introduced, we will delve directly into quantum computing theory, where lessons will become more math-intensive.
+Once the necessary Qiskit concepts are introduced, we will delve directly into quantum computing theory, where chapters will become more math-intensive.
 
 If you do not know the math yet, do not use this tutorial. Understanding the math is essential for understanding how the code works.
 
-I provide lessons covering the same rough topics as IBM's textbook, with exercises at the end. To fully master Qiskit, it is important to experiment with Qiskit yourself at the end of each lesson to get a better grasp before starting the next one.
+I provide chapters covering the same rough topics as IBM's textbook, with exercises at the end. To fully master Qiskit, it is important to experiment with Qiskit yourself at the end of each chapter to get a better grasp before starting the next one.
 
 For any typos, issues, or suggestions on this tutorial, please fork the [website repo](https://github.com/devdeliw/website/tree/main/content/qiskit) (.md files under `/content/qiskit/`), or email me. Thanks!
 
@@ -256,7 +256,7 @@ The T gate is equivalent to a $P_{\pi/4}$ phase operation.
 ---
 
 Let's define a quantum circuit using `qiskit.QuantumCircuit()` and implement
-some gates on $|0\rangle$. We will fully discuss the `QuantumCircuit()` method in lesson 3.
+some gates on $|0\rangle$. We will fully discuss the `QuantumCircuit()` method in chapter 3.
 
 ```python 
 from qiskit import QuantumCircuit 
