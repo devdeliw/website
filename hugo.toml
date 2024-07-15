@@ -62,6 +62,11 @@ theme = 'hermit-v2'
     weight = 4
 
   [[menu.main]]
+    name = "quantum mech book"
+    url = "book/main.pdf"
+    weight = 5
+
+  [[menu.main]]
     name = "contents"
     url = "contents/contents/"
     weight = 7
