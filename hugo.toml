@@ -72,7 +72,7 @@ theme = 'hermit-v2'
     weight = 7
 
   [[menu.main]]
-    name = "research / not currently updated "
+    name = "research"
     url = "research/"
     weight = 8
 
