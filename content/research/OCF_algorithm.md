@@ -1,8 +1,8 @@
-+++
-title = 'OCF Algorithm Writeup'
-date = 2024-07-29T09:49:26-07:00
-draft = False
-+++
+---
+title: 'OCF Algorithm Writeup'
+date: 2024-07-29T09:49:26-07:00
+draft: False
+---
 
 I have not kept the website updated with my research. However, if you are
 interested you can visit [my GitHub](https://github.com/devdeliw/research/). 
