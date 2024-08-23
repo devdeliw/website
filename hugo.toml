@@ -73,6 +73,6 @@ theme = 'hermit-v2'
 
   [[menu.main]]
     name = "research"
-    url = "research/"
+    url = "muLab Research/"
     weight = 2
 
