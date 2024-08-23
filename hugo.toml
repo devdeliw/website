@@ -52,27 +52,27 @@ theme = 'hermit-v2'
 [menu]
 
   [[menu.main]]
-    name = "notes"
+    name = "Rough Undergrad Notes"
     url = "notes/"
-    weight = 5
-
-  [[menu.main]]
-    name = "qiskit"
-    url = "qiskit/"
     weight = 4
 
   [[menu.main]]
-    name = "quantum mech book"
-    url = "book/main.pdf"
-    weight = 5
+    name = "IBM Qiskit"
+    url = "qiskit/"
+    weight = 3
 
   [[menu.main]]
-    name = "contents"
+    name = "Quantum Mechanics"
+    url = "book/main.pdf"
+    weight = 1
+
+  [[menu.main]]
+    name = "Table of Contents"
     url = "contents/contents/"
-    weight = 7
+    weight = 5
 
   [[menu.main]]
     name = "research"
     url = "research/"
-    weight = 8
+    weight = 2
 
