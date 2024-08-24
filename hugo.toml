@@ -63,7 +63,7 @@ theme = 'hermit-v2'
 
   [[menu.main]]
     name = "Quantum Mechanics"
-    url = "book/main.pdf"
+    url = "book/quantum_mechanics_137A.pdf"
     weight = 1
 
   [[menu.main]]
