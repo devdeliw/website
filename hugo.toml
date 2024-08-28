@@ -77,7 +77,7 @@ theme = 'hermit-v2'
     weight = 2
 
   [[menu.main]]
-    name = "resume" 
+    name = "Resume" 
     url = "resume/resume.pdf"
     weight = 6
 
