@@ -52,32 +52,32 @@ theme = 'hermit-v2'
 [menu]
 
   [[menu.main]]
-    name = "Rough Undergrad Notes"
+    name = "undergrad"
     url = "notes/"
-    weight = 4
-
-  [[menu.main]]
-    name = "IBM Qiskit"
-    url = "qiskit/"
     weight = 3
 
   [[menu.main]]
-    name = "Quantum Mechanics"
-    url = "book/quantum_mechanics_137A.pdf"
-    weight = 1
-
-  [[menu.main]]
-    name = "Table of Contents"
-    url = "contents/contents/"
-    weight = 5
-
-  [[menu.main]]
-    name = "muLab Research"
-    url = "research/"
+    name = "qiskit"
+    url = "qiskit/"
     weight = 2
 
   [[menu.main]]
-    name = "Resume" 
-    url = "resume/resume.pdf"
+    name = "textbook"
+    url = "book/quantum_mechanics_137A.pdf"
+    weight = 4
+
+  [[menu.main]]
+    name = "contents"
+    url = "contents/contents/"
     weight = 6
+
+  [[menu.main]]
+    name = "research"
+    url = "research/"
+    weight = 1
+
+  [[menu.main]]
+    name = "resume" 
+    url = "resume/resume.pdf"
+    weight = 5
 
