@@ -1,8 +1,8 @@
-+++
-title = 'Introduction to Superconducting Qubit Engineering'
-date = 2024-10-15T13:17:10-07:00
-draft = False
-+++
+---
+title: 'Introduction to Superconducting Qubit Engineering'
+date: 2024-10-15T13:17:10-07:00
+draft: False
+---
 
 ![](/1_super_guide.png)
 ![](/2_super_guide.png)
