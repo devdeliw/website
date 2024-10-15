@@ -1,0 +1,237 @@
+\documentclass[svgnames]{article}     % use "amsart" instead of "article" for AMSLaTeX format
+%\geometry{landscape}                 % Activate for rotated page geometry
+
+%\usepackage[parfill]{parskip}        % Activate to begin paragraphs with an empty line rather than an indent
+
+\usepackage{graphicx}                 % Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+
+%maths                                % TeX will automatically convert eps --> pdf in pdflatex
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{geometry}
+
+% Inverting Color of PDF
+%\usepackage{xcolor}
+%\pagecolor[rgb]{0.19,0.19,0.19}
+%\color[rgb]{0.77,0.77,0.77}
+
+%noindent
+%\setlength\parindent{0pt}
+
+%pgfplots
+\usepackage{pgfplots}
+
+%images
+%\graphicspath{{ }}                   % Activate to set a image directory
+
+%tikz
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{comment}
+\usetikzlibrary{arrows}
+\usepackage[most]{tcolorbox}
+
+%Figures
+\usepackage{float}
+\usepackage{caption}
+\usepackage{lipsum}
+
+
+\title{Nondegenerate Perturbation Theory}
+\author{Deval Deliwala}
+%\date{}                              % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+%\tableofcontents                     % Activate to display a table of contents
+
+
+\section{General Formulation} 
+
+Provided a set of orthonormal solutions to the (time-independent) Schr\"odinger
+equation for some potential, (say, a 1D infinite square well):
+
+\[
+H^0 \psi_n^0 = E_n^0 \psi_n^0 \quad \Leftrightarrow \quad \langle \psi_n^0
+| \psi_m^0\rangle = \delta_{nm}
+\] \vspace{3px}
+
+with corresponding energy eigenvalues $E_n^0$. Now we \textit{perturb} the
+potential slightly, say, by putting a small bump in the bottom of the well.
+This new potential is much more complicated and solving it would be difficult
+to say the least. \textbf{Perturbation Theory} is a systematic procedure for
+obtaining \textit{approximate solutions}  to the perturbed problem, by building
+on the known exact solutions to the unperturbed case. 
+
+To begin with, we write the new Hamiltonian as the sum of two terms: 
+
+\[
+H = H^0 + \lambda H' 
+\] \vspace{3px}
+
+where $H'$ is the perturbation. For the moment we will take $\lambda$ to be
+a small number and $H$ is the true Hamiltonian. Next, we write $\psi_n$ and
+$E_n$ as a power series in $\lambda$ : 
+
+\begin{align}
+  \psi_n &= \psi_n^0 + \lambda \psi_n^1 + \lambda^2 \psi_n^2 + \cdots, \label{1} \\
+  E_n &= E_n^0 + \lambda E_n^1 + \lambda^2 E_n^2 + \cdots,  \label{2}
+\end{align}
+
+Here, $E_n^1$ is the \textbf{first-order correction} to the $n $th
+eigenvalue, and $\psi_n^1$ is the first-order correction to the $n$th
+eigenfunctions. Plugging Eqs. (\ref{1}, \ref{2}) into the Hamiltonian
+eigenvalue problem, we get 
+
+\begin{align*} \label{}
+  H\psi_n &= E_n \psi_n, \\
+  (H^0+ \lambda H') \left[ \psi_n^0 + \lambda \psi_n^1 + \lambda^2 \psi_n^2
++ \cdots \right] &= \\ &\left(E_n^0 + \lambda E_n^1 + \lambda^2 E_n^2 + \cdots
+\right) \left[\psi_n^0 + \lambda \psi_n^1 + \lambda^2\psi_n^2 + \cdots \right]
+\end{align*}\vspace{3px}
+
+Collecting like powers of $\lambda$, 
+
+\begin{align*}
+  H^0 &\psi_n^0 + \lambda (H^0 \psi_n^1 + H'\psi_n^0) + \lambda^2(H^0
+  \lambda_n^2 + H' \psi_n^1) + \cdots \\ &= E_n^0 \psi_n^0 + \lambda
+  (E_n^0\psi_n^1 + E_n^1 \psi_n^0) + \lambda^2 (E_n^0 \psi_n^2 + E_n^1 \psi_n^1
+  + E_n^2\psi_n^0) + \cdots.
+\end{align*}
+
+To the lowest order ($\lambda^0$ ), this yields $H^0\psi_n^0 = E_n^0 \psi_n^0$,
+which is nothing new. To first order ($\lambda^1$), 
+
+ \begin{align} \label{first}
+  H^0\psi_n^1 + H'\psi_n^0 = E_n^0\psi_n^1 + E_n^2\psi_n^0
+\end{align}\vspace{3px}
+
+To second order ($\lambda^2$), 
+
+\begin{align} \label{second}
+  H^0\psi_n^2 + H'(\psi_n^1) = E_n^0\psi_n^2 + E_n^1 \psi_n^1 + E_n^2 \psi_n^0
+\end{align}
+
+and so on. Now we are done with $\lambda$, it was just a device to keep track
+of the different orders. 
+
+\section{First-Order Theory} 
+
+We will first focus on first-order perturbation, defined by Eq. (\ref{first}).
+Taking the inner product with $\psi_n^0$, (multiplying by $(\psi_n^0)^*$ and
+integrating), 
+
+\[
+\langle \psi_n^0 | H^0 \psi_n^1 \rangle + \langle \psi_n^0 | H' \psi_n^0
+\rangle = E_n^0 \langle \psi_n^0 | \psi_n^1\rangle + E_n^1 \langle \psi_n^0
+| \psi_n^0 \rangle. 
+\] \vspace{3px}
+
+But since $H^0$ is hermitian, we get 
+
+\[
+\langle \psi_n^0 | H^0 | \psi_n^1\rangle = \langle H^0 \psi_n^0 | \psi_n^1
+\rangle = \langle E_n^0\psi_n^0 | \psi_n^1\rangle = E_n^0\langle \psi_n^0
+| \psi_n^1 \rangle. 
+\] \vspace{3px}
+
+Therefore, cancelling the first term on the right and setting $\langle \psi_n^0
+| \psi_n^0 \rangle = 1$, we get 
+
+\vspace{3px}
+\begin{tcolorbox}[colback = red!5!white, colframe = red!50!black, title = First
+  Order Correction to Energy]
+
+  \begin{align}\label{firstenergy} E_n^1 = \langle \psi_n^0 | H' | \psi_n^0
+  \rangle. \end{align}
+
+\end{tcolorbox}
+\vspace{3px}
+
+This is the fundamental result of first-order perturbation theory, likely the
+most used equation in quantum mechanics. The first-order correction to the
+energy is the \textit{expectation value} of the perturbation, in the
+\textit{unperturbed} state. 
+
+
+Eq. (\ref{firstenergy}) is the first-order correction to the \textit{energy}.
+To find the first-order correction to the \textit{wave function}, we rewrite
+Eq. (\ref{first}): 
+
+\begin{align} \label{b}
+  H^0\psi_n^1 + H'\psi_n^0 &= E_n^0\psi_n^1 + E_n^2\psi_n^0 \nonumber \\ 
+  \left(H^0 - E_n^0\right) \psi_n^1 &= - \left( H' - E_n^1 \right) \psi_n^0. 
+\end{align}
+
+The right side is a known function, so this amounts to an inhomogeneous
+differential equation for $\psi_n^1$. Now the unperturbed wave functions
+constitute a complete set, so $\psi_n^1$ can be expressed as a linear
+combination of them: 
+
+\begin{align} \label{a}
+  \psi_n^1 = \sum_{m\neq n}^{} c_m^{(n)} \psi_m^0
+\end{align}\vspace{3px}
+
+Putting Eq. (\ref{a}) into Eq. (\ref{b}) and using the fact taht $\psi_m^0$
+satisfies the unperturbed Schr\"odinger equation, we have 
+
+\[
+\sum_{m\neq n}^{} \left( E_m^{0} - E_n^{0}  \right) c_m^{(n)} \psi_m^{0}
+= -\left( H' - E_n^{1} \right) \psi_n^{0}.  
+\] \vspace{3px}
+
+Taking the inner product now with $\psi_\ell^{0}$, 
+
+\[
+\sum_{m\neq n}^{} \left( E_m^{0} - E_n^{0} \right) c_m^{(n)} \langle \psi_\ell^{0}
+| \psi_m^{0} = -\langle \psi_\ell^{0} | H' | \psi_n^{0} \rangle = E_n^1 \langle
+\psi_\ell^{0} | \psi_n^{0} \rangle.
+\] \vspace{3px}
+
+If $\ell = n$, the left side is 0, and we recover Eq. (\ref{firstenergy}). If
+$\ell \neq n$, we get 
+
+\[
+\left( E_\ell^{0} - E_n^{0}  \right) c_\ell^{(n)} = -\langle \psi_\ell^{0} | H'
+| \psi_n^{0} \rangle,
+\] \vspace{3px}
+
+resulting in 
+
+\begin{align} \label{coeff}
+  c_m^{(n)} = \frac{\langle \psi_m^{0} | H' | \psi_n^0\rangle}{E_n^{0}
+  - E_m^{0}}.
+\end{align}\vspace{3px}
+
+Therefore, 
+
+\vspace{3px}
+\begin{tcolorbox}[colback = blue!5!white, colframe = blue!50!black, title
+  = First Order Correction to Wave Function]
+
+  \begin{align} \label{firstwf}
+    \psi_n^{1} = \sum_{m\neq n} \frac{{\langle \psi_m^{0}| H'  |\psi_n^0
+    \rangle} }{(E_n^0 - E_m^0)} \psi_m^0.
+  \end{align}
+
+\end{tcolorbox}
+\vspace{3px}
+The denominator is safe (since there is no coefficient with $m = n$
+) \textit{as long as the unperturbed energy spectrum is nondegenerate}. If two
+different unperturbed states share the same energy, we divided by zero to get
+Eq. (\ref{coeff}). In this case we need \textbf{degenerate perturbation
+theory}. 
+
+This completes first-order perturbation theory. The first-order correction to
+the energy, $E_n^1$, is given by Eq. (\ref{firstenergy}), and the first-order
+correction to the wave function, $\psi_n^1$, is given by Eq. (\ref{firstwf}). 
+
+
+
+
+
+\end{document}
+
