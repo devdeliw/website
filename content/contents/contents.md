@@ -23,6 +23,6 @@ date : 2024-02-11T14:10:04-08:00
 
 
 
-### Quantum Mechanics 
+### Quantum Mechanics Textbooks
 - [Quantum Mechanics I](https://dev-undergrad.dev/book/quantum_mechanics_137A.pdf)
 
