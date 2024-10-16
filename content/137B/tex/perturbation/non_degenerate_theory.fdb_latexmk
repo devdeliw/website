@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1729031991 "non_degenerate_theory.tex" "non_degenerate_theory.pdf" "non_degenerate_theory" 1729031992 0
+["pdflatex"] 1729038811 "non_degenerate_theory.tex" "non_degenerate_theory.pdf" "non_degenerate_theory" 1729038812 0
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -223,8 +223,8 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1700772052 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1700772027 7883463 2f669c14feac4dbdcdbd0e542d8281ea ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "non_degenerate_theory.aux" 1729031992 463 5947528ca4221c96cff9f96664ef37b1 "pdflatex"
-  "non_degenerate_theory.tex" 1729031988 7715 6c45a1f7d07488ba36357349d68107eb ""
+  "non_degenerate_theory.aux" 1729038812 605 00179ccaa6a7edffa54fdee2cf52428f "pdflatex"
+  "non_degenerate_theory.tex" 1729038811 9719 1b7e9e75931c9e1d924cd1f2a4142c15 ""
   (generated)
   "non_degenerate_theory.aux"
   "non_degenerate_theory.log"

@@ -229,6 +229,68 @@ This completes first-order perturbation theory. The first-order correction to
 the energy, $E_n^1$, is given by Eq. (\ref{firstenergy}), and the first-order
 correction to the wave function, $\psi_n^1$, is given by Eq. (\ref{firstwf}). 
 
+\section{Second-Order Energies}
+
+Proceeding as before, we take the inner product of the second order Eq.
+(\ref{second}), with $\psi_n^0$. 
+
+\[
+\langle \psi_n^{0} | H^{0} \psi_n^2\rangle + \langle \psi_n^{0} | H \psi_n^{1}
+\rangle = E_n^{0} \langle \psi_n^{0} | \psi_n^2\rangle + E_n^{1} \langle
+\psi_n^{0} | \psi_n^{1} \rangle + E_n^2 \langle \psi_n^{0} | \psi_n^{0}\rangle
+\] \vspace{3px}
+
+Again, we exploit the hermiticity of $H^{0}$: 
+
+\[
+\langle \psi_n^{0} | H^{0}\psi_n^2\rangle = \langle H^{0} \psi_n^{0}|
+\psi_n^2\rangle = E_n^{0} \langle \psi_n^{0}| \psi_n^2 \rangle
+\] \vspace{3px}
+
+The first term on the left cancels the first term on the right. Meanwhile,
+$\langle \psi_n^{0} | \psi_n^{0} \rangle = 1$, and we are left with a formula
+for $E_n^2$ : 
+
+\begin{align} \label{}
+  E_n^2 = \langle \psi_n^{0} | H' | \psi_n^{1} \rangle - E_n^{1} \langle
+  \psi_n^{0} | \psi_n^{1}\rangle. 
+\end{align}\vspace{3px}
+
+However, 
+
+\[
+  \langle \psi_n^{0} | \psi_n^{1} \rangle = \sum_{m\neq n} c_m^{(n)} \langle
+  \psi_n^{0} | \psi_m^{0} \rangle = 0
+\] \vspace{3px}
+
+because the sum excludes $m = n$, and all the others are orthogonal. Therefore, 
+
+\[
+E_n^2 = \langle \psi_n^{0} | H' | \psi_n^1 \rangle  = \sum_{m\neq n}^{}
+c_m^{(n)} \langle \psi_n^{0} | H' | \psi_m^{0}\rangle = \sum_{m\neq n} \frac{\langle
+\psi_m^{0} | H' | \psi_n^{0}\langle \psi_n^{0}|H'|\psi_m^{0}\rangle}{E_n^{0}
+- E_m^{0}} 
+\] \vspace{3px}
+
+or, finally, 
+
+\begin{tcolorbox}[title = Second-Order Energy Correction]
+
+  \begin{align} \label{secondenergy}
+    E_n^2 = \sum_{m\neq n}^{} \frac{|\langle \psi_m^{0} | H'
+    | \psi_n^{0}\rangle |^2}{E_n^0 - E_m^0}. 
+  \end{align}
+
+\end{tcolorbox}
+
+This is the fundamental result of second-order perturbation theory. Of course
+we could figure out the second-order correction to the wave function
+$(\psi_n^2)$, the third order correction to the energy, and so on. But
+according to Griffiths, Eq. (\ref{secondenergy}) is really as far as you need
+to go for perturbation theory in practice. 
+
+
+
 
 
 
