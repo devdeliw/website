@@ -1,5 +1,5 @@
 ---
-title: 'Matrix Derivatives'
+title: 'Lecture 2 - Matrix Derivatives'
 date: 2024-10-17T16:10:19-07:00
 draft: false
 ---
