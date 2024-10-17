@@ -1,5 +1,5 @@
 ---
-title: 'First-order Nondegenerate Perturbation Theory'
+title: 'Nondegenerate Perturbation Theory'
 date: 2024-10-15T15:19:03-07:00
 draft: false
 ---
