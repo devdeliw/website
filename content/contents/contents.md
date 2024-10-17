@@ -11,8 +11,12 @@ date : 2024-02-11T14:10:04-08:00
 
 ### 2. IBM Qiskit Notes 
 - [Basics of Quantum Information](https://dev-undergrad.dev/qiskit/) 
+  
+  
+### 3. Machine Learning
+- [Lectures](https://dev-undergrad.dev/ml/)
 
-### 3. Quantum Mechanics Textbooks
+### 4. Quantum Mechanics Textbooks
 - [Quantum Mechanics I](https://dev-undergrad.dev/book/quantum_mechanics_137A.pdf)
 
 
