@@ -1,0 +1,332 @@
+\documentclass[svgnames]{article}     % use "amsart" instead of "article" for AMSLaTeX format
+%\geometry{landscape}                 % Activate for rotated page geometry
+
+%\usepackage[parfill]{parskip}        % Activate to begin paragraphs with an empty line rather than an indent
+
+\usepackage{graphicx}                 % Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+
+%maths                                % TeX will automatically convert eps --> pdf in pdflatex
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{geometry}
+
+% Inverting Color of PDF
+%\usepackage{xcolor}
+%\pagecolor[rgb]{0.19,0.19,0.19}
+%\color[rgb]{0.77,0.77,0.77}
+
+%noindent
+\setlength\parindent{0pt}
+
+%pgfplots
+\usepackage{pgfplots}
+
+%images
+%\graphicspath{{ }}                   % Activate to set a image directory
+
+%tikz
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{comment}
+\usetikzlibrary{arrows}
+\usepackage[most]{tcolorbox}
+
+%Figures
+\usepackage{float}
+\usepackage{caption}
+\usepackage{lipsum}
+
+\tcbset {
+  base/.style={
+    arc=0mm,
+    bottomtitle=0.5mm,
+    boxrule=0mm,
+    colbacktitle=black!10!white,
+    coltitle=black,
+    fonttitle=\bfseries,
+    left=2.5mm,
+    leftrule=1mm,
+    right=3.5mm,
+    title={#1},
+    toptitle=0.75mm,
+  }
+}
+
+\definecolor{brandblue}{rgb}{0.34, 0.7, 1}
+\newtcolorbox{mainbox}[1]{
+  colframe=brandblue,
+  base={#1}
+}
+
+\newtcolorbox{subbox}[1]{
+  colframe=black!30!white,
+  base={#1}
+}
+
+
+\title{The Minimal Polynomial -- Eigenvalue Relation}
+\author{Deval Deliwala}
+%\date{}                              % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+%\tableofcontents                     % Activate to display a table of contents
+
+
+The goal of this note is to derive \textit{what eigenvalues are} without using
+the normal method of determinants and characteristic equations. 
+
+\section{The Minimal Polynomial}
+
+\begin{mainbox}{Monic Polynomials}
+  A \textit{monic polynomial} is a polynomial whose highest-degree coefficient
+  equals 1. 
+
+  \[
+  5 + 5x + x^2 
+  \] \vspace{3px}
+   is a monic polynomial of degree 2. 
+  
+\end{mainbox}
+
+We begin with the following lemma, 
+
+\begin{subbox}{Existence and Uniqueness of Minimal Polynomials} 
+Suppose $V$ is a finite-dimensional vector space and $T \in \mathcal{L}(V)$.
+Then, there exists a \textit{unique} monic polynomial $p \in
+\mathcal{P}(\mathbb{F})$ of smallest degree such that $p(T) = 0$. Furthermore,
+$\text{deg } p \leq \text{dim } V$
+\end{subbox} \mbox{} \\
+
+\textbf{\textit{Proof}} \\ 
+
+If  dim $V = 0$, then $I$ is the zero operator on $V$ and thus we take $p$ to
+be the constant polynomial 1. \\
+
+Now let's assume dim $V > 0$ and the desired result is true for all operators
+on all complex vectors of smaller dimension. Let $v \in V$ be such that $v \neq
+0$. The list $v, Tv, \cdots, T^{\text{dim} V} v$ has a length $1 + \text{dim } V$ and
+is therefore linearly dependent. \\
+
+By the linear independence lemma, there exists a smallest positive integer $m
+\leq \text{dim } V$ such that $T^m v$ is a linear combination of $v, Tv,
+\cdots, T^{m-1} v$ before it. Thus there exists scalars $c_0, c_1, c_2, \cdots
+, c_{m-1} \in \mathbb{F}$ such that 
+\begin{align*}
+  c_0v + c_1 Tv + \cdots + c_{m-1}T^{m-1}v &= - T^m v\\
+  c_0v + c_1 Tv + \cdots c_{m-1} T^{m-1} v + T^m v &= 0
+\end{align*}
+
+We define a monic polynomial $q \in \mathcal{P}_m(\mathbb{F})$ by 
+
+\[
+  q(z) = c_0 + c_1z + \cdots + c_{m-1} z^{m-1} + z^m
+\] \vspace{3px}
+
+Therefore, substituting in $q(T)$, we see that $q(T) = 0$. 
+
+If a variable  $k$ is some nonnegative integer, then 
+
+\[
+q(T) (T^k v) = T^k (q(T) v) = T^k (0) = 0. 
+\] \vspace{3px}
+
+And since $v, Tv, \cdots, T^{m-1} v$ is linearly independent, the above
+equation implies $\text{dim null} q(T) \geq m$. Hence, 
+
+\[
+\text{dim range} q(T) = \text{dim} V - \text{dim null}q(T) \leq \text{dim}
+V - m. 
+\] \vspace{3px}
+
+And since the range $q(T)$ is invariant under $T$, we apply induction onto the
+operator $T\big|_{\text{range} q(T) } $ onto the vector space range $q(T)$. We
+fine that there is a monic polynomial $s \in \mathcal{P}(\mathbb{F})$ with 
+
+\[
+\text{deg }  s\leq \text{dim } V - m \quad \text{ and } \quad
+s(T\big|_{\text{range} q(T)} ) = 0. 
+\] \vspace{3px}
+
+
+Therefore for all $v \in V$, we have 
+
+\[
+  (sq)(T)(v) = s(T)(q(T)v) = 0
+\] \vspace{3px}
+
+which implies $sq$ is a monic polynomial such that deg $sq \leq$ dim $V$ and
+$(sq)(T) = 0$. This polynomial is called the \textit{minimal polynomial}. 
+
+\begin{mainbox}{Minimal Polynomial}
+  Suppose  $V$ is finite-dimensional and $T \in \mathcal{L}(V)$. Then the
+  \textit{minimal polynomial} of $T$ is the unique monic polynomial $p \in
+  \mathcal{P}{\mathbb{F}}$ of smallest degree such that $p(T) = 0$ (the
+  0 operator). 
+\end{mainbox}
+
+\textit{Example}: \mbox{} \\ 
+
+Suppose $T \in \mathcal{L}(\mathbb{F}^5)$ and 
+
+\[
+\mathcal{M} (T) = \begin{pmatrix}
+  0 & 0 & 0 & 0 & -3 \\ 
+  1 & 0 & 0 & 0 & 6 \\
+  0 & 1 & 0 & 0 & 0 \\
+  0 & 0 & 1 & 0 & 0 \\
+  0 & 0 & 0 & 1 & 0 
+\end{pmatrix} 
+\] \vspace{3px}
+
+with respect to the standard bases. Taking $v = e_1$, we have 
+
+\begin{align*}
+  T e_1 &= e_2, \\
+  T^2 e_1 &= T(Te_1) = Te_2 = e_3 \\
+  T^3e_1 &= T(T^2 e_1) = Te_3 = e_4 \\ 
+  T^4e_1 &= T(T^3 e_1) = Te_4 = e_5 \\ 
+  T^{5}e_1 &= T(T^{4}e_1) = Te_5 = -3e_1 + 6e_2 
+\end{align*}
+
+Therefore, $3e_1 - 6Te_1 = -T^5 e_1$. Because $e_1, e_2, \hdots, e_5$ is
+linearly independent, so too is $e_1, Te_1, \hdots, T^4 e_1$, as they are
+equivalent. Thus, no other linear combination of the list equals $-T^5 e_1$.
+Hence the minimal polynomial of $T$ is $p(z) = 3 - 6z + z^5$. \\
+
+Now comes the main point of all this. 
+
+\begin{mainbox}{Eigenvalues are the zeros of the minimal polynomial}
+  Suppose $V$ is finite dimensional and $T \in \mathcal{L}(V)$.  
+
+  \begin{itemize}
+    \item[(a)] The zeros of the minimal polynomial of $T$ are the eigenvalues
+      of $T$. 
+    \item[(b)] If $V$ is a complex vector space, then the minimal polynomial of
+      $T$ has the form 
+      \[ (z - \lambda_1) \cdots (z - \lambda_m), \] 
+      
+      where $\lambda_1, \hdots, \lambda_m$ are the eigenvalues of $T$, possibly
+      with repetitions. 
+  \end{itemize}
+\end{mainbox} \mbox{} \\
+
+\textbf{\textit{Proof}}  \\
+
+(a) \\ 
+Let $p$ be a minimal polynomial of $T$. \\
+
+First suppose $\lambda \in \mathbb{F}  $ is a zero of $p$. Then $p$ can be
+written in the form 
+
+\[
+p(z) = (z - \lambda)q(z), 
+\] \vspace{3px}
+
+where $q(z)$ is a monic polynomial with coefficients in $\mathbb{F}  $. Because
+$p(T) = 0$, we get 
+
+\[
+0 = (T - \lambda I )(q(T) v) 
+\] \vspace{3px}
+
+for all $v\in V$. And since the degree of $q$ is less than the degree of the
+minimal polynomial $p$, there is at least one vector $v \in V$ such that
+$q(T)v \neq 0$. The equation above the implies $\lambda$ is an eigenvalue of
+$T$. 
+
+To prove that every eigenvalue of $T$ is a zero of $p$, now suppose $\lambda
+\in \mathbb{F}  $ is an eigenvalue of $T$. Then there exists $v\in V$ such that
+$Tv  = \lambda v$. Repeated applications of $T$ to both sides show that $T^k
+v = \lambda^k v$ for every nonnegative $k$. Therefore, 
+
+\[
+p(T) v = p(\lambda) v
+\] \vspace{3px}
+
+And since $p$ is the minimal polynomial, we have $p(T) v = 0 = p(\lambda)v$,
+implying $p(\lambda) = 0$. Therefore $\lambda$ is a zero of $p$. \\
+
+We can prove $(b)$ using the above result and the fundamental theorem of
+algebra. 
+
+The next result completely characterizes the polynomials that, when applied to
+an operator, give the 0 operator.  
+
+\begin{mainbox}{$q(T) = 0\Leftrightarrow q$ is a polynomial multiple of the
+  minimal polynomial}
+  Suppose $ V$ finite dimensional, $T \in \mathcal{L} (V)$ and $q \in
+  \mathcal{P} (\mathbb{F} ) $. Then $q(T) = 0$ if and only if $q$ is
+  a polynomial multiple of the minimal polynomial of $T$. 
+\end{mainbox} \mbox{} \\
+
+\textbf{\textit{Proof}}\\
+
+\textbf{Forward Direction} (Assume $q(T) = 0$, prove $q$ multiple of $p$ ). \\
+The
+polynomial division algorithm states there exist polynomials $s, r \in
+\mathcal{P} (\mathbb{F} ) $ such that 
+
+\[
+q = ps + r
+\] \vspace{3px}
+
+and deg $r$ $<$ deg $p$. Applying $T$ to the equation, we get 
+
+\[
+q(T) = p(T) s(T) + r(T)
+\] \vspace{3px}
+
+But since $p$ is the minimal polynomial, we know $p(T) = 0 $. Therefore, this
+reduces to 
+
+\[
+q(T) = r(T) = 0
+\] \vspace{3px}
+
+which implies $r(T) = 0$. And since the minimal polynomial $p$ is
+\textit{defined} as the polynomial of smallest degree such that $p(T) = 0$, $r$
+therefore must equal 0. Hence $q = ps$: a polynomial multiple of $p$. \\
+
+
+\textbf{Backward Direction} (Assume $q$ a polynomial multiple of $p$, prove
+$q(T) = 0$ ). \\ 
+
+This direction is must easier, we just apply $T$ to the equation 
+
+\begin{align*}
+  q &= ps  \\ q(T) &= p(T)s(T) \\ q(T) &= 0s(T) \\ q(T) &= 0 
+\end{align*}
+
+An even cooler result that  follows is 
+
+\begin{mainbox}{Minimal polynomial of a restriction operator}
+  
+  Suppose $V$ is finite-dimensional, $T \in \mathcal{L} (V)$ and $U$ is
+  a subspace of $V$ that is invariant under $T$. Then the minimal polynomial of
+  $T$ is a polynomial multiple of the minimal polynomial of $T\big|_U$. 
+
+\end{mainbox}
+
+The next result is also important, showing that the constant term of the
+minimal polynomial of an operator can show whether the operator is invertible! 
+
+
+\begin{mainbox}{$T$ not invertible $\Leftrightarrow$ constant term of minimal
+polynomial of $T$ is 0}
+  Suppose $V$ is finite-dimensional and $T\in \mathcal{L} (V)$. Then $T$ is not
+  invertible if and only if the constant term of the minimal polynomial of $T$ 
+  \textit{is} 0. 
+\end{mainbox}
+
+
+The proof is fairly simple: 
+
+\begin{align*}
+  T \text{ is not invertible}  &\Longleftrightarrow 0 \text{ is an eigenvalue
+  of }  T \\ &\Longleftrightarrow 0 \text{ is a zero of } p \\ &\Longleftrightarrow \text{the constant term of } p \text{ is 0} 
+\end{align*}
+\end{document}
