@@ -1,5 +1,5 @@
 ---
-title: 'Puzzle: Quantifying Entanglement'
+title: 'Puzzle: Quantifying Entanglement pt.1'
 date: 2024-10-21T23:48:58-07:00
 draft: false
 ---
