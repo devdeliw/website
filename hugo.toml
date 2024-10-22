@@ -24,7 +24,6 @@ theme = 'hermit-v2'
   dateformNum     = "2006-01-02"
   dateformNumTime = "2006-01-02 15:04 -0700"
 
-
   footerCopyright = ' <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
 
   justifyContent = false
@@ -33,7 +32,7 @@ theme = 'hermit-v2'
   code_copy_button = true
 
   homeSubtitlePrinter = true
-  scrollToTop = true 
+  scrollToTop = true
   global_mathjax = true
   readTime = true
   readTimeSeparator = "\u2026 \u23F2 Reading Time:"
@@ -54,6 +53,17 @@ theme = 'hermit-v2'
   [[menu.main]]
     name = "contents"
     url = "contents/contents/"
+    weight = 2
+
+  [[menu.main]]
+    name = "resume"
+    url = "resume/resume.pdf"
+    weight = 3
+
+  [[menu.main]]
+    name = "blog" 
+    url = "blog/"
     weight = 1
+
 
 
