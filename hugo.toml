@@ -18,7 +18,7 @@ theme = 'hermit-v2'
   favicon = true
 
 [params]
-  themeColor = "#494f5c"
+  themeColor = "#ffffff"
   dateform        = "Jan 2, 2006"
   dateformShort   = "Jan 2"
   dateformNum     = "2006-01-02"
