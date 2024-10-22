@@ -30,7 +30,7 @@ true.
 
 But is it true that *God* or *Nature* made everything this way, with a calculator in one hand
 continuously computing the states of every atom in the universe. Possibly?. 
-Mother Nature may just some supercomputing entity controlling the time
+Mother Nature may just be some supercomputing entity controlling the time
 evolution of every particle in the universe. Then perhaps we don't have any
 free will. I shouldn't get into philosophy here though. The point is at the
 base of QM lies many assumptions. QM works! Mathematical Proofs are there! But
