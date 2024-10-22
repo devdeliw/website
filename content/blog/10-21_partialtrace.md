@@ -134,7 +134,7 @@ the density matrix of \\( |\Phi_+\rangle \\) as \\( \rho_+ = |\Phi_+\rangle
 \langle \Phi_+|\\). I'll begin by calculating $\rho_+$. 
 
 $$  \rho_+ = |\Phi_+\rangle \langle \Phi_+\rangle $$
-$$  = \frac{1}{2}[ |00\rangle \langle 00| + |00\rangle \langle 11| + |11\rangle \langle 00| + |11\rangle\langle 11|. $$ 
+$$  = \frac{1}{2}[ |00\rangle \langle 00| + |00\rangle \langle 11| + |11\rangle \langle 00| + |11\rangle\langle 11|]. $$ 
 
 Unfortunately, like I said before, this matrix can not be represented in a nice
 \\( \xi_1 \otimes \xi_2 \\) form. Luckily, the trace operator is linear:  \\(
@@ -142,16 +142,16 @@ tr_a (u + v) = tr_a u + tr_a v \\). And since intrinsically
 
 $$|00\rangle \langle
 00 | = (|0\rangle \otimes |0\rangle)(\langle 0 | \otimes \langle 0 |)
-= |0\rangle \langle 0| \otimes |0\rangle \langle 0|,$$
+= |0\rangle \langle 0| \otimes |0\rangle \langle 0),$$
 
 we can just apply the
 linear trace operator to each summand separately. We trace out \\( B \\) to
 extract \\( A \\) as follows: 
 
 $$ tr_B \rho_+ = \frac{1}{2} (|0\rangle \langle 0| \cdot tr |0\rangle \langle
-0 | + |0\rangle \langle 1| \cdot tr |0\rangle \langle 1| + |1\rangle \langle 0|
-\cdot tr|1\rangle \langle 0| + |1\rangle \langle 1| \cdot tr |1\rangle \langle
-1|$$ 
+0 | + |0\rangle \langle 1| \cdot tr |0\rangle \langle 1| $$ 
+$$ \hspace{62px}  + \hspace{30px}| 1\rangle \langle 0 | \cdot tr|1\rangle \langle 0| + |1\rangle \langle 1| \cdot tr |1\rangle \langle
+1|)$$ 
 
 And since for two basis vectors \\( i,j \\) the matrix \\( |i\rangle \langle
 j | \\) just has a nonzero element in the \\( (i,j) \\) position, the only
