@@ -47,7 +47,7 @@ Here's an example.
 
 Consider the following one-qubit state, 
 
-$$ |\psi\rangle = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle)$$.
+$$ |\psi\rangle = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle).$$
 
 The above equation tells us that if we *measure* \\( |\psi\rangle \\), we will
 yield the state \\( |0\rangle \\) with \\( \frac{1}{2}  \\) probability and
@@ -72,12 +72,12 @@ $$ |0\rangle \quad \text{probability } \frac{1}{2}, $$
 $$ |1\rangle \quad \text{probability } \frac{1}{2}. $$
 
 But if you look back again at the two-qubit system, if the first qubit
-collapses to \\( |0\rangle \\) post measurement, the two-qubit state becomes \\( |00\rangle \\) with certainty -- the second qubit collapes to \\( |0\rangle  \\) automatically! And likewise if the first qubit collapses to \\( |1\rangle \\), so two must the second qubit. What this means is measuring \\( |\Phi_+\rangle  \\) yields the two qubit states yields 
+collapses to \\( |0\rangle \\) post measurement, the two-qubit state becomes \\( |00\rangle \\) with certainty -- the second qubit collapes to \\( |0\rangle  \\) automatically! And likewise if the first qubit collapses to \\( |1\rangle \\), so too must the second qubit. What this means is measuring \\( |\Phi_+\rangle  \\) yields the two qubit states: 
 
 $$ |00\rangle \quad \text{probability } \frac{1}{2}, $$
 $$ |11\rangle \quad \text{probability } \frac{1}{2}. $$
 
-The first and second qubits are always equivalent. Think about this carefully.
+Here, the first and second qubits, immediately post-measurement, *must* always be equivalent. Think about this carefully.
 Just by *measuring* the state of the *first* qubit -- we automatically
 **force** the second qubit into a state, in this case the same state. 
 
@@ -86,7 +86,7 @@ Just by *measuring* the state of the *first* qubit -- we automatically
 In the above case I used an intuitive relation between the two-qubit
 $|\Phi_+\rangle$ system and the single-qubit $|\psi\rangle$ system to showcase
 entanglement. Specifically, I said measuring the leftest qubit yields, *just
-like the one-qubit state* $|\psi\rangle$, $\cdots$. Or in other words,
+like the one-qubit state* $|\psi\rangle$, ... Or in other words,
 I treated the first qubit as being in the same state as $|\psi\rangle$. 
 
 Well, from Quantum Information Theory, we know that entangled states don't have
@@ -95,9 +95,9 @@ $|\xi_2\rangle$ such that
 
 $$ |\Phi_+\rangle = |\xi_1\rangle \otimes |\xi_2\rangle.$$
 
-Therefore, there isn't a *purely* identifiable "leftest-qubit* state. Both
-qubits, being entangled, are *intimately connected*. We can't isolate each
-qubit. But then again, it does seem like for the $|\Phi_+\rangle$ state, the
+Therefore, there isn't a *purely* identifiable "leftest-qubit" state. Both
+qubits, being entangled, are *intimately connected*. We can't isolate one from
+the ohter. But then again, it does seem like for the $|\Phi_+\rangle$ state, the
 leftest-qubit *can* be defined by $|\psi\rangle$. Or more accurately,
 $|\psi\rangle$ defines the *left-part* of $|\Phi_+\rangle$.
 
@@ -105,16 +105,16 @@ $|\psi\rangle$ defines the *left-part* of $|\Phi_+\rangle$.
 
 
 It turns out, there is actually a way, to *trace*-out, or extract, the single qubit component of
-a multi-qubit system, even for a system that decomposed into tensor products of
-states. The *partial-trace* is kind of like the inverse of a tensor product.
-Rather than *building* states and combining them, it throws out, from
-a multi-qubit state, the states we *don't* care about, while restricting our
-view to the rest. 
+a multi-qubit system, even for a system that can not be decomposed into tensor products of
+states. The **partial-trace** is kind of like the inverse of a tensor product.
+Rather than *building* states and combining them, it throws out states we *don't* care about and 
+restricts our view to the rest. 
 
-For a density operator \\( \rho = \xi_1 \otimes \xi_2 \\) with \\(
-\xi_1 \\) being the density operator of the first qubit and \\( \xi_2 \\) being the density operator of the
-second, we define tracing away the \\( \xi_1 \\) and \\( \xi_2 \\) parts to
-correspond to
+For a density operator  \\( \rho = \xi_1 \otimes \xi_2 \\) defining the system
+\\( \mathcal{H}_A \otimes \mathcal{H}_B \\) with \\(
+\xi_1 \\) corresponding to the \\( \mathcal{H}_A \\) part  and \\( \xi_2 \\)
+corresponding to the \\( \mathcal{H}_B \\) part,  we define tracing away 
+\\( \xi_1 \\) and \\( \xi_2 \\) as 
 
 $$ \text{tracing away } |\xi_1\rangle: \quad tr_{\xi_1} \xi_1 \otimes \xi_2
 = (tr \xi_1) \cdot \xi_2, $$
@@ -126,7 +126,7 @@ It quite literally is taking the trace of the part you want to throw out.
 
 Let's work with \\( |\Phi_0\rangle \\) 
 
-$$ |\Phi_0\rangle = \frac{1}{\sqrt{2}} (|00\rangle + |11\rangle)  $$.
+$$ |\Phi_0\rangle = \frac{1}{\sqrt{2}} (|00\rangle + |11\rangle)  .$$
 
 
 I'll call the left-most (first) qubit \\( A \\) and the second qubit \\( B \\). Let's try to extract the "$A$-part" of the $|\Phi_+\rangle$ state. I'll denote
@@ -134,13 +134,17 @@ the density matrix of \\( |\Phi_+\rangle \\) as \\( \rho_+ = |\Phi_+\rangle
 \langle \Phi_+|\\). I'll begin by calculating $\rho_+$. 
 
 $$ \hspace{-200px} \rho_+ = |\Phi_+\rangle \langle \Phi_+\rangle $$
-$$ \hspace{15px}  = \frac{1}{2}[ |00\rangle \langle 00| + |00\rangle \langle 11| + |11\rangle \langle 00| + |11\rangle\langle 11| $$ 
+$$ \hspace{15px}  = \frac{1}{2}[ |00\rangle \langle 00| + |00\rangle \langle 11| + |11\rangle \langle 00| + |11\rangle\langle 11|. $$ 
 
 Unfortunately, like I said before, this matrix can not be represented in a nice
 \\( \xi_1 \otimes \xi_2 \\) form. Luckily, the trace operator is linear:  \\(
-tr_a (u + v) = tr_a u + tr_a v \\). And since intrinsically $|00\rangle \langle
+tr_a (u + v) = tr_a u + tr_a v \\). And since intrinsically 
+
+$$|00\rangle \langle
 00 | = (|0\rangle \otimes |0\rangle)(\langle 0 | \otimes \langle 0 |)
-= |0\rangle \langle 0| \otimes |0\rangle \langle 0|,$ we can just apply the
+= |0\rangle \langle 0| \otimes |0\rangle \langle 0|,$$
+
+we can just apply the
 linear trace operator to each summand separately. We trace out \\( B \\) to
 extract \\( A \\) as follows: 
 
@@ -160,8 +164,8 @@ $$ tr_B \rho_+ = \frac{1}{2} (|0\rangle \langle 0 | + |1\rangle \langle 1|)
 Going back to the single-qubit $|\psi\rangle$ state... Considering that its
 post-measurement state is either 
 
-$$ |0\rangle \text{ probability } \frac{1}{2}  $$
-$$ |1\rangle \text{ probability } \frac{1}{2}  $$
+$$ |0\rangle \text{ probability } \frac{1}{2},  $$
+$$ |1\rangle \text{ probability } \frac{1}{2}.  $$
 
 This means the post-measurement states' density matrix is just the sum of all the pure state density
 matrices, scaled by their corresponding probabilities. i.e., 
