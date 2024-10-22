@@ -6,9 +6,12 @@
       {{ .Content }}
     </div>
     {{- end }}
-    
-    <!-- Add Disqus comments here -->
-    {{ template "_internal/disqus.html" . }}
+
+    {{ if .Params.comments }}
+    <!-- Show Disqus comments -->
+      {{ template "_internal/disqus.html" . }}
+    {{ end }}
+
 
   </main>
 {{ end }}
