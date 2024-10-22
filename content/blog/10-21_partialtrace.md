@@ -185,4 +185,3 @@ than can act as a *quantum entanglement detector* with some cool
 visualizations. 
 
 
-{{ template "_internal/disqus.html" . }}

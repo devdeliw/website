@@ -17,6 +17,10 @@ theme = 'hermit-v2'
 [params.meta]
   favicon = true
 
+[services]
+  [services.disqus]
+    shortname = 'dev-undergrad'
+
 [params]
   themeColor = "#ffffff"
   dateform        = "Jan 2, 2006"
