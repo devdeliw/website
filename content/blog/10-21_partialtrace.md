@@ -133,8 +133,8 @@ I'll call the left-most (first) qubit \\( A \\) and the second qubit \\( B \\). 
 the density matrix of \\( |\Phi_+\rangle \\) as \\( \rho_+ = |\Phi_+\rangle
 \langle \Phi_+|\\). I'll begin by calculating $\rho_+$. 
 
-$$ \hspace{-200px} \rho_+ = |\Phi_+\rangle \langle \Phi_+\rangle $$
-$$ \hspace{15px}  = \frac{1}{2}[ |00\rangle \langle 00| + |00\rangle \langle 11| + |11\rangle \langle 00| + |11\rangle\langle 11|. $$ 
+$$  \rho_+ = |\Phi_+\rangle \langle \Phi_+\rangle $$
+$$  = \frac{1}{2}[ |00\rangle \langle 00| + |00\rangle \langle 11| + |11\rangle \langle 00| + |11\rangle\langle 11|. $$ 
 
 Unfortunately, like I said before, this matrix can not be represented in a nice
 \\( \xi_1 \otimes \xi_2 \\) form. Luckily, the trace operator is linear:  \\(
