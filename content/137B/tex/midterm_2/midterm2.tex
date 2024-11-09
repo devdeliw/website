@@ -1,0 +1,388 @@
+\documentclass[svgnames]{article}    
+
+\usepackage{graphicx}                 
+
+% -- math                               
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{geometry}
+
+% -- noindent
+\setlength\parindent{0pt}
+
+% -- images
+%\graphicspath{{ }}                   
+
+% -- tikz
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{comment}
+\usetikzlibrary{arrows}
+\usepackage[most]{tcolorbox}
+
+% -- figures
+\usepackage{float}
+\usepackage{caption}
+\usepackage{lipsum}
+
+% -- start 
+\title{Midterm 2 Review}
+\author{Deval Deliwala}
+%\date{}                              
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\vspace{20px}
+\begin{center}
+  
+This document is not meant to cover all the math and derivations for key results in chapters 7, 8, and 9
+of Griffiths (Perturbation Theory, Hydrogen Fine Structure, Variational Principle, WKB Approximation), 
+but is just meant to outline the main results so I can recall them whenever.  
+
+\end{center}
+
+\newpage 
+
+\section{Time Independent Perturbation Theory}
+
+There are two types of time-independent perturbation theory. One for when the unperturbed energies 
+of $\psi_n^{0}$ are non-degenerate (i.e. two different $\psi_n^{0}$, $\psi_m^{0}$ do not have the 
+same energy. \\
+
+The other is \textit{degenerate} perturbation theory, to account for when two unperturbed energy
+eigenvalues are equivalent for different orthonormal wave functions. 
+
+\subsection{Non-degenerate Perturbation Theory }
+
+\subsubsection{First-Order Theory} 
+
+Provided an unperturbed Schr\"odinger equation, 
+
+\[
+H^0 \psi_n^{0} = E_n^{0}\psi_n^0,       
+\] \vspace{3px}
+
+we obtain a \textit{complete set} of orthonormal eigenfunctions, $\psi_n^{0}$. 
+
+\[
+\langle \psi_n^{0}|\psi_m^{0} \rangle = \delta_nm.
+\] \vspace{3px}
+
+
+If we add a \textit{perturbation}, $H'$, modifying the Hamiltonian 
+
+\[
+H = H^{0} + H',
+\] \vspace{3px}
+
+We find the \textbf{first-order energy correction} to be equal to the expectation 
+value of the perturbation hamiltonian with the \textit{unperturbed} eigenstate. That is, 
+
+\[
+    \boxed{
+E_n^{1} = \langle \psi_n^{0} | H' | \psi_n^{0} \rangle .
+}
+\] \vspace{3px}
+
+This is the fundamental result of first-order nondegenerate perturbation theory, and likely the most 
+used equation of quantum mechanics. \\
+
+The \textbf{first-order wave function correction} turns out to be equal to 
+
+\[
+    \boxed{
+\psi_n^{1} = \sum_{m\neq n }^{} \frac{\langle \psi_m^{0} | H' |\psi_n^{0} \rangle}{E_n^{0} - E_m^{0}}\psi_m^{0}.
+}\] \vspace{3px}
+
+\subsubsection{Second-Order Theory} 
+
+The second order correction to the eigenenergies in \textit{nondegenerate} perturbation theory 
+is given by 
+
+\[
+\boxed{ 
+\sum_{m\neq n}^{} \frac{|\langle \psi_m^{0}|H'|\psi_n^{0} \rangle |^2}{E_n^{0} - E_m^{0}}
+}
+\] \vspace{3px}
+
+In practice the above equation is as far as it is useful to pursue perturbation theory for classical 
+quantum mechanics. There is no need to calculate the second order correction to the wave function. 
+
+\subsection{Degenerate Perturbation Theory}
+
+If two unperturbed eigenenergies $E_n^{0}$ and $E_m^{0}$ are equivalent, you will notice in the denominator 
+for the second-order energy corrections maps to 0. There is no reason to even trust the \textit{first-order} 
+energy corrections. \\
+
+Assume the unperturbed state takes the form 
+
+\[
+\psi^{0} = \alpha \psi_a^{0} + \beta \psi_b^{0}
+\] \vspace{3px}
+
+
+A perturbation usually breaks any energy degeneracy. That is, a degenerate energy splits into (say 2)  
+nondegenerate energies after perturbation is added. \\
+
+If we reverse the process, going from the 
+splitted degeneracies back to the original degenerate state, the upper state reduces to one 
+linear combination of $\psi_a^{0}$ and $\psi_b^{0}$ and the lower state reduces to an \textit{orthogonal}
+linear combination -- but we do not know what these linear combinations \textit{are}. This is the reason 
+we can't even use first-order nondegenerate theory. (I'll show a clever loophole around this later though). 
+
+\subsection{First-Order Theory}
+
+Let 
+
+\[
+    W_{ij} \equiv \big\langle \psi_i^{0} | H' | \psi_j^{0} \big\rangle
+\] \vspace{3px}
+
+where $(i,j) = \{a, b\}$. \\ 
+
+The \textbf{first order energy correction} can be determined by solving the 
+eigenvalue problem 
+
+\[
+\begin{pmatrix}
+    W_{aa} & W_{ab} \\ 
+    W_{ba} & W_{bb}
+\end{pmatrix} 
+\begin{pmatrix}
+  \alpha \\ \beta
+\end{pmatrix}
+ = E^1 \begin{pmatrix}
+     \alpha \\ \beta
+ \end{pmatrix} 
+\] \vspace{3px}
+
+and the corresponding eigenvectors provide the coefficients $\alpha$ and $\beta$ that determine the 
+``good states" (the reduced orthogonal linear combinations from reversing perturbations). Solving this problem 
+yields the formula 
+
+\[
+\boxed{ 
+    E_\pm^{1} = \frac{1}{2} \big[ W_{aa} + W_{bb} \pm \sqrt{(W_{aa} - W_{bb})^2 + 4|W_{ab}|^2}.
+    }
+\] \vspace{3px}
+
+This is the fundamental result of degenerate perturbation theory. The two roots correspond to the two perturbed 
+energies. 
+
+\subsubsection{Clever Trick} 
+
+Let $A$ be a hermitian operator that commutes with $H^0$ and $H'$ (a conserved quantity).
+If $\psi_a^{0}$ and $\psi_b^{0}$ (the degenerate eigenfunctions of $H^{0}$ are \textit{also}
+eigenfunctions of $A$, with \textit{unique} eigenvalues, 
+
+\[
+A\psi_a^{0} = \mu \psi_a^{0} \qquad A\psi_b^{0} = \nu \psi_b^{0} \qquad \mu \neq \nu,
+\] \vspace{3px}
+
+then $\psi_a^{0}$ and $\psi_b^{0}$ are the ``good states", and we can instead just use 
+\textbf{nondegenerate} perturbation theory. \\
+
+I won't show the proof here, but the moral is: \\ 
+
+If you are faced with degenerate states, look around for some hermitian operator $A$ that commutes
+with $H^{0}$ and $H'$. Pick your unperturbed states to be ones simultaneously eigenfunctions of 
+$H_0$ and $A$ (with distinct eigenvalues). Then use \textit{ordinary} nondegerate perturbation theory. 
+
+\subsection{Higher-Order Degeneracy} 
+
+Previously I assumed the degeneracy was two-fold. In the case of an $n$-fold degeneracy, we look for eigenvalues 
+of the $n\times n$ matrix 
+
+\[
+    W_{ij} = \Big\langle \psi_i^{0} | H' | \psi_j^{0}\Big\rangle
+\] \vspace{3px}
+
+And we similarly just solve for the eigenvalues of 
+
+\[
+\begin{pmatrix}
+    W_{aa} & \hdots & W_{an} \\ 
+    \vdots & \ddots & \vdots \\
+    W_{na} & \hdots & W_{nn}
+\end{pmatrix} \begin{pmatrix}
+    \alpha \\ \vdots \\ \alpha_n
+\end{pmatrix}  = E^1 \begin{pmatrix}
+    \alpha \\ \vdots \\ \alpha_n 
+\end{pmatrix} 
+\] \vspace{3px}
+
+which give the first-order energy corrections. And the good states are the corresponding eigenvectors 
+
+\[
+\psi^{0} = \alpha \psi_a^{0} + \cdots  + \alpha_n \psi_n^{0}. 
+\] \vspace{3px}
+
+\section{The Fine Structure of Hydrogen} 
+
+When calculating the $n$th wave function of hydrogen, we used the \textit{Bohr} Hamiltonian, 
+
+\[
+H_\text{bohr} = -\frac{\hbar^2}{2m}\nabla^2 - \frac{e^2}{4\pi\epsilon_0} \frac{1}{r}
+\] \vspace{3px}
+
+We corrected for the motion of the nucleus by replacing $m$ by the reduced mass $\mu$. More significant is 
+the \textbf{fine structure} which arises due to a \textit{relativistic correction} and \textit{spin-orbit coupling}.
+Fine structure gives a tiny perturbation -- smaller than a factor of $\alpha^2$, where $\alpha$ is given by 
+
+\[
+\alpha \equiv \frac{e^2}{4\pi\epsilon_0\hbar c} \approx \frac{1}{137.036},
+\] \vspace{3px}
+
+the famou \textbf{fine-structure constant}. 
+
+\subsection{Relativistic Correction} 
+
+Relativistic momentum is given by 
+
+\[
+    p = \frac{mv}{\sqrt{1 - (v/c)^2}}
+\] \vspace{3px}
+
+And relativistic kinetic energy is given by 
+
+\[
+    T = \frac{mc^2}{\sqrt{1 - (v/c)^2}}
+\] \vspace{3px}
+
+Rearranging gives a simpler formula for $T$, 
+
+\[
+    T = \sqrt{p^2c^2 + m^2 c^4} - mc^2
+\] \vspace{3px}
+
+Expanding into a taylor series, using the fact that 
+
+\[
+    \sqrt{1+x} \approx \left(1 + \frac{1}{2}x - \frac{1}{8}x^2 + \cdots\right)
+\] \vspace{3px}
+
+We get 
+
+\begin{align*}
+    T &= mc^2\left[ 1 + \frac{1}{2}\left( \frac{p}{mc}  \right) ^2 - \frac{1}{8} \left( \frac{p}{mc} \right) ^4 \cdots - 1 \right]\\
+      &= \frac{p^2}{2m} - \frac{p^4}{8m^3c^2} + \cdots.
+\end{align*} \vspace{3px}
+
+
+The lowest-order relativistic correction to the Hamiltonian is therefore 
+
+\[
+H_r' = -\frac{p^4}{8m^3 c^2}
+\] \vspace{3px}
+
+Where we can use first-order perturbation theory to calculate the first-order energy correction to $E_n$, 
+
+\[
+E_r^{1} = \langle H_r' \rangle = -\frac{1}{8m^3c^2}\langle \psi \rangle p^4 \psi \rangle = -\frac{1}{8m^3c^2}\langle p^2 \psi | p^2 \psi \rangle 
+\] \vspace{3px}
+
+But the Schr\"odinger equation says that (for unperturbed states) 
+
+\[
+p^2\psi = 2m(E-V)\psi
+\] \vspace{3px}
+
+Using this fact and simplifying we can calculate the general relativistic correction for any potential $V$ to be 
+
+\[
+    \boxed{
+    E_r^{1} = -\frac{1}{2mc^2} \Big\langle (E-V)^2 \Big\rangle = -\frac{1}{2mc^2} \left[ E^2 - 2E\langle V\rangle + \langle V^2 \rangle \right].
+}\] \vspace{3px}
+
+which is a very small correction (on the order of $1/c^2$). The bigger correction is generated via  \textit{spin-orbit coupling}. 
+
+\subsection{Spin-Orbit Coupling} 
+
+Imagine the electron is in orbit around the nucleus. From the electron's POV, it's actually the proton circling around \textit{it}. 
+The orbiting positive charge generates a magnetic field $B$ in the electron frame, which thus exerts a torque 
+on the spinning electron, tending to align its magnetic moment $\mu$ along the direction of the field. 
+The Hamiltonian is given by 
+
+\[
+H = -\vec{v} \cdot \vec{B}
+\] \vspace{3px}
+
+where $|B| = \frac{\mu_0 I}{2r}$. And $I$ is the effective current $I = e/T$, where $T$ is the period of the orbit. 
+Combining this, with the orbital angular momentum of the electron (in the rest frame of the nucleus), 
+we can calculate 
+
+\[
+\vec{B} = \frac{1}{4\pi \epsilon_0} \frac{e}{mc^2r^3}\vec{L}
+\] \vspace{3px}
+
+where we replaced $c = \frac{1}{\sqrt{\epsilon_0 \mu_0}}$. If we include a spin and relativistic correction, we 
+get a modified Hamiltonian (accounting for Thomas precession), 
+
+\[
+    H_{so}' = \left( \frac{e^2}{8\pi\epsilon_0} \right) \frac{1}{m^2c^2r^3}\vec{S} \cdot \vec{L} ,
+\] \vspace{3px}
+
+The \textbf{spin-orbit} interaction.  Doing a bunch of calculations we get the energy correction to be 
+
+\[
+E_{so}^{1} = \frac{E_n^2}{mc^2} \left\{ \frac{n \left[ j(j+1)-\ell(\ell+1) - 3/4 \right] }
+{\ell(\ell+1/2)(\ell+1)} \right\}
+\] \vspace{3px}
+
+
+Adding this to the relativistic correction, we get the complete fine-structure formula, 
+
+\[
+\boxed{ 
+    E_{fs}^{1} = \frac{(E_n)^2}{2mc^2} \left( 3 - \frac{4n}{j + 1/2} \right) .  
+}
+\] \vspace{3px}
+
+\subsubsection{Zeeman Effect} 
+
+When an atom is placed in a uniform external magnetic field $\vec{B}_\text{ext} $, the energy levels get shifted. \\
+
+For a single electron, 
+
+\[
+H'_Z = -(\mu_l + \mu_s) \cdot \vec{B}_\text{ext} 
+\] \vspace{3px}
+
+where  $\mu_s = -\frac{e}{m}\vec{S}$ and $\mu_l = -\frac{e}{2m}\vec{L}$. Hence, 
+
+\[
+H'_Z = \frac{e}{2m}(\vec{L}+2\vec{S}) \cdot \vec{B}_\text{ext} . 
+\] \vspace{3px}
+
+\subsubsection{Hyperfine Splitting in Hydrogen} 
+
+The proton also is a magnetic dipole, though its dipole moment is much smaller than the electron's 
+because of the mass in the denominator 
+
+\[
+\mu_p = \frac{g_p e}{2m_p}\vec{S}_p, \quad \mu_e = -\frac{e}{m_e}\vec{S}_e
+\] \vspace{3px}
+
+The $g$-factor comes from the fact the proton is made up of three quarks. There's stuff that comes as 
+a result of all this, specifically  \textit{spin-spin}  coupling between the proton and electron but 
+we ultimately get a \textit{hyperfine energy correction} which is given by 
+
+\[
+    E_\text{hf}^1 = \frac{4g_p \hbar^{4}}{3m_p m_e^2 c^2 a_4} \begin{cases} +1/4 \text{ (if triplet)},  \\ -3/4 \text{ (if singlet)}  \end{cases}
+\] \vspace{3px}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

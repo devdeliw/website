@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}Time Independent Perturbation Theory}{2}{}%
+\contentsline {subsection}{\numberline {1.1}Non-degenerate Perturbation Theory }{2}{}%
+\contentsline {subsubsection}{\numberline {1.1.1}First-Order Theory}{2}{}%
+\contentsline {subsubsection}{\numberline {1.1.2}Second-Order Theory}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Degenerate Perturbation Theory}{3}{}%
+\contentsline {subsection}{\numberline {1.3}First-Order Theory}{3}{}%
+\contentsline {subsubsection}{\numberline {1.3.1}Clever Trick}{4}{}%
+\contentsline {subsection}{\numberline {1.4}Higher-Order Degeneracy}{4}{}%
+\contentsline {section}{\numberline {2}The Fine Structure of Hydrogen}{5}{}%
+\contentsline {subsection}{\numberline {2.1}Relativistic Correction}{5}{}%
+\contentsline {subsection}{\numberline {2.2}Spin-Orbit Coupling}{6}{}%
+\contentsline {subsubsection}{\numberline {2.2.1}Zeeman Effect}{7}{}%
+\contentsline {subsubsection}{\numberline {2.2.2}Hyperfine Splitting in Hydrogen}{7}{}%
