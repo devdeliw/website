@@ -200,7 +200,7 @@ To beat this approximation, we have to find a better ansatz wave function. The
 closer the ansatz is to the intrinsic Helium ground state, the better. 
 
 Helium is a system wherein electrons ($-e$) not only get pulled by the nuclear charge
-($Z=+2e$), but also feel a repulsion between each other. This repulsion acts
+$(Z=+2e)$, but also feel a repulsion between each other. This repulsion acts
 against the inward pull from the nucleus. In this manner, we can think of each electron
 partially "shielding" the nucleus from the other by, making the *net effective*
 nuclear charge $Z$ slightly less than 2.  This suggests a ansatz of the form 
