@@ -185,4 +185,6 @@ correlated particles are. In my next post, hopefully I'll present some code
 than can act as a *quantum entanglement detector* with some cool
 visualizations. 
 
+$$ \hspace{3px} $$ 
+$$ \hspace{3px} $$ 
 
