@@ -146,7 +146,7 @@ $$ \langle \hat{H}\rangle  = 8E_1 + \langle V_{ee} \rangle. $$
 
 where $$ \langle V_{ee} \rangle = \Big\langle \psi_0 \Big|
 \frac{e^2}{4\pi\epsilon_0} \frac{1}{|\vec{r_1}-\vec{r_2}|} \Big| \psi_0\Big\rangle.  \qquad \\; \qquad\qquad\quad \qquad $$
-$$ = \left(\frac{e^2}{4\pi\epsilon_0} \right) \left(\frac{8}{\pi a^3}  \right)
+$$ = \left(\frac{e^2}{4\pi\epsilon_0} \right) \left(\frac{8}{\pi a^3}  \right)^2
 \int \frac{e^{-4(r_1+r_2)/a}}{|\vec{r_1}-\vec{r_2}|} d^3\vec{r_1}
 d^3\vec{r_2}.$$
 
