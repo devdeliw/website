@@ -262,7 +262,7 @@ While this was a bit of math, it does showcase the power of the Variational
 Principle and how easy it is to use, albeit the complicated integrals. This
 procedure is the basis for quantum algorithms like VQE, which quantum chemists
 use to approximate the ground state energies for any system. VQE generates its
-ansätze using parameterized quantum circuits. In this way, the Variational
+ansatzs using parameterized quantum circuits. In this way, the Variational
 Principle turns into a machine learning problem. By continuously adjusting the
 parameters of the quantum circuit using gradient descent on the system's Hilbert
 space, more accurate ansatzs are formed, which yield better ground state energy
