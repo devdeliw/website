@@ -41,8 +41,8 @@ The proof is actually quite simple.
 >
 >Since $\psi$ is normalized, 
 >
->$$ 1 = \langle \psi | \psi \rangle = \big\langle \sum{m} c_m \psi_m \big|
->\sum{n}c_n \psi_n \big\rangle$$ 
+>$$ 1 = \langle \psi | \psi \rangle = \big\langle \sum_{m} c_m \psi_m \big|
+>\sum_{n}c_n \psi_n \big\rangle$$ 
 > $$ \qquad \qquad \qquad \quad \\; \\;    = \sum_m \sum_n c_m^* c_n \langle \psi_m | \psi_n
 >\rangle = \sum_n |c_n|^2. $$
 >
@@ -117,8 +117,8 @@ approximation would be quite far off.
 If we just ignore $V_{ee}$, the Helium Hamiltonian simplifies into two
 hydrogenic Hamiltonians 
 
-$$ \hat{H} = \left(-\frac{\hbar^2}{2m}\nabla_1^2 - \frac{e^2}{4\pi\epsilon_0} \frac{2}{2r_1}\right)  
--\frac{\hbar^2}{2m} \nabla_2^2 - \left(\frac{e^2}{4\pi\epsilon_0} \frac{2}{r_2}\right)$$. 
+$$ \hat{H} = -\left(\frac{\hbar^2}{2m}\nabla_1^2 - \frac{e^2}{4\pi\epsilon_0} \frac{2}{r_1}\right)  
+-\left(\frac{\hbar^2}{2m} \nabla_2^2 - \frac{e^2}{4\pi\epsilon_0} \frac{2}{r_2}\right)$$. 
 
 with a nuclear charge of \\( 2e \\) instead of \\( e \\). The exact solution is
 just the product of hydrogenic wave functions: 
@@ -164,8 +164,8 @@ d\varphi_2 $$
 The integrand has no \\( \varphi_2 \\) dependence, so the its contribution is just \\( 2\pi \\).
 The \\( \theta_2 \\) integral can be calculated, 
 
-$$ \int_0^\pi \frac{sin\theta_2}{\sqrt{r_1^2 + r_2^2 - 2r_1r_2 \cos\theta_2}} d\theta_2 = 
-\frac{\sqrt{r_1^2 + r_2^2 - 2r_1r_2\cos\theta_2}}{r_1r_2} \Big|_0^\pi $$
+$$ \int_0^\pi \frac{\sin\theta_2}{\sqrt{r_1^2 + r_2^2 - 2r_1r_2 \cos\theta_2}} d\theta_2 = 
+\frac{\sqrt{r_1^2 + r_2^2 - 2r_1r_2\cos\theta_2}}{r_1r_2} \Bigg|_0^\pi $$
 $$ = \frac{1}{r_1r_2} \big[(r_1+r_2) - |r_1 - r_2|\big] = \begin{cases} 2/r_1, \quad
 r_2<r_1, \\\ 2/r_2, \quad r_2>r_1 \end{cases}.$$
 
