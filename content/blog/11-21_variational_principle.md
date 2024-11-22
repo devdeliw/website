@@ -265,7 +265,7 @@ use to approximate the ground state energies for any system. VQE generates its
 ansätze using parameterized quantum circuits. In this way, the Variational
 Principle turns into a machine learning problem. By continuously adjusting the
 parameters of the quantum circuit using gradient descent on the system's Hilbert
-space, more accurate ansätze are formed, which yield better ground state energy
+space, more accurate ansatzs are formed, which yield better ground state energy
 approximations.
 
 $$ \hspace{3px} $$ 
