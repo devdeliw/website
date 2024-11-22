@@ -268,6 +268,9 @@ parameters of the quantum circuit using gradient descent on the system's Hilbert
 space, more accurate ansätze are formed, which yield better ground state energy
 approximations.
 
+$$ \hspace{3px} $$ 
+$$ \hspace{3px} $$ 
+
 
 
 
