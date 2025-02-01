@@ -55,19 +55,24 @@ theme = 'hermit-v2'
 [menu]
 
   [[menu.main]]
+    name = "QNLMetal"
+    url = "static/qnlmetal/qiskit_metal/qlibrary/junction.html"
+    weight = 1
+
+  [[menu.main]]
     name = "contents"
     url = "contents/contents/"
-    weight = 2
+    weight = 3
 
   [[menu.main]]
     name = "resume"
     url = "resume/resume.pdf"
-    weight = 3
+    weight = 4
 
   [[menu.main]]
     name = "blog" 
     url = "blog/"
-    weight = 1
+    weight = 2
 
 
 
