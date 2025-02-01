@@ -56,7 +56,7 @@ theme = 'hermit-v2'
 
   [[menu.main]]
     name = "QNLMetal"
-    url = "static/qnlmetal/qiskit_metal/qlibrary/junction.html"
+    url = "qnlmetal/junction.html"
     weight = 1
 
   [[menu.main]]
