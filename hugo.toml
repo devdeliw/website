@@ -1,0 +1,42 @@
+baseURL = 'https://dev-undergrad.dev/'
+languageCode = 'en-us'
+title = 'dev-undergrad.dev'
+theme = 'xmin'
+footnotereturnlinkcontents =  "↩"
+
+[menu] 
+    [[menu.main]]
+        name    = "home" 
+        url     = "" 
+        weight  = 1 
+    [[menu.main]] 
+        name    = "posts" 
+        url     = "posts/" 
+        weight  = 2 
+    [[menu.main]] 
+        name    = "tags" 
+        url     = "tags/"
+        weight  = 3 
+    [[menu.main]]
+        name    = "socials" 
+        url     = "socials/" 
+        weight  = 4 
+    [[menu.main]] 
+        name    = "resume" 
+        url     = "resume.pdf" 
+    [[menu.main]] 
+        name    = "papers" 
+        url     = "papers/"
+
+[params] 
+    description = "deval deliwala's personal website."
+    
+[taxonomies]
+    tag = "tags" 
+
+[markup] 
+    [markup.highlight]
+        codeFences  = false 
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe = true
