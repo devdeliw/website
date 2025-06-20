@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NASA on dev-undergrad.dev</title>
+    <link>http://localhost:1313/tags/nasa/</link>
+    <description>Recent content in NASA on dev-undergrad.dev</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/nasa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[NASA] Deriving Silicon Carbide&#39;s Spin Hamiltonian</title>
+      <link>http://localhost:1313/posts/spin_hamiltonian_derivation/</link>
+      <pubDate>Fri, 20 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/spin_hamiltonian_derivation/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/nasa/1_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/2_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/3_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/4_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/5_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/6_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/7_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/8_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/9_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/10_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/11_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/12_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/13_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>[NASA] Progamming Silicon Carbide&#39;s Spin Hamiltonian</title>
+      <link>http://localhost:1313/posts/spin_hamiltonian_code/</link>
+      <pubDate>Fri, 20 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/spin_hamiltonian_code/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/nasa/1_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/2_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/3_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/4_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/5_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/6_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/7_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/8_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/9_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/10_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/11_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/12_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/13_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
