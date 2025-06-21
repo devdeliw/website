@@ -10,7 +10,8 @@ I study astrophysics and applied math at UC Berkeley, focusing on quantum
 mechanics and computing. My knowledge of math/physics is high; my knowledge 
 of computer science is not as high. 
 
-I enjoy writing aesthetic tex notes, and doing fun coding projects in
+I enjoy writing aesthetic tex notes--though nothing can beat something
+handwritte--and like doing fun coding projects in
 rust and python. 
 
 I am currently a NASA intern, developing software for quantum magnetometers. 
