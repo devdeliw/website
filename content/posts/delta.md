@@ -5,10 +5,10 @@ draft = false
 tags = ["undergrad"]
 +++
 
-![](undergrad/1_delta.png)
-![](undergrad/2_delta.png)
-![](undergrad/3_delta.png)
-![](undergrad/4_delta.png)
-![](undergrad/5_delta.png)
+![](/undergrad/1_delta.png)
+![](/undergrad/2_delta.png)
+![](/undergrad/3_delta.png)
+![](/undergrad/4_delta.png)
+![](/undergrad/5_delta.png)
 
 

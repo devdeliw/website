@@ -7,12 +7,12 @@ tags: ["undergrad"]
 ---
 
 
-![](undergrad/1_prime_directive.png)
-![](undergrad/2_prime_directive.png)
-![](undergrad/3_prime_directive.png)
-![](undergrad/4_prime_directive.png)
-![](undergrad/5_prime_directive.png)
-![](undergrad/6_prime_directive.png)
-![](undergrad/7_prime_directive.png)
-![](undergrad/8_prime_directive.png)
-![](undergrad/9_prime_directive.png)
+![](/undergrad/1_prime_directive.png)
+![](/undergrad/2_prime_directive.png)
+![](/undergrad/3_prime_directive.png)
+![](/undergrad/4_prime_directive.png)
+![](/undergrad/5_prime_directive.png)
+![](/undergrad/6_prime_directive.png)
+![](/undergrad/7_prime_directive.png)
+![](/undergrad/8_prime_directive.png)
+![](/undergrad/9_prime_directive.png)
