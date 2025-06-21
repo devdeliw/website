@@ -4,11 +4,12 @@ title: home
 
 # dev-undergrad.dev 
 
-This website is meant for publishing stuff I do during my undergrad years. 
+This website showcases my academic work and projects during my undergraduate
+studies at UC Berkeley.
 
 I study astrophysics and applied math at UC Berkeley, focusing on quantum
-mechanics and computing. My knowledge of math/physics is high; my knowledge 
-of computer science is not as high. 
+mechanics and computing. While my knowledge is primarily in mathematics and physics, 
+I’m actively expanding my computer science skills.
 
 I enjoy writing aesthetic tex notes--though nothing can beat something
 handwritte--and like doing fun coding projects in
