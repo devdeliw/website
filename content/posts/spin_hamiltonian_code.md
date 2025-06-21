@@ -1,7 +1,7 @@
 ---
 title: "[NASA] Progamming Silicon Carbide's Spin Hamiltonian"
 draft: false
-date : 2025-06-20
+date : 2025-06-21
 tags: ["NASA"]
 ---
 
