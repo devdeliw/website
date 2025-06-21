@@ -6,7 +6,7 @@ draft = false
 tags = ["undergrad"]
 +++
 
-![](/1_quantum_beyond1D.png)
-![](/2_quantum_beyond1D.png)
-![](/3_quantum_beyond1D.png)
-![](/4_quantum_beyond1D.png)
+![](undergrad/1_quantum_beyond1D.png)
+![](undergrad/2_quantum_beyond1D.png)
+![](undergrad/3_quantum_beyond1D.png)
+![](undergrad/4_quantum_beyond1D.png)

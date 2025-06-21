@@ -6,14 +6,14 @@ date : 2024-02-02T17:21:05-08:00
 tags: ["undergrad"]
 ---
 
-![Scenario 1: Across columns](/1_kinetic_theory.png)
-![Scenario 1: Across columns](/2_kinetic_theory.png)
-![Scenario 1: Across columns](/3_kinetic_theory.png)
-![Scenario 1: Across columns](/4_kinetic_theory.png)
-![Scenario 1: Across columns](/5_kinetic_theory.png)
-![Scenario 1: Across columns](/6_kinetic_theory.png)
-![Scenario 1: Across columns](/7_kinetic_theory.png)
-![Scenario 1: Across columns](/8_kinetic_theory.png)
-![Scenario 1: Across columns](/9_kinetic_theory.png)
-![Scenario 1: Across columns](/10_kinetic_theory.png)
+![](undergrad/1_kinetic_theory.png)
+![](undergrad/2_kinetic_theory.png)
+![](undergrad/3_kinetic_theory.png)
+![](undergrad/4_kinetic_theory.png)
+![](undergrad/5_kinetic_theory.png)
+![](undergrad/6_kinetic_theory.png)
+![](undergrad/7_kinetic_theory.png)
+![](undergrad/8_kinetic_theory.png)
+![](undergrad/9_kinetic_theory.png)
+![](undergrad/10_kinetic_theory.png)
 

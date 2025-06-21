@@ -6,11 +6,11 @@ draft : false
 tags: ["undergrad"]
 ---
 
-![](/1_wave_equation.png)
-![](/2_wave_equation.png)
-![](/3_wave_equation.png)
-![](/4_wave_equation.png)
-![](/5_wave_equation.png)
-![](/6_wave_equation.png)
-![](/7_wave_equation.png)
-![](/8_wave_equation.png)
+![](undergrad/1_wave_equation.png)
+![](undergrad/2_wave_equation.png)
+![](undergrad/3_wave_equation.png)
+![](undergrad/4_wave_equation.png)
+![](undergrad/5_wave_equation.png)
+![](undergrad/6_wave_equation.png)
+![](undergrad/7_wave_equation.png)
+![](undergrad/8_wave_equation.png)

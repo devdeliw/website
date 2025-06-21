@@ -11,7 +11,7 @@ mechanics and computing. My knowledge of math/physics is high; my knowledge
 of computer science is not as high. 
 
 I enjoy writing aesthetic tex notes, and doing fun coding projects in
-python and rust. I tend to say everything can be written better in rust. 
+rust and python. 
 
 I am currently a NASA intern, developing software for quantum magnetometers. 
 My focus is on deriving, from first principles, the spin physics at play in 
