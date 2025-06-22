@@ -12,7 +12,7 @@ mechanics and computing. While my knowledge is primarily in mathematics and phys
 I’m actively expanding my computer science skills.
 
 I enjoy writing aesthetic tex notes--though nothing can beat something
-handwritte--and like doing fun coding projects in
+handwritten--and like doing fun coding projects in
 rust and python. 
 
 I am currently a NASA intern, developing software for quantum magnetometers. 
