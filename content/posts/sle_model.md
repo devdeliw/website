@@ -16,5 +16,5 @@ tags: ["NASA"]
 ![](/nasa/9_sle_model.png)
 ![](/nasa/10_sle_model.png)
 ![](/nasa/11_sle_model.png)
-![](/nasa/11_sle_model.png)
+![](/nasa/12_sle_model.png)
 
