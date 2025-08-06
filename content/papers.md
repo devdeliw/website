@@ -3,16 +3,14 @@ title: "papers"
 ---
 
 ### under review
-[[muLab] *Deriving the Extinction Laws of the Galactic Center](/mulab.pdf)
+[[muLab] The Near-Infrared Extinction Laws of the Galactic Center](/mulab.pdf)
 
-### papers in progress (no preprint)
-[nasa] *Solving the Stochastic Liouville Equation with 4H-Silicon Carbide's Spin
-Hamiltonian
+### nasa final presentation 
+[[nasa] Accelerated EDMR Simulation for On-chip Field Sensing](/nasa_ppt.pdf)
 
-[nasa] *Simulating Electrically Detected Magnetic Resonance for Silicon Carbide
+### nasa spie proceeding paper 
+[[nasa] EDMR Spectroscopy of spin defects in 4H-SiC](/spie.pdf)
 
-### not getting published, just fun 
+### just fun 
 [[undergrad] Quantum Mechanics I (Physics 137A)](/qm.pdf) 
 
-[[undergrad] Monte Carlo Simulation of Electromagnetic Showers (Physics
-129A)](/ecal.pdf)
