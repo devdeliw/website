@@ -6,21 +6,63 @@
     <description>Recent content in NASA on dev-undergrad.dev</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/nasa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[NASA] Final Documentation</title>
+      <link>http://localhost:1313/posts/edmr_sim_docs/</link>
+      <pubDate>Fri, 08 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/edmr_sim_docs/</guid>
+      <description>&lt;p&gt;My internship is wrapping up. I finished my Accelerated EDMR Simulation project.&#xA;The presentation I gave can be found&#xA;&lt;a href=&#34;https://dev-undergrad.dev/nasa_ppt.pdf&#34;&gt;here&lt;/a&gt;. The documentation for all the&#xA;code I wrote can be found &lt;a href=&#34;http://localhost:1313/docs/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>[NASA] Crazy Optimizations</title>
+      <link>http://localhost:1313/posts/opt/</link>
+      <pubDate>Sat, 19 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/opt/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/nasa/1_opt.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/2_opt.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/3_opt.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/4_opt.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/5_opt.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/6_opt.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/7_opt.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>[NASA] EDMR Least-Squares Fitting</title>
+      <link>http://localhost:1313/posts/lsq_fitting/</link>
+      <pubDate>Sat, 19 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/lsq_fitting/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/nasa/1_lsq_fitting.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/2_lsq_fitting.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/3_lsq_fitting.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/4_lsq_fitting.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/5_lsq_fitting.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/6_lsq_fitting.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/7_lsq_fitting.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/8_lsq_fitting.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/9_lsq_fitting.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>[NASA] Building the EDMR Model</title>
+      <link>http://localhost:1313/posts/sle_model/</link>
+      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sle_model/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/nasa/1_sle_model.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/2_sle_model.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/3_sle_model.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/4_sle_model.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/5_sle_model.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/6_sle_model.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/7_sle_model.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/8_sle_model.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/9_sle_model.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/10_sle_model.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/11_sle_model.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/12_sle_model.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>[NASA] Solving the Stochastic Liouville Equation</title>
+      <link>http://localhost:1313/posts/sle/</link>
+      <pubDate>Tue, 08 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sle/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/nasa/1_sle.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/2_sle.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/3_sle.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/4_sle.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/5_sle.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/6_sle.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/7_sle.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/8_sle.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/9_sle.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/10_sle.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>[NASA] Spin Hamiltonian Eigenspectra Simulation</title>
+      <link>http://localhost:1313/posts/spin_hamiltonian_simulation/</link>
+      <pubDate>Tue, 24 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/spin_hamiltonian_simulation/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/nasa/1_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/2_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/3_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/4_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/5_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/6_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/7_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/8_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/9_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/10_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/11_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/12_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/13_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/14_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/15_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/16_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/17_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/18_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/19_simulation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/20_simulation.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>[NASA] Progamming Silicon Carbide&#39;s Spin Hamiltonian</title>
+      <link>http://localhost:1313/posts/spin_hamiltonian_code/</link>
+      <pubDate>Sat, 21 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/spin_hamiltonian_code/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/nasa/1_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/2_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/3_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/4_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/5_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/6_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/7_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/8_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/9_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/10_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/11_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/12_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/13_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>[NASA] Deriving Silicon Carbide&#39;s Spin Hamiltonian</title>
       <link>http://localhost:1313/posts/spin_hamiltonian_derivation/</link>
       <pubDate>Fri, 20 Jun 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/spin_hamiltonian_derivation/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/nasa/1_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/2_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/3_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/4_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/5_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/6_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/7_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/8_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/9_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/10_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/11_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/12_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/13_spin_hamiltonian_derivation.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>[NASA] Progamming Silicon Carbide&#39;s Spin Hamiltonian</title>
-      <link>http://localhost:1313/posts/spin_hamiltonian_code/</link>
-      <pubDate>Fri, 20 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/spin_hamiltonian_code/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/nasa/1_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/2_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/3_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/4_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/5_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/6_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/7_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/8_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/9_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/10_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/11_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/12_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/nasa/13_spin_hamiltonian_code.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
