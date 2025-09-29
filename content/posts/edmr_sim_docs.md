@@ -16,8 +16,8 @@ much more than that.
 I got to live in North Olmsted, OH, a beautiful, breatheable suburb with lots of greenery. 
 I biked to work! and totaled over 400 miles. There was a gym on-site that
 was always empty in the morning after my bike ride. I had breakfast every
-morning and became friends with the chef. I got to live with several dogs and
-miss this place a ton.
+morning and became friends with the chef. I got to live with several dogs,
+including a golden retriever, Honey, who I got to go on many walks with. 
 
 ![](/honey.JPG)
 
