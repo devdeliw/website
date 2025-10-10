@@ -16,7 +16,7 @@ time. And learn [Rust](https://rust-lang.org).
 CORAL stands for *COre Rust Architecture for Linear algebra*. It is an
 implementation of the [Basic Linear Algebra
 Subprograms](https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms), or
-*BLAS* in pure Rust. It is written for AArch64 architectures only.
+*BLAS*, in pure Rust. It is written for AArch64 architectures only.
 
 BLAS is the set of the most common low-level operations, "kernels", for linear
 algebra. Most numerical routines involve linear algebra; it is clear
@@ -37,8 +37,8 @@ into three levels, each monumentally more difficult than the last.
     Think of things like calculating $A\vec{x}$, or solving a system of
     equations $A\vec{x} = \vec{b}$ given a triangular matrix
     $A$ and $\vec{b}$. These operations are also memory bound. It is here
-    though, that smart tricks to leverage cache to maximize performance begin.
-    However, good performance can still be achieved with smart code.
+    though, that clever tricks leveraging cache to maximize performance begin.
+    Good performance can still be achieved with smart code.
 
 3. ### Level 3 
     *Matrix-Matrix Operations* <br><br> 

@@ -27,7 +27,7 @@ https://github.com/alex-shpak/hugo-book
   <meta itemprop="description" content="Core Rust Architecture for Linear Algebra">
   <meta itemprop="datePublished" content="2025-10-09T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-10-09T00:00:00+00:00">
-  <meta itemprop="wordCount" content="447">
+  <meta itemprop="wordCount" content="446">
   <meta itemprop="keywords" content="BLAS">
 
 <title>What is CORAL? | my undergrad work</title>
@@ -38,7 +38,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.c124ee0d132d3b34b25b1d85738b5a8af43d55d07f74a9fc25872013d2e65f94.js" integrity="sha256-wSTuDRMtOzSyWx2Fc4taivQ9VdB/dKn8JYcgE9LmX5Q=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.b373629e254fa68bd6b7cb32f61dcbeeed1a33b50f0a38680f672d9c60a33b0d.js" integrity="sha256-s3NiniVPpovWt8sy9h3L7u0aM7UPCjhoD2ctnGCjOw0=" crossorigin="anonymous"></script>
 
 
 
@@ -180,11 +180,11 @@ https://github.com/alex-shpak/hugo-book
   <div class="book-post-content markdown-inner"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
 <p>In the past few months I&rsquo;ve become immensely interested in scientific computing
 and writing fast code. I started <a href="https://github.com/devdeliw/CORAL">CORAL</a> as a project to learn both at the same
-time. And <a href="https://rust-lang.org">Rust</a>.</p>
+time. And learn <a href="https://rust-lang.org">Rust</a>.</p>
 <p>CORAL stands for <em>COre Rust Architecture for Linear algebra</em>. It is an
 implementation of the <a href="https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms">Basic Linear Algebra
 Subprograms</a>, or
-<em>BLAS</em> in pure Rust. It is written for AArch64 architectures only.</p>
+<em>BLAS</em>, in pure Rust. It is written for AArch64 architectures only.</p>
 <p>BLAS is the set of the most common low-level operations, &ldquo;kernels&rdquo;, for linear
 algebra. Most numerical routines involve linear algebra; it is clear
 that a useful BLAS must be <em>as fast as possible</em>. These kernels naturally separate
@@ -206,8 +206,8 @@ if code is written intelligently.</p>
 Think of things like calculating $A\vec{x}$, or solving a system of
 equations $A\vec{x} = \vec{b}$ given a triangular matrix
 $A$ and $\vec{b}$. These operations are also memory bound. It is here
-though, that smart tricks to leverage cache to maximize performance begin.
-However, good performance can still be achieved with smart code.</p>
+though, that clever tricks leveraging cache to maximize performance begin.
+Good performance can still be achieved with smart code.</p>
 </li>
 <li>
 <h3 id="level-3">Level 3<a class="anchor" href="#level-3">#</a></h3>
