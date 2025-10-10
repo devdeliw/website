@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BLAS on my undergrad work</title>
+    <link>http://localhost:1313/tags/blas/</link>
+    <description>Recent content in BLAS on my undergrad work</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 09 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/blas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What is CORAL?</title>
+      <link>http://localhost:1313/posts/coral_intro/</link>
+      <pubDate>Thu, 09 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/coral_intro/</guid>
+      <description>&lt;p&gt;In the past few months I&amp;rsquo;ve become immensely interested in scientific computing&#xA;and writing fast code. I started CORAL as a project to learn both at the same&#xA;time.&lt;/p&gt;&#xA;&lt;p&gt;CORAL stands for &lt;em&gt;COre Rust Architecture for Linear algebra&lt;/em&gt;. It is an&#xA;implementation of the &lt;a href=&#34;https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms&#34;&gt;Basic Linear Algebra&#xA;Subprograms&lt;/a&gt;, or&#xA;&lt;em&gt;BLAS&lt;/em&gt; in &lt;em&gt;pure Rust&lt;/em&gt;, but only for AArch64 architectures right now.&lt;/p&gt;&#xA;&lt;p&gt;BLAS is the set of the most common low-level operations, &amp;ldquo;kernels&amp;rdquo; for linear&#xA;algebra. These kernels naturally form three levels:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

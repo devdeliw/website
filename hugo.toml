@@ -1,0 +1,6 @@
+baseURL = 'https://dev-undergrad.dev/'
+languageCode = 'en-us'
+title = 'my undergrad work'
+theme = 'hugo-book' 
+
+markup.goldmark.renderer.unsafe = true
