@@ -7,4 +7,3 @@ markup.goldmark.renderer.unsafe = true
 
 [params]
   BookTheme = 'auto'
-  BookFavicon = 'favicon.png'
