@@ -11,7 +11,7 @@ menu = "main"
 
 In the past few months I've become immensely interested in scientific computing
 and writing fast code. I started [CORAL](https://github.com/devdeliw/CORAL) as a project to learn both at the same
-time. And [Rust](https://rust-lang.org). 
+time. And learn [Rust](https://rust-lang.org). 
 
 CORAL stands for *COre Rust Architecture for Linear algebra*. It is an
 implementation of the [Basic Linear Algebra
