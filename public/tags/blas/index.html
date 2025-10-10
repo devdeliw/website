@@ -26,11 +26,11 @@ https://github.com/alex-shpak/hugo-book
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="http://localhost:1313/tags/blas/">
-<link rel="stylesheet" href="/book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.6970156cec683193d93c9c4edaf0d56574e4361df2e0c1be4f697ae81c3ba55f.css" integrity="sha256-aXAVbOxoMZPZPJxO2vDVZXTkNh3y4MG&#43;T2l66Bw7pV8=" crossorigin="anonymous">
 
 
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.4cf16020f1e0a2f09285aa6f5f91e1368a5c3ce4aa2df9429e8d1130c94189f3.js" integrity="sha256-TPFgIPHgovCShapvX5HhNopcPOSqLflCno0RMMlBifM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.c124ee0d132d3b34b25b1d85738b5a8af43d55d07f74a9fc25872013d2e65f94.js" integrity="sha256-wSTuDRMtOzSyWx2Fc4taivQ9VdB/dKn8JYcgE9LmX5Q=" crossorigin="anonymous"></script>
 
 
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/blas/index.xml" title="my undergrad work" />
@@ -150,15 +150,18 @@ https://github.com/alex-shpak/hugo-book
   
 
 
-    <div class="book-post-content"><p>In the past few months I&rsquo;ve become immensely interested in scientific computing
-and writing fast code. I started CORAL as a project to learn both at the same
-time.</p>
+    <div class="book-post-content"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
+<p>In the past few months I&rsquo;ve become immensely interested in scientific computing
+and writing fast code. I started <a href="https://github.com/devdeliw/CORAL">CORAL</a> as a project to learn both at the same
+time. And <a href="https://rust-lang.org">Rust</a>.</p>
 <p>CORAL stands for <em>COre Rust Architecture for Linear algebra</em>. It is an
 implementation of the <a href="https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms">Basic Linear Algebra
 Subprograms</a>, or
-<em>BLAS</em> in <em>pure Rust</em>, but only for AArch64 architectures right now.</p>
-<p>BLAS is the set of the most common low-level operations, &ldquo;kernels&rdquo; for linear
-algebra. These kernels naturally form three levels:</p></div>
+<em>BLAS</em> in pure Rust. It is written for AArch64 architectures only.</p>
+<p>BLAS is the set of the most common low-level operations, &ldquo;kernels&rdquo;, for linear
+algebra. Most numerical routines involve linear algebra; it is clear
+that a useful BLAS must be <em>as fast as possible</em>. These kernels naturally separate
+into three levels, each monumentally more difficult than the last.</p></div>
   </article>
   
 

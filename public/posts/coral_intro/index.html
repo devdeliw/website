@@ -27,18 +27,18 @@ https://github.com/alex-shpak/hugo-book
   <meta itemprop="description" content="Core Rust Architecture for Linear Algebra">
   <meta itemprop="datePublished" content="2025-10-09T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-10-09T00:00:00+00:00">
-  <meta itemprop="wordCount" content="448">
+  <meta itemprop="wordCount" content="447">
   <meta itemprop="keywords" content="BLAS">
 
 <title>What is CORAL? | my undergrad work</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="http://localhost:1313/posts/coral_intro/">
-<link rel="stylesheet" href="/book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.6970156cec683193d93c9c4edaf0d56574e4361df2e0c1be4f697ae81c3ba55f.css" integrity="sha256-aXAVbOxoMZPZPJxO2vDVZXTkNh3y4MG&#43;T2l66Bw7pV8=" crossorigin="anonymous">
 
 
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.4cf16020f1e0a2f09285aa6f5f91e1368a5c3ce4aa2df9429e8d1130c94189f3.js" integrity="sha256-TPFgIPHgovCShapvX5HhNopcPOSqLflCno0RMMlBifM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.c124ee0d132d3b34b25b1d85738b5a8af43d55d07f74a9fc25872013d2e65f94.js" integrity="sha256-wSTuDRMtOzSyWx2Fc4taivQ9VdB/dKn8JYcgE9LmX5Q=" crossorigin="anonymous"></script>
 
 
 
@@ -228,7 +228,7 @@ routines for his <a href="https://www.cs.utexas.edu/~flame/pubs/GotoTOMS_final.p
 This implementation outperformed many BLAS used at the time and became the
 backbone for the current industry standard <a href="https://github.com/OpenMathLib/OpenBLAS">OpenBLAS</a>.
 If you use Python and NumPy for vector calculations, OpenBLAS is why it&rsquo;s so fast.</p>
-<p>CORAL isn’t built to compete with industry BLAS, but to maybe reach $\simeq$ 80 % of their
+<p>CORAL isn’t built to compete with industry BLAS, but to reach $\simeq$ 80 % of their
 performance <strong>on AArch64</strong>.$^\dagger$ This is to educate myself and others on how these
 fast low-level algorithms work. The purpose of this &ldquo;blog&rdquo; is to walk through how to
 intelligently write code to make a fast BLAS. Just not one that&rsquo;s used by

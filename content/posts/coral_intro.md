@@ -61,7 +61,7 @@ This implementation outperformed many BLAS used at the time and became the
 backbone for the current industry standard [OpenBLAS](https://github.com/OpenMathLib/OpenBLAS). 
 If you use Python and NumPy for vector calculations, OpenBLAS is why it's so fast. 
 
-CORAL isn’t built to compete with industry BLAS, but to maybe reach $\simeq$ 80 % of their
+CORAL isn’t built to compete with industry BLAS, but to reach $\simeq$ 80 % of their
 performance **on AArch64**.$^\dagger$ This is to educate myself and others on how these 
 fast low-level algorithms work. The purpose of this "blog" is to walk through how to
 intelligently write code to make a fast BLAS. Just not one that's used by
