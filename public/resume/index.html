@@ -8,19 +8,21 @@ https://github.com/alex-shpak/hugo-book
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content=" ">
+<meta name="description" content=" Can’t display the PDF. Download.
+">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/resume/">
   <meta property="og:site_name" content="my undergrad work">
   <meta property="og:title" content="Resume">
-  <meta property="og:description" content="">
+  <meta property="og:description" content="Can’t display the PDF. Download.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 
 
   <meta itemprop="name" content="Resume">
-  <meta itemprop="description" content="">
+  <meta itemprop="description" content="Can’t display the PDF. Download.">
+  <meta itemprop="wordCount" content="5">
 
 <title>Resume | my undergrad work</title>
 <link rel="icon" href="/favicon.png" >
@@ -30,7 +32,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.b373629e254fa68bd6b7cb32f61dcbeeed1a33b50f0a38680f672d9c60a33b0d.js" integrity="sha256-s3NiniVPpovWt8sy9h3L7u0aM7UPCjhoD2ctnGCjOw0=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.9d48e4d9986f03f6fd3c203eca076cf66d1a448825c78516cdfd983d6f795882.js" integrity="sha256-nUjk2ZhvA/b9PCA&#43;ygds9m0aRIglx4UWzf2YPW95WII=" crossorigin="anonymous"></script>
 
 
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/resume/index.xml" title="my undergrad work" />
@@ -123,16 +125,17 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown book-article"><div class="pdf-embed">
-  <iframe
-    src="/Resume.pdf#view=FitH"
-    width="100%"
-    style="border:0;"
-  ></iframe>
+  <object data="/Resume.pdf#view=FitH"
+          type="application/pdf"
+          width="100%"
+          id="resume-pdf">
+    <p>Can’t display the PDF. <a href="/Resume.pdf">Download</a>.</p>
+  </object>
 </div>
 <style>
   .pdf-embed { background:#fff; border-radius:8px; overflow:hidden; }
-  .pdf-embed iframe { width:100%; height:100vh; }                 /* mobile default */
-  @media (min-width: 768px) { .pdf-embed iframe { height: 1400px; } }  /* tablets/desktop */
+  #resume-pdf { width:100%; height:85vh; }                        /* mobile default */
+  @media (min-width: 768px) { #resume-pdf { height:1400px; } }    /* tablets/desktop */
 </style>
 </article>
  
