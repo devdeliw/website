@@ -95,8 +95,8 @@ fields, so a makeshift GPS is possible. I don't think this idea is necessarily
 applicable in practice. There are better ways of error-handling a GPS failure. 
 However, it's a fun project.
 
-In any case, we may understand and progress spin-physics a bit more. For the
-next few posts, I plan to cover the core spin-physics of spin-dependent
+In any case, we may understand spin-physics a bit more. For the
+next few posts, I plan to cover the core mechanics of spin-dependent
 recombination and then start writing software.  
 
 
