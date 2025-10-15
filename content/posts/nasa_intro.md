@@ -9,7 +9,8 @@ menu = "main"
 
 {{< katex />}}
 
-My work revolves around *Electrically Detected Magnetic Resonance* (EDMR). It's
+My work revolves around *Electrically Detected Magnetic Resonance*
+([EDMR](https://en.wikipedia.org/wiki/Electrically_detected_magnetic_resonance)). It's
 a method of detecting small magnetic fields electrically. In principle it's very
 simple. 
 
@@ -44,7 +45,8 @@ When current flows through a semiconductor, the electrons move through the
 the valence electrons of silicon and carbon rest.
 The energy level of the defect lies somewhere in between. 
 
-In 4H-SiC, the conduction band is $\sim$3.3eV higher than the valence band.
+In 4H-SiC, the conduction band is
+$\sim$[3.3eV](https://arxiv.org/pdf/2410.06798) higher than the valence band.
 If an electron ($S=1/2$) passes over a defect, it can "couple" with it. If an
 orbital of the defect and the carrier electron form a *singlet* state, then the
 defect can "catch" the carrier electron and trap it at its lower
@@ -69,21 +71,29 @@ leave the conduction band. SDR process is illustrated below.
 And since magnetic fields modulate spin alignment, they change the rate of recombination,
 which reduce the number of electrons in the conduction band -- the amount of
 current. If we detect changes in current, we detect changes in the magnetic
-field.
+field. There are other mechanisms at play besides SDR. Defects also provide a
+path for electrons to "hop" through to lower energy levels, escaping
+conduction band. This is known as Spin-Dependent Trap-Assisted Tunneling
+(SDTAT), and is [detectable by
+EDMR](https://pubs.aip.org/aip/jap/article/124/21/215105/156039/Physical-nature-of-electrically-detectew:d-magnetic).
+However, quantum tunneling is much rarer than recombination
+events. SDR is considered the [primary mechanism](https://www.nature.com/articles/s41598-024-64595-3) 
+for EDMR. 
 
 ## The Goal 
 
 My work at NASA will be simulating this entire process, as fast as possible. The
 end simulation will take in all experimental parameters, to be explained later,
-and spit out an EDMR spectra. This spectra is a plot of magnetic field $B$ vs.
-current $nA$. 
+and spit out an EDMR spectra. This spectra is a plot of magnetic field vs.
+current. 
 
-The use-case of this simulation will be to develop an automatic GPS aboard
+I am told the use-case of this simulation will be to develop an automatic GPS aboard
 aircrafts that uses the Earth's magnetic fields. If a pilot's GPS fails, a
 simulation could continuously predict EDMR spectra based on the surrounding 
 environment. Different locations on Earth have different ambient magnetic
-fields, so a makeshift GPS is possible. I don't think this idea is necessarily good. 
-There are better ways of error-handling a GPS failure. However, it's a fun project.
+fields, so a makeshift GPS is possible. I don't think this idea is necessarily 
+applicable in practice. There are better ways of error-handling a GPS failure. 
+However, it's a fun project.
 
 In any case, we may understand and progress spin-physics a bit more. For the
 next few posts, I plan to cover the core spin-physics of spin-dependent
