@@ -9,7 +9,7 @@ menu = "main"
 
 {{< katex />}}
 
-This post will be math heavy. I'll try to walk through it all elegantly though.
+This post is math heavy. I'll try to walk through it all elegantly though. 
 
 The Spin Hamiltonian $\mathscr{H}$ governs the spin-physics of recombination. It's what we
 need to program before starting to simulate EDMR.
@@ -29,13 +29,15 @@ Normally $\mathscr{H}$ also has a "Nuclear Quadropole Interaction Hamiltonian"
 as well. But since Silicon Carbide (4H-SiC) has no nuclei with nuclear spin $I >
 1/2$, it's set to 0. 
 
-The goal of this paper is to provide a thorough overview and derivation of each
-Hamiltonian term. Finally, a complete Hamiltonian description is given. 
+The goal of this post is to provide a thorough derivation of each
+Hamiltonian term. Finally, a complete Hamiltonian description is given.
+
+---
 
 ## The Zeeman Effect 
 
 A spinning charged particle is a magnetic dipole. Its magnetic dipole moment,
-$\vec{\mu}$, is proportional to its spin angular momentum, $\vec{S}$: 
+$\vec{\mu}$, is proportional to its spin angular momentum, $\vec{S}$ 
 
 $$ \vec{\mu} = \gamma \vec{S}.$$
 
@@ -47,6 +49,51 @@ $$
 \vec{S}, 
 $$
 
-where $g \approx 2.0023$ is the Landé $g$-factor and $\mu\_B \approx 9.2 \cdot
-10^{-24} J/T $ is the Bohr Magneton. 
+where $g \approx 2.0023$ is the Landé $g$-factor and $\mu_B \approx 9.2 \cdot
+10^{-24} J/T $ is the Bohr Magneton.  
 
+When a magnetic dipole is placed in a magnetic field, $\vec{B}$, it experiences
+a torque, $\vec{\mu} \times \vec{B}$, which tends to line it up parallel to the
+field like a compass. The energy associated with this torque is 
+
+$$
+H = -\vec{\mu} \cdot \vec{B} = -\gamma \vec{B} \cdot \vec{S}. 
+$$
+
+Therefore, the Zeeman Hamiltonian is 
+
+$$
+\hat{H}_Z = -\mu_0 \cdot \vec{B}_0 = \frac{g\mu_B}{\hbar} \vec{S} \cdot
+\vec{B}_0 = \frac{g\mu_B}{\hbar}B_0 S_z
+$$    
+
+where $S_z = \frac{\hbar}{2} \hat{\sigma}_z$, and $\sigma_z$ is the Pauli-$z$ spin
+matrix. Applying $\hat{H}_Z$ on an arbitrary spin state $|s, m_s\rangle$ yields 
+
+$$
+\begin{align*}
+\hat{H}_Z |s, m_s\rangle &= \frac{g\mu_B}{\hbar}B_0 \cdot S_z |s, m_s\rangle
+\\\\ &= \frac{g\mu_B}{\hbar}B_0 \cdot m_s\hbar|s, m_s\rangle \\\\ 
+&= m_s g \mu_B B_0 |s, m_s\rangle. 
+\end{align*}
+$$
+
+Ordinarily there is an anisotropic $g$-tensor. Magnetic fields across different
+axes act differently on $|s, m_s\rangle$. So we replace with a $3 \times 3$ $g$
+tensor, 
+
+$$\hat{H}_Z = \mu_B \vec{S} \cdot g \cdot \vec{B}_0.$$
+
+But we can diagonalize along $|s, m_s\rangle$'s principle axis. 
+
+$$ g\_{\mathrm{diag}} = \begin{pmatrix} g_x & 0 & 0 \\\\ 0 & g_y & 0 \\\\ 0 & 0
+& g_z \end{pmatrix}. $$
+
+However, for our simulation. We'll start with $g \approx 2.0023$ scalar for the
+free electron. Our Zeeman Hamiltonian is defined via 
+
+$$ 
+\boxed { 
+\hat{H}_Z |s, m_s\rangle = m_s g \mu_B B_0 |s, m_s\rangle.
+}
+$$
