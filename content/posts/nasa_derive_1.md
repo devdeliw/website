@@ -3,7 +3,7 @@ title = "The Spin Hamiltonian"
 description = "NASA 1" 
 tags = ["NASA"]
 date = "2025-06-06" 
-categories = ["Software", "Physics"] 
+categories = ["Physics"] 
 menu = "main"
 +++
 
