@@ -92,7 +92,7 @@ This can be diagonalized along $|s, m_s\rangle$'s principle axis to make things 
 $$ g\_{\mathrm{diag}} = \begin{pmatrix} g_x & 0 & 0 \\\\ 0 & g_y & 0 \\\\ 0 & 0
 & g_z \end{pmatrix}. $$
 
-For our simulation though, we'll start with a scalar $g \approx 2.0023$. 
+For our simulation though, we'll start with a $g \approx 2.0023$. 
 Our Zeeman Hamiltonian is given by   
 
 $$ 
