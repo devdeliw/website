@@ -54,9 +54,9 @@ conservation at work.
 Now the carrier electron has been brought down from the conduction band, which
 is the highway for current electrons, to the defect. From here, it can proceed
 all the way down to the valence band by recombining with a hole. This process is
-known as *Spin-dependent Recombination* -- only carrier electrons whose spin
+known as *Spin-dependent Recombination* (SDR) -- only carrier electrons whose spin
 states form a singlet with the defect orbital can undergo recombination and
-leave the conduction band. This process is illustrated below.
+leave the conduction band. SDR process is illustrated below.
 
 <br>
 

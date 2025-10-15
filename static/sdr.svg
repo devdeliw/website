@@ -26,15 +26,24 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="2.6240385"
-     inkscape:cx="256.28435"
-     inkscape:cy="112.80322"
+     inkscape:zoom="1.413851"
+     inkscape:cx="260.63566"
+     inkscape:cy="88.411012"
      inkscape:window-width="1512"
      inkscape:window-height="945"
      inkscape:window-x="0"
      inkscape:window-y="37"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1-0-2">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="143.64243"
+       height="59.872437"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
   <defs
      id="defs1">
     <marker
@@ -157,17 +166,6 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-4.9815211,-103.1396)">
-    <text
-       xml:space="preserve"
-       style="font-size:7.05556px;font-family:sans-serif;-inkscape-font-specification:sans-serif;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#898989;fill-opacity:1;stroke:#8e8e8e;stroke-width:0;stroke-dasharray:none;stroke-dashoffset:0"
-       x="67.774597"
-       y="100"
-       id="text1"><tspan
-         sodipodi:role="line"
-         id="tspan1"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Serif;-inkscape-font-specification:Serif;fill:#898989;fill-opacity:1;stroke-width:0"
-         x="67.774597"
-         y="100" /></text>
     <g
        id="layer1-0"
        transform="translate(-10.647102,61.276649)">
@@ -182,6 +180,45 @@
            x="68.734146"
            y="101.17559"
            id="tspan5">valence Band </tspan></text>
+    </g>
+    <g
+       id="layer1-0-2"
+       transform="translate(-34.783191,34.568021)">
+      <text
+         xml:space="preserve"
+         style="font-size:7.05556px;font-family:serif;-inkscape-font-specification:serif;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#969696;fill-opacity:1;stroke:#8e8e8e;stroke-width:0.905999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
+         x="85.083466"
+         y="98.810532"
+         id="text4-9"><tspan
+           sodipodi:role="line"
+           style="font-size:7.05556px;fill:#898989;fill-opacity:1;stroke:#8e8e8e;stroke-width:0.906;stroke-dasharray:none;stroke-opacity:0"
+           x="85.083466"
+           y="98.810532"
+           id="tspan5-7">V<tspan
+   style="font-size:4.58611px"
+   id="tspan4" /></tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.5861px;font-family:serif;-inkscape-font-specification:serif;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#898989;fill-opacity:1;stroke:#ff4e4e;stroke-width:0;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         x="89.085632"
+         y="101.19473"
+         id="text6"><tspan
+           sodipodi:role="line"
+           id="tspan6"
+           style="stroke-width:0"
+           x="89.085632"
+           y="101.19473">Si</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:7.05556px;font-family:serif;-inkscape-font-specification:serif;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#898989;fill-opacity:1;stroke:#ff4e4e;stroke-width:0;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         x="90.914314"
+         y="95.064995"
+         id="text6-4"><tspan
+           sodipodi:role="line"
+           id="tspan6-4"
+           style="font-size:7.05556px;stroke-width:0"
+           x="90.914314"
+           y="95.064995">-</tspan></text>
     </g>
     <g
        id="layer1-0-7"
