@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="119.34255mm"
-   height="78.872581mm"
-   viewBox="0 0 119.34255 78.872582"
+   width="117.76815mm"
+   height="78.872574mm"
+   viewBox="0 0 117.76815 78.872574"
    version="1.1"
    id="svg1"
    inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
@@ -37,10 +37,10 @@
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1">
     <inkscape:page
-       x="0"
-       y="0"
-       width="119.34254"
-       height="78.872581"
+       x="2.7380488e-16"
+       y="1.5772755e-16"
+       width="117.76814"
+       height="78.872574"
        id="page2"
        margin="0"
        bleed="0" />
@@ -956,24 +956,24 @@
        ry="2.153693" />
     <text
        xml:space="preserve"
-       style="font-size:7.05556px;font-family:serif;-inkscape-font-specification:serif;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#969696;fill-opacity:1;stroke:#8e8e8e;stroke-width:0.905999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
+       style="font-size:7.05556px;font-family:serif;-inkscape-font-specification:serif;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#898989;fill-opacity:1;stroke:#898989;stroke-width:0.905999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
        x="95.514877"
        y="104.5284"
        id="text4"><tspan
          sodipodi:role="line"
-         style="font-size:7.05556px;fill:#969696;fill-opacity:1;stroke:#8e8e8e;stroke-width:0.906;stroke-dasharray:none;stroke-opacity:0"
+         style="font-size:7.05556px;fill:#898989;fill-opacity:1;stroke:#898989;stroke-width:0.906;stroke-dasharray:none;stroke-opacity:0"
          x="95.514877"
          y="104.5284"
          id="tspan5">silicon</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:7.05556px;font-family:serif;-inkscape-font-specification:serif;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#969696;fill-opacity:1;stroke:#8e8e8e;stroke-width:0.905999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
+       style="font-size:7.05556px;font-family:serif;-inkscape-font-specification:serif;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#898989;fill-opacity:1;stroke:#8e8e8e;stroke-width:0.905999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
        x="95.514877"
        y="112.43391"
        id="text4-5"><tspan
          sodipodi:role="line"
          id="tspan4-0"
-         style="font-size:7.05556px;fill:#969696;fill-opacity:1;stroke:#8e8e8e;stroke-width:0.906;stroke-dasharray:none;stroke-opacity:0"
+         style="font-size:7.05556px;fill:#898989;fill-opacity:1;stroke:#8e8e8e;stroke-width:0.906;stroke-dasharray:none;stroke-opacity:0"
          x="95.514877"
          y="112.43391">carbon</tspan></text>
   </g>

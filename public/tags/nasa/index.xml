@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NASA on my undergrad work</title>
+    <link>http://localhost:1313/tags/nasa/</link>
+    <description>Recent content in NASA on my undergrad work</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 02 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/nasa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My project at NASA</title>
+      <link>http://localhost:1313/posts/nasa_intro/</link>
+      <pubDate>Mon, 02 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/nasa_intro/</guid>
+      <description>&lt;link rel=&#34;stylesheet&#34; href=&#34;http://localhost:1313/katex/katex.min.css&#34; /&gt;&lt;script defer src=&#34;http://localhost:1313/katex/katex.min.js&#34;&gt;&lt;/script&gt;&lt;script defer src=&#34;http://localhost:1313/katex/auto-render.min.js&#34; onload=&#34;renderMathInElement(document.body, {&amp;#34;delimiters&amp;#34;:[{&amp;#34;left&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$$&amp;#34;,&amp;#34;display&amp;#34;:true},{&amp;#34;left&amp;#34;:&amp;#34;$&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;$&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\(&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\)&amp;#34;,&amp;#34;display&amp;#34;:false},{&amp;#34;left&amp;#34;:&amp;#34;\\[&amp;#34;,&amp;#34;right&amp;#34;:&amp;#34;\\]&amp;#34;,&amp;#34;display&amp;#34;:true}]});&#34;&gt;&lt;/script&gt;&#xA;&lt;p&gt;My work revolves around &lt;em&gt;Electrically Detected Magnetic Resonance&lt;/em&gt; (EDMR). It&amp;rsquo;s&#xA;a method of detecting small magnetic fields electrically. In principle it&amp;rsquo;s very&#xA;simple.&lt;/p&gt;&#xA;&lt;p&gt;Say we have a semiconductor, like silicon carbide. This semiconductor, made by&#xA;nature or in a lab, is never perfect. There may exist some missing atoms, or extra&#xA;atoms, deep in its molecular structure. These &lt;em&gt;defects&lt;/em&gt; provide some extra&#xA;electrons, or extra holes, which can be used for quantum sensing. In EDMR, they&#xA;are used to measure magnetic fields electrically. I&amp;rsquo;ll now walkthrough how this&#xA;is done in silicon carbide (4H-SiC) specifically.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
