@@ -70,11 +70,12 @@ supercomputers.
 <br>
 
 --- 
-$^\dagger$ Turns out, **on AArch64**, CORAL is actually comparable to OpenBLAS. CORAL
-outperforms for `DGEMM` (calculating $C \leftarrow \alpha AB + \beta C$ in
-double precision). You can see the benchmark
-[here](https://github.com/devdeliw/CORAL/blob/main/benches/plots/DGEMM_NOTRANSPOSE_x_NOTRANSPOSE.png). 
-However, on Apple Silicon, [Apple
+$^\dagger$ Turns out, **on AArch64**, CORAL is actually comparable to OpenBLAS
+*when both are single-threaded*. CORAL outperforms for `GEMM`, and $\sim$
+comparable for `SGEMM` (single precision general matrix multiplication). This makes sense,
+since `SGEMM` is the most used. You can see the benchmark(s)
+[here](https://github.com/devdeliw/CORAL/blob/main/benches/plots/). 
+However, optimized for Apple Silicon, [Apple
 Accelerate](https://developer.apple.com/documentation/accelerate), another BLAS
 implementation, absolutely wrecks both CORAL and OpenBLAS. 
 
