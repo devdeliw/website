@@ -76,8 +76,9 @@ path for electrons to "hop" through to lower energy levels, escaping
 conduction band. This is known as Spin-Dependent Trap-Assisted Tunneling
 (SDTAT), and is [detectable by
 EDMR](https://doi.org/10.1063/1.5057354).
-However, quantum tunneling is much rarer than recombination
-events. SDR is considered the [primary mechanism](https://www.nature.com/articles/s41598-024-64595-3) 
+However, an electron quantum tunneling 
+is rarer than undergoing recombination. 
+SDR is considered the [primary mechanism](https://www.nature.com/articles/s41598-024-64595-3) 
 for EDMR. 
 
 ## The Goal 
