@@ -30,11 +30,11 @@
      inkscape:cx="260.63566"
      inkscape:cy="88.411012"
      inkscape:window-width="1512"
-     inkscape:window-height="945"
+     inkscape:window-height="917"
      inkscape:window-x="0"
-     inkscape:window-y="37"
+     inkscape:window-y="65"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer1-0-2">
+     inkscape:current-layer="layer1-0-7">
     <inkscape:page
        x="0"
        y="0"
@@ -179,7 +179,7 @@
            style="font-size:7.05556px;fill:#898989;fill-opacity:1;stroke:#8e8e8e;stroke-width:0.906;stroke-dasharray:none;stroke-opacity:0"
            x="68.734146"
            y="101.17559"
-           id="tspan5">valence Band </tspan></text>
+           id="tspan5">valence band</tspan></text>
     </g>
     <g
        id="layer1-0-2"
@@ -233,7 +233,7 @@
            style="font-size:7.05556px;fill:#898989;fill-opacity:1;stroke:#000000;stroke-width:0.906;stroke-dasharray:none;stroke-opacity:0"
            x="64.200615"
            y="46.77182"
-           id="tspan5-8">conduction Band</tspan></text>
+           id="tspan5-8">conduction band</tspan></text>
       <path
          style="fill:#898989;fill-opacity:1;stroke:#ff5555;stroke-width:0.7;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#Triangle)"
          d="M 76.482156,74.086047 V 60.336358"
