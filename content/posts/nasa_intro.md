@@ -75,7 +75,7 @@ field. There are other mechanisms at play besides SDR. Defects also provide a
 path for electrons to "hop" through to lower energy levels, escaping
 conduction band. This is known as Spin-Dependent Trap-Assisted Tunneling
 (SDTAT), and is [detectable by
-EDMR](https://pubs.aip.org/aip/jap/article/124/21/215105/156039/Physical-nature-of-electrically-detectew:d-magnetic).
+EDMR](https://doi.org/10.1063/1.5057354).
 However, quantum tunneling is much rarer than recombination
 events. SDR is considered the [primary mechanism](https://www.nature.com/articles/s41598-024-64595-3) 
 for EDMR. 
