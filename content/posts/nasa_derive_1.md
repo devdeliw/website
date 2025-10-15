@@ -29,8 +29,11 @@ Normally $\mathscr{H}$ also has a "Nuclear Quadropole Interaction Hamiltonian"
 as well. But since Silicon Carbide (4H-SiC) has no nuclei with nuclear spin $I >
 1/2$, it's set to 0. 
 
-The goal of this post is to provide a thorough derivation of each
-Hamiltonian term. Finally, a complete Hamiltonian description is given.
+The goal of this post is to provide a good enough derivation of each
+Hamiltonian term. Finally, a complete Hamiltonian description is given. 
+
+I use a fancy $\mathscr{H}$ to represent the full Spin Hamiltonian.
+Sub-Hamiltonians are normal $H$'s but with hats (e.g. $\hat{H}_Z$). 
 
 ---
 
@@ -49,10 +52,10 @@ $$
 \vec{S}, 
 $$
 
-where $g \approx 2.0023$ is the Landé $g$-factor and $\mu_B \approx 9.2 \cdot
-10^{-24} J/T $ is the Bohr Magneton.  
+where $g \approx 2.0023$ is the Landé $g$-factor for the free electron
+and $\mu_B \approx 9.2 \cdot 10^{-24} J/T $ is the Bohr Magneton.  
 
-When a magnetic dipole is placed in a magnetic field, $\vec{B}$, it experiences
+When a magnetic dipole is placed in a magnetic field $\vec{B}$, it experiences
 a torque, $\vec{\mu} \times \vec{B}$, which tends to line it up parallel to the
 field like a compass. The energy associated with this torque is 
 
@@ -67,8 +70,8 @@ $$
 \vec{B}_0 = \frac{g\mu_B}{\hbar}B_0 S_z
 $$    
 
-where $S_z = \frac{\hbar}{2} \hat{\sigma}_z$, and $\sigma_z$ is the Pauli-$z$ spin
-matrix. Applying $\hat{H}_Z$ on an arbitrary spin state $|s, m_s\rangle$ yields 
+where $S_z = \frac{\hbar}{2} \hat{\sigma}_z$ and $\sigma_z$ is the Pauli-$z$ spin
+matrix. Applying $\hat{H}_Z$ on an arbitrary spin state $|s, m_s\rangle$ gives 
 
 $$
 \begin{align*}
@@ -78,19 +81,19 @@ $$
 \end{align*}
 $$
 
-Ordinarily there is an anisotropic $g$-tensor. Magnetic fields across different
-axes act differently on $|s, m_s\rangle$. So we replace with a $3 \times 3$ $g$
+Ordinarily we use an anisotropic $g$-tensor. Magnetic fields across different
+axes act differently on $|s, m_s\rangle$. So we would replace with a $3 \times 3$ $g$
 tensor, 
 
 $$\hat{H}_Z = \mu_B \vec{S} \cdot g \cdot \vec{B}_0.$$
 
-But we can diagonalize along $|s, m_s\rangle$'s principle axis. 
+This can be diagonalized along $|s, m_s\rangle$'s principle axis to make things easier.  
 
 $$ g\_{\mathrm{diag}} = \begin{pmatrix} g_x & 0 & 0 \\\\ 0 & g_y & 0 \\\\ 0 & 0
 & g_z \end{pmatrix}. $$
 
-However, for our simulation. We'll start with $g \approx 2.0023$ scalar for the
-free electron. Our Zeeman Hamiltonian is defined via 
+For our simulation though, we'll start with a scalar $g \approx 2.0023$. 
+Our Zeeman Hamiltonian is defined as
 
 $$ 
 \boxed { 
