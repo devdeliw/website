@@ -1,5 +1,5 @@
 +++ 
-title = "The Spin Hamiltonian" 
+title = "The Spin Hamiltonian - Part 1" 
 description = "NASA 1" 
 tags = ["NASA"]
 date = "2025-06-06" 
@@ -9,9 +9,15 @@ menu = "main"
 
 {{< katex />}}
 
+{{% hint warning %}}
 This post is math heavy. I'll try to walk through it all elegantly though. The
 important equations are boxed if you'd like to skip through. On mobile some
-equations may go overfull.  
+equations may go overfull. 
+
+{{% /hint %}}
+
+<br>
+
 
 The Spin Hamiltonian $\mathscr{H}$ governs the spin-physics of recombination. It's what we
 need to program before starting to simulate EDMR.
@@ -31,8 +37,8 @@ Normally $\mathscr{H}$ also has a "Nuclear Quadropole Interaction Hamiltonian"
 as well. But since Silicon Carbide (4H-SiC) has no nuclei with nuclear spin $I >
 1/2$, it's set to 0. 
 
-The goal of this post is to provide a good enough derivation of each
-Hamiltonian term. Finally, a complete Hamiltonian description is given. 
+The goal of this post is to provide a good-enough derivation of first two Hamiltonian terms. 
+The next two are reviewed in the next post. Finally, a complete Hamiltonian description is given. 
 
 I use a fancy $\mathscr{H}$ to represent the full Spin Hamiltonian.
 Sub-Hamiltonians are normal $H$'s but with hats (e.g. $\hat{H}_Z$). 
@@ -289,15 +295,21 @@ $$
 }
 $$
 
-For multiple nuclei, like in silicon carbide, we sum over every $j$ inequivalent
+For multiple nuclei, like in Silicon Carbide, we sum over every $j$ inequivalent
 nucleus. 
 
 $$
 \hat{H}\_{HF} = \sum_j \hat{\vec{S}} \cdot A_j \cdot \hat{\vec{I}}_j. 
 $$
 
-The dipolar integral in $A_{ij}^{\text{dip}} is evaluated by choosing the
-defect's principle axis frame to diagonalize, like for the anisotropic Zeeman
-Hamiltonian.  
+For a 2-nuclei (Silicon + Carbon) $\times$ 2-electron (Defect +
+Carrier), there are $2^4 = 16$ orthonormal basis states. The Hyperfine
+Hamiltonian is a $16\times 16$ matrix.  
+
+
+Making a $B_0$ vs. energy plot for Hyperfine like with
+Zeeman above is difficult. However, in a future post, I will be writing some
+"eigen-energy" simulations. These will allow us to see what the Hyperfine
+Interaction does to the $16$ basis states that define the spin-system at play. 
 
 
