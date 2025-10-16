@@ -92,8 +92,6 @@ $|s, m_s\rangle$.
 
 <br>
 
-
-
 Ordinarily we use an anisotropic $g$-tensor. Magnetic fields in different
 directinos act differently on $|s, m_s\rangle$. So we would replace with a $3 \times 3$ $g$
 tensor, 
@@ -138,7 +136,7 @@ $$
 $$
 
 $A$ is not unique, but to make math simpler we can impose the Coulomb gauge condition
-$ \nabla \cdot \vec{A} = 0$.  
+$ \nabla \cdot \vec{A} = 0.$  
 
 Substituting yields 
 
@@ -151,8 +149,9 @@ $$
 ### Current Density 
 
 $\vec{J}$ is called the "current density." We know current is the *amount of
-charge per unit time* that flows through a wire. Current *flows* through the
-material. At every point in space, we can assign a small vector that says 
+charge per unit time* that travels through a wire (i.e. electron flux). If
+electrons arent trapped in a wire, they flow throughout space. At every point in this space 
+we can assign a small vector that says 
 
 "Here's how much charge is flowing through this point, and in what direction."
 
