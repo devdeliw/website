@@ -27,7 +27,7 @@ https://github.com/alex-shpak/hugo-book
   <meta itemprop="description" content="Core Rust Architecture for Linear Algebra">
   <meta itemprop="datePublished" content="2025-10-09T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-10-09T00:00:00+00:00">
-  <meta itemprop="wordCount" content="459">
+  <meta itemprop="wordCount" content="458">
   <meta itemprop="keywords" content="BLAS">
 
 <title>What is CORAL? | my undergrad work</title>
@@ -38,7 +38,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.0c23c13dd8a8d0b1403bcc5a2e1748b6418a2cfe6b493a31cedf0d61720b1025.js" integrity="sha256-DCPBPdio0LFAO8xaLhdItkGKLP5rSToxzt8NYXILECU=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.893bc722af4296c84d7ee24a3b726b82f64bfd72ae43f8a66f204ae982484c65.js" integrity="sha256-iTvHIq9ClshNfuJKO3JrgvZL/XKuQ/imbyBK6YJITGU=" crossorigin="anonymous"></script>
 
 
 
@@ -177,7 +177,7 @@ https://github.com/alex-shpak/hugo-book
   
 
 
-  <div class="book-post-content markdown-inner">
+  <div class="book-post-content markdown-inner"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
 <p>In the past few months I&rsquo;ve become immensely interested in scientific computing
 and writing fast code. I started <a href="https://github.com/devdeliw/CORAL">CORAL</a> as a project to learn both at the same
 time. And learn <a href="https://rust-lang.org">Rust</a>.</p>
@@ -236,8 +236,8 @@ supercomputers.</p>
 <br>
 <hr>
 <p>$^\dagger$ Turns out, <strong>on AArch64</strong>, CORAL is actually comparable to OpenBLAS
-<em>when both are single-threaded</em>. CORAL outperforms for <code>GEMM</code>, and $\sim$
-comparable for <code>SGEMM</code> (single precision general matrix multiplication). This makes sense,
+<em>when both are single-threaded</em>. CORAL outperforms for <code>GEMM</code>, and $\sim$comparable
+for <code>SGEMM</code> (single precision general matrix multiplication). This makes sense,
 since <code>SGEMM</code> is the most used. You can see the benchmark(s)
 <a href="https://github.com/devdeliw/CORAL/blob/main/benches/plots/">here</a>.
 However, optimized for Apple Silicon, <a href="https://developer.apple.com/documentation/accelerate">Apple
@@ -256,8 +256,8 @@ implementation, absolutely wrecks both CORAL and OpenBLAS.</p>
   </div>
   <div>
   
-    <a href="/posts/nasa_intro/" class="flex align-center">
-      <span>My project at NASA</span>
+    <a href="/posts/nasa_derive_1/" class="flex align-center">
+      <span>The Spin Hamiltonian</span>
       <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
     </a>
   

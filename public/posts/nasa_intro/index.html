@@ -27,7 +27,7 @@ https://github.com/alex-shpak/hugo-book
   <meta itemprop="description" content="NASA Introduction">
   <meta itemprop="datePublished" content="2025-06-02T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-06-02T00:00:00+00:00">
-  <meta itemprop="wordCount" content="534">
+  <meta itemprop="wordCount" content="636">
   <meta itemprop="keywords" content="NASA">
 
 <title>My project at NASA | my undergrad work</title>
@@ -38,7 +38,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.0c23c13dd8a8d0b1403bcc5a2e1748b6418a2cfe6b493a31cedf0d61720b1025.js" integrity="sha256-DCPBPdio0LFAO8xaLhdItkGKLP5rSToxzt8NYXILECU=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.893bc722af4296c84d7ee24a3b726b82f64bfd72ae43f8a66f204ae982484c65.js" integrity="sha256-iTvHIq9ClshNfuJKO3JrgvZL/XKuQ/imbyBK6YJITGU=" crossorigin="anonymous"></script>
 
 
 
@@ -132,7 +132,9 @@ https://github.com/alex-shpak/hugo-book
 <nav id="TableOfContents">
   <ul>
     <li><a href="#defects-in-silicon-carbide">Defects in Silicon Carbide</a></li>
-    <li><a href="#spin-dependent-recombination">Spin Dependent Recombination</a></li>
+    <li><a href="#energy-levels">Energy Levels</a></li>
+    <li><a href="#recombination">Recombination</a></li>
+    <li><a href="#current">Current</a></li>
     <li><a href="#the-goal">The Goal</a></li>
   </ul>
 </nav>
@@ -175,8 +177,9 @@ https://github.com/alex-shpak/hugo-book
 
 
   <div class="book-post-content markdown-inner"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
-<p>My work revolves around <em>Electrically Detected Magnetic Resonance</em> (EDMR). It&rsquo;s
-a method of detecting small magnetic fields electrically. In principle it&rsquo;s very
+<p>My work revolves around <em>Electrically Detected Magnetic Resonance</em>
+(<a href="https://en.wikipedia.org/wiki/Electrically_detected_magnetic_resonance">EDMR</a>). It&rsquo;s
+a method to detect small magnetic fields electrically. In principle it&rsquo;s very
 simple.</p>
 <p>Say we have a semiconductor, like silicon carbide. This semiconductor, made by
 nature or in a lab, is never perfect. There may exist some missing atoms, or extra
@@ -191,49 +194,67 @@ is done in silicon carbide (4H-SiC) specifically.</p>
   <img src="/4h-sic.svg">
 </p>
 <br>
-<p>Ideally, it would be consistently full of silicon and carbon. However, what if
+<p>Ideally, it&rsquo;s consistently full of silicon and carbon. However, what if
 somewhere there&rsquo;s a missing silicon atom (middle of figure)? This is a common defect, known as the
 <em>Silicon Vacancy</em>. It&rsquo;s a spin $S=3/2$ defect; how we get 3/2 isn&rsquo;t important.</p>
-<h2 id="spin-dependent-recombination">Spin Dependent Recombination<a class="anchor" href="#spin-dependent-recombination">#</a></h2>
-<p>When current flows through a semiconductor, the electrons move through the
-<em>conduction band</em>, a band of energy a bit higher than the <em>valence band</em>, where
-the valence electrons of silicon and carbon rest.
-The energy level of the defect lies somewhere in between.</p>
-<p>In 4H-SiC, the conduction band is $\sim$3.3eV higher than the valence band.
-If an electron ($S=1/2$) passes over a defect, it can &ldquo;couple&rdquo; with it. If an
-orbital of the defect and the carrier electron form a <em>singlet</em> state, then the
-defect can &ldquo;catch&rdquo; the carrier electron and trap it at its lower
-energy state. <em>Triplet</em> states are nearly forbidden; this is spin angular momentum
-conservation at work.</p>
-<p>Now the carrier electron has been brought down from the conduction band, which
-is the highway for current electrons, to the defect. From here, it can proceed
-all the way down to the valence band by recombining with a hole. This process is
-known as <em>Spin-dependent Recombination</em> (SDR) &ndash; only carrier electrons whose spin
-states form a singlet with the defect orbital can undergo recombination and
-leave the conduction band. SDR process is illustrated below.</p>
+<h2 id="energy-levels">Energy Levels<a class="anchor" href="#energy-levels">#</a></h2>
+<p>When current flows through a semiconductor, the carrier electrons move through the
+<em>conduction band</em>, a band of energy a bit higher than where
+the valence electrons of silicon and carbon rest. The energy level of the defect
+lies somewhere in between.</p>
+<p>In 4H-SiC, the conduction band is
+<a href="https://arxiv.org/pdf/2410.06798">$\sim$3.3eV</a> higher than the valence band.
+If an electron ($S=1/2$) in the conduction band passes over a defect, the
+defect can trap it at its lower energy state.</p>
+<h2 id="recombination">Recombination<a class="anchor" href="#recombination">#</a></h2>
+<p>Now the carrier electron is at the defect energy level, a bit below the
+conduction band. When can it travel all the way down to the valence band?</p>
+<p>Electron spin is an angular momentum. If an electron were to travel to the
+valence band then it would occupy a hole. This final state would have spin $S=0$.
+By angular momentum conservation, the defect-electron state before must have spin
+$S=0$ too.</p>
+<p>For two particles (defect + electron), this is the <em>singlet state</em>, when
+both spins are antiparallel. A carrier electron can only undergo <em>recombination</em>
+if it forms a singlet state with the defect. If the carrier electron forms a <em>triplet state</em>,
+($S = 1$), it immediately returns back up to the conduction band.</p>
+<p>This is known as <em>Spin-Dependent Recombination</em> (SDR), illustrated below.</p>
 <br>
 <p align="center">
   <img src="/sdr.svg">
 </p>
 <br>
-<p>And since magnetic fields modulate spin alignment, they change the rate of recombination,
-which reduce the number of electrons in the conduction band &ndash; the amount of
-current. If we detect changes in current, we detect changes in the magnetic
-field.</p>
+<h2 id="current">Current<a class="anchor" href="#current">#</a></h2>
+<p>When an electron undergoes recombination, it fully leaves the conduction
+band. Therefore, current decreases.</p>
+<p>And since <a href="https://en.wikipedia.org/wiki/Zeeman_effect">magnetic fields alter spin
+alignment</a> (Zeeman precession),
+they change the rate of recombination, so they change current.</p>
+<p>If we detect changes in current, we detect changes in the magnetic field. This is EDMR.</p>
+<p>There are other mechanisms at play besides recombination though. Defects also provide a
+intermediary path for electrons to &ldquo;hop&rdquo; through to lower energy levels. This also lets
+them escape the conduction band, changing current.
+This is known as Spin-Dependent Trap-Assisted Tunneling
+(SDTAT), and is <a href="https://doi.org/10.1063/1.5057354">detectable by
+EDMR</a>.
+However, an electron quantum tunneling
+is rarer than undergoing recombination, so
+recombination is the <a href="https://www.nature.com/articles/s41598-024-64595-3">primary mechanism</a>
+for EDMR.</p>
 <h2 id="the-goal">The Goal<a class="anchor" href="#the-goal">#</a></h2>
-<p>My work at NASA will be simulating this entire process, as fast as possible. The
-end simulation will take in all experimental parameters, to be explained later,
-and spit out an EDMR spectra. This spectra is a plot of magnetic field $B$ vs.
-current $nA$.</p>
-<p>The use-case of this simulation will be to develop an automatic GPS aboard
-aircrafts that uses the Earth&rsquo;s magnetic fields. If a pilot&rsquo;s GPS fails, a
+<p>My <a href="/nasa_ppt.pdf">work at NASA</a> will be simulating this entire process, as fast as possible.
+The final simulation will take in all experimental parameters, to be explained later,
+and spit out an EDMR spectra. This spectra is a plot of magnetic field vs.
+current.</p>
+<p>I am told the use-case of this simulation will be to develop an automatic GPS aboard
+aircrafts that uses the Earth&rsquo;s magnetic field. If a pilot&rsquo;s GPS fails, a
 simulation could continuously predict EDMR spectra based on the surrounding
 environment. Different locations on Earth have different ambient magnetic
-fields, so a makeshift GPS is possible. I don&rsquo;t think this idea is necessarily good.
-There are better ways of error-handling a GPS failure. However, it&rsquo;s a fun project.</p>
-<p>In any case, we may understand and progress spin-physics a bit more. For the
-next few posts, I plan to cover the core spin-physics of spin-dependent
-recombination and then start writing software.</p>
+fields, so a makeshift GPS is possible. I don&rsquo;t think this idea is necessarily
+applicable in practice. There are better ways of error-handling a GPS failure.
+However, it&rsquo;s a fun project.</p>
+<p>In any case, we may understand spin-physics a bit more. This post was
+a bit abstracted. For the next few posts, I plan to cover the core physics
+of spin-dependent recombination and then start writing software to simulate it.</p>
 </div>
 </article>
  
@@ -244,9 +265,9 @@ recombination and then start writing software.</p>
   <div class="flex flex-wrap justify-between">
   <div>
   
-    <a href="/posts/coral_intro/" class="flex align-center">
+    <a href="/posts/nasa_derive_1/" class="flex align-center">
       <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
-      <span>What is CORAL?</span>
+      <span>The Spin Hamiltonian</span>
     </a>
   
   </div>
@@ -286,7 +307,9 @@ recombination and then start writing software.</p>
 <nav id="TableOfContents">
   <ul>
     <li><a href="#defects-in-silicon-carbide">Defects in Silicon Carbide</a></li>
-    <li><a href="#spin-dependent-recombination">Spin Dependent Recombination</a></li>
+    <li><a href="#energy-levels">Energy Levels</a></li>
+    <li><a href="#recombination">Recombination</a></li>
+    <li><a href="#current">Current</a></li>
     <li><a href="#the-goal">The Goal</a></li>
   </ul>
 </nav>

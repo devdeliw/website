@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NASA 1">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/nasa_derive_1/">
+  <meta property="og:site_name" content="my undergrad work">
+  <meta property="og:title" content="The Spin Hamiltonian">
+  <meta property="og:description" content="NASA 1">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-06-06T00:00:00+00:00">
+    <meta property="article:tag" content="NASA">
+
+
+  <meta itemprop="name" content="The Spin Hamiltonian">
+  <meta itemprop="description" content="NASA 1">
+  <meta itemprop="datePublished" content="2025-06-06T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-06-06T00:00:00+00:00">
+  <meta itemprop="wordCount" content="659">
+  <meta itemprop="keywords" content="NASA">
+
+<title>The Spin Hamiltonian | my undergrad work</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/posts/nasa_derive_1/">
+<link rel="stylesheet" href="/book.min.6970156cec683193d93c9c4edaf0d56574e4361df2e0c1be4f697ae81c3ba55f.css" integrity="sha256-aXAVbOxoMZPZPJxO2vDVZXTkNh3y4MG&#43;T2l66Bw7pV8=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.893bc722af4296c84d7ee24a3b726b82f64bfd72ae43f8a66f204ae982484c65.js" integrity="sha256-iTvHIq9ClshNfuJKO3JrgvZL/XKuQ/imbyBK6YJITGU=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>my undergrad work</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/posts/" title="Writeups">Writeups</a></li><li><a href="/resume/" title="Resume">Resume</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>The Spin Hamiltonian</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-zeeman-effect">The Zeeman Effect</a></li>
+    <li><a href="#hyperfine-interaction">Hyperfine Interaction</a>
+      <ul>
+        <li><a href="#vector-potential">Vector Potential</a></li>
+        <li><a href="#current-density">Current Density</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    The Spin Hamiltonian
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>June 6, 2025</span>
+  </div>
+
+
+
+  
+  <div class="text-small">
+    
+      <a href="/categories/physics/">Physics</a>
+  </div>
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/nasa/">NASA</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
+<p>This post is math heavy. I&rsquo;ll try to walk through it all elegantly though.</p>
+<p>The Spin Hamiltonian $\mathscr{H}$ governs the spin-physics of recombination. It&rsquo;s what we
+need to program before starting to simulate EDMR.</p>
+<p>$ \mathscr{H} $ is a combination of the Zeeman Effect, Hyperfine Interactions,
+the Zero-field Splitting Effect, and the Exchange Interaction.</p>
+<p>$$
+\mathscr{H} =
+\hat{H}_{\mathrm{Z}}   +
+\hat{H}_{\mathrm{HF}}  +
+\hat{H}_{\mathrm{ZFS}} +
+\hat{H}_{\mathrm{EX}}
+$$</p>
+<p>Normally $\mathscr{H}$ also has a &ldquo;Nuclear Quadropole Interaction Hamiltonian&rdquo;
+as well. But since Silicon Carbide (4H-SiC) has no nuclei with nuclear spin $I &gt;
+1/2$, it&rsquo;s set to 0.</p>
+<p>The goal of this post is to provide a good enough derivation of each
+Hamiltonian term. Finally, a complete Hamiltonian description is given.</p>
+<p>I use a fancy $\mathscr{H}$ to represent the full Spin Hamiltonian.
+Sub-Hamiltonians are normal $H$&rsquo;s but with hats (e.g. $\hat{H}_Z$).</p>
+<hr>
+<h2 id="the-zeeman-effect">The Zeeman Effect<a class="anchor" href="#the-zeeman-effect">#</a></h2>
+<p>A spinning charged particle is a magnetic dipole. Its magnetic dipole moment,
+$\vec{\mu}$, is proportional to its spin angular momentum, $\vec{S}$</p>
+<p>$$ \vec{\mu} = \gamma \vec{S}.$$</p>
+<p>The proportionality constant, $\gamma$ is the <em>gyromagnetic ratio.</em> From the
+Dirac equation it can be shown</p>
+<p>$$
+\vec{\mu} = \gamma \vec{S} = -g \frac{q}{2m_e} \vec{S} = -\frac{g\mu_B}{\hbar}
+\vec{S},
+$$</p>
+<p>where $g \approx 2.0023$ is the Landé $g$-factor for the free electron
+and $\mu_B \approx 9.2 \cdot 10^{-24} J/T $ is the Bohr Magneton.</p>
+<p>When a magnetic dipole is placed in a magnetic field $\vec{B}$, it experiences
+a torque, $\vec{\mu} \times \vec{B}$, which tends to line it up parallel to the
+field like a compass. The energy associated with this torque is</p>
+<p>$$
+H = -\vec{\mu} \cdot \vec{B} = -\gamma \vec{B} \cdot \vec{S}.
+$$</p>
+<p>Therefore, the Zeeman Hamiltonian is</p>
+<p>$$
+\hat{H}_Z = -\vec{mu} \cdot \vec{B}_0 = \frac{g\mu_B}{\hbar} \vec{S} \cdot
+\vec{B}_0 = \frac{g\mu_B}{\hbar}B_0 S_z
+$$</p>
+<p>where $S_z = \frac{\hbar}{2} \hat{\sigma}_z$ and $\sigma_z$ is the Pauli-$z$ spin
+matrix. Applying $\hat{H}_Z$ on an arbitrary spin state $|s, m_s\rangle$ gives</p>
+<p>$$
+\begin{align}
+\hat{H}_Z |s, m_s\rangle &amp;= \frac{g\mu_B}{\hbar}B_0 \cdot S_z |s, m_s\rangle
+\\ &amp;= \frac{g\mu_B}{\hbar}B_0 \cdot m_s\hbar|s, m_s\rangle \\
+&amp;= m_s g \mu_B B_0 |s, m_s\rangle.
+\end{align}
+$$</p>
+<p>From equation (3) above, we can calculate $\hat{H}_Z$&rsquo;s effect on any spin state
+$|s, m\rangle$.</p>
+<br> 
+<p align="center">
+  <img src="/zeeman.svg">
+</p>
+<br>
+<p>Ordinarily we use an anisotropic $g$-tensor. Magnetic fields in different
+directinos act differently on $|s, m_s\rangle$. So we would replace with a $3 \times 3$ $g$
+tensor,</p>
+<p>$$\hat{H}_Z = \mu_B \vec{S} \cdot g \cdot \vec{B}_0.$$</p>
+<p>This can be diagonalized along $|s, m_s\rangle$&rsquo;s principle axis to make things easier.</p>
+<p>$$ g_{\mathrm{diag}} = \begin{pmatrix} g_x &amp; 0 &amp; 0 \\ 0 &amp; g_y &amp; 0 \\ 0 &amp; 0
+&amp; g_z \end{pmatrix}. $$</p>
+<p>For our simulation though, we&rsquo;ll start with $g \approx 2.0023$.
+Our Zeeman Hamiltonian is given by</p>
+<p>$$
+\boxed {
+\hat{H}_Z |s, m_s\rangle = m_s g \mu_B B_0 |s, m_s\rangle.
+}
+$$</p>
+<p>$\hat{H}_Z$ determines how spin-state energies split in the presence of an external $\vec{B}$ field.
+It&rsquo;s the dominant term in the Spin Hamiltonian that drives recombination.</p>
+<hr>
+<h2 id="hyperfine-interaction">Hyperfine Interaction<a class="anchor" href="#hyperfine-interaction">#</a></h2>
+<p>Maxwell&rsquo;s Equations say</p>
+<p>$$
+\nabla \cdot \vec{B} = 0, \quad \nabla \times \vec{B} = \mu_0 \vec{J}.
+$$</p>
+<h3 id="vector-potential">Vector Potential<a class="anchor" href="#vector-potential">#</a></h3>
+<p>The first equation tells us there&rsquo;s no magnetic monopoles; the magnetic field
+$\vec{B}$ has zero divergence. From vector calculus this means there exists a
+vector field $\vec{A}$ such that</p>
+<p>$$
+\vec{B} = \nabla \times \vec{A}.
+$$</p>
+<p>$A$ is not unique, but to make math simpler we can impose the Coulomb gauge condition
+$ \nabla \cdot \vec{A} = 0$.</p>
+<p>Substituting yields</p>
+<p>$$
+\begin{align}
+\nabla^2 \vec{A} = -\mu_0 \vec{J}.
+\end{align}
+$$</p>
+<h3 id="current-density">Current Density<a class="anchor" href="#current-density">#</a></h3>
+<p>$\vec{J}$ is called the &ldquo;current density.&rdquo; We know current is the <em>amount of
+charge per unit time</em> that flows through a wire. Current <em>flows</em> through the
+material. At every point in space, we can assign a small vector that says</p>
+<p>&ldquo;Here&rsquo;s how much charge is flowing through this point, and in what direction.&rdquo;</p>
+<p>This vector field is the current density $\vec{J}$.</p>
+<p>We model the localized nuclear magnetic moment $\vec{\mu}_n$ at the origin.
+It has an effective current density</p>
+<p>$$ \vec{J}_n(\vec{r}&rsquo;) = \nabla&rsquo; \times [\vec{\mu}_n \delta^3 (\vec{r}&rsquo;)]. $$</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+  <div>
+  
+    <a href="/posts/coral_intro/" class="flex align-center">
+      <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+      <span>What is CORAL?</span>
+    </a>
+  
+  </div>
+  <div>
+  
+    <a href="/posts/nasa_intro/" class="flex align-center">
+      <span>My project at NASA</span>
+      <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+    </a>
+  
+  </div>
+</div>
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-zeeman-effect">The Zeeman Effect</a></li>
+    <li><a href="#hyperfine-interaction">Hyperfine Interaction</a>
+      <ul>
+        <li><a href="#vector-potential">Vector Potential</a></li>
+        <li><a href="#current-density">Current Density</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

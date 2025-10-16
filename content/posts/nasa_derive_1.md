@@ -66,7 +66,7 @@ $$
 Therefore, the Zeeman Hamiltonian is 
 
 $$
-\hat{H}_Z = -\mu_0 \cdot \vec{B}_0 = \frac{g\mu_B}{\hbar} \vec{S} \cdot
+\hat{H}_Z = -\vec{mu} \cdot \vec{B}_0 = \frac{g\mu_B}{\hbar} \vec{S} \cdot
 \vec{B}_0 = \frac{g\mu_B}{\hbar}B_0 S_z
 $$    
 
@@ -74,15 +74,28 @@ where $S_z = \frac{\hbar}{2} \hat{\sigma}_z$ and $\sigma_z$ is the Pauli-$z$ spi
 matrix. Applying $\hat{H}_Z$ on an arbitrary spin state $|s, m_s\rangle$ gives 
 
 $$
-\begin{align*}
+\begin{align}
 \hat{H}_Z |s, m_s\rangle &= \frac{g\mu_B}{\hbar}B_0 \cdot S_z |s, m_s\rangle
 \\\\ &= \frac{g\mu_B}{\hbar}B_0 \cdot m_s\hbar|s, m_s\rangle \\\\ 
 &= m_s g \mu_B B_0 |s, m_s\rangle. 
-\end{align*}
+\end{align}
 $$
 
-Ordinarily we use an anisotropic $g$-tensor. Magnetic fields across different
-axes act differently on $|s, m_s\rangle$. So we would replace with a $3 \times 3$ $g$
+From equation (3) above, we can calculate $\hat{H}_Z$'s effect on any spin state
+$|s, m\rangle$. 
+
+<br> 
+
+<p align="center">
+  <img src="/zeeman.svg">
+</p>
+
+<br>
+
+
+
+Ordinarily we use an anisotropic $g$-tensor. Magnetic fields in different
+directinos act differently on $|s, m_s\rangle$. So we would replace with a $3 \times 3$ $g$
 tensor, 
 
 $$\hat{H}_Z = \mu_B \vec{S} \cdot g \cdot \vec{B}_0.$$
@@ -100,3 +113,55 @@ $$
 \hat{H}_Z |s, m_s\rangle = m_s g \mu_B B_0 |s, m_s\rangle.
 }
 $$
+
+$\hat{H}_Z$ determines how spin-state energies split in the presence of an external $\vec{B}$ field. 
+It's the dominant term in the Spin Hamiltonian that drives recombination.
+
+--- 
+
+## Hyperfine Interaction 
+
+Maxwell's Equations say 
+
+$$
+\nabla \cdot \vec{B} = 0, \quad \nabla \times \vec{B} = \mu_0 \vec{J}. 
+$$
+
+### Vector Potential
+
+The first equation tells us there's no magnetic monopoles; the magnetic field
+$\vec{B}$ has zero divergence. From vector calculus this means there exists a
+vector field $\vec{A}$ such that 
+
+$$
+\vec{B} = \nabla \times \vec{A}. 
+$$
+
+$A$ is not unique, but to make math simpler we can impose the Coulomb gauge condition
+$ \nabla \cdot \vec{A} = 0$.  
+
+Substituting yields 
+
+$$ 
+\begin{align}
+\nabla^2 \vec{A} = -\mu_0 \vec{J}. 
+\end{align}
+$$
+
+### Current Density 
+
+$\vec{J}$ is called the "current density." We know current is the *amount of
+charge per unit time* that flows through a wire. Current *flows* through the
+material. At every point in space, we can assign a small vector that says 
+
+"Here's how much charge is flowing through this point, and in what direction."
+
+This vector field is the current density $\vec{J}$. 
+
+We model the localized nuclear magnetic moment $\vec{\mu}_n$ at the origin.
+It has an effective current density 
+
+$$ \vec{J}_n(\vec{r}') = \nabla' \times [\vec{\mu}_n \delta^3 (\vec{r}')]. $$ 
+
+
+

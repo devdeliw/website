@@ -19,8 +19,8 @@ https://github.com/alex-shpak/hugo-book
 
 
   <meta itemprop="name" content="Physics">
-  <meta itemprop="datePublished" content="2025-06-02T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-06-02T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-06-06T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-06-06T00:00:00+00:00">
 
 <title>Physics | my undergrad work</title>
 <link rel="icon" href="/favicon.png" >
@@ -30,7 +30,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.0c23c13dd8a8d0b1403bcc5a2e1748b6418a2cfe6b493a31cedf0d61720b1025.js" integrity="sha256-DCPBPdio0LFAO8xaLhdItkGKLP5rSToxzt8NYXILECU=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.893bc722af4296c84d7ee24a3b726b82f64bfd72ae43f8a66f204ae982484c65.js" integrity="sha256-iTvHIq9ClshNfuJKO3JrgvZL/XKuQ/imbyBK6YJITGU=" crossorigin="anonymous"></script>
 
 
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/physics/index.xml" title="my undergrad work" />
@@ -125,6 +125,51 @@ https://github.com/alex-shpak/hugo-book
   
   <article class="markdown book-post">
     <h2>
+      <a href="/posts/nasa_derive_1/">The Spin Hamiltonian</a>
+    </h2>
+    
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>June 6, 2025</span>
+  </div>
+
+
+
+  
+  <div class="text-small">
+    
+      <a href="/categories/physics/">Physics</a>
+  </div>
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/nasa/">NASA</a>
+  </div>
+  
+
+
+    <div class="book-post-content"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
+<p>This post is math heavy. I&rsquo;ll try to walk through it all elegantly though.</p>
+<p>The Spin Hamiltonian $\mathscr{H}$ governs the spin-physics of recombination. It&rsquo;s what we
+need to program before starting to simulate EDMR.</p>
+<p>$ \mathscr{H} $ is a combination of the Zeeman Effect, Hyperfine Interactions,
+the Zero-field Splitting Effect, and the Exchange Interaction.</p>
+<p>$$
+\mathscr{H} =
+\hat{H}_{\mathrm{Z}}   +
+\hat{H}_{\mathrm{HF}}  +
+\hat{H}_{\mathrm{ZFS}} +
+\hat{H}_{\mathrm{EX}}
+$$</p>
+<p>Normally $\mathscr{H}$ also has a &ldquo;Nuclear Quadropole Interaction Hamiltonian&rdquo;
+as well. But since Silicon Carbide (4H-SiC) has no nuclei with nuclear spin $I &gt;
+1/2$, it&rsquo;s set to 0.</p></div>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
       <a href="/posts/nasa_intro/">My project at NASA</a>
     </h2>
     
@@ -152,14 +197,15 @@ https://github.com/alex-shpak/hugo-book
 
 
     <div class="book-post-content"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
-<p>My work revolves around <em>Electrically Detected Magnetic Resonance</em> (EDMR). It&rsquo;s
-a method of detecting small magnetic fields electrically. In principle it&rsquo;s very
+<p>My work revolves around <em>Electrically Detected Magnetic Resonance</em>
+(<a href="https://en.wikipedia.org/wiki/Electrically_detected_magnetic_resonance">EDMR</a>). It&rsquo;s
+a method to detect small magnetic fields electrically. In principle it&rsquo;s very
 simple.</p>
 <p>Say we have a semiconductor, like silicon carbide. This semiconductor, made by
 nature or in a lab, is never perfect. There may exist some missing atoms, or extra
 atoms, deep in its molecular structure. These <em>defects</em> provide some extra
 electrons, or extra holes, which can be used for quantum sensing. In EDMR, they
-are used to measure magnetic fields electrically. I&rsquo;ll now walkthrough how this
+are used to measure magnetic fields electrically. I&rsquo;ll now walk through how this
 is done in silicon carbide (4H-SiC) specifically.</p></div>
   </article>
   
@@ -226,7 +272,7 @@ is done in silicon carbide (4H-SiC) specifically.</p></div>
       
         <li class="flex align-center">
           <a href="/categories/physics/">Physics</a>
-          <span>1</span>
+          <span>2</span>
         </li>
       
       </ul>
@@ -245,7 +291,7 @@ is done in silicon carbide (4H-SiC) specifically.</p></div>
       
         <li class="flex align-center">
           <a href="/tags/nasa/">NASA</a>
-          <span>1</span>
+          <span>2</span>
         </li>
       
       </ul>
