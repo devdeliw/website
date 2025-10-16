@@ -300,7 +300,7 @@ $$
 $$
 
 For a 2-nuclei (Silicon + Carbon) $\times$ 2-electron (Defect +
-Carrier), the Hilbert space is $2^4 = 16$ dimensional. The Hyperfine
+Carrier) system, the Hilbert space is $2^4 = 16$ dimensional. The Hyperfine
 Hamiltonian is a $16\times 16$ matrix.  
 
 Making a $B_0$ vs. Energy plot for Hyperfine like with
