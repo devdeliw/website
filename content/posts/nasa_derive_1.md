@@ -33,7 +33,7 @@ $$
 \hat{H}\_{\mathrm{EX}}
 $$ 
 
-Normally $\mathscr{H}$ also has a "Nuclear Quadropole Interaction Hamiltonian"
+Normally $\mathscr{H}$ also has a "Nuclear Quadrupole Interaction Hamiltonian"
 as well. But since Silicon Carbide (4H-SiC) has no nuclei with nuclear spin $I >
 1/2$, it's set to 0. 
 
@@ -106,7 +106,7 @@ $|s, m_s\rangle$.
 <br>
 
 Ordinarily we use an anisotropic $g$-tensor. Magnetic fields in different
-directinos act differently on $|s, m_s\rangle$. So we would replace with a $3 \times 3$ $g$
+directions act differently on $|s, m_s\rangle$. So we would replace with a $3 \times 3$ $g$
 tensor, 
 
 $$\hat{H}_Z = \mu_B \vec{S} \cdot g \cdot \vec{B}_0.$$
@@ -307,7 +307,7 @@ Carrier), there are $2^4 = 16$ orthonormal basis states. The Hyperfine
 Hamiltonian is a $16\times 16$ matrix.  
 
 
-Making a $B_0$ vs. energy plot for Hyperfine like with
+Making a $B_0$ vs. Energy plot for Hyperfine like with
 Zeeman above is difficult. However, in a future post, I will be writing some
 "eigen-energy" simulations. These will allow us to see what the Hyperfine
 Interaction does to the $16$ basis states that define the spin-system at play. 
