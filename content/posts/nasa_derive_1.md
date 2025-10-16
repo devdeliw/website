@@ -16,9 +16,6 @@ equations may go overfull.
 
 {{% /hint %}}
 
-<br>
-
-
 The Spin Hamiltonian $\mathscr{H}$ governs the spin-physics of recombination. It's what we
 need to program before starting to simulate EDMR.
 
