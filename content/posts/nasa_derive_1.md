@@ -82,7 +82,7 @@ $$
 $$
 
 From equation (3) above, we can calculate $\hat{H}_Z$'s effect on any spin state
-$|s, m\rangle$. 
+$|s, m_s\rangle$. 
 
 <br> 
 
