@@ -135,7 +135,7 @@ $$
 \vec{B} = \nabla \times \vec{A}. 
 $$
 
-$A$ is not unique, but to make math simpler we can impose the Coulomb gauge condition
+$A$ isn't unique, but to make math simple we can impose the Coulomb gauge condition
 $ \nabla \cdot \vec{A} = 0.$  
 
 Substituting yields 
