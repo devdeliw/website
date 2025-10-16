@@ -198,7 +198,7 @@ $$</p>
 <p>Normally $\mathscr{H}$ also has a &ldquo;Nuclear Quadrupole Interaction Hamiltonian&rdquo;
 as well. But since Silicon Carbide (4H-SiC) has no nuclei with nuclear spin $I &gt;
 1/2$, it&rsquo;s set to 0.</p>
-<p>The goal of this post is to provide a good-enough derivation of first two Hamiltonian terms.
+<p>The goal of this post is to provide a concise derivation of first two Hamiltonian terms.
 The next two are reviewed in the next post. Finally, a complete Hamiltonian description is given.</p>
 <p>I use a fancy $\mathscr{H}$ to represent the full Spin Hamiltonian.
 Sub-Hamiltonians are normal $H$&rsquo;s but with hats (e.g. $\hat{H}_Z$).</p>
@@ -227,7 +227,7 @@ H = -\vec{\mu} \cdot \vec{B} = -\gamma \vec{B} \cdot \vec{S}.
 $$</p>
 <p>Therefore, the Zeeman Hamiltonian is</p>
 <p>$$
-\hat{H}_Z = -\vec{mu} \cdot \vec{B}_0 = \frac{g\mu_B}{\hbar} \vec{S} \cdot
+\hat{H}_Z = -\vec{\mu} \cdot \vec{B}_0 = \frac{g\mu_B}{\hbar} \vec{S} \cdot
 \vec{B}_0 = \frac{g\mu_B}{\hbar}B_0 S_z
 $$</p>
 <p>where $S_z = \frac{\hbar}{2} \hat{\sigma}_z$ and $\sigma_z$ is the Pauli-$z$ spin
@@ -352,7 +352,7 @@ Hamiltonian is</p>
 $$</p>
 <p>Now we can solve. We&rsquo;ll write the Hamiltonian in index form,</p>
 <p>$$
-H(\vec(r)) = C \left[ \frac{1}{r^3}(\delta_{kl} - 3\hat{r}_k \hat{r}_l)
+H(\vec{r}) = C \left[ \frac{1}{r^3}(\delta_{kl} - 3\hat{r}_k \hat{r}_l)
 S_k I_l + \frac{8\pi}{3}\delta^3 (\vec{r}) S_k I_k \right],
 $$</p>
 <p>where we sum over repeated indices. Now the final expression to solve is</p>
@@ -372,7 +372,7 @@ $$</p>
 <p>where $A_{\text{iso}} = C \frac{8\pi}{3}|\psi(0)|^2. $ To solve the dipolar
 term, we define</p>
 <p>$$
-A_{kl}^{\text{dip}} = C \int d^3 r |\psi(\vec{r}|^2 \frac{\delta_{kl} -
+A_{kl}^{\text{dip}} = C \int d^3 r |\psi(\vec{r})|^2 \frac{\delta_{kl} -
 3\hat{r}_k \hat{r}_l}{r^3}.
 $$</p>
 <p>Then the dipolar term reduces to $S_k I_l A_{kl}^{\text{dip}}.$ We define the
@@ -392,7 +392,7 @@ nucleus.</p>
 \hat{H}_{HF} = \sum_j \hat{\vec{S}} \cdot A_j \cdot \hat{\vec{I}}_j.
 $$</p>
 <p>For a 2-nuclei (Silicon + Carbon) $\times$ 2-electron (Defect +
-Carrier), there are $2^4 = 16$ orthonormal basis states. The Hyperfine
+Carrier), the Hilbert space is $2^4 = 16$ dimensional. The Hyperfine
 Hamiltonian is a $16\times 16$ matrix.</p>
 <p>Making a $B_0$ vs. Energy plot for Hyperfine like with
 Zeeman above is difficult. However, in a future post, I will be writing some

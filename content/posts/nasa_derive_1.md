@@ -34,7 +34,7 @@ Normally $\mathscr{H}$ also has a "Nuclear Quadrupole Interaction Hamiltonian"
 as well. But since Silicon Carbide (4H-SiC) has no nuclei with nuclear spin $I >
 1/2$, it's set to 0. 
 
-The goal of this post is to provide a good-enough derivation of first two Hamiltonian terms. 
+The goal of this post is to provide a concise derivation of first two Hamiltonian terms. 
 The next two are reviewed in the next post. Finally, a complete Hamiltonian description is given. 
 
 I use a fancy $\mathscr{H}$ to represent the full Spin Hamiltonian.
@@ -76,7 +76,7 @@ $$
 Therefore, the Zeeman Hamiltonian is 
 
 $$
-\hat{H}_Z = -\vec{mu} \cdot \vec{B}_0 = \frac{g\mu_B}{\hbar} \vec{S} \cdot
+\hat{H}_Z = -\vec{\mu} \cdot \vec{B}_0 = \frac{g\mu_B}{\hbar} \vec{S} \cdot
 \vec{B}_0 = \frac{g\mu_B}{\hbar}B_0 S_z
 $$    
 
@@ -247,7 +247,7 @@ $$
 Now we can solve. We'll write the Hamiltonian in index form, 
 
 $$
-H(\vec(r)) = C \left[ \frac{1}{r^3}(\delta_{kl} - 3\hat{r}_k \hat{r}_l)
+H(\vec{r}) = C \left[ \frac{1}{r^3}(\delta_{kl} - 3\hat{r}_k \hat{r}_l)
 S_k I_l + \frac{8\pi}{3}\delta^3 (\vec{r}) S_k I_k \right],
 $$
 
@@ -273,7 +273,7 @@ where $A\_{\text{iso}} = C \frac{8\pi}{3}|\psi(0)|^2. $ To solve the dipolar
 term, we define 
 
 $$
-A_{kl}^{\text{dip}} = C \int d^3 r |\psi(\vec{r}|^2 \frac{\delta_{kl} -
+A_{kl}^{\text{dip}} = C \int d^3 r |\psi(\vec{r})|^2 \frac{\delta_{kl} -
 3\hat{r}_k \hat{r}_l}{r^3}. 
 $$
 
@@ -300,9 +300,8 @@ $$
 $$
 
 For a 2-nuclei (Silicon + Carbon) $\times$ 2-electron (Defect +
-Carrier), there are $2^4 = 16$ orthonormal basis states. The Hyperfine
+Carrier), the Hilbert space is $2^4 = 16$ dimensional. The Hyperfine
 Hamiltonian is a $16\times 16$ matrix.  
-
 
 Making a $B_0$ vs. Energy plot for Hyperfine like with
 Zeeman above is difficult. However, in a future post, I will be writing some
