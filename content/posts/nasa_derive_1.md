@@ -305,7 +305,5 @@ Hamiltonian is a $16\times 16$ matrix.
 
 Making a $B_0$ vs. Energy plot for Hyperfine like with
 Zeeman above is difficult. However, in a future post, I will be writing some
-"eigen-energy" simulations. These will allow us to see what the Hyperfine
-Interaction does to the $16$ basis states that define the spin-system at play. 
-
-
+"eigen-energy" simulations. These will let us see what the Hyperfine
+Interaction does to the 16 basis states defining our spin-system at play.  
