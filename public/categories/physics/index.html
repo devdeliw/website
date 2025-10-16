@@ -30,7 +30,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.f02aced4c89fb46929bbea69825a10236eff8bcc36011d82a3ebb06bbe4461ea.js" integrity="sha256-8CrO1MiftGkpu&#43;ppgloQI27/i8w2AR2Co&#43;uwa75EYeo=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.767c18a6ee8f81971a5c9f466312ccfc045c7b5aa873374a735ee5010903e588.js" integrity="sha256-dnwYpu6PgZcaXJ9GYxLM/ARce1qoczdKc17lAQkD5Yg=" crossorigin="anonymous"></script>
 
 
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/physics/index.xml" title="my undergrad work" />
@@ -125,7 +125,7 @@ https://github.com/alex-shpak/hugo-book
   
   <article class="markdown book-post">
     <h2>
-      <a href="/posts/nasa_derive_1/">The Spin Hamiltonian</a>
+      <a href="/posts/nasa_derive_1/">The Spin Hamiltonian - Part 1</a>
     </h2>
     
   <div class="flex align-center text-small book-post-date">
@@ -151,21 +151,16 @@ https://github.com/alex-shpak/hugo-book
 
 
     <div class="book-post-content"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
-<p>This post is math heavy. I&rsquo;ll try to walk through it all elegantly though.</p>
+<blockquote class="book-hint warning">
+<p>This post is math heavy. I&rsquo;ll try to walk through it all elegantly though. The
+important equations are boxed if you&rsquo;d like to skip through. On mobile some
+equations may go overfull.</p>
+</blockquote>
+<br>
 <p>The Spin Hamiltonian $\mathscr{H}$ governs the spin-physics of recombination. It&rsquo;s what we
 need to program before starting to simulate EDMR.</p>
 <p>$ \mathscr{H} $ is a combination of the Zeeman Effect, Hyperfine Interactions,
-the Zero-field Splitting Effect, and the Exchange Interaction.</p>
-<p>$$
-\mathscr{H} =
-\hat{H}_{\mathrm{Z}}   +
-\hat{H}_{\mathrm{HF}}  +
-\hat{H}_{\mathrm{ZFS}} +
-\hat{H}_{\mathrm{EX}}
-$$</p>
-<p>Normally $\mathscr{H}$ also has a &ldquo;Nuclear Quadropole Interaction Hamiltonian&rdquo;
-as well. But since Silicon Carbide (4H-SiC) has no nuclei with nuclear spin $I &gt;
-1/2$, it&rsquo;s set to 0.</p></div>
+the Zero-field Splitting Effect, and the Exchange Interaction.</p></div>
   </article>
   
   <article class="markdown book-post">

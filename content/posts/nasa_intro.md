@@ -117,4 +117,9 @@ In any case, we may understand spin-physics a bit more. This post was
 a bit abstracted. For the next few posts, I plan to cover the core physics
 of spin-dependent recombination and then start writing software to simulate it.
 
+<br> 
+
+<div style="text-align: right;">
+  {{< button relref="nasa_derive_1" class="btn" >}}Next →{{< /button >}}
+</div>
 
