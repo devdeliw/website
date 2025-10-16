@@ -136,9 +136,7 @@ $$
 $$
 
 $A$ isn't unique, but to make math simple we can impose the Coulomb gauge condition
-$ \nabla \cdot \vec{A} = 0.$  
-
-Substituting yields 
+$ \nabla \cdot \vec{A} = 0.$ Substituting yields 
 
 $$ 
 \begin{align}
@@ -150,15 +148,13 @@ $$
 
 $\vec{J}$ is called the "current density." We know current is the *amount of
 charge per unit time* that travels through a wire (i.e. electron flux). If
-electrons arent trapped in a wire, they flow throughout space. At every point in this space 
+electrons aren't trapped in a wire, they flow throughout space. At every point in this space 
 we can assign a small vector that says 
 
-"Here's how much charge is flowing through this point, and in what direction."
+"*Here's how much charge is flowing through this point, and in what direction.*"
 
-This vector field is the current density $\vec{J}$. 
-
-We model the localized nuclear magnetic moment $\vec{\mu}_n$ at the origin.
-It has an effective current density 
+This vector field is the current density $\vec{J}$. If we model the localized nuclear magnetic moment
+$\vec{\mu}_n$ at the origin, it generates an effective current density 
 
 $$ \vec{J}_n(\vec{r}') = \nabla' \times [\vec{\mu}_n \delta^3 (\vec{r}')]. $$ 
 
