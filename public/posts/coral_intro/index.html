@@ -27,7 +27,7 @@ https://github.com/alex-shpak/hugo-book
   <meta itemprop="description" content="Core Rust Architecture for Linear Algebra">
   <meta itemprop="datePublished" content="2025-10-09T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-10-09T00:00:00+00:00">
-  <meta itemprop="wordCount" content="458">
+  <meta itemprop="wordCount" content="459">
   <meta itemprop="keywords" content="BLAS">
 
 <title>What is CORAL? | my undergrad work</title>
@@ -38,7 +38,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.893bc722af4296c84d7ee24a3b726b82f64bfd72ae43f8a66f204ae982484c65.js" integrity="sha256-iTvHIq9ClshNfuJKO3JrgvZL/XKuQ/imbyBK6YJITGU=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.f02aced4c89fb46929bbea69825a10236eff8bcc36011d82a3ebb06bbe4461ea.js" integrity="sha256-8CrO1MiftGkpu&#43;ppgloQI27/i8w2AR2Co&#43;uwa75EYeo=" crossorigin="anonymous"></script>
 
 
 
@@ -236,7 +236,7 @@ supercomputers.</p>
 <br>
 <hr>
 <p>$^\dagger$ Turns out, <strong>on AArch64</strong>, CORAL is actually comparable to OpenBLAS
-<em>when both are single-threaded</em>. CORAL outperforms for <code>GEMM</code>, and $\sim$comparable
+<em>when both are single-threaded</em>. CORAL outperforms for <code>D/C/ZGEMM</code>, and is $\sim$comparable
 for <code>SGEMM</code> (single precision general matrix multiplication). This makes sense,
 since <code>SGEMM</code> is the most used. You can see the benchmark(s)
 <a href="https://github.com/devdeliw/CORAL/blob/main/benches/plots/">here</a>.
