@@ -3,7 +3,7 @@ title = "Zeeman and Hyperfine"
 description = "NASA 1" 
 tags = ["NASA"]
 date = "2025-06-06" 
-categories = ["Physics"] 
+categories = ["Math"] 
 menu = "main"
 +++
 

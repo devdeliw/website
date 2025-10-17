@@ -1,9 +1,9 @@
 +++ 
 title = "Zero-Field Splitting" 
-description = "NASA 1" 
+description = "NASA 2" 
 tags = ["NASA"]
 date = "2025-06-10" 
-categories = ["Physics"] 
+categories = ["Math"] 
 menu = "main"
 +++
 

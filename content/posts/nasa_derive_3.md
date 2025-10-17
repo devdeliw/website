@@ -1,9 +1,9 @@
 +++ 
 title = "The Spin Hamiltonian" 
-description = "NASA 1" 
+description = "NASA 3" 
 tags = ["NASA"]
 date = "2025-06-10" 
-categories = ["Physics"] 
+categories = ["Math"] 
 menu = "main"
 +++
 
@@ -182,7 +182,7 @@ $$
 $$
 
 We define an ansatz $\hat{P}_{12} = a \hat{S}\_{\text{tot}}^2 + b \mathbb{I}$.
-Plugging Equations (3) and (4) into (5) and (6) gives 
+Plugging Equations (4) and (5) into (6) and (7) gives 
 
 $$
 \begin{align*} 
@@ -317,8 +317,8 @@ basis. The second $|\pm\frac{1}{2}\rangle_1 \otimes |\pm \frac{1}{2}\rangle_2$
 states represent the two nuclei in their Zeeman basis.  
 
 
-Now we will programmatically calculate the Spin Hamiltonian $\mathscr{H}$'s
-effect on each basis state above. To do this, we'll program the Zeeman,
+Now we are ready to programmatically calculate the Spin Hamiltonian $\mathscr{H}$. 
+We'll evaluate its effect on each basis state above. To do this, we program the Zeeman,
 Hyperfine, ZFS, and Exchange Hamiltonian's effect on each basis state, and then
 sum them together.  
 

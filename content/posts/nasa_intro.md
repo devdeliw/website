@@ -3,7 +3,7 @@ title = "My project at NASA"
 description = "NASA Introduction" 
 tags = ["NASA"]
 date = "2025-06-02" 
-categories = ["Software", "Physics"] 
+categories = ["Software", "Math"] 
 menu = "main"
 +++
 
