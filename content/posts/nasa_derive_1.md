@@ -321,4 +321,3 @@ Interaction does to the 16 basis states defining our spin-system at play.
     {{< button relref="nasa_derive_2" class="btn" >}}Next →{{< /button >}}
   </div>
 </div>
-
