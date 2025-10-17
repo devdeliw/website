@@ -76,8 +76,8 @@ Hamiltonian. It will be a diagonal matrix with entries because the coupled-basis
 the eigenbasis.
 
 
-    // g_e  = sp.symbol("g_e")
-    // g_n1 = sp.symbol("g_n1") 
+    // g_e  = sp.symbols("g_e")
+    // g_n1 = sp.symbols("g_n1") 
     // ... 
 
     // zeeman frequencies
@@ -375,8 +375,7 @@ $$
 
 where $i \in \\{a, b \\}$ and $j \in \\{1, 2\\}$. We'll do this by generating a
 `dict[new_ket, coeff]` that associates each key `new_ket` with its `coeff` in
-front step by step. Throughout this process, we'll use natural units, setting
-$\hbar = 1$.  
+front step by step. In code we set $\hbar = 1$ to simplify. It'll get included later.  
 
 {{% steps %}} 
 1. #### Hyperfine $A$ constants. 
