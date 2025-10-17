@@ -149,7 +149,7 @@ $$
 \left( \frac{1}{2i} (\hat{I}\_+ - \hat{I}\_-) \right) + A\_{kz} S\_{kz} I_z \\\\ 
 &= \sum_k \frac{A\_{kx}}{4} ( \hat{S}\_{k+} \hat{I}\_+ + \hat{S}\_{k+}
 \hat{I}\_- + \hat{S}\_{k-} \hat{I}\_+ + \hat{S}\_{k-} \hat{I}\_-) \\\\ 
-&\qquad - \frac{A_{ky}}{4} (\hat{S}_{k+}\hat{I}_+ - \hat{S}_{k+}\hat{I}_- - \hat{S}_{k-}\hat{I}_+ + \hat{S}_{k-}\hat{I}_- ) + A\_{kz} S\_{kz} I\_z. 
+&\qquad - \frac{A\_{ky}}{4} (\hat{S}\_{k+}\hat{I}\_+ - \hat{S}\_{k+}\hat{I}\_- - \hat{S}\_{k-}\hat{I}\_+ + \hat{S}\_{k-}\hat{I}\_- ) + A\_{kz} S\_{kz} I\_z. 
 \end{align*} 
 $$
 
