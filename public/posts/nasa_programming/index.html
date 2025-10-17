@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NASA 4">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/nasa_programming/">
+  <meta property="og:site_name" content="my undergrad work">
+  <meta property="og:title" content="Hamiltonian Programming">
+  <meta property="og:description" content="NASA 4">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-06-20T00:00:00+00:00">
+    <meta property="article:tag" content="NASA">
+
+
+  <meta itemprop="name" content="Hamiltonian Programming">
+  <meta itemprop="description" content="NASA 4">
+  <meta itemprop="datePublished" content="2025-06-20T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-06-20T00:00:00+00:00">
+  <meta itemprop="wordCount" content="843">
+  <meta itemprop="keywords" content="NASA">
+
+<title>Hamiltonian Programming | my undergrad work</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/posts/nasa_programming/">
+<link rel="stylesheet" href="/book.min.6970156cec683193d93c9c4edaf0d56574e4361df2e0c1be4f697ae81c3ba55f.css" integrity="sha256-aXAVbOxoMZPZPJxO2vDVZXTkNh3y4MG&#43;T2l66Bw7pV8=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b8e267ee6e4d237aad0bf40054e8e3ce78a2e70edd0bd6e2b9a501f30d082353.js" integrity="sha256-uOJn7m5NI3qtC/QAVOjjznii5w7dC9biuaUB8w0II1M=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>my undergrad work</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/posts/" title="Writeups">Writeups</a></li><li><a href="/resume/" title="Resume">Resume</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Hamiltonian Programming</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#zeeman-hamiltonian">Zeeman Hamiltonian</a></li>
+    <li><a href="#hyperfine-hamiltonian">Hyperfine Hamiltonian</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Hamiltonian Programming
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>June 20, 2025</span>
+  </div>
+
+
+
+  
+  <div class="text-small">
+    
+      <a href="/categories/software/">Software</a>, 
+      <a href="/categories/math/">Math</a>
+  </div>
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/nasa/">NASA</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
+<p>The goal of this post is to program the <em>Spin Hamiltonian</em> governing
+recombination in Silicon Carbide.</p>
+<p>Our system involves two electrons and two nuclei. We define our orthonormal
+basis as follows:</p>
+<p>I define the basis of spin $\{ \uparrow, \downarrow\}$ as the
+<em>Zeeman Basis</em>. I define the basis with the two electrons coupled and the nuclei
+in the Zeeman Basis as the <em>coupled basis</em>.  Every state in our two-electron +
+two-nuclei system is given by</p>
+<p>$$
+\underbrace{|s, m\rangle}_{\text{electrons}} \underbrace{|m_{I_1}\rangle
+|m_{I_2}\rangle}_{\text{nuclei}}.
+$$</p>
+<p>We will evaluate $\hat{H}_Z, \hat{H}_{HF}, \hat{H}_{ZFS}$, and $\hat{H}_{EX}$
+on the above state(s).</p>
+<h2 id="zeeman-hamiltonian">Zeeman Hamiltonian<a class="anchor" href="#zeeman-hamiltonian">#</a></h2>
+<p>The Zeeman Hamiltonian, from <a href="https://dev-undergrad.dev/posts/nasa_derive_1/">Part
+1</a>, is defined in the <em>coupled
+basis</em> via</p>
+<p>$$
+\begin{align}
+&amp;\hat{H}_Z|s, m\rangle |m_{I_1}\rangle |m_{I_2}\rangle = \\
+&amp;\underbrace{\left( mg_e \mu_B B_0 + m_{I_1} g_{n_1} \mu_N B_0 + m_{I_2} g_{n_2} \mu_N
+B_0\right)}_{\text{energies}}|s, m\rangle |m_{I_1}\rangle |m_{I_2}\rangle.
+\end{align}
+$$</p>
+<p>Here, $g_e$ is $\simeq g$-factor for the electron, $g_{n_1}$ is the $g$-factor
+for the first nucleus (silicon), and $g_{n_2}$ is the $g$-factor for the second
+nucleus (carbon). $\mu_B$ and $\mu_N$ are the <a href="https://en.wikipedia.org/wiki/Bohr_magneton">Bohr
+Magneton</a> and <a href="https://en.wikipedia.org/wiki/Nuclear_magneton">Nuclear
+Magneton</a> respectively.</p>
+<p>The coupled-basis is itself the eigenbasis. To build the Zeeman Hamiltonian, we
+first define the coupled basis:</p>
+<pre><code>import sympy as sp 
+
+// electron |s, m&gt; pairs 
+electron_pairs = [
+    (1, +1),
+    (1,  0),
+    (0,  0),
+    (1, -1),
+]
+
+// nuclear |mI1&gt;|mI2&gt; pairs 
+nuclear_pairs = [
+    ( sp.Rational(+1,2), sp.Rational(+1,2) ),
+    ( sp.Rational(+1,2), sp.Rational(-1,2) ),
+    ( sp.Rational(-1,2), sp.Rational(+1,2) ),
+    ( sp.Rational(-1,2), sp.Rational(-1,2) ),
+]
+</code></pre>
+<p>Now we apply Equation (1-2) to every basis state; every combination of the above
+electron + nuclei pairs. This will generate our 16 $\times$ 16 Zeeman
+Hamiltonian. It will be a diagonal matrix with entries because the coupled-basis is already
+the eigenbasis.</p>
+<pre><code>// g_e  = sp.symbol(&quot;g_e&quot;)
+// g_n1 = sp.symbol(&quot;g_n1&quot;) 
+// ... 
+
+// zeeman frequencies
+omega_e  = g_e  * mu_B * B0
+omega_n1 = g_n1 * mu_N * B0
+omega_n2 = g_n2 * mu_N * B0
+
+energies = []
+for s, m in electron_pairs: 
+    for mI1, mI2 in nuclear_pairs: 
+        energies.append(
+            m*omega_e    +  // electron
+            mI1*omega_n1 +  // nucleus 1 
+            mI2*omega_n2    // nucleus 2 
+        )
+
+// zeeman hamiltonian  
+H_Z = sp.diag(*energies) 
+</code></pre>
+<p>However, we have to be careful. We rendered the Zeeman Hamiltonian
+in a nested for-loop over the coupled-basis states. This ordering needs to be
+immutable for calculating all Hamiltonians.</p>
+<hr>
+<h2 id="hyperfine-hamiltonian">Hyperfine Hamiltonian<a class="anchor" href="#hyperfine-hamiltonian">#</a></h2>
+<blockquote class='book-hint '>
+<p>The Hyperfine Hamiltonian is simplest when all electrons and nuclei are in the
+Zeeman $\{ \uparrow, \downarrow \}$ basis. We&rsquo;ll first attack solving a
+<strong>two-electron ($a, b$) + one-nucleus ($I$) system in Zeeman basis</strong>. Then we&rsquo;ll expand
+to the two-electron + two-nuclei system and ultimately convert to the coupled-basis
+at the end via a Clebsch-Gordan transformation.</p></blockquote><p>The Hyperfine Hamiltonian, from <a href="https://dev-undergrad.dev/posts/nasa_derive_1/">Part 1</a>, is defined as</p>
+<p>$$
+\begin{align}
+\hat{H}_{HF} = \hat{S}_a \cdot A_a \cdot \hat{I} + \hat{S}_b \cdot A_b \cdot
+\hat{I},
+\end{align}
+$$</p>
+<p>for a two-electron ($a, b$) and one-nuclei ($I$) system. This is equivalent to</p>
+<p>$$
+\begin{align}
+\hat{H}_{HF} = \sum_{k \in \{a, b\}} A_{kx} S_{kx} I_x + A_{ky}S_{ky}I_y + A_{kz}S_{kz}I_z.
+\end{align}
+$$</p>
+<p>We use ladder operators $\hat{S}_+ $ and $\hat{S}_- $ that give</p>
+<p>$$
+\hat{S}_x = \frac{1}{2}\left(\hat{S}_+ + \hat{S}_- \right) \quad \hat{S}_y =
+\frac{1}{2i} \left(\hat{S}_+ - \hat{S}_-\right),
+$$</p>
+<p>and likewise for $\hat{I}_x$ and $\hat{I}_y$. Plugging this into Equation (4)
+yields</p>
+<p>$$
+\begin{align*}
+\hat{H}_{HF} &amp;= \sum_k A_kx \left(\frac{1}{2}(\hat{S}_{k+} + \hat{S}_{k-}) \right)\left(
+\frac{1}{2} ( \hat{I}_+ + \hat{I}_- ) \right) \\
+&amp;\qquad +A_{ky} \left( \frac{1}{2i} (\hat{S}_{k+} - \hat{S}_{k-} ) \right)
+\left( \frac{1}{2i} (\hat{I}_+ - \hat{I}_-) \right) + A_{kz} S_{kz} I_z \\
+&amp;= \sum_k \frac{A_{kx}}{4} ( \hat{S}_{k+} \hat{I}_+ + \hat{S}_{k+}
+\hat{I}_- + \hat{S}_{k-} \hat{I}_+ + \hat{S}_{k-} \hat{I}_-) \\
+&amp;\qquad - \frac{A_{ky}}{4} (\hat{S}_{k+}\hat{I}_+ - \hat{S}_{k+} \hat{I}_-
+\hat{S}_{k-} \hat{I}_+ + \hat{S}_{k-} \hat{I}_- ) + A_{kz} S_{kz} I_z.
+\end{align*}
+$$</p>
+<p>We are almost done. From latter operators, we know</p>
+<p>$$
+\begin{align}
+\hat{S}_{\pm} |s, m\rangle = \hbar \sqrt{s (s+1) - m(m\pm 1)} |s, m\pm
+1\rangle.
+\end{align}
+$$</p>
+<p>I&rsquo;ll again emphasize we are working in the <strong>purely Zeeman basis</strong> for two
+electrons and one nucleus. Each basis state is of the form $|m_a, m_b, m_I\rangle$,
+where each $m_i \in \{\uparrow, \downarrow \}$.</p>
+<p>Let&rsquo;s go step by step to evaluate $\hat{H}_{HF} |m_a, m_b, m_I\rangle$.
+From Equation (5), we find</p>
+<p>$$
+\begin{align*}
+\hat{S}_+ |\uparrow\rangle = 0 \qquad \hat{S}_+|\downarrow\rangle =
+\hbar|\uparrow\rangle \\
+\hat{S}_- |\downarrow\rangle = 0 \qquad \hat{S}_+|\uparrow\rangle =
+\hbar|\downarrow\rangle \\
+\hat{S}_z|m\rangle = m\hbar |m\rangle, \quad m \in \{\uparrow, \downarrow \}.
+\end{align*}
+$$</p>
+<p>Likewise for the nuclear state, where we use $m\in \{\Uparrow, \Downarrow\}$,</p>
+<p>$$
+\begin{align*}
+\hat{I}_+ |\Uparrow\rangle = 0 \qquad \hat{I}_+|\Downarrow\rangle =
+\hbar|\Uparrow\rangle \\
+\hat{I}_- |\Downarrow\rangle = 0 \qquad \hat{I}_+|\Uparrow\rangle =
+\hbar|\Downarrow\rangle \\
+\hat{I}_z|m_I\rangle = m_I\hbar |m_I\rangle, \quad m_I \in \{\Uparrow, \Downarrow \}.
+\end{align*}.
+$$</p>
+<p>There are five nontrivial (that don&rsquo;t end up = 0) operator products. One
+electron $\{\uparrow, \downarrow\}$ represents both electrons $a, b$ (i.e.
+$|\downarrow, \Downarrow\rangle = |\downarrow, \downarrow, \Downarrow\rangle$).</p>
+<p>$$
+\begin{align*}
+&amp;\text{product} &amp;&amp;\text{nonzero for} &amp;&amp;&amp;\text{result} \\
+&amp;\hat{S}_{k+} \hat{I}_+ &amp;&amp; |\downarrow, \Downarrow\rangle &amp;&amp;&amp;
+\hbar^2|\uparrow, \Uparrow\rangle  \\
+\hat{S}_{k+} \hat{I}_- &amp;&amp; |\downarrow, \Uparrow\rangle &amp;&amp;&amp; \hbar^2 |\uparrow,
+\Downarrow\rangle \\
+\hat{S}_{k-} \hat{I}_+ &amp;&amp; |\uparrow, \Downarrow\rangle &amp;&amp;&amp; \hbar^2
+|\downarrow, \Uparrow \rangle \\
+\hat{S}_{k-} \hat{I}_- &amp;&amp; |\uparrow, \Uparrow\rangle &amp;&amp;&amp; \hbar^2 |\downarrow,
+\Downarrow \rangle \\
+\hat{S}_{kz} \hat{I}_z &amp;&amp;\text{any } m_{a, b} m_I &amp;&amp;&amp; \hbar^2 m_{a, b} m_I
+|m_{a, b}m_I \rangle.
+\end{align*}
+$$</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+  <div>
+  
+    <a href="/posts/coral_intro/" class="flex align-center">
+      <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+      <span>What is CORAL?</span>
+    </a>
+  
+  </div>
+  <div>
+  
+    <a href="/posts/nasa_derive_3/" class="flex align-center">
+      <span>The Spin Hamiltonian</span>
+      <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+    </a>
+  
+  </div>
+</div>
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#zeeman-hamiltonian">Zeeman Hamiltonian</a></li>
+    <li><a href="#hyperfine-hamiltonian">Hyperfine Hamiltonian</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

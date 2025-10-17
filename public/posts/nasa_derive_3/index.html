@@ -8,13 +8,13 @@ https://github.com/alex-shpak/hugo-book
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="NASA 1">
+<meta name="description" content="NASA 3">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/nasa_derive_3/">
   <meta property="og:site_name" content="my undergrad work">
   <meta property="og:title" content="The Spin Hamiltonian">
-  <meta property="og:description" content="NASA 1">
+  <meta property="og:description" content="NASA 3">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -24,10 +24,10 @@ https://github.com/alex-shpak/hugo-book
 
 
   <meta itemprop="name" content="The Spin Hamiltonian">
-  <meta itemprop="description" content="NASA 1">
+  <meta itemprop="description" content="NASA 3">
   <meta itemprop="datePublished" content="2025-06-10T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-06-10T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1165">
+  <meta itemprop="wordCount" content="1170">
   <meta itemprop="keywords" content="NASA">
 
 <title>The Spin Hamiltonian | my undergrad work</title>
@@ -173,7 +173,7 @@ https://github.com/alex-shpak/hugo-book
   
   <div class="text-small">
     
-      <a href="/categories/physics/">Physics</a>
+      <a href="/categories/math/">Math</a>
   </div>
   
 
@@ -318,7 +318,7 @@ $$</p>
 \end{align}
 $$</p>
 <p>We define an ansatz $\hat{P}_{12} = a \hat{S}_{\text{tot}}^2 + b \mathbb{I}$.
-Plugging Equations (3) and (4) into (5) and (6) gives</p>
+Plugging Equations (4) and (5) into (6) and (7) gives</p>
 <p>$$
 \begin{align*}
 \hat{P}_{12} |10\rangle &amp;= a(2) + b |10\rangle = +1 |00\rangle \\
@@ -417,8 +417,8 @@ $$</p>
 <p>The first $|s, m\rangle$ states represent the two electrons in their coupled
 basis. The second $|\pm\frac{1}{2}\rangle_1 \otimes |\pm \frac{1}{2}\rangle_2$
 states represent the two nuclei in their Zeeman basis.</p>
-<p>Now we will programmatically calculate the Spin Hamiltonian $\mathscr{H}$&rsquo;s
-effect on each basis state above. To do this, we&rsquo;ll program the Zeeman,
+<p>Now we are ready to programmatically calculate the Spin Hamiltonian $\mathscr{H}$.
+We&rsquo;ll evaluate its effect on each basis state above. To do this, we program the Zeeman,
 Hyperfine, ZFS, and Exchange Hamiltonian&rsquo;s effect on each basis state, and then
 sum them together.</p>
 <br> 
@@ -441,9 +441,9 @@ sum them together.</p>
   <div class="flex flex-wrap justify-between">
   <div>
   
-    <a href="/posts/coral_intro/" class="flex align-center">
+    <a href="/posts/nasa_programming/" class="flex align-center">
       <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
-      <span>What is CORAL?</span>
+      <span>Hamiltonian Programming</span>
     </a>
   
   </div>
