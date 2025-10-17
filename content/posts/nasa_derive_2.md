@@ -250,4 +250,15 @@ $$\boxed{
 $$ 
 
 $\hat{H}_{ZFS}$ splits energy levels slightly even without an external magnetic field -- there's no $B$ term anywhere. However, it introduces *forbidden* $|s, m\pm 2\rangle$ transitions that cause a *very* faint 
-"half-field" response in EDMR spectra. To build a perfect simulation, we'll need to treat ZFS with care. 
+"half-field" response in EDMR spectra.
+
+To build a perfect simulation, we'll need to treat ZFS with care.  
+
+<br> 
+
+<div style="text-align: left;">
+  {{< button relref="nasa_derive_1" class="btn" >}}← Previous{{< /button >}}
+</div>
+
+
+
