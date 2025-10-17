@@ -115,7 +115,7 @@ By magic,
 
 $$
 \begin{align} 
-\langle \Psi_S | H | \Psi_S \rangle = E_0 + K + J, 
+\langle \Psi_S | H | \Psi_S \rangle = E_0 + K + J,  \\\\
 \langle \Psi_A | H | \Psi_A \rangle = E_0 + K - J. 
 \end{align} 
 $$
