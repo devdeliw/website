@@ -22,7 +22,7 @@ Zeeman Hamiltonian and the Hyperfine Hamiltonian. In [Part
 Splitting Hamiltonian analogously. The goal of this post is to derive the last
 sub-Hamiltonian for the [Exchange
 Interaction](https://en.wikipedia.org/wiki/Exchange_interaction) and
-conseqeuntly derive the complete Spin Hamiltonian $\mathscr{H}$.  
+consequently derive the complete Spin Hamiltonian $\mathscr{H}$.  
 
 I use a fancy $\mathscr{H}$ to represent the Spin Hamiltonian.
 Sub-Hamiltonians are normal $H$'s but with hats (e.g. $\hat{H}_Z$). 
@@ -42,7 +42,7 @@ two-electron Hamiltonian is
 $$
 H = \sum_{i=1}^2 \left[\underbrace{-\frac{\hbar^2}{2m} \nabla_i^2}\_{\text{kinetic energy}} + 
 \underbrace{V(\vec{r}_i)}\_{\text{potential energy}}\right] +
-\underbrace{\frac{e^2}{4\pi\epsilon_0} |\vec{r}_1 - \vec{r}_2|}\_{\text{coulomb
+\underbrace{\frac{e^2}{4\pi\epsilon_0} |\vec{r}_1 - \vec{r}_2|}\_{\text{Coulomb
 repulsion}}. 
 $$
 
@@ -87,7 +87,7 @@ $$
 $$
 
 We can diagonalize $H$ into the two-dimensional
-subspace spanned by $\phi_a\phi_b$.  Both electrons have the same one-particle
+subspace spanned by $\phi_a\phi_b$.  Both electrons share the same one-particle
 energy, 
 
 $$
@@ -96,7 +96,7 @@ E_0 = \langle \phi_a | \hat{h} | \phi_a\rangle + \langle
 V(\vec{r}). 
 $$
 
-Therefore, any energy splitting arises entirely from the coulomb term.
+Therefore, any energy splitting arises entirely from the Coulomb term.
 
 ### Energy Splitting
 
@@ -130,7 +130,7 @@ $$
 $$
 
 The energy splitting due to the Zero Field $\hat{H}\_{ZFS}$ is analogously also
-2D. We now wish to replace this two level spatial+spin system with a pure spin
+2D. We now wish to replace this two-level spatial+spin system with a pure spin
 Hamiltonian that reproduces the same energy shift between singlet and triplet. 
 
 ### Exchange Operator 
@@ -141,7 +141,7 @@ $$
 \hat{P}_{12}\chi(1, 2) = \chi(2, 1). 
 $$
 
-It's eigenvalues are +1 on the symmetric (triplet) subspace and -1 on the
+Its eigenvalues are +1 on the symmetric (triplet) subspace and -1 on the
 antisymmetric (singlet) subspace. Define the total spin operator and its square 
 
 $$
@@ -161,7 +161,7 @@ $$
 \hat{\vec{S}}_2. 
 $$
 
-Now for both triplet ($S\_{\text{tot}} = 1$) and singlet ($S\_{\text{tot}} = 0)
+Now for both triplet ($S\_{\text{tot}} = 1$) and singlet ($S\_{\text{tot}} = 0$)
 states, 
 
 $$
@@ -312,7 +312,7 @@ $$
 \end{cases}
 $$
 
-The first $|s, m\rangle$ states represent the two electron's in their coupled
+The first $|s, m\rangle$ states represent the two electrons in their coupled
 basis. The second $|\pm\frac{1}{2}\rangle_1 \otimes |\pm \frac{1}{2}\rangle_2$
 states represent the two nuclei in their Zeeman basis.  
 
