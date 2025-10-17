@@ -313,7 +313,6 @@ Interaction does to the 16 basis states defining our spin-system at play.
 
 <br> 
 
-
 <div style="position: relative; width: 100%; margin-top: 2em;">
   <div style="position: absolute; left: 0;">
     {{< button relref="nasa_intro" class="btn" >}}← Previous{{< /button >}}
