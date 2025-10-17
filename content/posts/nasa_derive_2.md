@@ -256,6 +256,6 @@ To build a perfect simulation, we'll need to treat ZFS with care.
 
 <br> 
 
-<div style="text-align: left;">
+<div style="text-align: left; margin-bottom: 0; padding-bottom: 0;">
   {{< button relref="nasa_derive_1" class="btn" >}}← Previous{{< /button >}}
 </div>
