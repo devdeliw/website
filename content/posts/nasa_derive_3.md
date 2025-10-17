@@ -130,7 +130,7 @@ $$
 $$
 
 The energy splitting due to the Zero Field $\hat{H}\_{ZFS}$ is analogously also
-2D. We now wish to replace this two-level spatial+spin system with a pure spin
+$2D$. We now wish to replace this two-level spatial + spin system with a pure spin
 Hamiltonian that reproduces the same energy shift between singlet and triplet. 
 
 ### Exchange Operator 
