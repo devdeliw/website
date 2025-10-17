@@ -15,8 +15,8 @@ recombination in Silicon Carbide.
 Our system involves two electrons and two nuclei. We define our orthonormal
 basis as follows: 
 
-I define the basis of spin $\\{ \uparrow, \downarrow\\}$ as the
-*Zeeman Basis*. I define the basis with the two electrons coupled and the nuclei
+The ${\uparrow, \downarrow}$ spin basis is called the Zeeman basis.
+I define the basis with the two electrons coupled and the nuclei
 in the Zeeman Basis as the *coupled basis*.  Every state in our two-electron +
 two-nuclei system is given by 
 
@@ -86,8 +86,8 @@ the eigenbasis.
     omega_n2 = g_n2 * mu_N * B0
 
     energies = []
-    for s, m in electron_pairs: 
-        for mI1, mI2 in nuclear_pairs: 
+    for s, m in electron_pairs:         // electrons run slow  
+        for mI1, mI2 in nuclear_pairs:  // nuclei run fast 
             energies.append(
                 m*omega_e    +  // electron
                 mI1*omega_n1 +  // nucleus 1 
@@ -149,8 +149,7 @@ $$
 \left( \frac{1}{2i} (\hat{I}\_+ - \hat{I}\_-) \right) + A\_{kz} S\_{kz} I_z \\\\ 
 &= \sum_k \frac{A\_{kx}}{4} ( \hat{S}\_{k+} \hat{I}\_+ + \hat{S}\_{k+}
 \hat{I}\_- + \hat{S}\_{k-} \hat{I}\_+ + \hat{S}\_{k-} \hat{I}\_-) \\\\ 
-&\qquad - \frac{A\_{ky}}{4} (\hat{S}\_{k+}\hat{I}\_+ - \hat{S}\_{k+} \hat{I}\_- 
-\hat{S}\_{k-} \hat{I}\_+ + \hat{S}\_{k-} \hat{I}\_- ) + A\_{kz} S\_{kz} I\_z. 
+&\qquad - - \frac{A_{ky}}{4} (\hat{S}_{k+}\hat{I}_+ - \hat{S}_{k+}\hat{I}_- - \hat{S}_{k-}\hat{I}_+ + \hat{S}_{k-}\hat{I}_- ) + A\_{kz} S\_{kz} I\_z. 
 \end{align*} 
 $$
 
@@ -174,7 +173,7 @@ $$
 \begin{align*} 
 \hat{S}\_+ |\uparrow\rangle = 0 \qquad \hat{S}\_+|\downarrow\rangle =
 \hbar|\uparrow\rangle \\\\ 
-\hat{S}\_- |\downarrow\rangle = 0 \qquad \hat{S}\_+|\uparrow\rangle =
+\hat{S}\_- |\downarrow\rangle = 0 \qquad \hat{S}\_-|\uparrow\rangle =
 \hbar|\downarrow\rangle \\\\ 
 \hat{S}_z|m\rangle = m\hbar |m\rangle, \quad m \in \\{\uparrow, \downarrow \\}.
 \end{align*}
