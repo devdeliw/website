@@ -1,5 +1,5 @@
 +++ 
-title = "The Spin Hamiltonian - Part 1" 
+title = "Zeeman and Hyperfine" 
 description = "NASA 1" 
 tags = ["NASA"]
 date = "2025-06-06" 

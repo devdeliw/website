@@ -1,5 +1,5 @@
 +++ 
-title = "The Spin Hamiltonian - Part 2" 
+title = "Zero-Field Splitting" 
 description = "NASA 1" 
 tags = ["NASA"]
 date = "2025-06-10" 
@@ -262,5 +262,9 @@ To build a perfect simulation with the half-field response, we'll need to treat 
   <div style="position: absolute; left: 0;">
     {{< button relref="nasa_derive_1" class="btn" >}}← Previous{{< /button >}}
   </div>
+  <div style="position: absolute; right: 0;">
+    {{< button relref="nasa_derive_3" class="btn" >}}Next →{{< /button >}}
+  </div>
 </div>
+
 
