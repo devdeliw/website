@@ -76,8 +76,8 @@ Hamiltonian. It will be a diagonal matrix with entries because the coupled-basis
 the eigenbasis.
 
 
-    // g_e  = sp.symbols("g_e")
-    // g_n1 = sp.symbols("g_n1") 
+    // g_e  = sp.symbol("g_e")
+    // g_n1 = sp.symbol("g_n1") 
     // ... 
 
     // zeeman frequencies
@@ -118,7 +118,7 @@ The Hyperfine Hamiltonian, from [Part 1](https://dev-undergrad.dev/posts/nasa_de
 
 $$
 \begin{align}
-\hat{H}_\{HF} = \hat{S}_a \cdot A_a \cdot \hat{I} + \hat{S}_b \cdot A_b \cdot
+\hat{H}_{HF} = \hat{S}_a \cdot A_a \cdot \hat{I} + \hat{S}_b \cdot A_b \cdot
 \hat{I}, 
 \end{align}
 $$
@@ -149,7 +149,7 @@ $$
 \left( \frac{1}{2i} (\hat{I}\_+ - \hat{I}\_-) \right) + A\_{kz} S\_{kz} I_z \\\\ 
 &= \sum_k \frac{A\_{kx}}{4} ( \hat{S}\_{k+} \hat{I}\_+ + \hat{S}\_{k+}
 \hat{I}\_- + \hat{S}\_{k-} \hat{I}\_+ + \hat{S}\_{k-} \hat{I}\_-) \\\\ 
-&\qquad - - \frac{A_{ky}}{4} (\hat{S}_{k+}\hat{I}_+ - \hat{S}_{k+}\hat{I}_- - \hat{S}_{k-}\hat{I}_+ + \hat{S}_{k-}\hat{I}_- ) + A\_{kz} S\_{kz} I\_z. 
+&\qquad - \frac{A_{ky}}{4} (\hat{S}_{k+}\hat{I}_+ - \hat{S}_{k+}\hat{I}_- - \hat{S}_{k-}\hat{I}_+ + \hat{S}_{k-}\hat{I}_- ) + A\_{kz} S\_{kz} I\_z. 
 \end{align*} 
 $$
 
@@ -210,6 +210,9 @@ $$
 |m\_{a, b}m_I \rangle. 
 \end{align*} 
 $$
+
+The last term contributes to *diagonal* terms only. It leaves the state $|m\_{a, b}, m_I\rangle$
+constant; adds no mixing.
 
 We can construct the Hyperfine Hamiltonian *in the Zeeman basis* using this
 table. 
