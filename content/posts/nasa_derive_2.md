@@ -146,6 +146,7 @@ $$
 \end{align}
 $$  
 
+### $D$ and $E$
 
 However, our work with ZFS isn't done. Let's diagonalize $D$ via the
 defect's principal axis. We start by simplifying Equation (12). If we take the
@@ -205,12 +206,14 @@ D_x & 0 & 0 \\\\
 0 & D_y & 0 \\\\ 
 0 & 0 & D_z 
 \end{pmatrix} = \begin{pmatrix} 
--\frac{D}{3} + E & 0 & 0 \\ 
-0 & -\frac{D}{3} - E & 0 \\ 
+-\frac{D}{3} + E & 0 & 0 \\\\ 
+0 & -\frac{D}{3} - E & 0 \\\\ 
 0 & 0 & \frac{2}{3}D 
 \end{pmatrix}. 
 $$
 
+
+### Raising and Lowering
 
 From Equation (13), $\hat{H}_{ZFS} = \hat{\vec{S}} \cdot D \cdot \hat{\vec{S}}$.
 We can expand, 
