@@ -9,11 +9,10 @@ menu = "main"
 
 {{< katex />}}
 
-The goal of this post is to program the *Spin Hamiltonian* governing
-recombination in Silicon Carbide. 
+The goal of this post is to elegantly program the *Spin Hamiltonian* governing
+recombination in Silicon Carbide. Our system involves two electrons and two nuclei.
 
-Our system involves two electrons and two nuclei. We define our orthonormal
-basis as follows: 
+We define our orthonormal basis as follows: 
 
 The ${\uparrow, \downarrow}$ spin basis is called the Zeeman basis.
 I define the basis with the two electrons coupled and the nuclei
