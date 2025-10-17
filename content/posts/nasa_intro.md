@@ -119,7 +119,10 @@ of spin-dependent recombination and then start writing software to simulate it.
 
 <br> 
 
-<div style="text-align: right; margin-bottom: 0; padding-bottom: 0;">
-  {{< button relref="nasa_derive_1" class="btn" >}}Next →{{< /button >}}
+
+<div style="position: relative; width: 100%; margin-top: 2em;">
+  <div style="position: absolute; right: 0;">
+    {{< button relref="nasa_derive_1" class="btn" >}}Next →{{< /button >}}
+  </div>
 </div>
 

@@ -70,8 +70,7 @@ A second electron has magnetic moment $\vec{\mu}_2$. So we get
 $$ 
 \begin{align}
 U = -\vec{\mu}_2 \cdot \vec{B}_1(\vec{r}) 
-  = \frac{\mu_0}{4\pi r^3} [ -\vec{\mu}_1 \cdot \vec{\mu}_2 
-  + 3 (\vec{\mu}_1 \cdot \hat{r})(\vec{\mu}_2 \cdot \hat{r}) ].
+  = \frac{\mu_0}{4\pi r^3} [ -\vec{\mu}_1 \cdot \vec{\mu}_2 + 3 (\vec{\mu}_1 \cdot \hat{r})(\vec{\mu}_2 \cdot \hat{r}) ].
 \end{align}
 $$
 
@@ -82,8 +81,8 @@ $$
 \quad \mu_B = \frac{e\hbar}{2m_e}.
 $$
 
-Therefore, replacing $\vec{\mu}_{1,2}$ with the quantum operators 
-$\hat{\vec{\mu}}_{1,2}$, the pre-factor in Equation (2) becomes
+Therefore, replacing $\vec{\mu}\_{1,2}$ with the quantum operators 
+$\hat{\vec{\mu}}\_{1,2}$, the pre-factor in Equation (2) becomes
 
 $$
 -\frac{\mu_0}{4\pi} \frac{(g_e\mu_B)^2}{\hbar^2}. 
@@ -142,7 +141,7 @@ Then we get a similar equation to the Hyperfine Hamiltonian:
 
 $$
 \begin{align}
-\hat{H}_{ZFS} = \sum_{i, j \in \{x, y, z\}} S_{1i} D_{ij}(\vec{r}) S_{2j} =
+\hat{H}\_{ZFS} = \sum_{i, j \in \\{x, y, z\\}} S\_{1i} \\, D\_{ij}(\vec{r}) \\, S_{2j} =
 \hat{\vec{S}} \cdot D \cdot \hat{\vec{S}}.
 \end{align}
 $$  
@@ -256,6 +255,9 @@ To build a perfect simulation, we'll need to treat ZFS with care.
 
 <br> 
 
-<div style="text-align: left; margin-bottom: 0; padding-bottom: 0;">
-  {{< button relref="nasa_derive_1" class="btn" >}}← Previous{{< /button >}}
+<div style="position: relative; width: 100%; margin-top: 2em;">
+  <div style="position: absolute; left: 0;">
+    {{< button relref="nasa_derive_1" class="btn" >}}← Previous{{< /button >}}
+  </div>
 </div>
+
