@@ -155,7 +155,7 @@ trace of the expression in the parenthesis, we find
 $$
 \begin{align*}
 \sum_i \left( \frac{\delta_{i,i}}{r^3} - \frac{3r_i r_i}{r^5} \right)
-= \sum_i \frac{1}{r^3} - 3\sum_i \frac{r_i^2}{r^5} \\\\ 
+&= \sum_i \frac{1}{r^3} - 3\sum_i \frac{r_i^2}{r^5} \\\\ 
 &= \frac{3}{r^3} - \frac{3}{r^2}(r_x^2 + r_y^2 + r_z^2) = 0. 
 \end{align*}
 $$
@@ -254,7 +254,7 @@ $$
 $\hat{H}_{ZFS}$ splits energy levels slightly even without an external magnetic field -- there's no $B$ term anywhere. However, it introduces *forbidden* $|s, m\pm 2\rangle$ transitions that cause a *very* faint 
 "half-field" response in EDMR spectra.
 
-To build a perfect simulation, we'll need to treat ZFS with care.  
+To build a perfect simulation with the half-field response, we'll need to treat ZFS with care.  
 
 <br> 
 
