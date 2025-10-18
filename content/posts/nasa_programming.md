@@ -10,7 +10,7 @@ menu = "main"
 {{< katex />}}
 
 {{% hint info %}}
-On mobile some equations may go overfull. 
+This is a long post. On mobile some equations may go overfull. 
 {{% /hint %}}
 
 The goal of this post is to elegantly program the *Spin Hamiltonian* governing
