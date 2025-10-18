@@ -508,14 +508,6 @@ Finally! We can calculate $\hat{H}\_{HF}$ in our ordered coupled-basis.
         self.H_HF = sp.simplify(self.W * self.H_ze * self.W.H)
 
 
-<br> 
-
-<div style="position: relative; width: 100%; margin-top: 2em;">
-  <div style="position: absolute; left: 0;">
-    {{< button relref="nasa_derive_3" class="btn" >}}← Previous{{< /button >}}
-  </div>
-</div>
-
 ## Zero-Field Splitting
 
 In [Part 2](https://dev-undergrad.dev/posts/nasa_derive_2/) we derived
