@@ -498,6 +498,9 @@ Finally! We can calculate $\hat{H}\_{HF}$ in our ordered coupled-basis.
         // Zeeman basis 
         self.H_ze = self._build_zeeman_matrix() 
 
+        // Clebsch Gordan W 
+        self.W = self._build_cg_unitary()                       
+
         // Final Hyperfine Hamiltonian 
         // coupled basis
         self.H_coup = sp.simplify(self.W * self.H_ze * self.W.H)
