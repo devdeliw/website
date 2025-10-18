@@ -706,9 +706,9 @@ $$
 &\mu_B &&\quad \text{Bohr magneton} \\\\ 
 &\mu_N &&\quad \text{Nuclear magneton} \\\\ 
 &B_0 &&\quad \text{external magnetic field} \\\\ 
-&A\_{ijx}, \\, A\_{ijy} \\, A\_{ijz} &&\quad \text{hyperfine tensor components} \\\\ 
-&D &&\quad\text{axial zero-field splitting} \\\\ 
-&E &&\quad\text{transverse zero-field splitting} \\\\ 
+&A\_{ijx}, \\, A\_{ijy} \\, A\_{ijz} &&\quad \text{hyperfine tensor} \\\\ 
+&D &&\quad\text{axial zero-field} \\\\ 
+&E &&\quad\text{transverse zero-field} \\\\ 
 &J &&\quad \text{exchange coupling}
 \end{align*}
 $$
