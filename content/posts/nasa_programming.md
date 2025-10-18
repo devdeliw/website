@@ -31,7 +31,7 @@ $$
 We will evaluate $\hat{H}_Z, \hat{H}\_{HF}, \hat{H}\_{ZFS}$, and $\hat{H}\_{EX}$
 on the above state(s). 
 
-## Zeeman Hamiltonian 
+## Zeeman 
 
 The Zeeman Hamiltonian, from [Part
 1](https://dev-undergrad.dev/posts/nasa_derive_1/), is defined in the *coupled
@@ -50,6 +50,8 @@ for the first nucleus (silicon), and $g\_{n_2}$ is the $g$-factor for the second
 nucleus (carbon). $\mu_B$ and $\mu_N$ are the [Bohr
 Magneton](https://en.wikipedia.org/wiki/Bohr_magneton) and [Nuclear
 Magneton](https://en.wikipedia.org/wiki/Nuclear_magneton) respectively. 
+
+### Implementation
 
 The coupled-basis is itself the eigenbasis. To build the Zeeman Hamiltonian, we
 first define the coupled basis: 
@@ -78,9 +80,9 @@ electron + nuclei pairs. This will generate our 16 $\times$ 16 Zeeman
 Hamiltonian. It will be a diagonal matrix with entries because the coupled-basis is already
 the eigenbasis.
 
-
-    // g_e  = sp.symbol("g_e")
-    // g_n1 = sp.symbol("g_n1") 
+    // zeeman constants
+    g_e  = sp.symbol("g_e")
+    g_n1 = sp.symbol("g_n1") 
     // ... 
 
     // zeeman frequencies
@@ -107,7 +109,7 @@ immutable for calculating all Hamiltonians.
 
 --- 
 
-## Hyperfine Hamiltonian
+## Hyperfine
 
 > The Hyperfine Hamiltonian is simplest when all electrons and nuclei are in the
 Zeeman $\\{ \uparrow, \downarrow \\}$ basis. We'll first attack solving a
@@ -146,7 +148,7 @@ yields
 
 $$
 \begin{align*} 
-\hat{H}\_{HF} &= \sum_k A_kx \left(\frac{1}{2}(\hat{S}\_{k+} + \hat{S}\_{k-}) \right)\left(
+\hat{H}\_{HF} &= \sum_k A\_{kx} \left(\frac{1}{2}(\hat{S}\_{k+} + \hat{S}\_{k-}) \right)\left(
 \frac{1}{2} ( \hat{I}\_+ + \hat{I}\_- ) \right) \\\\ 
 &\qquad +A\_{ky} \left( \frac{1}{2i} (\hat{S}\_{k+} - \hat{S}\_{k-} ) \right)
 \left( \frac{1}{2i} (\hat{I}\_+ - \hat{I}\_-) \right) + A\_{kz} S\_{kz} I_z \\\\ 
@@ -156,7 +158,7 @@ $$
 \end{align*} 
 $$
 
-We are almost done. From latter operators, we know 
+We are almost done. From ladder operators, we know 
 
 $$ 
 \begin{align} 
@@ -188,7 +190,7 @@ $$
 \begin{align*} 
 \hat{I}\_+ |\Uparrow\rangle = 0 \qquad \hat{I}\_+|\Downarrow\rangle =
 \hbar|\Uparrow\rangle \\\\ 
-\hat{I}\_- |\Downarrow\rangle = 0 \qquad \hat{I}\_+|\Uparrow\rangle =
+\hat{I}\_- |\Downarrow\rangle = 0 \qquad \hat{I}\_-|\Uparrow\rangle =
 \hbar|\Downarrow\rangle \\\\ 
 \hat{I}_z|m_I\rangle = m_I\hbar |m_I\rangle, \quad m_I \in \\{\Uparrow, \Downarrow \\}.
 \end{align*}. 
@@ -210,7 +212,7 @@ $$
 &\hat{S}\_{k-} \hat{I}\_- && |\uparrow, \Uparrow\rangle &&& \hbar^2 |\downarrow,
 \Downarrow \rangle \\\\ 
 &\hat{S}\_{kz} \hat{I}_z &&\text{any} &&& \hbar^2 m\_{a, b} m_I
-|m\_{a, b}m_I \rangle. 
+|m\_{a, b}, m_I \rangle. 
 \end{align*} 
 $$
 
@@ -450,8 +452,8 @@ Now, evaluating $\hat{H}\_{HF}$ on every *Zeeman* state gives us the full
 Hyperfine Hamiltonian in the Zeeman basis. We just iterate through and build.
 `SymPy` syntax isn't important. 
 
-    /// 16x16 Hyperfine Hamiltonian 
-    /// Zeeman Basis 
+    /// 16x16 hyperfine hamiltonian 
+    /// zeeman Basis 
     def _build_zeeman_matrix(self):
         self.basis_ze = self._generate_zeeman_basis()  
         self.index_ze = { 
@@ -495,13 +497,13 @@ a $4\times 4$ Clebsch-Gordan matrix with the $4\times 4$ identity.
 
 Finally! We can calculate $\hat{H}\_{HF}$ in our ordered coupled-basis. 
 
-        // Zeeman basis 
+        // zeeman basis 
         self.H_ze = self._build_zeeman_matrix() 
 
-        // Clebsch Gordan W 
+        // clebsch gordan W 
         self.W = self._build_cg_unitary()                       
 
-        // Final Hyperfine Hamiltonian 
+        // final hyperfine hamiltonian 
         // coupled basis
         self.H_HF = sp.simplify(self.W * self.H_ze * self.W.H)
 
@@ -513,3 +515,221 @@ Finally! We can calculate $\hat{H}\_{HF}$ in our ordered coupled-basis.
     {{< button relref="nasa_derive_3" class="btn" >}}← Previous{{< /button >}}
   </div>
 </div>
+
+## Zero-Field Splitting
+
+In [Part 2](https://dev-undergrad.dev/posts/nasa_derive_2/) we derived
+$\hat{H}\_{ZFS}$'s action on a general $|s, m\rangle$. 
+
+$$
+\begin{align} 
+\hat{H}\_{ZFS}|s, m\rangle &= Dm^2 |s, m\rangle - \frac{D}{3}(s(s+1))|s, m\rangle \\\\ 
+&+ \frac{E}{2} (s(s+1) - m(m+1))|s, m+2\rangle \\\\ 
+&+ \frac{E}{2} (s(s+1) - m(m-1))|s, m-2\rangle.
+\end{align}. 
+$$ 
+
+The last two terms give the forbidden $m \pm 2$ transitions that create the
+half-field response (to be described later). This Hamiltonian acts on the
+electrons only. It's a dipole-dipole interaction. Nuclear terms are left alone.
+That makes things quite easy. 
+
+### Implementation
+
+We directly build $\hat{H}\_{ZFS}$ while maintaining the ordered basis. From the
+[Zeeman
+Implementation](https://dev-undergrad.dev/posts/nasa_programming/#zeeman-hamiltonian), we have 
+
+    // electron |s, m> pairs 
+    electron_pairs = [
+        (1, +1),
+        (1,  0),
+        (0,  0),
+        (1, -1),
+    ]
+
+
+We'll just use that again to maintain the basis. The first term, Equation (8),
+give the diagonal elements ($|s, m\rangle$ are the eigenstates). Equation
+(9-10) give the off-diagonal elements that mix $m \rightarrow m\pm 2$.
+
+    // zfs constants
+    D = sp.symbols('D')
+    E = sp.symbols('E') 
+
+    // 4x4 
+    // zfs on coupled electrons
+    H_elec = sp.zeros(4)
+
+    for i, (s, m) in enumerate(electron_pairs):
+
+        // diagonal term
+        // D * m^2 - (D/3) * s(s+1)
+        H_elec[i, i] = D*m**2 - (D/3)*s*(s + 1)
+
+        // off-diagonal term 
+        // coupling m -> m +/- 2
+        for dm, expr in [
+            (2, E/2*(s*(s + 1) - m*(m + 1))),
+            (-2, E/2*(s*(s + 1) - m*(m - 1)))
+        ]:
+            // m +/- 2
+            final_m = m + dm
+            if (s, final_m) in electron_pairs:
+                j = electron_pairs.index((s, final_m))
+
+                H_elec[i, j] = expr
+                H_elec[j, i] = expr
+
+    // 4x4 
+    // nuclei identity 
+    I_nuc = sp.eye(4)
+
+    // 16x16 zfs hamiltonian 
+    H_ZFS = sp.kronecker_product(H_elec, I_nuc)
+
+We take the tensor product $\hat{H}\_{ZFS\_{\text{electron}}} \otimes
+\mathbb{I}_4$ again to lift the electronic $4\times 4$ Hamiltonian to a $16\times 16$ one
+in our Hilbert space. This gives $\hat{H}\_{ZFS}$ in the coupled-basis.
+
+## Exchange Interaction 
+
+From [Part 3](https://dev-undergrad.dev/posts/nasa_derive_3/), we derived 
+
+$$
+\hat{H}\_{EX} = -J \hat{S}_a \cdot \hat{S}_b, 
+$$
+
+Let's take $\hat{S} = \hat{S}_a + \hat{S}_b$. Then 
+
+$$
+\hat{S}^2 = \hat{S}_a^2 + \hat{S}_b^2 + 2 \hat{S}_a \cdot \hat{S}_b. 
+$$
+
+Rearranging to calculate $\hat{S}_a \cdot \hat{S}_b$, we find that 
+
+$$
+\hat{S}_a \cdot \hat{S}_b = \frac{1}{2}(\hat{S}^2 - \hat{S}_a^2 - \hat{S}_b^2). 
+$$
+
+Acting on the coupled electron basis $|s, m\rangle$, the three terms in the
+parenthesis satisfy 
+
+$$
+\begin{align*}
+\hat{S}^2 |s, m\rangle &= \hbar^2 s(s+1)|s, m\rangle, \\ 
+\hat{S}_a^2 |s, m\rangle &= \frac{3\hbar^2}{4}|s, m\rangle, \\ 
+\hat{S}_b^2 |s, m\rangle &= \frac{3\hbar^2}{4}|s, m\rangle. 
+\end{align*}
+$$
+
+Hence, 
+
+$$
+\hat{S}_a \cdot \hat{S}_b |s, m\rangle = \frac{\hbar^2}{2}\left[ s(s+1) -
+\frac{3}{2} \right] |s, m\rangle. 
+$$
+
+$\hat{H}\_{EX}$ immediately follows: 
+
+$$
+\hat{H}\_{EX} |s, m\rangle = -J \frac{\hbar^2}{2} \left[ s(s+1) -
+\frac{3}{2}\right] |s, m\rangle. 
+$$
+
+We'll also program this with $\hbar = 1$. $\hat{H}\_{EX}$ already
+acts on the coupled-basis (nuclear $|m_I\rangle$ are left alone). Additionally,
+all states are eigenstates; $\hat{H}\_{EX}$ is diagonal. Programming
+this is the easiest. 
+
+    // exchange constant 
+    J = sp.symbols('J')
+
+    // 4x4 
+    H_ex_elec = sp.zeros(4) 
+
+    for i, (s, m) in enumerate(electron_pairs): 
+        H_ex_elec[i, i] = -J*(s*(s + 1) - 1.5) / 2 
+
+    // 4x4 
+    // nuclear identity 
+    I_nuc = sp.eye(4) 
+
+    // 16x16 exchange hamiltonian 
+    H_EX = sp.kronecker_product(H_ex_elec, I_nuc) 
+
+Again, we take the tensor product of the 4$\times$ 4 electron Hamiltonian with
+the 4$\times$ 4 identity to yield the full 16$\times$ 16 $\hat{H}\_{EX}$ in our
+Hilbert space.
+
+## Full Spin 
+
+The Spin Hamiltonian $\mathscr{H}$ is just 
+
+    H_SPIN = H_Z + H_HF + H_ZFS + H_EX
+
+### Basis 
+
+The coupled-basis is shown below. Indices 0-15 indicate top-to-bottom and
+left-to-right row/column basis states in $\mathscr{H}$'s matrix representation. 
+
+$$
+\begin{align*}
+0  && \qquad |1,1\rangle \otimes |+\tfrac{1}{2}, +\tfrac{1}{2}\rangle \\\\
+1  && \qquad |1,1\rangle \otimes |+\tfrac{1}{2}, -\tfrac{1}{2}\rangle \\\\
+2  && \qquad |1,1\rangle \otimes |-\tfrac{1}{2}, +\tfrac{1}{2}\rangle \\\\
+3  && \qquad |1,1\rangle \otimes |-\tfrac{1}{2}, -\tfrac{1}{2}\rangle \\\\
+4  && \qquad |1,0\rangle \otimes |+\tfrac{1}{2}, +\tfrac{1}{2}\rangle \\\\
+5  && \qquad |1,0\rangle \otimes |+\tfrac{1}{2}, -\tfrac{1}{2}\rangle \\\\
+6  && \qquad |1,0\rangle \otimes |-\tfrac{1}{2}, +\tfrac{1}{2}\rangle \\\\
+7  && \qquad |1,0\rangle \otimes |-\tfrac{1}{2}, -\tfrac{1}{2}\rangle \\\\
+8  && \qquad |0,0\rangle \otimes |+\tfrac{1}{2}, +\tfrac{1}{2}\rangle \\\\
+9  && \qquad |0,0\rangle \otimes |+\tfrac{1}{2}, -\tfrac{1}{2}\rangle \\\\
+10 && \qquad |0,0\rangle \otimes |-\tfrac{1}{2}, +\tfrac{1}{2}\rangle \\\\
+11 && \qquad |0,0\rangle \otimes |-\tfrac{1}{2}, -\tfrac{1}{2}\rangle \\\\
+12 && \qquad |1,-1\rangle \otimes |+\tfrac{1}{2}, +\tfrac{1}{2}\rangle \\\\
+13 && \qquad |1,-1\rangle \otimes |+\tfrac{1}{2}, -\tfrac{1}{2}\rangle \\\\
+14 && \qquad |1,-1\rangle \otimes |-\tfrac{1}{2}, +\tfrac{1}{2}\rangle \\\\
+15 && \qquad |1,-1\rangle \otimes |-\tfrac{1}{2}, -\tfrac{1}{2}\rangle
+\end{align*}.
+$$
+
+$|+\frac{1}{2}\rangle = |\Uparrow\rangle$ and $|-\frac{1}{2}\rangle =
+|\Downarrow\rangle$ (nuclei-only). 
+
+Now we have a Spin Hamiltonian. However, it has many unknown constants. 
+
+<table style="width:100%; table-layout:fixed;">
+<thead>
+<tr>
+<th style="width:25%; text-align:left;">Constant</th>
+<th style="width:75%; text-align:left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>$g_e$</td><td>Electron g-factor</td></tr>
+<tr><td>$g_{n_1}, g_{n_2}$</td><td>Nuclear g-factors (Si, C)</td></tr>
+<tr><td>$\mu_B$</td><td>Bohr magneton</td></tr>
+<tr><td>$\mu_N$</td><td>Nuclear magneton</td></tr>
+<tr><td>$B_0$</td><td>External magnetic field</td></tr>
+<tr><td>$A\_{ijx}, A\_{ijy}, A\_{ijz}$</td><td>Hyperfine tensor components</td></tr>
+<tr><td>$D$</td><td>Axial Zero-Field Splitting constant</td></tr>
+<tr><td>$E$</td><td>Transverse Zero-Field Splitting constant</td></tr>
+<tr><td>$J$</td><td>Exchange coupling constant</td></tr>
+</tbody>
+</table>
+
+
+
+
+Our next challenge is to perform eigenenergy simulations. I want a plot like in
+[Part 1](https://dev-undergrad.dev/posts/nasa_derive_1/#the-zeeman-effect) but
+for *every* combination of every sub-Hamiltonian in $\mathscr{H}$, and for all
+16 coupled-basis states. 
+
+This may seem ambitious, but it's very straightforward. We already have matrices
+for all the Hamiltonians. We just need to substitute values for all the
+constants above and sweep over the $B_0$ field parameter in $\hat{H}_Z$. Then
+we'll use [LAPACK](https://www.netlib.org/lapack/) to calculate the energy eigenvalues 
+at each $B_0$ field point. Consequently we'll have our plots for $B_0$ vs.
+energy. 
