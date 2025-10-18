@@ -9,6 +9,10 @@ menu = "main"
 
 {{< katex />}}
 
+{{% hint info %}}
+On mobile some equations may go overfull. 
+{{% /hint %}}
+
 The goal of this post is to elegantly program the *Spin Hamiltonian* governing
 recombination in Silicon Carbide. Our system involves two electrons and two nuclei.
 
