@@ -503,7 +503,7 @@ Finally! We can calculate $\hat{H}\_{HF}$ in our ordered coupled-basis.
 
         // Final Hyperfine Hamiltonian 
         // coupled basis
-        self.H_coup = sp.simplify(self.W * self.H_ze * self.W.H)
+        self.H_HF = sp.simplify(self.W * self.H_ze * self.W.H)
 
 
 <br> 
