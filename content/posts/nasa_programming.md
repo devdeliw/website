@@ -712,7 +712,7 @@ Now we have a Spin Hamiltonian. However, it has many unknown constants.
 <tr><td>$\mu_B$</td><td>Bohr magneton</td></tr>
 <tr><td>$\mu_N$</td><td>Nuclear magneton</td></tr>
 <tr><td>$B_0$</td><td>External magnetic field</td></tr>
-<tr><td>$A\\_{ijx}, A\\_{ijy}, A\\_{ijz}$</td><td>Hyperfine tensor components</td></tr>
+<tr><td>$A\\_{ijx}, A\\_{ijy}, A\\_{ijz} \qquad \qquad $</td><td>Hyperfine tensor components</td></tr>
 <tr><td>$D$</td><td>Axial Zero-Field Splitting constant</td></tr>
 <tr><td>$E$</td><td>Transverse Zero-Field Splitting constant</td></tr>
 <tr><td>$J$</td><td>Exchange coupling constant</td></tr>
