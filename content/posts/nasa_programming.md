@@ -495,7 +495,11 @@ a $4\times 4$ Clebsch-Gordan matrix with the $4\times 4$ identity.
 
 Finally! We can calculate $\hat{H}\_{HF}$ in our ordered coupled-basis. 
 
+        // Zeeman basis 
+        self.H_ze = self._build_zeeman_matrix() 
+
         // Final Hyperfine Hamiltonian 
+        // coupled basis
         self.H_coup = sp.simplify(self.W * self.H_ze * self.W.H)
 
 
