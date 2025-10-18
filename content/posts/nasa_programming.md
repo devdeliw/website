@@ -699,25 +699,19 @@ $|+\frac{1}{2}\rangle = |\Uparrow\rangle$ and $|-\frac{1}{2}\rangle =
 
 Now we have a Spin Hamiltonian. However, it has many unknown constants. 
 
-<table style="width:100%; table-layout:fixed;">
-<thead>
-<tr>
-<th style="width:25%; text-align:left;">Constant</th>
-<th style="width:75%; text-align:left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>$g_e$</td><td>Electron g-factor</td></tr>
-<tr><td>$g_{n_1}, g_{n_2}$</td><td>Nuclear g-factors (Si, C)</td></tr>
-<tr><td>$\mu_B$</td><td>Bohr magneton</td></tr>
-<tr><td>$\mu_N$</td><td>Nuclear magneton</td></tr>
-<tr><td>$B_0$</td><td>External magnetic field</td></tr>
-<tr><td>$A\\_{ijx}, A\\_{ijy}, A\\_{ijz} \qquad \qquad $</td><td>Hyperfine tensor components</td></tr>
-<tr><td>$D$</td><td>Axial Zero-Field Splitting constant</td></tr>
-<tr><td>$E$</td><td>Transverse Zero-Field Splitting constant</td></tr>
-<tr><td>$J$</td><td>Exchange coupling constant</td></tr>
-</tbody>
-</table>
+$$
+\begin{align*} 
+&g_e && \quad \text{electron $g$-factor} \\\\ 
+&g\_{n_1}, g\_{n_2} && \quad \text{nuclear $g$-factor (Si, C)} \\\\ 
+&\mu_B &&\quad \text{Bohr magneton} \\\\ 
+&\mu_N &&\quad \text{Nuclear magneton} \\\\ 
+&B_0 &&\quad \text{external magnetic field} \\\\ 
+&A\_{ijx}, \\, A\_{ijy} \\, A\_{ijz} &&\quad \text{hyperfine tensor components} \\\\ 
+&D &&\quad\text{axial zero-field splitting} \\\\ 
+&E &&\quad\text{transverse zero-field splitting} \\\\ 
+&J &&\quad \text{exchange coupling}
+\end{align*}
+$$
 
 
 
