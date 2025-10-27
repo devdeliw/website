@@ -373,3 +373,11 @@ For a deeper understanding, I highly recommend reading through
 This post was abstracted and focused on cache mechanics. Drepper's paper
 offers a more in-depth, elegant overview of how memory systems operate. 
 
+<br> 
+
+<div style="position: relative; width: 100%; margin-top: 2em;">
+  <div style="position: absolute; left: 0;">
+    {{< button relref="coral_intro" class="btn" >}}← Previous{{< /button >}}
+  </div>
+</div>
+

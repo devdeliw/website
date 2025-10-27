@@ -79,3 +79,11 @@ However, optimized for Apple Silicon, [Apple
 Accelerate](https://developer.apple.com/documentation/accelerate), another BLAS
 implementation, absolutely wrecks both CORAL and OpenBLAS. 
 
+<br> 
+
+<div style="position: relative; width: 100%; margin-top: 2em;">
+  <div style="position: absolute; right: 0;">
+    {{< button relref="memory" class="btn" >}}Next →{{< /button >}}
+  </div>
+</div>
+
