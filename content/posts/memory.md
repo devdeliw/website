@@ -347,16 +347,10 @@ There are two types of L1 caches per CPU core:
 1. **Memory stores data** as stable voltage states in physical circuits.  
 2. **SRAM** retains its state through feedback; **DRAM** requires refresh.  
 3. **Caches** made of SRAM bridge the speed gap between DRAM and the CPU.  
-4. **Cache lines** exploit spatial and temporal locality.  
+4. **Cache lines** exist to exploit spatial and temporal locality.  
 5. **BLAS** leverages these properties by reorganizing data to maximize reuse.
 
-Fast code is not just fast arithmetic. It is the disciplined
+Fast code is not just fast arithmetic. It is the precise
 choreography of data as it moves from memory to computation and back.
 
----
-
-$^\dagger$For a deeper understanding, I highly recommend reading
-[*What Every Programmer Should Know About
-Memory*](https://people.freebsd.org/~lstewart/articles/cpumemory.pdf). 
-This post was abstracted and focused on cache behavior, but this paper offers a
-much more in-depth, elegant overview of how modern memory systems operate. 
+--- 
