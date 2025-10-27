@@ -353,4 +353,10 @@ There are two types of L1 caches per CPU core:
 Fast code is not just fast arithmetic. It is the disciplined
 choreography of data as it moves from memory to computation and back.
 
---- 
+---
+
+$^\dagger$For a deeper understanding, I highly recommend reading
+[*What Every Programmer Should Know About
+Memory*](https://people.freebsd.org/~lstewart/articles/cpumemory.pdf). 
+This post was abstracted and focused on cache behavior, but this paper offers a
+much more in-depth, elegant overview of how modern memory systems operate. 
