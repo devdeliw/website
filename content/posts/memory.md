@@ -21,6 +21,13 @@ Future posts on BLAS will refer back to concepts explained here.
 > Memory*](https://people.freebsd.org/~lstewart/articles/cpumemory.pdf) by Ulrich Drepper. 
 > It's phenomenal. Unless otherwise linked, all numerical values come from this paper. 
 
+{{% hint warning %}}
+**Heuristics Ahead**
+Cycle counts, sizes, and policies shown here are approximate heuristics.  
+They vary by CPU architecture and memory configuration.
+{{% /hint %}}
+
+
 --- 
 
 ## Memory 
@@ -332,7 +339,7 @@ into L1. Then, accesses to `x[1]`, `x[2]`, `x[3]` will hit in L1 because they're
 in that same cache line -- **spatial locality**.  
 
 `func()` is a function that may be distant from `x` in memory. But because calls to
-`func()` are close in time, it's instructions are loaded in L1 as well (assuming
+`func()` are close in time, its instructions are loaded in L1 as well (assuming
 they fit)--
 **temporal locality**. 
 
