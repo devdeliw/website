@@ -22,7 +22,7 @@ Future posts on BLAS will refer back to concepts explained here.
 > It's phenomenal. Unless otherwise linked, all numerical values come from this paper. 
 
 {{% hint warning %}}
-**Heuristics Ahead**
+**Heuristics Ahead** <br>
 Cycle counts, sizes, and policies shown here are approximate heuristics.  
 They vary by CPU architecture and memory configuration.
 {{% /hint %}}
