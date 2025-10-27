@@ -49,7 +49,7 @@ registers takes $\leq 1$ cycle. Above registers are *caches*,
 which exist in three sub-levels. Accessing cached data takes between $\sim$3-60 cycles
 depending on which sub-level is accessed. Beyond caches lies the main
 memory. Accessing data from main memory takes $\sim$200-400 cycles. Together these
-levels form a pipeline that moves data from storage to the processor. 
+levels form the hierarchy that moves data from storage to the processor. 
 
 <br>
 
@@ -68,7 +68,7 @@ be critical when discussing packing strategies for BLAS.
 
 All working memory in a computer is built on one of two forms of Random Access Memory (RAM): 
 **Static** RAM (SRAM)  and **Dynamic** RAM (DRAM). Let's discuss why there
-exists two forms at all, understand how they work, and their read/write speeds.
+are two forms at all, understand how they work, and their read/write speeds.
 
 ### SRAM 
 
@@ -152,7 +152,7 @@ Reading or writing a bit in either SRAM or DRAM roughly follows these steps:
 
 {{% steps %}} 
 1. **Select a Row (WL)** <br> 
-    The memory controller raises a wordline. In SRAM this opens two access
+    The cache controller raises a wordline. In SRAM this opens two access
     transistors. In DRAM this opens a single access transistor. 
 
 2. **Connect to the Bitlines (BL)** <br> 
@@ -160,7 +160,7 @@ Reading or writing a bit in either SRAM or DRAM roughly follows these steps:
     slightly raises or slightly lowers the voltage on that bitline depending on
     whether it stores 0 or 1. 
 
-    In SRAM, this takes $\sim 1ns$. In DRAM, this takes more time
+    In SRAM, this is fast. In DRAM, this takes more time
     (discharging and charging capacitors). 
 
 3. **Sense Voltage Differences** <br> 
@@ -190,7 +190,7 @@ Caches hold recently used data so that repeated accesses are fast.
 
 $$
 \begin{align*} 
-&\text{Level} &&\text{Composition} &&&\text{Access Time} &&&&\text{Size}
+&\text{Level} &&\text{Composition} &&&\text{Access Time} &&&&\text{Typical Size}
 &&&&&\text{Scope} \\\\ 
 &\text{L1 Cache} &&\text{SRAM} &&&\sim\text{3 cycles} &&&&\text{32-64KB}
 &&&&&\text{Per core} \\\\ 
@@ -212,7 +212,7 @@ searches through L2, then L3. If it's not found in L1-L3, it's a **cache miss**,
 and the data must be fetched from main-memory; *much* slower. 
 
 Writing to cache often requires making room. When space is
-needed, modified lines are written back to L2, which may in turn write to L3,
+needed, modified lines are written back to L2 on line eviction, which may in turn write to L3,
 and so on. Each write-back takes clock cycles. 
 
 The difficulty in writing a fast BLAS is fitting as much as possible in L1-L2 and minimizing
@@ -270,7 +270,7 @@ If a tag matches, it's a cache hit. If no tag matches, it's a cache miss.
 ### Hits and Misses
 
 If a tag matches in L1, then L1 already holds the 64-byte block containing the requested address.
-The cache uses the Block Offset bits to select the exact bytes needed, and the data is returned to the CPU within $\sim$4 cycles.
+The cache uses the Block Offset bits to select the exact bytes needed, and the data is returned to the CPU within $\sim$3 cycles.
 
 If no tag matches, it’s a cache miss. The cache must fetch the entire 64-byte block from the next level of the hierarchy (L2, L3, or DRAM). 
 This process unfolds roughly as follows:
@@ -286,7 +286,7 @@ This process unfolds roughly as follows:
 3. **Propagated miss ($\sim$30-60 cycles for L3)** <br> 
     If L2 also misses, the request cascades to L3, losing more cycles.  
 
-4. **Main memory access ($\sim$150-300 cycles)** <br>
+4. **Main memory access ($\sim$200-400 cycles)** <br>
     If all cache levels miss, the controller fetches the block from DRAM. This
     is hundreds of cycles slower than an L1 hit.
 
@@ -322,7 +322,7 @@ For example, consider a for loop:
 
     let x: Vec<f32> = vec![1.0, 2.0, 3.0, 4.0]; 
     for &val in &x { 
-        func(&x) // a function call 
+        func(&val) // a function call 
     }
 
 The vector `x` is a contiguous heap array of 4 `f32`s, 16 bytes total. Since
@@ -359,4 +359,10 @@ There are two types of L1 caches per CPU core:
 Fast code is not just fast arithmetic. It is the precise
 choreography of data as it moves from memory to computation and back.
 
---- 
+---
+
+For a deeper understanding, I highly recommend reading through 
+[*What Every Programmer Should Know About Memory*](https://people.freebsd.org/~lstewart/articles/cpumemory.pdf) by Ulrich Drepper. 
+This post was abstracted and focused on cache mechanics. Drepper's paper
+offers a more in-depth, elegant overview of how memory systems operate. 
+
