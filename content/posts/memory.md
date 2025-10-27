@@ -329,12 +329,18 @@ The vector `x` is a contiguous heap array of 4 `f32`s, 16 bytes total. Since
 each cache line is 64 bytes, all four elements of `x` reside inside the same
 line. Then, when the loop first loads `x[0]`, the entire 64-byte line is fetched
 into L1. Then, accesses to `x[1]`, `x[2]`, `x[3]` will hit in L1 because they're
-in that same cache line -- **spatial locality**. 
+in that same cache line -- **spatial locality**.  
 
 `func()` is a function that may be distant from `x` in memory. But because calls to
 `func()` are close in time, it's instructions are loaded in L1 as well (assuming
 they fit)--
 **temporal locality**. 
+
+{{% hint info %}}
+**Pause Here** <br> 
+The above two paragraphs are the most important to understand in this post.
+Spatial and temporal locality are the twin principles every high-performance program is built around.
+{{% /hint %}} 
 
 {{% hint info %}} 
 There are two types of L1 caches per CPU core: 
