@@ -694,11 +694,11 @@ Now we have a Spin Hamiltonian. However, it has many unknown constants.
 $$
 \begin{align*} 
 &g_e && \quad \text{electron $g$-factor} \\\\ 
-&g\_{n_1}, g\_{n_2} && \quad \text{nuclear $g$-factor (Si, C)} \\\\ 
+&g\_{n_1}, \\, g\_{n_2} && \quad \text{nuclear $g$-factor (Si, C)} \\\\ 
 &\mu_B &&\quad \text{Bohr magneton} \\\\ 
 &\mu_N &&\quad \text{Nuclear magneton} \\\\ 
 &B_0 &&\quad \text{external magnetic field} \\\\ 
-&A\_{ijx}, \\, A\_{ijy} \\, A\_{ijz} &&\quad \text{hyperfine tensor} \\\\ 
+&A\_{ijx}, \\, A\_{ijy}, \\, A\_{ijz} &&\quad \text{hyperfine tensor} \\\\ 
 &D &&\quad\text{axial zero-field} \\\\ 
 &E &&\quad\text{transverse zero-field} \\\\ 
 &J &&\quad \text{exchange coupling}

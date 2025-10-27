@@ -19,8 +19,8 @@ https://github.com/alex-shpak/hugo-book
 
 
   <meta itemprop="name" content="Software">
-  <meta itemprop="datePublished" content="2025-10-09T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-10-09T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-10-25T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-10-25T00:00:00+00:00">
 
 <title>Software | my undergrad work</title>
 <link rel="icon" href="/favicon.png" >
@@ -30,7 +30,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.b8e267ee6e4d237aad0bf40054e8e3ce78a2e70edd0bd6e2b9a501f30d082353.js" integrity="sha256-uOJn7m5NI3qtC/QAVOjjznii5w7dC9biuaUB8w0II1M=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.cdf1ceaf0ee8fb6eb169469b814152954cc48137f68430670a8dd198b15e82e3.js" integrity="sha256-zfHOrw7o&#43;26xaUabgUFSlUzEgTf2hDBnCo3RmLFeguM=" crossorigin="anonymous"></script>
 
 
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/software/index.xml" title="my undergrad work" />
@@ -125,6 +125,47 @@ https://github.com/alex-shpak/hugo-book
   
   <article class="markdown book-post">
     <h2>
+      <a href="/posts/memory/">Understanding Memory</a>
+    </h2>
+    
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>October 25, 2025</span>
+  </div>
+
+
+
+  
+  <div class="text-small">
+    
+      <a href="/categories/software/">Software</a>
+  </div>
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/blas/">BLAS</a>
+  </div>
+  
+
+
+    <div class="book-post-content"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
+<p>Before diving in to how BLAS is written to be fast, it&rsquo;s essential to understand
+memory. Specifically, how data <em>is stored</em> into memory and how it <em>is fed</em> to
+the processor, which does the calculations. All BLAS does is optimize these two
+operations for a specific computer architecture. For CORAL, it&rsquo;s for AArch64.</p>
+<hr>
+<h3 id="1-memory">1. Memory<a class="anchor" href="#1-memory">#</a></h3>
+<p><em>Memory</em> is a physical structure that stores digital information as stable
+electrical states. A single <em>bit</em> of memory represents either a logical 0 or 1
+by maintaining distinct, measurable voltages inside microscopic circuits. These
+circuits exist in layers of <em>the memory hierarchy</em>, a set of memory storage levels
+that trade off speed, capacity, and energy cost.</p></div>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
       <a href="/posts/coral_intro/">What is CORAL?</a>
     </h2>
     
@@ -166,6 +207,47 @@ into three levels, each monumentally more difficult than the last.</p></div>
   
   <article class="markdown book-post">
     <h2>
+      <a href="/posts/nasa_programming/">Hamiltonian Programming</a>
+    </h2>
+    
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>June 20, 2025</span>
+  </div>
+
+
+
+  
+  <div class="text-small">
+    
+      <a href="/categories/software/">Software</a>, 
+      <a href="/categories/math/">Math</a>
+  </div>
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/nasa/">NASA</a>
+  </div>
+  
+
+
+    <div class="book-post-content"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
+<blockquote class="book-hint info">
+<p>This is a long post. On mobile some equations may go overfull.</p>
+</blockquote>
+<p>The goal of this post is to elegantly program the <em>Spin Hamiltonian</em> governing
+recombination in Silicon Carbide. Our system involves two electrons and two nuclei.</p>
+<p>We define our orthonormal basis as follows:</p>
+<p>The ${\uparrow, \downarrow}$ spin basis is called the Zeeman basis.
+I define the basis with the two electrons coupled and the nuclei
+in the Zeeman Basis as the <em>coupled basis</em>.  Every state in our two-electron +
+two-nuclei system is given by</p></div>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
       <a href="/posts/nasa_intro/">My project at NASA</a>
     </h2>
     
@@ -180,7 +262,7 @@ into three levels, each monumentally more difficult than the last.</p></div>
   <div class="text-small">
     
       <a href="/categories/software/">Software</a>, 
-      <a href="/categories/physics/">Physics</a>
+      <a href="/categories/math/">Math</a>
   </div>
   
 
@@ -263,12 +345,12 @@ is done in silicon carbide (4H-SiC) specifically.</p></div>
       
         <li class="flex align-center">
           <a href="/categories/software/">Software</a>
-          <span>2</span>
+          <span>4</span>
         </li>
       
         <li class="flex align-center">
-          <a href="/categories/physics/">Physics</a>
-          <span>4</span>
+          <a href="/categories/math/">Math</a>
+          <span>5</span>
         </li>
       
       </ul>
@@ -282,12 +364,12 @@ is done in silicon carbide (4H-SiC) specifically.</p></div>
       
         <li class="flex align-center">
           <a href="/tags/blas/">BLAS</a>
-          <span>1</span>
+          <span>2</span>
         </li>
       
         <li class="flex align-center">
           <a href="/tags/nasa/">NASA</a>
-          <span>4</span>
+          <span>5</span>
         </li>
       
       </ul>

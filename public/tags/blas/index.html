@@ -19,8 +19,8 @@ https://github.com/alex-shpak/hugo-book
 
 
   <meta itemprop="name" content="BLAS">
-  <meta itemprop="datePublished" content="2025-10-09T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-10-09T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-10-25T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-10-25T00:00:00+00:00">
 
 <title>BLAS | my undergrad work</title>
 <link rel="icon" href="/favicon.png" >
@@ -30,7 +30,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.b8e267ee6e4d237aad0bf40054e8e3ce78a2e70edd0bd6e2b9a501f30d082353.js" integrity="sha256-uOJn7m5NI3qtC/QAVOjjznii5w7dC9biuaUB8w0II1M=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.cdf1ceaf0ee8fb6eb169469b814152954cc48137f68430670a8dd198b15e82e3.js" integrity="sha256-zfHOrw7o&#43;26xaUabgUFSlUzEgTf2hDBnCo3RmLFeguM=" crossorigin="anonymous"></script>
 
 
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/blas/index.xml" title="my undergrad work" />
@@ -125,6 +125,47 @@ https://github.com/alex-shpak/hugo-book
   
   <article class="markdown book-post">
     <h2>
+      <a href="/posts/memory/">Understanding Memory</a>
+    </h2>
+    
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>October 25, 2025</span>
+  </div>
+
+
+
+  
+  <div class="text-small">
+    
+      <a href="/categories/software/">Software</a>
+  </div>
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/blas/">BLAS</a>
+  </div>
+  
+
+
+    <div class="book-post-content"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
+<p>Before diving in to how BLAS is written to be fast, it&rsquo;s essential to understand
+memory. Specifically, how data <em>is stored</em> into memory and how it <em>is fed</em> to
+the processor, which does the calculations. All BLAS does is optimize these two
+operations for a specific computer architecture. For CORAL, it&rsquo;s for AArch64.</p>
+<hr>
+<h3 id="1-memory">1. Memory<a class="anchor" href="#1-memory">#</a></h3>
+<p><em>Memory</em> is a physical structure that stores digital information as stable
+electrical states. A single <em>bit</em> of memory represents either a logical 0 or 1
+by maintaining distinct, measurable voltages inside microscopic circuits. These
+circuits exist in layers of <em>the memory hierarchy</em>, a set of memory storage levels
+that trade off speed, capacity, and energy cost.</p></div>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
       <a href="/posts/coral_intro/">What is CORAL?</a>
     </h2>
     
@@ -150,7 +191,8 @@ https://github.com/alex-shpak/hugo-book
   
 
 
-    <div class="book-post-content"><p>In the past few months I&rsquo;ve become immensely interested in scientific computing
+    <div class="book-post-content"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
+<p>In the past few months I&rsquo;ve become immensely interested in scientific computing
 and writing fast code. I started <a href="https://github.com/devdeliw/CORAL">CORAL</a> as a project to learn both at the same
 time. And learn <a href="https://rust-lang.org">Rust</a>.</p>
 <p>CORAL stands for <em>COre Rust Architecture for Linear algebra</em>. It is an
@@ -221,17 +263,12 @@ into three levels, each monumentally more difficult than the last.</p></div>
       
         <li class="flex align-center">
           <a href="/categories/software/">Software</a>
-          <span>3</span>
+          <span>4</span>
         </li>
       
         <li class="flex align-center">
           <a href="/categories/math/">Math</a>
           <span>5</span>
-        </li>
-      
-        <li class="flex align-center">
-          <a href="/categories/physics/">Physics</a>
-          <span>0</span>
         </li>
       
       </ul>
@@ -245,7 +282,7 @@ into three levels, each monumentally more difficult than the last.</p></div>
       
         <li class="flex align-center">
           <a href="/tags/blas/">BLAS</a>
-          <span>1</span>
+          <span>2</span>
         </li>
       
         <li class="flex align-center">

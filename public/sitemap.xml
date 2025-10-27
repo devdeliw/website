@@ -3,31 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-10-09T00:00:00+00:00</lastmod>
+    <lastmod>2025-10-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/blas/</loc>
-    <lastmod>2025-10-09T00:00:00+00:00</lastmod>
+    <lastmod>2025-10-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2025-10-09T00:00:00+00:00</lastmod>
+    <lastmod>2025-10-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/software/</loc>
-    <lastmod>2025-10-09T00:00:00+00:00</lastmod>
+    <lastmod>2025-10-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2025-10-09T00:00:00+00:00</lastmod>
+    <lastmod>2025-10-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/memory/</loc>
+    <lastmod>2025-10-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-10-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/coral_intro/</loc>
     <lastmod>2025-10-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-10-09T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/posts/nasa_programming/</loc>
+    <lastmod>2025-06-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/math/</loc>
+    <lastmod>2025-06-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/nasa/</loc>
-    <lastmod>2025-06-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/physics/</loc>
-    <lastmod>2025-06-10T00:00:00+00:00</lastmod>
+    <lastmod>2025-06-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/nasa_derive_3/</loc>
     <lastmod>2025-06-10T00:00:00+00:00</lastmod>
