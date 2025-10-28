@@ -32,7 +32,7 @@ They vary by CPU architecture and memory configuration.
 
 ## Memory 
 
-*Memory* is a physical structure that stores digital information as stable
+*Memory* is a physical structure that stores digital information as
 electrical states. A single *bit* of memory represents either a logical 0 or 1
 by maintaining distinct, measurable voltages inside microscopic circuits. These
 circuits exist in layers of *memory hierarchy*, a set of memory storage levels
@@ -139,8 +139,6 @@ capacitor, *which takes even more cycles*.
 
 DRAM cells, however, are much smaller than SRAM cells. Packing many DRAM cells close together is
 much simpler, and *less expensive*.  For this reason, caches use SRAM cells, where speed is critical. Main memory uses DRAM cells, where capacity is critical. A typical L1 cache may contain *hundreds of thousands* of SRAM cells, whereas main memory contains *trillions* of DRAM cells.
-
-Let's walk through exactly how memory is read or written with SRAM versus DRAM. 
 
 ## Accessing Memory 
 
@@ -306,8 +304,8 @@ This process unfolds roughly as follows:
 
 {{% /steps %}}
 
-I am reiterating these concepts to emphasize how much time is lost from a single
-L1 cache miss. It can stall the processor for tens to hundreds of cycles,
+The key takeaway is the huge latency difference between L1/L2 hits and misses.
+It can stall the processor for tens to hundreds of cycles,
 depending on how deep the request travels down the hierarchy. Mastering this gap -- between
 a few cycles for a hit and hundreds for a miss -- is the ***essence of high-performance
 BLAS***. It's what makes cache efficiency so critical for CPU performance and writing
