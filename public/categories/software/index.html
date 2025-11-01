@@ -30,7 +30,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.cdf1ceaf0ee8fb6eb169469b814152954cc48137f68430670a8dd198b15e82e3.js" integrity="sha256-zfHOrw7o&#43;26xaUabgUFSlUzEgTf2hDBnCo3RmLFeguM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.b6ac0efd84be6aef277a16662d5f391cd479ccc17a7ae10f37a80ce5511cdac0.js" integrity="sha256-tqwO/YS&#43;au8nehZmLV85HNR5zMF6euEPN6gM5VEc2sA=" crossorigin="anonymous"></script>
 
 
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/software/index.xml" title="my undergrad work" />
@@ -151,17 +151,16 @@ https://github.com/alex-shpak/hugo-book
 
 
     <div class="book-post-content"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
-<p>Before diving in to how BLAS is written to be fast, it&rsquo;s essential to understand
-memory. Specifically, how data <em>is stored</em> into memory and how it <em>is fed</em> to
-the processor, which does the calculations. All BLAS does is optimize these two
-operations for a specific computer architecture. For CORAL, it&rsquo;s for AArch64.</p>
-<hr>
-<h3 id="1-memory">1. Memory<a class="anchor" href="#1-memory">#</a></h3>
-<p><em>Memory</em> is a physical structure that stores digital information as stable
-electrical states. A single <em>bit</em> of memory represents either a logical 0 or 1
-by maintaining distinct, measurable voltages inside microscopic circuits. These
-circuits exist in layers of <em>the memory hierarchy</em>, a set of memory storage levels
-that trade off speed, capacity, and energy cost.</p></div>
+<p>Before diving into how BLAS is written to be fast, it&rsquo;s essential to understand
+memory. Specifically, how data <em>is stored</em> in memory and how it <em>is fed</em> to
+the processor, which performs the computations. All BLAS does is optimize these two
+operations for a specific computer architecture. CORAL, for instance, targets AArch64 architectures.</p>
+<p>Future posts on BLAS will refer back to concepts explained here.</p>
+<blockquote class='book-hint '>
+<p>The content in this post is <em><strong>heavily</strong></em> taken from <a href="https://people.freebsd.org/~lstewart/articles/cpumemory.pdf"><em>What Every Programmer
+Should Know About
+Memory</em></a> by Ulrich Drepper.
+It&rsquo;s phenomenal. Unless otherwise linked, all numerical values come from this paper.</p></div>
   </article>
   
   <article class="markdown book-post">
@@ -344,6 +343,11 @@ is done in silicon carbide (4H-SiC) specifically.</p></div>
       <ul>
       
         <li class="flex align-center">
+          <a href="/categories/blas/">BLAS</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex align-center">
           <a href="/categories/software/">Software</a>
           <span>4</span>
         </li>
@@ -364,7 +368,7 @@ is done in silicon carbide (4H-SiC) specifically.</p></div>
       
         <li class="flex align-center">
           <a href="/tags/blas/">BLAS</a>
-          <span>2</span>
+          <span>3</span>
         </li>
       
         <li class="flex align-center">

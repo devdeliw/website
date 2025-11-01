@@ -27,7 +27,7 @@ https://github.com/alex-shpak/hugo-book
   <meta itemprop="description" content="A clear explanation of how memory is structured, accessed, and optimized for performance">
   <meta itemprop="datePublished" content="2025-10-25T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-10-25T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2045">
+  <meta itemprop="wordCount" content="2122">
   <meta itemprop="keywords" content="BLAS">
 
 <title>Understanding Memory | my undergrad work</title>
@@ -38,7 +38,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.cdf1ceaf0ee8fb6eb169469b814152954cc48137f68430670a8dd198b15e82e3.js" integrity="sha256-zfHOrw7o&#43;26xaUabgUFSlUzEgTf2hDBnCo3RmLFeguM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.b6ac0efd84be6aef277a16662d5f391cd479ccc17a7ae10f37a80ce5511cdac0.js" integrity="sha256-tqwO/YS&#43;au8nehZmLV85HNR5zMF6euEPN6gM5VEc2sA=" crossorigin="anonymous"></script>
 
 
 
@@ -196,9 +196,14 @@ operations for a specific computer architecture. CORAL, for instance, targets AA
 <p>The content in this post is <em><strong>heavily</strong></em> taken from <a href="https://people.freebsd.org/~lstewart/articles/cpumemory.pdf"><em>What Every Programmer
 Should Know About
 Memory</em></a> by Ulrich Drepper.
-It&rsquo;s phenomenal. Unless otherwise linked, all numerical values come from this paper.</p></blockquote><hr>
+It&rsquo;s phenomenal. Unless otherwise linked, all numerical values come from this paper.</p></blockquote><blockquote class="book-hint warning">
+<p><strong>Heuristics Ahead</strong> <br>
+Cycle counts, sizes, and policies shown here are approximate heuristics.<br>
+They vary by CPU architecture and memory configuration.</p>
+</blockquote>
+<hr>
 <h2 id="memory">Memory<a class="anchor" href="#memory">#</a></h2>
-<p><em>Memory</em> is a physical structure that stores digital information as stable
+<p><em>Memory</em> is a physical structure that stores digital information as
 electrical states. A single <em>bit</em> of memory represents either a logical 0 or 1
 by maintaining distinct, measurable voltages inside microscopic circuits. These
 circuits exist in layers of <em>memory hierarchy</em>, a set of memory storage levels
@@ -217,7 +222,7 @@ registers takes $\leq 1$ cycle. Above registers are <em>caches</em>,
 which exist in three sub-levels. Accessing cached data takes between $\sim$3-60 cycles
 depending on which sub-level is accessed. Beyond caches lies the main
 memory. Accessing data from main memory takes $\sim$200-400 cycles. Together these
-levels form a pipeline that moves data from storage to the processor.</p>
+levels form the hierarchy that moves data from storage to the processor.</p>
 <br>
 <p align="center">
   <img src="/CPU.svg">
@@ -229,7 +234,7 @@ be critical when discussing packing strategies for BLAS.</p>
 <h2 id="static-and-dynamic-ram">Static and Dynamic RAM<a class="anchor" href="#static-and-dynamic-ram">#</a></h2>
 <p>All working memory in a computer is built on one of two forms of Random Access Memory (RAM):
 <strong>Static</strong> RAM (SRAM)  and <strong>Dynamic</strong> RAM (DRAM). Let&rsquo;s discuss why there
-exists two forms at all, understand how they work, and their read/write speeds.</p>
+are two forms at all, understand how they work, and their read/write speeds.</p>
 <h3 id="sram">SRAM<a class="anchor" href="#sram">#</a></h3>
 <div style="display: flex; justify-content: center;">
   <div
@@ -278,7 +283,6 @@ depleted, so every read also is followed by an operation to recharge the
 capacitor, <em>which takes even more cycles</em>.</p>
 <p>DRAM cells, however, are much smaller than SRAM cells. Packing many DRAM cells close together is
 much simpler, and <em>less expensive</em>.  For this reason, caches use SRAM cells, where speed is critical. Main memory uses DRAM cells, where capacity is critical. A typical L1 cache may contain <em>hundreds of thousands</em> of SRAM cells, whereas main memory contains <em>trillions</em> of DRAM cells.</p>
-<p>Let&rsquo;s walk through exactly how memory is read or written with SRAM versus DRAM.</p>
 <h2 id="accessing-memory">Accessing Memory<a class="anchor" href="#accessing-memory">#</a></h2>
 <p>Both SRAM and DRAM cells are arranged in a 2D array. To access a row, the <em>wordline</em> $WL$ is
 raised. It&rsquo;s a conductive path shared by all cells in a row.</p>
@@ -293,7 +297,7 @@ bitline.</p>
 <ol>
 <li>
 <p><strong>Select a Row (WL)</strong> <br>
-The memory controller raises a wordline. In SRAM this opens two access
+The cache controller raises a wordline. In SRAM this opens two access
 transistors. In DRAM this opens a single access transistor.</p>
 </li>
 <li>
@@ -301,7 +305,7 @@ transistors. In DRAM this opens a single access transistor.</p>
 Each column of cells shares a bitline. When connected, the cell either
 slightly raises or slightly lowers the voltage on that bitline depending on
 whether it stores 0 or 1.</p>
-<p>In SRAM, this takes $\sim 1ns$. In DRAM, this takes more time
+<p>In SRAM, this is fast. In DRAM, this takes more time
 (discharging and charging capacitors).</p>
 </li>
 <li>
@@ -330,7 +334,7 @@ from SRAM.</p>
 </blockquote>
 <p>$$
 \begin{align*}
-&amp;\text{Level} &amp;&amp;\text{Composition} &amp;&amp;&amp;\text{Access Time} &amp;&amp;&amp;&amp;\text{Size}
+&amp;\text{Level} &amp;&amp;\text{Composition} &amp;&amp;&amp;\text{Access Time} &amp;&amp;&amp;&amp;\text{Typical Size}
 &amp;&amp;&amp;&amp;&amp;\text{Scope} \\
 &amp;\text{L1 Cache} &amp;&amp;\text{SRAM} &amp;&amp;&amp;\sim\text{3 cycles} &amp;&amp;&amp;&amp;\text{32-64KB}
 &amp;&amp;&amp;&amp;&amp;\text{Per core} \\
@@ -349,7 +353,7 @@ in L1, that&rsquo;s an <strong>L1 cache hit</strong>, and optimal. If it&rsquo;s
 searches through L2, then L3. If it&rsquo;s not found in L1-L3, it&rsquo;s a <strong>cache miss</strong>,
 and the data must be fetched from main-memory; <em>much</em> slower.</p>
 <p>Writing to cache often requires making room. When space is
-needed, modified lines are written back to L2, which may in turn write to L3,
+needed, modified lines are written back to L2 on line eviction, which may in turn write to L3,
 and so on. Each write-back takes clock cycles.</p>
 <p>The difficulty in writing a fast BLAS is fitting as much as possible in L1-L2 and minimizing
 the number of cycles used to move memory around. This is discussed
@@ -392,7 +396,7 @@ the stored tags of all ways in the chosen set.</p>
 </blockquote>
 <h3 id="hits-and-misses">Hits and Misses<a class="anchor" href="#hits-and-misses">#</a></h3>
 <p>If a tag matches in L1, then L1 already holds the 64-byte block containing the requested address.
-The cache uses the Block Offset bits to select the exact bytes needed, and the data is returned to the CPU within $\sim$4 cycles.</p>
+The cache uses the Block Offset bits to select the exact bytes needed, and the data is returned to the CPU within $\sim$3 cycles.</p>
 <p>If no tag matches, it’s a cache miss. The cache must fetch the entire 64-byte block from the next level of the hierarchy (L2, L3, or DRAM).
 This process unfolds roughly as follows:</p>
 <div class="book-steps ">
@@ -411,7 +415,7 @@ block, it&rsquo;s returned and placed in L1.</p>
 If L2 also misses, the request cascades to L3, losing more cycles.</p>
 </li>
 <li>
-<p><strong>Main memory access ($\sim$150-300 cycles)</strong> <br>
+<p><strong>Main memory access ($\sim$200-400 cycles)</strong> <br>
 If all cache levels miss, the controller fetches the block from DRAM. This
 is hundreds of cycles slower than an L1 hit.</p>
 </li>
@@ -426,8 +430,8 @@ The CPU re-attempts the load, which now hits in L1.</p>
 </li>
 </ol>
 </div>
-<p>I am reiterating these concepts to emphasize how much time is lost from a single
-L1 cache miss. It can stall the processor for tens to hundreds of cycles,
+<p>The key takeaway is the huge latency difference between L1/L2 hits and misses.
+It can stall the processor for tens to hundreds of cycles,
 depending on how deep the request travels down the hierarchy. Mastering this gap &ndash; between
 a few cycles for a hit and hundreds for a miss &ndash; is the <em><strong>essence of high-performance
 BLAS</strong></em>. It&rsquo;s what makes cache efficiency so critical for CPU performance and writing
@@ -445,7 +449,7 @@ fetch.</p>
 <p>For example, consider a for loop:</p>
 <pre><code>let x: Vec&lt;f32&gt; = vec![1.0, 2.0, 3.0, 4.0]; 
 for &amp;val in &amp;x { 
-    func(&amp;x) // a function call 
+    func(&amp;val) // a function call 
 }
 </code></pre>
 <p>The vector <code>x</code> is a contiguous heap array of 4 <code>f32</code>s, 16 bytes total. Since
@@ -454,9 +458,14 @@ line. Then, when the loop first loads <code>x[0]</code>, the entire 64-byte line
 into L1. Then, accesses to <code>x[1]</code>, <code>x[2]</code>, <code>x[3]</code> will hit in L1 because they&rsquo;re
 in that same cache line &ndash; <strong>spatial locality</strong>.</p>
 <p><code>func()</code> is a function that may be distant from <code>x</code> in memory. But because calls to
-<code>func()</code> are close in time, it&rsquo;s instructions are loaded in L1 as well (assuming
+<code>func()</code> are close in time, its instructions are loaded in L1 as well (assuming
 they fit)&ndash;
 <strong>temporal locality</strong>.</p>
+<blockquote class="book-hint info">
+<p><strong>Pause Here</strong> <br>
+The above two paragraphs are the most important to understand in this post.
+Spatial and temporal locality are the twin principles every high-performance program is built around.</p>
+</blockquote> 
 <blockquote class="book-hint info">
 <p>There are two types of L1 caches per CPU core:</p>
 <ol>
@@ -469,12 +478,26 @@ they fit)&ndash;
 <li><strong>Memory stores data</strong> as stable voltage states in physical circuits.</li>
 <li><strong>SRAM</strong> retains its state through feedback; <strong>DRAM</strong> requires refresh.</li>
 <li><strong>Caches</strong> made of SRAM bridge the speed gap between DRAM and the CPU.</li>
-<li><strong>Cache lines</strong> exploit spatial and temporal locality.</li>
+<li><strong>Cache lines</strong> exist to exploit spatial and temporal locality.</li>
 <li><strong>BLAS</strong> leverages these properties by reorganizing data to maximize reuse.</li>
 </ol>
-<p>Fast code is not just fast arithmetic. It is the disciplined
+<p>Fast code is not just fast arithmetic. It is the precise
 choreography of data as it moves from memory to computation and back.</p>
 <hr>
+<p>For a deeper understanding, I highly recommend reading through
+<a href="https://people.freebsd.org/~lstewart/articles/cpumemory.pdf"><em>What Every Programmer Should Know About Memory</em></a> by Ulrich Drepper.
+This post was abstracted and focused on cache mechanics. Drepper&rsquo;s paper
+offers a more in-depth, elegant overview of how memory systems operate.</p>
+<br> 
+<div style="position: relative; width: 100%; margin-top: 2em;">
+  <div style="position: absolute; left: 0;">
+    <a 
+  href="/posts/coral_intro/" 
+  
+  class="book-btn btn"
+>← Previous</a>
+  </div>
+</div>
 </div>
 </article>
  
@@ -484,6 +507,11 @@ choreography of data as it moves from memory to computation and back.</p>
         
   <div class="flex flex-wrap justify-between">
   <div>
+  
+    <a href="/posts/benchmarks/" class="flex align-center">
+      <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+      <span>CORAL Benchmarks</span>
+    </a>
   
   </div>
   <div>

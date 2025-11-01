@@ -11,7 +11,7 @@ https://github.com/alex-shpak/hugo-book
 <meta name="description" content="">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/tags/blas/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/categories/blas/">
   <meta property="og:site_name" content="my undergrad work">
   <meta property="og:title" content="BLAS">
   <meta property="og:locale" content="en_us">
@@ -25,7 +25,7 @@ https://github.com/alex-shpak/hugo-book
 <title>BLAS | my undergrad work</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/tags/blas/">
+<link rel="canonical" href="http://localhost:1313/categories/blas/">
 <link rel="stylesheet" href="/book.min.6970156cec683193d93c9c4edaf0d56574e4361df2e0c1be4f697ae81c3ba55f.css" integrity="sha256-aXAVbOxoMZPZPJxO2vDVZXTkNh3y4MG&#43;T2l66Bw7pV8=" crossorigin="anonymous">
 
 
@@ -33,11 +33,11 @@ https://github.com/alex-shpak/hugo-book
   <script defer src="/en.search.min.b6ac0efd84be6aef277a16662d5f391cd479ccc17a7ae10f37a80ce5511cdac0.js" integrity="sha256-tqwO/YS&#43;au8nehZmLV85HNR5zMF6euEPN6gM5VEc2sA=" crossorigin="anonymous"></script>
 
 
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/blas/index.xml" title="my undergrad work" />
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/blas/index.xml" title="my undergrad work" />
 
   
 </head>
-<body dir="ltr" class="book-kind-term book-type-tags">
+<body dir="ltr" class="book-kind-term book-type-categories">
   <input type="checkbox" class="hidden toggle" id="menu-control" />
   <input type="checkbox" class="hidden toggle" id="toc-control" />
   <main class="container flex">
@@ -195,87 +195,6 @@ https://github.com/alex-shpak/hugo-book
 <p>\[
 y \leftarrow \alpha \operatorname{op}(A) x + \beta y
 \]</p></div>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/memory/">Understanding Memory</a>
-    </h2>
-    
-  <div class="flex align-center text-small book-post-date">
-    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
-    <span>October 25, 2025</span>
-  </div>
-
-
-
-  
-  <div class="text-small">
-    
-      <a href="/categories/software/">Software</a>
-  </div>
-  
-
-  
-  <div class="text-small">
-    
-      <a href="/tags/blas/">BLAS</a>
-  </div>
-  
-
-
-    <div class="book-post-content"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
-<p>Before diving into how BLAS is written to be fast, it&rsquo;s essential to understand
-memory. Specifically, how data <em>is stored</em> in memory and how it <em>is fed</em> to
-the processor, which performs the computations. All BLAS does is optimize these two
-operations for a specific computer architecture. CORAL, for instance, targets AArch64 architectures.</p>
-<p>Future posts on BLAS will refer back to concepts explained here.</p>
-<blockquote class='book-hint '>
-<p>The content in this post is <em><strong>heavily</strong></em> taken from <a href="https://people.freebsd.org/~lstewart/articles/cpumemory.pdf"><em>What Every Programmer
-Should Know About
-Memory</em></a> by Ulrich Drepper.
-It&rsquo;s phenomenal. Unless otherwise linked, all numerical values come from this paper.</p></div>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/coral_intro/">What is CORAL?</a>
-    </h2>
-    
-  <div class="flex align-center text-small book-post-date">
-    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
-    <span>October 9, 2025</span>
-  </div>
-
-
-
-  
-  <div class="text-small">
-    
-      <a href="/categories/software/">Software</a>
-  </div>
-  
-
-  
-  <div class="text-small">
-    
-      <a href="/tags/blas/">BLAS</a>
-  </div>
-  
-
-
-    <div class="book-post-content"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
-<p>In the past few months I&rsquo;ve become immensely interested in scientific computing
-and writing fast code. I started <a href="https://github.com/devdeliw/CORAL">CORAL</a> as a project to learn both at the same
-time. And learn <a href="https://rust-lang.org">Rust</a>.</p>
-<p>CORAL stands for <em>COre Rust Architecture for Linear algebra</em>. It is an
-implementation of the <a href="https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms">Basic Linear Algebra
-Subprograms</a>, or
-<em>BLAS</em>, in pure Rust. It is written for AArch64 architectures only.</p>
-<p>BLAS is the set of the most common low-level operations, &ldquo;kernels&rdquo;, for linear
-algebra. Most numerical routines involve linear algebra; it is clear
-that a useful BLAS must be <em>as fast as possible</em>. These kernels naturally separate
-into three levels, each monumentally more difficult than the last.</p></div>
   </article>
   
 
