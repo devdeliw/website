@@ -15,6 +15,8 @@ In all plots I benchmark against OpenBLAS. For some I also benchmark against
 Apple Accelerate. Routines that don't have Accelerate shown mean Accelerate was
 much faster on my M4 Macbook pro and masked any comparison with OpenBLAS. 
 
+faer benchmarked *when single-threaded* for `GEMM`. 
+
 ---
 
 # Level 1
