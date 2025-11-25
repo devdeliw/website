@@ -12,9 +12,11 @@ menu        = "main"
 Apple M4 (6P + 4E), 16GB unified memory. All benchmarks are single-threaded.
 
 In all plots, CORAL is benchmarked against OpenBLAS. Some routines also include
-Apple Accelerate. When Accelerate is omitted, it is because its AMX-backed
-kernels on this M4 MacBook Pro are much faster and completely mask any
-comparison with OpenBLAS. For `sgemm`, [faer](https://faer.veganb.tw) is included, also single-threaded. 
+Apple Accelerate. When Accelerate is omitted, it's because its AMX-backed
+kernels on this M4 MacBook Pro are much faster and mask any
+comparison with OpenBLAS. 
+
+For `sgemm`, [faer](https://faer.veganb.tw) is included, also single-threaded. 
 
 ---
 
