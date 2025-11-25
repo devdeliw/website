@@ -18,6 +18,7 @@ Each plot shows:
 - a reference implementation:
   - OpenBLAS, or
   - Apple Accelerate, or
+  - BLIS for `sgemm`
   - faer for `sgemm`/`matmul`
 
 ---
@@ -28,7 +29,7 @@ Each plot shows:
   - [Level 1](#level-1)
   - [Level 2](#level-2)
   - [Level 3](#level-3)
-- [With Apple Accelerate Too](#apple-accelerate)
+- [With Apple Accelerate](#apple-accelerate)
   - [Level 1](#level-1-accelerate)
   - [Level 2](#level-2-accelerate)
   - [Level 3](#level-3-accelerate)
