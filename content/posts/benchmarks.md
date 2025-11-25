@@ -16,7 +16,7 @@ Each plot shows:
 - `coral-safe` (portable-simd, safe Rust)
 - `coral-neon` (AArch64 / NEON)
 - a reference implementation:
-  - OpenBLAS**, or
+  - OpenBLAS, or
   - Apple Accelerate
   - faer for `sgemm`/`matmul`
 
