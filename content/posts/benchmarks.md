@@ -1,8 +1,8 @@
 +++
-title = "CORAL Benchmarks"
+title = "coral benchmarks"
 description = "coral-safe & coral-neon vs OpenBLAS and Apple Accelerate"
 tags = ["BLAS"]
-date = "2025-10-31"
+date = "2025-11-25"
 categories = [""]
 menu = "main"
 +++
