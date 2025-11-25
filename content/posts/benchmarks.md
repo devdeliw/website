@@ -191,6 +191,10 @@ C \leftarrow \alpha \operatorname{op}(A)\operatorname{op}(B) + \beta C
 
 ## Apple Accelerate
 
+The following benchmarks are the same as above, but with Apple Accelerate. 
+For critical routines like `sgemv` and `sgemm`, Apple uses [AMX](https://research.meekolab.com/the-elusive-apple-matrix-coprocessor-amx) 
+to be much faster. Consequently it masks any comparison between my coral implementations and other BLAS. 
+
 ### Level 1 (Accelerate)
 
 #### ISAMAX — index of max absolute value
