@@ -17,7 +17,7 @@ Each plot shows:
 - `coral-neon` (AArch64 / NEON)
 - a reference implementation:
   - OpenBLAS, or
-  - Apple Accelerate
+  - Apple Accelerate, or
   - faer for `sgemm`/`matmul`
 
 ---
