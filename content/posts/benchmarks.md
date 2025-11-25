@@ -46,11 +46,11 @@ Each plot shows:
 
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/openblas/sasum.png)
 
-#### SAXPY — y ← α x + y
+#### SAXPY — scalar vector addition
 
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/openblas/saxpy.png)
 
-#### SCOPY — y ← x
+#### SCOPY — copy vector into another
 
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/openblas/scopy.png)
 
@@ -62,7 +62,7 @@ Each plot shows:
 
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/openblas/snrm2.png)
 
-#### SROT — Givens rotation (in-place)
+#### SROT — Givens rotation
 
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/openblas/srot.png)
 
@@ -70,7 +70,7 @@ Each plot shows:
 
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/openblas/srotm.png)
 
-#### SSCAL — x ← α x
+#### SSCAL — scale vector
 
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/openblas/sscal.png)
 
@@ -87,8 +87,6 @@ Each plot shows:
 y \leftarrow \alpha \operatorname{op}(A)x + \beta y
 \\]
 
-- `n`: no-transpose `op(A) = A`  
-- `t`: transpose `op(A) = A^T`
 
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/openblas/sgemv_n.png)
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/openblas/sgemv_t.png)
@@ -144,9 +142,6 @@ A \leftarrow \alpha (x y^T + y x^T) + A
 x \leftarrow \operatorname{op}(A) x
 \\]
 
-- `u` = upper, `l` = lower  
-- `n` = no-transpose, `t` = transpose
-
 **Upper triangular (STRMV):**
 
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/openblas/strumv_n.png)
@@ -181,9 +176,6 @@ x \leftarrow A^{-1} b
 C \leftarrow \alpha \operatorname{op}(A)\operatorname{op}(B) + \beta C
 \\]
 
-- `nn`: `op(A) = A`, `op(B) = B`
-- `tt`: `op(A) = A^T`, `op(B) = B^T`
-
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/openblas/sgemm_nn.png)
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/openblas/sgemm_tt.png)
 
@@ -205,11 +197,11 @@ to be much faster. Consequently it masks any comparison between my coral impleme
 
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/accelerate/sasum.png)
 
-#### SAXPY — y ← α x + y
+#### SAXPY — scaled vector addition
 
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/accelerate/saxpy.png)
 
-#### SCOPY — y ← x
+#### SCOPY — copy a vector into another
 
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/accelerate/scopy.png)
 
@@ -221,7 +213,7 @@ to be much faster. Consequently it masks any comparison between my coral impleme
 
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/accelerate/snrm2.png)
 
-#### SROT — Givens rotation (in-place)
+#### SROT — Givens rotation
 
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/accelerate/srot.png)
 
@@ -229,7 +221,7 @@ to be much faster. Consequently it masks any comparison between my coral impleme
 
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/accelerate/srotm.png)
 
-#### SSCAL — x ← α x
+#### SSCAL — scale a vector
 
 ![](https://raw.githubusercontent.com/devdeliw/coral/main/plots/accelerate/sscal.png)
 
