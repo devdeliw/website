@@ -1,6 +1,6 @@
 +++
-title = "CORAL Benchmarks"
-description = "benchmarks against OpenBLAS and Apple Accelerate"
+title = "CORAL Benchmarks (single precision)"
+description = "coral-safe & coral-neon vs OpenBLAS and Apple Accelerate (s-precision)"
 tags = ["BLAS"]
 date = "2025-10-31"
 categories = [""]
@@ -9,206 +9,306 @@ menu = "main"
 
 {{< katex />}}
 
-Apple M4 (6P + 4E), 16GB unified memory. single-threaded (1 P-core). 
+Apple M4 (6P + 4E), 16GB unified memory. All benchmarks are single-precision and
+single-threaded. 
 
-In all plots I benchmark against OpenBLAS. For some I also benchmark against
-Apple Accelerate. Routines that don't have Accelerate shown mean Accelerate was
-much faster on my M4 Macbook pro and masked any comparison with OpenBLAS. 
-
-faer benchmarked *when single-threaded* for `GEMM`. 
-
----
-
-# Level 1
-
-## AXPY
-
-### f32
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/SAXPY.png)
-
-### f64
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DAXPY.png)
-
-### c32
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CAXPY.png)
-
-### c64
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZAXPY.png)
+Each plot shows:
+- `coral-safe` (portable-simd, safe Rust)
+- `coral-neon` (AArch64 / NEON)
+- a reference implementation:
+  - **OpenBLAS**, or
+  - **Apple Accelerate**
+  - **faer** for `sgemm`/`matmul`
 
 ---
 
-## SCAL
+## Table of Contents
 
-### f32
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/SSCAL.png)
+- [OpenBLAS](#openblas)
+  - [Level 1](#level-1)
+  - [Level 2](#level-2)
+  - [Level 3](#level-3)
+- [With Apple Accelerate Too](#apple-accelerate)
+  - [Level 1](#level-1-accelerate)
+  - [Level 2](#level-2-accelerate)
+  - [Level 3](#level-3-accelerate)
 
-### f64
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DSCAL.png)
 
-### c32
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CSCAL.png)
+## OpenBLAS
 
-### c64
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZSCAL.png)
+### Level 1
+
+#### ISAMAX — index of max absolute value
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/isamax.png)
+
+#### SASUM — sum of absolute values
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/sasum.png)
+
+#### SAXPY — y ← α x + y
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/saxpy.png)
+
+#### SCOPY — y ← x
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/scopy.png)
+
+#### SDOT — dot product
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/sdot.png)
+
+#### SNRM2 — Euclidean norm
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/snrm2.png)
+
+#### SROT — Givens rotation (in-place)
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/srot.png)
+
+#### SROTM — modified Givens rotation
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/srotm.png)
+
+#### SSCAL — x ← α x
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/sscal.png)
+
+#### SSWAP — swap two vectors
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/sswap.png)
 
 ---
 
-## DOT
+### Level 2
 
-### f32
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/SDOT.png)
-
-### f64
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DDOT.png)
-
-### c32
-
-#### conj (`cdotc`)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CDOTC.png)
-
-#### unconj (`cdotu`)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CDOTU.png)
-
-### c64
-
-#### conj (`zdotc`)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZDOTC.png)
-
-#### unconj (`zdotu`)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZDOTU.png)
-
----
-
-# Level 2
-
-## GEMV
+#### SGEMV — matrix–vector multiply  
 \\[
-y \leftarrow \alpha \operatorname{op}(A) x + \beta y
+y \leftarrow \alpha \operatorname{op}(A)x + \beta y
 \\]
 
-### f32
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/SGEMV_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/SGEMV_TRANSPOSE.png)
+- `n`: no-transpose `op(A) = A`  
+- `t`: transpose `op(A) = A^T`
 
-### f64
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DGEMV_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DGEMV_TRANSPOSE.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/sgemv_n.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/sgemv_t.png)
 
-### c32
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CGEMV_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CGEMV_TRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CGEMV_CONJTRANSPOSE.png)
-
-### c64
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZGEMV_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZGEMV_TRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZGEMV_CONJTRANSPOSE.png)
-
----
-
-## TRSV
+#### SGER — rank-1 update  
 \\[
-x \leftarrow A^{-1} b
+A \leftarrow \alpha x y^T + A
 \\]
 
-### f32
-#### LOWER TRIANGULAR
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/STRSV_LOWER_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/STRSV_LOWER_TRANSPOSE.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/sger.png)
 
-#### UPPER TRIANGULAR
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/STRSV_UPPER_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/STRSV_UPPER_TRANSPOSE.png)
+#### SSYMV — symmetric matrix–vector multiply  
+\\[
+y \leftarrow \alpha A x + \beta y, \quad A = A^T
+\\]
 
-### f64
-#### LOWER TRIANGULAR
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DTRSV_LOWER_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DTRSV_LOWER_TRANSPOSE.png)
+- stored **lower** triangle:
 
-#### UPPER TRIANGULAR
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DTRSV_UPPER_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DTRSV_UPPER_TRANSPOSE.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/ssymv_lower.png)
 
-### c32
-#### LOWER TRIANGULAR
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CTRSV_LOWER_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CTRSV_LOWER_TRANSPOSE.png)
+- stored **upper** triangle:
 
-#### UPPER TRIANGULAR
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CTRSV_UPPER_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CTRSV_UPPER_TRANSPOSE.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/ssymv_upper.png)
 
-### c64
-#### LOWER TRIANGULAR
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZTRSV_LOWER_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZTRSV_LOWER_TRANSPOSE.png)
+#### SSYR — symmetric rank-1 update  
+\\[
+A \leftarrow \alpha x x^T + A
+\\]
 
-#### UPPER TRIANGULAR
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZTRSV_UPPER_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZTRSV_UPPER_TRANSPOSE.png)
+- **lower** triangle stored:
 
----
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/ssyr_lower.png)
 
-## TRMV
+- **upper** triangle stored:
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/ssyr_upper.png)
+
+#### SSYR2 — symmetric rank-2 update  
+\\[
+A \leftarrow \alpha (x y^T + y x^T) + A
+\\]
+
+- **lower** triangle stored:
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/ssyr2_lower.png)
+
+- **upper** triangle stored:
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/ssyr2_upper.png)
+
+#### STRMV — triangular matrix–vector multiply  
 \\[
 x \leftarrow \operatorname{op}(A) x
 \\]
 
-### f32
-#### LOWER TRIANGULAR
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/STRMV_LOWER_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/STRMV_LOWER_TRANSPOSE.png)
+- `u` = upper, `l` = lower  
+- `n` = no-transpose, `t` = transpose
 
-#### UPPER TRIANGULAR
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/STRMV_UPPER_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/STRMV_UPPER_TRANSPOSE.png)
+**Upper triangular (STRMV):**
 
-### f64
-#### LOWER TRIANGULAR
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DTRMV_LOWER_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DTRMV_LOWER_TRANSPOSE.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/strumv_n.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/strumv_t.png)
 
-#### UPPER TRIANGULAR
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DTRMV_UPPER_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DTRMV_UPPER_TRANSPOSE.png)
+**Lower triangular (STRMV):**
 
-### c32
-#### LOWER TRIANGULAR
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CTRMV_LOWER_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CTRMV_LOWER_TRANSPOSE.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/strlmv_n.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/strlmv_t.png)
 
-#### UPPER TRIANGULAR
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CTRMV_UPPER_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CTRMV_UPPER_TRANSPOSE.png)
+#### STRSV — triangular solve  
+\\[
+x \leftarrow A^{-1} b
+\\]
 
-### c64
-#### LOWER TRIANGULAR
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZTRMV_LOWER_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZTRMV_LOWER_TRANSPOSE.png)
+**Upper triangular (STRSV):**
 
-#### UPPER TRIANGULAR
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZTRMV_UPPER_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZTRMV_UPPER_TRANSPOSE.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/strusv_n.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/strusv_t.png)
+
+**Lower triangular (STRSV):**
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/strlsv_n.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/strlsv_t.png)
 
 ---
 
-# Level 3
+### Level 3
 
-## GEMM
+#### SGEMM — matrix–matrix multiply  
 \\[
 C \leftarrow \alpha \operatorname{op}(A)\operatorname{op}(B) + \beta C
 \\]
 
-### f32
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/SGEMM_NOTRANSPOSE_x_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/SGEMM_TRANSPOSE_x_TRANSPOSE.png)
+- `nn`: `op(A) = A`, `op(B) = B`
+- `tt`: `op(A) = A^T`, `op(B) = B^T`
 
-### f64
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DGEMM_NOTRANSPOSE_x_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DGEMM_TRANSPOSE_x_TRANSPOSE.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/sgemm_nn.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/openblas/sgemm_tt.png)
 
-### c32
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CGEMM_NOTRANSPOSE_x_NOTRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CGEMM_TRANSPOSE_x_TRANSPOSE.png)
-![](https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CGEMM_CONJTRANSPOSE_x_CONJTRANSPOSE.png)
+---
+
+## Apple Accelerate
+
+### Level 1 (Accelerate)
+
+#### ISAMAX — index of max absolute value
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/isamax.png)
+
+#### SASUM — sum of absolute values
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/sasum.png)
+
+#### SAXPY — y ← α x + y
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/saxpy.png)
+
+#### SCOPY — y ← x
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/scopy.png)
+
+#### SDOT — dot product
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/sdot.png)
+
+#### SNRM2 — Euclidean norm
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/snrm2.png)
+
+#### SROT — Givens rotation (in-place)
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/srot.png)
+
+#### SROTM — modified Givens rotation
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/srotm.png)
+
+#### SSCAL — x ← α x
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/sscal.png)
+
+#### SSWAP — swap two vectors
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/sswap.png)
+
+---
+
+### Level 2 (Accelerate)
+
+#### SGEMV — matrix–vector multiply  
+\\[
+y \leftarrow \alpha \operatorname{op}(A)x + \beta y
+\\]
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/sgemv_n.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/sgemv_t.png)
+
+#### SGER — rank-1 update
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/sger.png)
+
+#### SSYMV — symmetric matrix–vector multiply
+
+**Lower triangle stored:**
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/ssymv_lower.png)
+
+**Upper triangle stored:**
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/ssymv_upper.png)
+
+#### SSYR — symmetric rank-1 update
+
+**Lower triangle stored:**
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/ssyr_lower.png)
+
+**Upper triangle stored:**
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/ssyr_upper.png)
+
+#### SSYR2 — symmetric rank-2 update
+
+**Lower triangle stored:**
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/ssyr2_lower.png)
+
+**Upper triangle stored:**
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/ssyr2_upper.png)
+
+#### STRMV — triangular matrix–vector multiply
+
+**Upper triangular (STRMV):**
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/strumv_n.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/strumv_t.png)
+
+**Lower triangular (STRMV):**
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/strlmv_n.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/strlmv_t.png)
+
+#### STRSV — triangular solve
+
+**Upper triangular (STRSV):**
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/strusv_n.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/strusv_t.png)
+
+**Lower triangular (STRSV):**
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/strlsv_n.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/strlsv_t.png)
+
+---
+
+### Level 3 (Accelerate)
+
+#### SGEMM — matrix–matrix multiply
+
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/sgemm_nn.png)
+![](https://raw.githubusercontent.com/devdeliw/coral/main/coral/plots/accelerate/sgemm_tt.png)
 
