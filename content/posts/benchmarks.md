@@ -21,6 +21,9 @@ Each plot shows:
   - BLIS for `sgemm`
   - faer for `sgemm`/`matmul`
 
+The OpenBLAS backend used is optimized for Level2-3. For some Level1 routines like SNRM2, I believe 
+this backend just uses the reference, netlib algorithm. 
+
 ---
 
 ## Table of Contents
