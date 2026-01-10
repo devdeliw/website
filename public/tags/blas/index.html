@@ -19,8 +19,8 @@ https://github.com/alex-shpak/hugo-book
 
 
   <meta itemprop="name" content="BLAS">
-  <meta itemprop="datePublished" content="2025-10-31T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-10-31T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-11-25T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-25T00:00:00+00:00">
 
 <title>BLAS | my undergrad work</title>
 <link rel="icon" href="/favicon.png" >
@@ -30,7 +30,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.b6ac0efd84be6aef277a16662d5f391cd479ccc17a7ae10f37a80ce5511cdac0.js" integrity="sha256-tqwO/YS&#43;au8nehZmLV85HNR5zMF6euEPN6gM5VEc2sA=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.5ff57f75a7c3b3930a57ac47ed03a509ee7876851e106d57b09ed00c80cfebff.js" integrity="sha256-X/V/dafDs5MKV6xH7QOlCe54doUeEG1XsJ7QDIDP6/8=" crossorigin="anonymous"></script>
 
 
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/blas/index.xml" title="my undergrad work" />
@@ -82,7 +82,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-<ul><li><a href="/posts/" title="Writeups">Writeups</a></li><li><a href="/resume/" title="Resume">Resume</a></li></ul>
+<ul><li><a href="/posts/" title="posts">posts</a></li><li><a href="/optimizing/" title="optimizing">optimizing</a></li><li><a href="/resume/" title="resume">resume</a></li></ul>
 
 
 
@@ -125,21 +125,16 @@ https://github.com/alex-shpak/hugo-book
   
   <article class="markdown book-post">
     <h2>
-      <a href="/posts/benchmarks/">CORAL Benchmarks</a>
+      <a href="/posts/benchmarks/">coral benchmarks</a>
     </h2>
     
   <div class="flex align-center text-small book-post-date">
     <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
-    <span>October 31, 2025</span>
+    <span>November 25, 2025</span>
   </div>
 
 
 
-  
-  <div class="text-small">
-    
-      <a href="/categories/blas/">BLAS</a>
-  </div>
   
 
   
@@ -151,49 +146,105 @@ https://github.com/alex-shpak/hugo-book
 
 
     <div class="book-post-content"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
-<p>Apple M4 (6P + 4E), 16GB unified memory. Single-threaded (1 P-core).</p>
+<p>Apple M4 (6P + 4E), 16GB unified memory. All benchmarks are single-precision and
+single-threaded.</p>
+<p>Each plot shows:</p>
+<ul>
+<li><code>coral-safe</code> (portable-simd, safe Rust)</li>
+<li><code>coral-neon</code> (AArch64 / NEON)</li>
+<li>a reference implementation:
+<ul>
+<li>OpenBLAS armv8, or</li>
+<li>Apple Accelerate, or</li>
+<li>BLIS for <code>sgemm</code></li>
+<li>faer for <code>sgemm</code>/<code>matmul</code></li>
+</ul>
+</li>
+</ul>
+<p>The OpenBLAS backend used is optimized for Level2-3. For some Level1 routines like SNRM2, I believe
+this backend just uses the reference, netlib algorithm.</p>
+<hr>
+<h2 id="table-of-contents">Table of Contents<a class="anchor" href="#table-of-contents">#</a></h2>
+<ul>
+<li><a href="#openblas">OpenBLAS</a>
+<ul>
+<li><a href="#level-1">Level 1</a></li>
+<li><a href="#level-2">Level 2</a></li>
+<li><a href="#level-3">Level 3</a></li>
+</ul>
+</li>
+<li><a href="#apple-accelerate">With Apple Accelerate</a>
+<ul>
+<li><a href="#level-1-accelerate">Level 1</a></li>
+<li><a href="#level-2-accelerate">Level 2</a></li>
+<li><a href="#level-3-accelerate">Level 3</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="openblas">OpenBLAS<a class="anchor" href="#openblas">#</a></h2>
+<h3 id="level-1">Level 1<a class="anchor" href="#level-1">#</a></h3>
+<h4 id="isamax--index-of-max-absolute-value">ISAMAX — index of max absolute value<a class="anchor" href="#isamax--index-of-max-absolute-value">#</a></h4>
+<p><img src="https://raw.githubusercontent.com/devdeliw/coral/main/plots/openblas/isamax.png" alt="" /></p></div>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/benchmarks-aarch64/">coral-aarch64 benchmarks</a>
+    </h2>
+    
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>October 31, 2025</span>
+  </div>
+
+
+
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/blas/">BLAS</a>
+  </div>
+  
+
+
+    <div class="book-post-content"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
+<p>Apple M4 (6P + 4E), 16GB unified memory. All benchmarks are single-threaded.</p>
+<p>In all plots, CORAL is benchmarked against OpenBLAS. Some routines also include
+Apple Accelerate. When Accelerate is omitted, it&rsquo;s because its AMX-backed
+kernels on this M4 MacBook Pro are much faster and mask any
+comparison with OpenBLAS.</p>
+<p>For <code>sgemm</code>, <a href="https://faer.veganb.tw">faer</a> is included, also single-threaded.</p>
+<hr>
+<h2 id="table-of-contents">Table of Contents<a class="anchor" href="#table-of-contents">#</a></h2>
+<ul>
+<li><a href="#level-1">Level 1</a>
+<ul>
+<li><a href="#axpy">AXPY</a></li>
+<li><a href="#scal">SCAL</a></li>
+<li><a href="#dot">DOT</a></li>
+</ul>
+</li>
+<li><a href="#level-2">Level 2</a>
+<ul>
+<li><a href="#gemv">GEMV</a></li>
+<li><a href="#trsv">TRSV</a></li>
+<li><a href="#trmv">TRMV</a></li>
+</ul>
+</li>
+<li><a href="#level-3">Level 3</a>
+<ul>
+<li><a href="#gemm">GEMM</a></li>
+</ul>
+</li>
+</ul>
 <hr>
 <h1 id="level-1">Level 1<a class="anchor" href="#level-1">#</a></h1>
 <h2 id="axpy">AXPY<a class="anchor" href="#axpy">#</a></h2>
-<h3 id="f32">f32<a class="anchor" href="#f32">#</a></h3>
-<p><img src="https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/SAXPY.png" alt="" /></p>
-<h3 id="f64">f64<a class="anchor" href="#f64">#</a></h3>
-<p><img src="https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DAXPY.png" alt="" /></p>
-<h3 id="c32">c32<a class="anchor" href="#c32">#</a></h3>
-<p><img src="https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CAXPY.png" alt="" /></p>
-<h3 id="c64">c64<a class="anchor" href="#c64">#</a></h3>
-<p><img src="https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZAXPY.png" alt="" /></p>
-<hr>
-<h2 id="scal">SCAL<a class="anchor" href="#scal">#</a></h2>
-<h3 id="f32-1">f32<a class="anchor" href="#f32-1">#</a></h3>
-<p><img src="https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/SSCAL.png" alt="" /></p>
-<h3 id="f64-1">f64<a class="anchor" href="#f64-1">#</a></h3>
-<p><img src="https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DSCAL.png" alt="" /></p>
-<h3 id="c32-1">c32<a class="anchor" href="#c32-1">#</a></h3>
-<p><img src="https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CSCAL.png" alt="" /></p>
-<h3 id="c64-1">c64<a class="anchor" href="#c64-1">#</a></h3>
-<p><img src="https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZSCAL.png" alt="" /></p>
-<hr>
-<h2 id="dot">DOT<a class="anchor" href="#dot">#</a></h2>
-<h3 id="f32-2">f32<a class="anchor" href="#f32-2">#</a></h3>
-<p><img src="https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/SDOT.png" alt="" /></p>
-<h3 id="f64-2">f64<a class="anchor" href="#f64-2">#</a></h3>
-<p><img src="https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/DDOT.png" alt="" /></p>
-<h3 id="c32-2">c32<a class="anchor" href="#c32-2">#</a></h3>
-<h4 id="conj-cdotc">conj (<code>cdotc</code>)<a class="anchor" href="#conj-cdotc">#</a></h4>
-<p><img src="https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CDOTC.png" alt="" /></p>
-<h4 id="unconj-cdotu">unconj (<code>cdotu</code>)<a class="anchor" href="#unconj-cdotu">#</a></h4>
-<p><img src="https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/CDOTU.png" alt="" /></p>
-<h3 id="c64-2">c64<a class="anchor" href="#c64-2">#</a></h3>
-<h4 id="conj-zdotc">conj (<code>zdotc</code>)<a class="anchor" href="#conj-zdotc">#</a></h4>
-<p><img src="https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZDOTC.png" alt="" /></p>
-<h4 id="unconj-zdotu">unconj (<code>zdotu</code>)<a class="anchor" href="#unconj-zdotu">#</a></h4>
-<p><img src="https://raw.githubusercontent.com/devdeliw/coral/main/benches/plots/ZDOTU.png" alt="" /></p>
-<hr>
-<h1 id="level-2">Level 2<a class="anchor" href="#level-2">#</a></h1>
-<h2 id="gemv">GEMV<a class="anchor" href="#gemv">#</a></h2>
-<p>\[
-y \leftarrow \alpha \operatorname{op}(A) x + \beta y
+<p>AXPY performs a scaled vector addition:
+\[
+y \leftarrow \alpha x + y
 \]</p></div>
   </article>
   
@@ -335,13 +386,8 @@ into three levels, each monumentally more difficult than the last.</p></div>
       <ul>
       
         <li class="flex align-center">
-          <a href="/categories/blas/">BLAS</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex align-center">
           <a href="/categories/software/">Software</a>
-          <span>4</span>
+          <span>5</span>
         </li>
       
         <li class="flex align-center">
@@ -360,7 +406,7 @@ into three levels, each monumentally more difficult than the last.</p></div>
       
         <li class="flex align-center">
           <a href="/tags/blas/">BLAS</a>
-          <span>3</span>
+          <span>4</span>
         </li>
       
         <li class="flex align-center">

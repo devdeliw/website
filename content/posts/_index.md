@@ -2,5 +2,5 @@
 menu:
   after:
     weight: 1
-title: "Writeups"
+title: "posts"
 ---

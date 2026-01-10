@@ -13,16 +13,16 @@ https://github.com/alex-shpak/hugo-book
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/">
   <meta property="og:site_name" content="my undergrad work">
-  <meta property="og:title" content="Writeups">
+  <meta property="og:title" content="posts">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 
 
-  <meta itemprop="name" content="Writeups">
-  <meta itemprop="datePublished" content="2025-10-31T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-10-31T00:00:00+00:00">
+  <meta itemprop="name" content="posts">
+  <meta itemprop="datePublished" content="2025-11-25T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-25T00:00:00+00:00">
 
-<title>Writeups | my undergrad work</title>
+<title>posts | my undergrad work</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="http://localhost:1313/posts/">
@@ -30,7 +30,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.b6ac0efd84be6aef277a16662d5f391cd479ccc17a7ae10f37a80ce5511cdac0.js" integrity="sha256-tqwO/YS&#43;au8nehZmLV85HNR5zMF6euEPN6gM5VEc2sA=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.5ff57f75a7c3b3930a57ac47ed03a509ee7876851e106d57b09ed00c80cfebff.js" integrity="sha256-X/V/dafDs5MKV6xH7QOlCe54doUeEG1XsJ7QDIDP6/8=" crossorigin="anonymous"></script>
 
 
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/posts/index.xml" title="my undergrad work" />
@@ -82,7 +82,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-<ul><li><a href="/posts/" class="active" title="Writeups">Writeups</a></li><li><a href="/resume/" title="Resume">Resume</a></li></ul>
+<ul><li><a href="/posts/" class="active" title="posts">posts</a></li><li><a href="/optimizing/" title="optimizing">optimizing</a></li><li><a href="/resume/" title="resume">resume</a></li></ul>
 
 
 
@@ -108,7 +108,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Writeups</h3>
+  <h3>posts</h3>
 
   <label for="toc-control">
     
@@ -131,17 +131,12 @@ https://github.com/alex-shpak/hugo-book
       
         <li class="flex align-center">
           <a href="/categories/software/">Software</a>
-          <span>4</span>
+          <span>5</span>
         </li>
       
         <li class="flex align-center">
           <a href="/categories/math/">Math</a>
           <span>5</span>
-        </li>
-      
-        <li class="flex align-center">
-          <a href="/categories/blas/">BLAS</a>
-          <span>0</span>
         </li>
       
       </ul>
@@ -155,7 +150,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li class="flex align-center">
           <a href="/tags/blas/">BLAS</a>
-          <span>3</span>
+          <span>4</span>
         </li>
       
         <li class="flex align-center">
@@ -181,7 +176,46 @@ https://github.com/alex-shpak/hugo-book
   
   <article class="book-post markdown">
     <h2>
-      <a href="/posts/benchmarks/">CORAL Benchmarks</a>
+      <a href="/posts/benchmarks/">coral benchmarks</a>
+    </h2>
+    <div class="book-post-container flex gap">
+      <div>
+        
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>November 25, 2025</span>
+  </div>
+
+
+
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/blas/">BLAS</a>
+  </div>
+  
+
+
+        <div class="book-post-content markdown-inner"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
+<p>Apple M4 (6P + 4E), 16GB unified memory. All benchmarks are single-precision and
+single-threaded.</p>
+<p>Each plot shows:</p>
+<ul>
+<li><code>coral-safe</code> (portable-simd, safe Rust)</li>
+<li><code>coral-neon</code> (AArch64 / NEON)</li>
+<li>a reference implementation:
+<ul>
+<li>OpenBLAS armv8, or</li>
+<li>Apple Accelerate, or</li>
+<li>BLIS …</li></ul></li></ul></div>
+      </div></div>
+  </article>
+  
+  <article class="book-post markdown">
+    <h2>
+      <a href="/posts/benchmarks-aarch64/">coral-aarch64 benchmarks</a>
     </h2>
     <div class="book-post-container flex gap">
       <div>
@@ -204,10 +238,10 @@ https://github.com/alex-shpak/hugo-book
 
 
         <div class="book-post-content markdown-inner"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
-<p>Apple M4 (6P + 4E), 16GB unified memory. single-threaded (1 P-core).</p>
-<p>In all plots I benchmark against OpenBLAS. For some I also benchmark against
-Apple Accelerate. Routines that don&rsquo;t have Accelerate shown mean Accelerate was
-much faster on my M4 …</p></div>
+<p>Apple M4 (6P + 4E), 16GB unified memory. All benchmarks are single-threaded.</p>
+<p>In all plots, CORAL is benchmarked against OpenBLAS. Some routines also include
+Apple Accelerate. When Accelerate is omitted, it&rsquo;s because its AMX-backed
+kernels on this M4 …</p></div>
       </div></div>
   </article>
   
@@ -528,17 +562,12 @@ simple.</p>
       
         <li class="flex align-center">
           <a href="/categories/software/">Software</a>
-          <span>4</span>
+          <span>5</span>
         </li>
       
         <li class="flex align-center">
           <a href="/categories/math/">Math</a>
           <span>5</span>
-        </li>
-      
-        <li class="flex align-center">
-          <a href="/categories/blas/">BLAS</a>
-          <span>0</span>
         </li>
       
       </ul>
@@ -552,7 +581,7 @@ simple.</p>
       
         <li class="flex align-center">
           <a href="/tags/blas/">BLAS</a>
-          <span>3</span>
+          <span>4</span>
         </li>
       
         <li class="flex align-center">
