@@ -7,6 +7,6 @@ title: "optimizing"
 
 ## Advent of Code
 ### 2025 
-[Day 02]("/2025_02.pdf") 
+[Day 02](/2025_02.pdf) 
 
 
