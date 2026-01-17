@@ -1,5 +1,5 @@
 :root {
-  --font-size-base: 17px;     /* try 17px / 18px / 19px */
+  --font-size-base: 16px;     /* try 17px / 18px / 19px */
   --font-size-small: 0.92em;  /* optional tweak */
   --font-size-code: 0.95em;   /* optional tweak */
 }
