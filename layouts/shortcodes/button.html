@@ -1,0 +1,17 @@
+{{- $href := "" -}}
+{{- if .Get "href" -}}
+  {{- $href = partial "docs/links/portable-link" (dict "Page" .Page "Destination" (.Get "href")) -}}
+{{- else if .Get "relref" -}}
+  {{- $href = relref . (.Get "relref") -}}
+{{- end -}}
+
+{{- $isRemote := (urls.Parse $href).IsAbs -}}
+<a 
+  {{ with $href }}href="{{ $href }}"{{ end }} 
+  {{ if $isRemote }}target="_blank" rel="noopener"{{ end }}
+  class="book-btn{{ with .Get "class" }} {{ . }}{{ end }}"
+>
+  {{- .InnerDeindent -}}
+</a>
+{{- /* remove whitespaces */ -}}
+

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Core Rust Architecture for Linear Algebra">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/coral_intro/">
+  <meta property="og:site_name" content="my undergrad work">
+  <meta property="og:title" content="What is CORAL?">
+  <meta property="og:description" content="Core Rust Architecture for Linear Algebra">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-10-09T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-10-09T00:00:00+00:00">
+    <meta property="article:tag" content="BLAS">
+
+
+  <meta itemprop="name" content="What is CORAL?">
+  <meta itemprop="description" content="Core Rust Architecture for Linear Algebra">
+  <meta itemprop="datePublished" content="2025-10-09T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-10-09T00:00:00+00:00">
+  <meta itemprop="wordCount" content="461">
+  <meta itemprop="keywords" content="BLAS">
+
+<title>What is CORAL? | my undergrad work</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/posts/coral_intro/">
+<link rel="stylesheet" href="/book.min.6970156cec683193d93c9c4edaf0d56574e4361df2e0c1be4f697ae81c3ba55f.css" integrity="sha256-aXAVbOxoMZPZPJxO2vDVZXTkNh3y4MG&#43;T2l66Bw7pV8=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.5ff57f75a7c3b3930a57ac47ed03a509ee7876851e106d57b09ed00c80cfebff.js" integrity="sha256-X/V/dafDs5MKV6xH7QOlCe54doUeEG1XsJ7QDIDP6/8=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>my undergrad work</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/posts/" title="posts">posts</a></li><li><a href="/optimizing/" title="optimizing">optimizing</a></li><li><a href="/resume/" title="resume">resume</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>What is CORAL?</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#level-1">Level 1</a></li>
+        <li><a href="#level-2">Level 2</a></li>
+        <li><a href="#level-3">Level 3</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    What is CORAL?
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>October 9, 2025</span>
+  </div>
+
+
+
+  
+  <div class="text-small">
+    
+      <a href="/categories/software/">Software</a>
+  </div>
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/blas/">BLAS</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
+<p>In the past few months I&rsquo;ve become immensely interested in scientific computing
+and writing fast code. I started <a href="https://github.com/devdeliw/CORAL">CORAL</a> as a project to learn both at the same
+time. And learn <a href="https://rust-lang.org">Rust</a>.</p>
+<p>CORAL stands for <em>COre Rust Architecture for Linear algebra</em>. It is an
+implementation of the <a href="https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms">Basic Linear Algebra
+Subprograms</a>, or
+<em>BLAS</em>, in pure Rust. It is written for AArch64 architectures only.</p>
+<p>BLAS is the set of the most common low-level operations, &ldquo;kernels&rdquo;, for linear
+algebra. Most numerical routines involve linear algebra; it is clear
+that a useful BLAS must be <em>as fast as possible</em>. These kernels naturally separate
+into three levels, each monumentally more difficult than the last.</p>
+<div class="book-steps ">
+<ol>
+<li>
+<h3 id="level-1">Level 1<a class="anchor" href="#level-1">#</a></h3>
+<p><em>Vector-Vector Operations</em> <br><br>
+Think of things like calculating the dot product, $\vec{x} \cdot \vec{y}$,
+or multiplying by a scalar, $\alpha \vec{x}$. <br>
+These operations are <em>memory bound</em>; the bottleneck is how fast memory
+is moved around, not how fast the CPU is. Good performance can be achieved
+if code is written intelligently.</p>
+</li>
+<li>
+<h3 id="level-2">Level 2<a class="anchor" href="#level-2">#</a></h3>
+<p><em>Matrix-Vector Operations</em> <br><br>
+Think of things like calculating $A\vec{x}$, or solving a system of
+equations $A\vec{x} = \vec{b}$ given a triangular matrix
+$A$ and $\vec{b}$. These operations are also memory bound. It is here
+though, that clever tricks leveraging cache to maximize performance begin.
+Good performance can still be achieved with smart code.</p>
+</li>
+<li>
+<h3 id="level-3">Level 3<a class="anchor" href="#level-3">#</a></h3>
+<p><em>Matrix-Matrix Operations</em> <br><br>
+Think of things like calculating $AB$. It&rsquo;s fair to say $AB$ is
+the most executed mathematical operation on the planet. It is also <em>compute bound</em>, which means
+reaching peak performance is <em><a href="https://en.wikipedia.org/wiki/Computational_complexity_of_matrix_multiplication">still an active area of research</a>.</em></p>
+<p>A BLAS&rsquo;s performance is almost entirely dependent on how fast it can
+calculate $AB$. Consequently, solving many $AB$s is <a href="https://en.wikipedia.org/wiki/LINPACK_benchmarks">how supercomputers are
+benchmarked today</a>. AI
+only exists today because matrix multiplication became fast enough.</p>
+</li>
+</ol>
+</div>
+<p>One of BLAS&rsquo;s pioneers is <a href="https://en.wikipedia.org/wiki/Kazushige_Goto">Kazushige
+Goto</a>, who hand optimized assembly
+routines for his <a href="https://www.cs.utexas.edu/~flame/pubs/GotoTOMS_final.pdf">GotoBLAS</a>.
+This implementation outperformed many BLAS used at the time and became the
+backbone for the current industry standard <a href="https://github.com/OpenMathLib/OpenBLAS">OpenBLAS</a>.
+If you use Python and NumPy for vector calculations, OpenBLAS is why it&rsquo;s so fast.</p>
+<p>CORAL isn’t built to compete with industry BLAS, but to reach $\simeq$ 80 % of their
+performance <strong>on AArch64</strong>.$^\dagger$ This is to educate myself and others on how these
+fast low-level algorithms work. The purpose of this &ldquo;blog&rdquo; is to walk through how to
+intelligently write code to make a fast BLAS. Just not one that&rsquo;s used by
+supercomputers.</p>
+<br>
+<hr>
+<p>$^\dagger$ Turns out, <strong>on AArch64</strong>, CORAL is actually comparable to OpenBLAS
+<em>when both are single-threaded</em>. CORAL outperforms for <code>D/C/ZGEMM</code>, and is $\sim$comparable
+for <code>SGEMM</code> (single precision general matrix multiplication). This makes sense,
+since <code>SGEMM</code> is the most used. You can see the benchmark(s)
+<a href="https://github.com/devdeliw/CORAL/blob/main/benches/plots/">here</a>.
+However, optimized for Apple Silicon, <a href="https://developer.apple.com/documentation/accelerate">Apple
+Accelerate</a>, another BLAS
+implementation, absolutely wrecks both CORAL and OpenBLAS.</p>
+<br> 
+<div style="position: relative; width: 100%; margin-top: 2em;">
+  <div style="position: absolute; right: 0;">
+    <a 
+  href="/posts/memory/" 
+  
+  class="book-btn btn"
+>Next →</a>
+  </div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+  <div>
+  
+    <a href="/posts/memory/" class="flex align-center">
+      <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+      <span>Understanding Memory</span>
+    </a>
+  
+  </div>
+  <div>
+  
+    <a href="/posts/nasa_programming/" class="flex align-center">
+      <span>Hamiltonian Programming</span>
+      <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+    </a>
+  
+  </div>
+</div>
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#level-1">Level 1</a></li>
+        <li><a href="#level-2">Level 2</a></li>
+        <li><a href="#level-3">Level 3</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NASA 3">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/nasa_derive_3/">
+  <meta property="og:site_name" content="my undergrad work">
+  <meta property="og:title" content="The Spin Hamiltonian">
+  <meta property="og:description" content="NASA 3">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-06-10T00:00:00+00:00">
+    <meta property="article:tag" content="NASA">
+
+
+  <meta itemprop="name" content="The Spin Hamiltonian">
+  <meta itemprop="description" content="NASA 3">
+  <meta itemprop="datePublished" content="2025-06-10T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-06-10T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1172">
+  <meta itemprop="keywords" content="NASA">
+
+<title>The Spin Hamiltonian | my undergrad work</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/posts/nasa_derive_3/">
+<link rel="stylesheet" href="/book.min.6970156cec683193d93c9c4edaf0d56574e4361df2e0c1be4f697ae81c3ba55f.css" integrity="sha256-aXAVbOxoMZPZPJxO2vDVZXTkNh3y4MG&#43;T2l66Bw7pV8=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.5ff57f75a7c3b3930a57ac47ed03a509ee7876851e106d57b09ed00c80cfebff.js" integrity="sha256-X/V/dafDs5MKV6xH7QOlCe54doUeEG1XsJ7QDIDP6/8=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>my undergrad work</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/posts/" title="posts">posts</a></li><li><a href="/optimizing/" title="optimizing">optimizing</a></li><li><a href="/resume/" title="resume">resume</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>The Spin Hamiltonian</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-exchange-interaction">The Exchange Interaction</a>
+      <ul>
+        <li><a href="#energy-splitting">Energy Splitting</a></li>
+        <li><a href="#exchange-operator">Exchange Operator</a></li>
+        <li><a href="#proportionality-coefficient">Proportionality Coefficient</a></li>
+      </ul>
+    </li>
+    <li><a href="#basis-states">Basis States</a>
+      <ul>
+        <li><a href="#triplet-1-1rangle-manifold">Triplet $|1, +1\rangle$ manifold</a></li>
+        <li><a href="#triplet-1-0rangle-manifold">Triplet $|1, 0\rangle$ manifold</a></li>
+        <li><a href="#singlet-0-0rangle-manifold">Singlet $|0, 0\rangle$ manifold</a></li>
+        <li><a href="#triplet-1--1rangle-manifold">Triplet $|1, -1\rangle$ manifold</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    The Spin Hamiltonian
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>June 10, 2025</span>
+  </div>
+
+
+
+  
+  <div class="text-small">
+    
+      <a href="/categories/math/">Math</a>
+  </div>
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/nasa/">NASA</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
+<blockquote class="book-hint warning">
+<p>This post is math heavy. I&rsquo;ll try to walk through it all elegantly though. The
+important equations are boxed if you&rsquo;d like to skip through. On mobile some
+equations may go overfull.</p>
+</blockquote>
+<p>In <a href="https://dev-undergrad.dev/posts/nasa_derive_1/">Part 1</a> we derived the
+Zeeman Hamiltonian and the Hyperfine Hamiltonian. In <a href="https://dev-undergrad.dev/posts/nasa_derive_2/">Part
+2</a> we derived the Zero-Field
+Splitting Hamiltonian analogously. The goal of this post is to derive the last
+sub-Hamiltonian for the <a href="https://en.wikipedia.org/wiki/Exchange_interaction">Exchange
+Interaction</a> and
+consequently derive the complete Spin Hamiltonian $\mathscr{H}$.</p>
+<p>I use a fancy $\mathscr{H}$ to represent the Spin Hamiltonian.
+Sub-Hamiltonians are normal $H$&rsquo;s but with hats (e.g. $\hat{H}_Z$).</p>
+<hr>
+<h2 id="the-exchange-interaction">The Exchange Interaction<a class="anchor" href="#the-exchange-interaction">#</a></h2>
+<blockquote class='book-hint '>
+<p>Quantum mechanics says electrons are <em>indistinguishable</em> fermions. Their combined
+spatial + spin wave function must be antisymmetric. This symmetry links
+neighboring electrons spins and positions. $\hat{H}_{EX}$ is another term that shifts
+energy levels.</p></blockquote><p>Consider two electrons in orbitals $\phi_a (\vec{r}), \phi_b(\vec{r})$. The
+two-electron Hamiltonian is</p>
+<p>$$
+H = \sum_{i=1}^2 \left[\underbrace{-\frac{\hbar^2}{2m} \nabla_i^2}_{\text{kinetic energy}} +
+\underbrace{V(\vec{r}_i)}_{\text{potential energy}}\right] +
+\underbrace{\frac{e^2}{4\pi\epsilon_0} |\vec{r}_1 - \vec{r}_2|}_{\text{Coulomb
+repulsion}}.
+$$</p>
+<p>Here, $V(\vec{r})$ is the single-particle potential. Because electrons are
+fermions, their state must be antisymmetric under spatial and spin exchange. We
+factorize into spatial $\Psi(\vec{r}_1, \vec{r}_2)$ and spin $\chi(s_1, s_2)$
+parts:</p>
+<p>$$
+\Psi_{\text{tot}} (1, 2) = \Psi(\vec{r}_1, \vec{r}_2)\chi(s_1, s_2),
+$$</p>
+<p>where antisymmetry requires</p>
+<p>$$
+\Psi_{\text{tot}}(2, 1) = -\Psi_{\text{tot}}(1, 2).
+$$</p>
+<p>If spatial $\Psi$ is symmetric, then the spin state $\chi$ must be antisymmetric
+(a singlet). If $\Psi$ is antisymmetric, $\chi$ must be symmetric (a triplet).</p>
+<p>We build orthonormal spatial orbitals $\phi_a, \phi_b$. Let&rsquo;s choose</p>
+<p>$$
+\begin{align*}
+\Psi_S(\vec{r}_1, \vec{r}_2) &amp;= \frac{1}{\sqrt{2}}[\phi_a(1) \phi_b(2) +
+\phi_b(1)\phi_a(2)] \\
+\Psi_A(\vec{r}_1, \vec{r}_2) &amp;= \frac{1}{\sqrt{2}}[\phi_a(1)\phi_b(2) -
+\phi_b(1)\phi_a(2)].
+\end{align*}
+$$</p>
+<p>The corresponding spin states are</p>
+<p>$$
+\begin{align*}
+\chi_S &amp;= \frac{1}{\sqrt{2}}(|\uparrow \downarrow\rangle - |\downarrow
+\uparrow\rangle) \quad \text{(singlet)}, \\
+\chi_A &amp;= \frac{1}{\sqrt{2}}(|\uparrow \downarrow \rangle + |\downarrow
+\uparrow\rangle) \quad \text{(triplet)}.
+\end{align*}
+$$</p>
+<p>We can diagonalize $H$ into the two-dimensional
+subspace spanned by $\phi_a\phi_b$.  Both electrons share the same one-particle
+energy,</p>
+<p>$$
+E_0 = \langle \phi_a | \hat{h} | \phi_a\rangle + \langle
+\phi_b|\hat{h}|\phi_b\rangle, \quad \hat{h} = -\frac{\hbar^2}{2m}\nabla^2 +
+V(\vec{r}).
+$$</p>
+<p>Therefore, any energy splitting arises entirely from the Coulomb term.</p>
+<h3 id="energy-splitting">Energy Splitting<a class="anchor" href="#energy-splitting">#</a></h3>
+<p>Let&rsquo;s define the &ldquo;direct&rdquo; and &ldquo;exchange&rdquo; integrals:</p>
+<p>$$
+\begin{align*}
+K &amp;\equiv \int \int d^3r_1 d^3r_2 \, |\phi_a (1)|^2 \frac{e^2}{4\pi\epsilon_0
+r_{12}} |\phi_b(2)|^2, \\
+J &amp;\equiv \int \int d^3r_1 d^3r_2 \phi_a^* (1) \phi_b (1)
+\frac{e^2}{4\pi\epsilon_0r_{12}} \phi_b^* (2) \phi_a (2).
+\end{align*}
+$$</p>
+<p>By magic,</p>
+<p>$$
+\begin{align}
+\langle \Psi_S | H | \Psi_S \rangle = E_0 + K + J,  \\
+\langle \Psi_A | H | \Psi_A \rangle = E_0 + K - J.
+\end{align}
+$$</p>
+<p>Thus the singlet sits at energy $E_S = E_0 + K + J$, while each triplet has $E_T
+= E_0 + K - J$. Their energy difference/splitting is</p>
+<p>$$
+\begin{align}
+\Delta E \equiv E_S - E_T = 2J.
+\end{align}
+$$</p>
+<p>The energy splitting due to the Zero Field $\hat{H}_{ZFS}$ is analogously also
+$2D$. We now wish to replace this two-level spatial + spin system with a pure spin
+Hamiltonian that reproduces the same energy shift between singlet and triplet.</p>
+<h3 id="exchange-operator">Exchange Operator<a class="anchor" href="#exchange-operator">#</a></h3>
+<p>Recall that the operator exchanging two spins is</p>
+<p>$$
+\hat{P}_{12}\chi(1, 2) = \chi(2, 1).
+$$</p>
+<p>Its eigenvalues are +1 on the symmetric (triplet) subspace and -1 on the
+antisymmetric (singlet) subspace. Define the total spin operator and its square</p>
+<p>$$
+\begin{align*}
+\hat{\vec{S}}_{\text{tot}} &amp;= \hat{\vec{S}}_1 + \hat{\vec{S}}_2, \\
+\hat{S}_{\text{tot}}^2 &amp;= \hat{S}_1^2 + \hat{S}_2^2 + 2\hat{\vec{S}}_1 \cdot
+\hat{\vec{S}}_2.
+\end{align*}
+$$</p>
+<p>for spin-1/2 particles, $\hat{S}_1^2 = \hat{S}_2^2 = \hat{S}_x^2 + \hat{S}_y^2 +
+\hat{S}_z^2 = \frac{3\hbar^2}{4}\mathbb{I}$. Hence,</p>
+<p>$$
+\hat{S}_{\text{tot}}^2 = \frac{3\hbar^2}{2}\mathbb{I} + 2\hat{\vec{S}}_1 \cdot
+\hat{\vec{S}}_2.
+$$</p>
+<p>Now for both triplet ($S_{\text{tot}} = 1$) and singlet ($S_{\text{tot}} = 0$)
+states,</p>
+<p>$$
+\begin{align}
+\hat{S}_{\text{tot}}^2 |10\rangle &amp;= S(S+1)\hbar^2 |10\rangle = 2\hbar^2
+|10\rangle \\
+\hat{S}_{\text{tot}}^2 |00\rangle &amp;= S(S+1)\hbar^2 |00\rangle = 0
+\end{align}
+$$</p>
+<p>But we need an exchange operator that satisfies</p>
+<p>$$
+\begin{align}
+\hat{P}_{12}|10\rangle &amp;= +|10\rangle \\
+\hat{P}_{12}|00\rangle &amp;= -|00\rangle.
+\end{align}
+$$</p>
+<p>We define an ansatz $\hat{P}_{12} = a \hat{S}_{\text{tot}}^2 + b \mathbb{I}$.
+Plugging Equations (4) and (5) into (6) and (7) gives</p>
+<p>$$
+\begin{align*}
+\hat{P}_{12} |10\rangle &amp;= a(2) + b |10\rangle = +1 |00\rangle \\
+\hat{P}_{12} |00\rangle &amp;= a(0) + b |00\rangle = -1 |00\rangle.
+\end{align*}
+$$</p>
+<p>Solving for a and b gives $a = 1$ and $b = -1$. So we get the exchange operator:</p>
+<p>$$
+\hat{P}_{12} = 1 \cdot \hat{S}_{\text{tot}}^2 - 1 \cdot \mathbb{I} =
+\hat{S}_{\text{tot}}^2 - \mathbb{I}.
+$$</p>
+<p>The final expression for the exchange operator is</p>
+<p>$$
+\hat{P}_\text{12} = \frac{1}{2} \left(1 + 4 \hat{\vec{S}}_1 \cdot
+\hat{\vec{S}}_2 \right).
+$$</p>
+<p>Its eigenvalues are correctly -1 on the singlet and +1 on the triplet manifold.
+Hence, an operator proportional to $\hat{P}_{12}$ will split singlet/triplet.</p>
+<h3 id="proportionality-coefficient">Proportionality Coefficient<a class="anchor" href="#proportionality-coefficient">#</a></h3>
+<p>Define the proportionality coefficient $J_{ex}$ such that</p>
+<p>$$
+\hat{H}_{EX} = J_{ex} \hat{P}_{12} = \frac{J_{ex}}{2} \left(1 +
+4\hat{\vec{S}}_1 \cdot \hat{\vec{S}}_2\right).
+$$</p>
+<p>Acting on the singlet and triplet manifolds:</p>
+<p>$$
+\begin{align}
+\hat{H}_{EX} \chi_S &amp;= J_{ex}(-1)\chi_S \\
+\hat{H}_{EX} \chi_T &amp;= J_{ex}(+1)\chi_T.
+\end{align}
+$$</p>
+<p>To reproduce the $\Delta E = 2J$ energy splitting from Equation (2) demands $J_{ex} = -J$. Then</p>
+<p>$$
+E_{S} = -J_{ex} = +J \qquad E_{T} = +J_{ex} = -J;
+$$
+$$ \Delta E = 2J, $$</p>
+<p>as desired. We set $J$ to be the exchange coupling matrix proportional to the
+degree of overlap between wave functions. The Exchange Hamiltonian can finally
+be expressed as</p>
+<p>$$
+\hat{H}_{EX} = \hat{\vec{S}}_a \cdot J \cdot \hat{\vec{S}}_b.
+$$</p>
+<p>Assuming the exchange coupling is isotropic, we get</p>
+<p>$$
+\boxed{
+\hat{H}_{EX} = -J \hat{\vec{S}}_a \cdot \hat{\vec{S}}_b.
+}
+$$</p>
+<p>This is the final component of the 16 $\times$ 16 Spin Hamiltonian. Together,
+the Zeeman, Hyperfine, ZFS, and Exchange Hamiltonians can describe the
+mechanics of spin-dependent recombination.</p>
+<hr>
+<h2 id="basis-states">Basis States<a class="anchor" href="#basis-states">#</a></h2>
+<p>For a two-electron (carrier + defect) and two-nuclei (silicon and carbon) spin
+system, there are 16 orthonormal basis states. Our Spin Hamiltonian is a matrix
+of shape $16 \times 16$.</p>
+<p>To make future calculations easier, we&rsquo;ll define our basis states with the
+electrons coupled ($|s, m\rangle$) and the nuclei in their Zeeman $\{\uparrow,
+\downarrow \} \equiv \{ +\frac{1}{2}, -\frac{1}{2} \}$ basis.</p>
+<h3 id="triplet-1-1rangle-manifold">Triplet $|1, +1\rangle$ manifold<a class="anchor" href="#triplet-1-1rangle-manifold">#</a></h3>
+<p>$$
+\begin{cases}
+|1,1\rangle \otimes |+\tfrac{1}{2}\rangle_1 \otimes |+\tfrac{1}{2}\rangle_2 \\
+|1,1\rangle \otimes |+\tfrac{1}{2}\rangle_1 \otimes |-\tfrac{1}{2}\rangle_2 \\
+|1,1\rangle \otimes |-\tfrac{1}{2}\rangle_1 \otimes |+\tfrac{1}{2}\rangle_2 \\
+|1,1\rangle \otimes |-\tfrac{1}{2}\rangle_1 \otimes |-\tfrac{1}{2}\rangle_2
+\end{cases}
+$$</p>
+<h3 id="triplet-1-0rangle-manifold">Triplet $|1, 0\rangle$ manifold<a class="anchor" href="#triplet-1-0rangle-manifold">#</a></h3>
+<p>$$
+\begin{cases}
+|1,0\rangle \otimes |+\tfrac{1}{2}\rangle_1 \otimes |+\tfrac{1}{2}\rangle_2 \\
+|1,0\rangle \otimes |+\tfrac{1}{2}\rangle_1 \otimes |-\tfrac{1}{2}\rangle_2 \\
+|1,0\rangle \otimes |-\tfrac{1}{2}\rangle_1 \otimes |+\tfrac{1}{2}\rangle_2 \\
+|1,0\rangle \otimes |-\tfrac{1}{2}\rangle_1 \otimes |-\tfrac{1}{2}\rangle_2
+\end{cases}
+$$</p>
+<h3 id="singlet-0-0rangle-manifold">Singlet $|0, 0\rangle$ manifold<a class="anchor" href="#singlet-0-0rangle-manifold">#</a></h3>
+<p>$$
+\begin{cases}
+|0,0\rangle \otimes |+\tfrac{1}{2}\rangle_1 \otimes |+\tfrac{1}{2}\rangle_2 \\
+|0,0\rangle \otimes |+\tfrac{1}{2}\rangle_1 \otimes |-\tfrac{1}{2}\rangle_2 \\
+|0,0\rangle \otimes |-\tfrac{1}{2}\rangle_1 \otimes |+\tfrac{1}{2}\rangle_2 \\
+|0,0\rangle \otimes |-\tfrac{1}{2}\rangle_1 \otimes |-\tfrac{1}{2}\rangle_2
+\end{cases}
+$$</p>
+<h3 id="triplet-1--1rangle-manifold">Triplet $|1, -1\rangle$ manifold<a class="anchor" href="#triplet-1--1rangle-manifold">#</a></h3>
+<p>$$
+\begin{cases}
+|1,-1\rangle \otimes |+\tfrac{1}{2}\rangle_1 \otimes |+\tfrac{1}{2}\rangle_2 \\
+|1,-1\rangle \otimes |+\tfrac{1}{2}\rangle_1 \otimes |-\tfrac{1}{2}\rangle_2 \\
+|1,-1\rangle \otimes |-\tfrac{1}{2}\rangle_1 \otimes |+\tfrac{1}{2}\rangle_2 \\
+|1,-1\rangle \otimes |-\tfrac{1}{2}\rangle_1 \otimes |-\tfrac{1}{2}\rangle_2
+\end{cases}
+$$</p>
+<p>The first $|s, m\rangle$ states represent the two electrons in their coupled
+basis. The second $|\pm\frac{1}{2}\rangle_1 \otimes |\pm \frac{1}{2}\rangle_2$
+states represent the two nuclei in their Zeeman basis.</p>
+<p>Now we are ready to programmatically calculate the Spin Hamiltonian $\mathscr{H}$.
+We&rsquo;ll evaluate its effect on each basis state above. To do this, we program the Zeeman,
+Hyperfine, ZFS, and Exchange Hamiltonian&rsquo;s effect on each basis state, and then
+sum them together.</p>
+<br> 
+<div style="position: relative; width: 100%; margin-top: 2em;">
+  <div style="position: absolute; right: 0;">
+    <a 
+  href="/posts/nasa_programming/" 
+  
+  class="book-btn btn"
+>Next →</a>
+  </div>
+  <div style="position: absolute; left: 0;">
+    <a 
+  href="/posts/nasa_derive_2/" 
+  
+  class="book-btn btn"
+>← Previous</a>
+  </div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+  <div>
+  
+    <a href="/posts/nasa_programming/" class="flex align-center">
+      <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+      <span>Hamiltonian Programming</span>
+    </a>
+  
+  </div>
+  <div>
+  
+    <a href="/posts/nasa_derive_2/" class="flex align-center">
+      <span>Zero-Field Splitting</span>
+      <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+    </a>
+  
+  </div>
+</div>
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-exchange-interaction">The Exchange Interaction</a>
+      <ul>
+        <li><a href="#energy-splitting">Energy Splitting</a></li>
+        <li><a href="#exchange-operator">Exchange Operator</a></li>
+        <li><a href="#proportionality-coefficient">Proportionality Coefficient</a></li>
+      </ul>
+    </li>
+    <li><a href="#basis-states">Basis States</a>
+      <ul>
+        <li><a href="#triplet-1-1rangle-manifold">Triplet $|1, +1\rangle$ manifold</a></li>
+        <li><a href="#triplet-1-0rangle-manifold">Triplet $|1, 0\rangle$ manifold</a></li>
+        <li><a href="#singlet-0-0rangle-manifold">Singlet $|0, 0\rangle$ manifold</a></li>
+        <li><a href="#triplet-1--1rangle-manifold">Triplet $|1, -1\rangle$ manifold</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

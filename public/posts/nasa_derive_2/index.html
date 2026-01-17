@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NASA 2">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/nasa_derive_2/">
+  <meta property="og:site_name" content="my undergrad work">
+  <meta property="og:title" content="Zero-Field Splitting">
+  <meta property="og:description" content="NASA 2">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-06-10T00:00:00+00:00">
+    <meta property="article:tag" content="NASA">
+
+
+  <meta itemprop="name" content="Zero-Field Splitting">
+  <meta itemprop="description" content="NASA 2">
+  <meta itemprop="datePublished" content="2025-06-10T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-06-10T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1092">
+  <meta itemprop="keywords" content="NASA">
+
+<title>Zero-Field Splitting | my undergrad work</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/posts/nasa_derive_2/">
+<link rel="stylesheet" href="/book.min.6970156cec683193d93c9c4edaf0d56574e4361df2e0c1be4f697ae81c3ba55f.css" integrity="sha256-aXAVbOxoMZPZPJxO2vDVZXTkNh3y4MG&#43;T2l66Bw7pV8=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.5ff57f75a7c3b3930a57ac47ed03a509ee7876851e106d57b09ed00c80cfebff.js" integrity="sha256-X/V/dafDs5MKV6xH7QOlCe54doUeEG1XsJ7QDIDP6/8=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>my undergrad work</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/posts/" title="posts">posts</a></li><li><a href="/optimizing/" title="optimizing">optimizing</a></li><li><a href="/resume/" title="resume">resume</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Zero-Field Splitting</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#zero-field-splitting">Zero-Field Splitting</a>
+      <ul>
+        <li><a href="#d-and-e">$D$ and $E$</a></li>
+        <li><a href="#raising-and-lowering">Raising and Lowering</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Zero-Field Splitting
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>June 10, 2025</span>
+  </div>
+
+
+
+  
+  <div class="text-small">
+    
+      <a href="/categories/math/">Math</a>
+  </div>
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/nasa/">NASA</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
+<blockquote class="book-hint warning">
+<p>This post is math heavy. I&rsquo;ll try to walk through it all elegantly though. The
+important equations are boxed if you&rsquo;d like to skip through. On mobile some
+equations may go overfull.</p>
+</blockquote>
+<p>In <a href="https://dev-undergrad.dev/posts/nasa_derive_1/">Part 1</a> we derived the
+Zeeman Hamiltonian and the Hyperfine Hamiltonian. The goal of this post is to provide
+a concise derivation of the next Hamiltonian term for <a href="https://en.wikipedia.org/wiki/Zero-field_splitting">Zero-Field
+Splitting</a>. The next post
+will do the last Exchange Interaction term and
+finally give a complete Spin Hamiltonian description.</p>
+<p>I use a fancy $\mathscr{H}$ to represent the full Spin Hamiltonian.
+Sub-Hamiltonians are normal $H$&rsquo;s but with hats (e.g. $\hat{H}_Z$).</p>
+<hr>
+<h2 id="zero-field-splitting">Zero-Field Splitting<a class="anchor" href="#zero-field-splitting">#</a></h2>
+<blockquote class='book-hint '>
+<p>The Zero Field Splitting (ZFS) comes from the magnetic field generated by one
+electron&rsquo;s spin acting on another electron&rsquo;s magnetic moment. Even when no
+external $B$ field is applied, this dipole-dipole interaction still shifts the
+spin energy levels. We can treat ZFS directly as an electron-electron analog of the
+hyperfine interaction.</p></blockquote><p>We start immediately from Equation (6) in Part 1:</p>
+<p>$$
+\begin{align}
+\vec{B}(\vec{r}) = \underbrace{\frac{\mu_0}{4\pi r^3} \left[ 3(\vec{\mu}_n \cdot \hat{r})
+\hat{r} - \vec{\mu}_n \right]}_{\text{dipolar term}} + \underbrace{\frac{2\mu_0}{3}\vec{\mu}_n
+\delta^3 (\vec{r})}_{\text{contact (isotropic) term}}.
+\end{align}
+$$</p>
+<p>The <em>contact</em> term, with the delta function $\delta^3(\vec{r})$ exists for a
+point-like nucleus. For Hyperfine, the nucleus sits at a point. When we take the
+curl of $\vec{A}$, we pick up the singular term
+$\frac{2\mu_0}{3}\vec{\mu}_n \delta^3(\vec{r})$.</p>
+<p>However, for electron-electron interactions, electrons <em>don&rsquo;t coincide</em>
+exactly. There is no $\delta$-contact term. Only the $1/r^3$ dipolar piece
+survives from taking the curl. Hence, the magnetic field generated by an
+electron is</p>
+<p>$$
+\vec{B}_1(\vec{r}) = \frac{\mu_0}{4\pi r^3} [3(\vec{\mu}_1 \cdot \hat{r})
+\hat{r} - \vec{\mu}_1], \quad \hat{r} = \frac{\vec{r}}{r}.
+$$</p>
+<p>$\vec{\mu}_1$ is the magnetic moment of electron 1 and $\vec{B}_1(\vec{r})$ is
+the magnetic field generated by electron 1 at point $\vec{r}$. From Equation (1)
+in Part 1, we can calculate the energy experienced by a second electron at $\vec{r}$ from this field.</p>
+<p>A second electron has magnetic moment $\vec{\mu}_2$. So we get</p>
+<p>$$
+\begin{align}
+U = -\vec{\mu}_2 \cdot \vec{B}_1(\vec{r})
+= \frac{\mu_0}{4\pi r^3} [ -\vec{\mu}_1 \cdot \vec{\mu}_2 + 3 (\vec{\mu}_1 \cdot \hat{r})(\vec{\mu}_2 \cdot \hat{r}) ].
+\end{align}
+$$</p>
+<p>Now we can promote $U \rightarrow \hat{H}_{ZFS}$. Given</p>
+<p>$$
+\hat{\vec{\mu}}_i = -g_e \mu_B \frac{\hat{\vec{S}}_i}{\hbar},
+\quad \mu_B = \frac{e\hbar}{2m_e}.
+$$</p>
+<p>Therefore, replacing $\vec{\mu}_{1,2}$ with the quantum operators
+$\hat{\vec{\mu}}_{1,2}$, the pre-factor in Equation (2) becomes</p>
+<p>$$
+-\frac{\mu_0}{4\pi} \frac{(g_e\mu_B)^2}{\hbar^2}.
+$$</p>
+<p>And substituting yields</p>
+<p>$$
+\begin{align}
+\hat{H}_{ZFS} &amp;= -\frac{\mu_0}{4\pi} \frac{(g_e\mu_B)^2}{\hbar^2} \frac{1}{r^3}
+\left[-\hat{\vec{S}}_1 \cdot \hat{\vec{S}}_2 + 3(\hat{\vec{S}}_1 \cdot
+\hat{r})(\hat{\vec{S}}_2 \cdot \hat{r})\right] \\
+&amp;= \frac{\mu_0}{4\pi} \frac{(g_e \mu_B)^2}{\hbar^2} \frac{1}{r^3} \left[
+\hat{\vec{S}}_1 \cdot \hat{\vec{S}}_2 - 3(\hat{\vec{S}}_1 \cdot
+\hat{r})(\hat{\vec{S}}_2 \cdot \hat{r})\right].
+\end{align}
+$$</p>
+<p>Now we simplify into an analogous form of the Hyperfine Hamiltonian. We have the
+equalities</p>
+<p>$$
+\begin{align}
+(\vec{S}_1 \cdot \vec{S}_2) &amp;= \sum_{i \in {x, y, z}} S_{1i} S_{2i} \\
+(\vec{S}_1 \cdot \hat{r}) (\vec{S}_2 \cdot \hat{r}) &amp;= \left(\sum_i
+S_{1i}\hat{r}_i \right) \left( \sum_j S_{2j}\hat{r}_j\right) \\
+&amp;= \sum_{i, j} S_{1i} (\hat{r}_i \hat{r}_j) S_{2j} \\
+&amp;= \sum_{i, j} S_{1i} \frac{r_i r_j}{r^2} S_{2j}.
+\end{align}
+$$</p>
+<p>Plugging this into Equation (4) gives</p>
+<p>$$
+\begin{align}
+\hat{H}_{ZFS} &amp;= \frac{\mu_0}{4\pi} \frac{(g_e \mu_B)^2}{\hbar^2} \frac{1}{r^3}
+\left( \sum_i S_{1i}S_{2i} - 3 \sum_{i, j} S_{1i} \frac{r_i r_j}{r^2} S_{2j} \right) \\
+&amp;= \frac{\mu_0}{4\pi} \frac{(g_e \mu_B)^2}{\hbar^2} \left( \sum_i
+\frac{\delta_{i,j}}{r^3} S_{1i}S_{2j} - 3\sum_{i, j} \frac{r_i r_j}{r^5} S_{1i}S_{2j} \right) \\
+&amp;= \sum_{i, j} S_{1i} \left[ \frac{\mu_0}{4\pi} \frac{(g_e \mu_B)^2}{\hbar^2}
+\left( \frac{\delta_{i, j}}{r^3}- \frac{3r_ir_j}{r^5} \right) \right] S_{2j}.
+\end{align}
+$$</p>
+<p>To simplify, we define the tensor $D_{ij}$</p>
+<p>$$
+\begin{align}
+D_{ij}(\vec{r}) = \frac{\mu_0}{4\pi} \frac{(g_e \mu_B)^2}{\hbar^2} \left(
+\frac{\delta_{i,j}}{r^3}  - \frac{3r_i r_j}{r^5}
+\right).
+\end{align}
+$$</p>
+<p>Then we get a similar equation to the Hyperfine Hamiltonian:</p>
+<p>$$
+\begin{align}
+\hat{H}_{ZFS} = \sum_{i, j \in \{x, y, z\}} S_{1i} \, D_{ij}(\vec{r}) \, S_{2j} =
+\hat{\vec{S}} \cdot D \cdot \hat{\vec{S}}.
+\end{align}
+$$</p>
+<h3 id="d-and-e">$D$ and $E$<a class="anchor" href="#d-and-e">#</a></h3>
+<p>However, our work with ZFS isn&rsquo;t done. Let&rsquo;s diagonalize $D$ via the
+defect&rsquo;s principal axis. We start by simplifying Equation (12). If we take the
+trace of the expression in the parenthesis, we find</p>
+<p>$$
+\begin{align*}
+\sum_i \left( \frac{\delta_{i,i}}{r^3} - \frac{3r_i r_i}{r^5} \right)
+&amp;= \sum_i \frac{1}{r^3} - 3\sum_i \frac{r_i^2}{r^5} \\
+&amp;= \frac{3}{r^3} - \frac{3}{r^2}(r_x^2 + r_y^2 + r_z^2) = 0.
+\end{align*}
+$$</p>
+<p>So $D_{ij}$ is traceless. If we diagonalize, we&rsquo;ll get</p>
+<p>$$
+\begin{align}
+D_{ij} = \begin{pmatrix}
+D_x &amp; 0 &amp; 0 \\
+0 &amp; D_y &amp; 0 \\
+0 &amp; 0 &amp; D_z
+\end{pmatrix},
+\end{align}
+$$</p>
+<p>where $D_x + D_y + D_z = 0.$</p>
+<p>Now things will get tricky for a bit. Because the Silicon Vacancy $V_{\text{Si}}^- \in C_{3V}$ point group,
+we have $D_x = D_y$ symmetry. Something about the $C_{3V}$ crystal structure
+makes the $D$ tensor symmetric along $x \leftrightarrow y$ directions; not sure. Regardless, we
+can parameterize now to fewer variables:</p>
+<p>$$
+\begin{cases}
+2D_x + D_z = 0 \\
+D_x = D_y
+\end{cases} \quad \Rightarrow \quad D_x = D_y = -\frac{1}{2}D_z.
+$$</p>
+<p>Define scalars $D, E$ such that</p>
+<p>$$
+\begin{align}
+D &amp;= \frac{3}{2}D_z \\ E &amp;= \frac{1}{2}(D_x - D_y)
+\end{align}
+$$</p>
+<p>$D$ measures <em>how much the crystal field stretches or compresses</em> along the
+$z$  axis. $E$ measures how much the environment deviates from perfect axial
+symmetry. In practice, $E \simeq 0$.</p>
+<p>Now the matrix in Equation (14) only has two unknowns:</p>
+<p>$$
+D_{\text{diag}} = \begin{pmatrix}
+D_x &amp; 0 &amp; 0 \\
+0 &amp; D_y &amp; 0 \\
+0 &amp; 0 &amp; D_z
+\end{pmatrix} = \begin{pmatrix}
+-\frac{D}{3} + E &amp; 0 &amp; 0 \\
+0 &amp; -\frac{D}{3} - E &amp; 0 \\
+0 &amp; 0 &amp; \frac{2}{3}D
+\end{pmatrix}.
+$$</p>
+<h3 id="raising-and-lowering">Raising and Lowering<a class="anchor" href="#raising-and-lowering">#</a></h3>
+<p>From Equation (13), $\hat{H}_{ZFS} = \hat{\vec{S}} \cdot D \cdot \hat{\vec{S}}$.
+We can expand,</p>
+<p>$$
+\begin{align*}
+\hat{H}_{ZFS} &amp;= \hat{\vec{S}} \cdot D \cdot \hat{\vec{S}} \\
+&amp;= \left(-\frac{D}{3} + E\right) \hat{S}_x^2 - \left( \frac{D}{3} + E \right)
+\hat{S}_y^2 + \frac{2}{3}D \hat{S}_z^2 \\
+&amp;= D \left( \hat{S}_z^2 - \frac{1}{3} \left( \hat{S}_x^2 + \hat{S}_y^2 +
+\hat{S}_z^2 \right) \right) + E(\hat{S}_x^2 - \hat{S}_y^2),
+\end{align*}
+$$</p>
+<p>with the $\hat{S}_x, \hat{S}_y$ Cartesian spin operators being related to the
+spin raising and lowering operators via</p>
+<p>$$
+\begin{align}
+\hat{S}_{+} |s, m\rangle &amp;= (\hat{S}_x + i\hat{S}_y ) |s, m\rangle \\
+&amp;= \sqrt{(s(s+1) - m(m+1))}|s, m+1\rangle \\
+\hat{S}_{-} |s, m\rangle &amp;= (\hat{S}_x - i\hat{S}_y ) |s, m\rangle \\
+&amp;= \sqrt{(s(s+1) - m(m-1))}|s, m-1\rangle.
+\end{align}
+$$</p>
+<p>Finally, putting everything together gives a general expression for
+$\hat{H}_{ZFS}$ acting on a general $|s, m\rangle$:</p>
+<p>$$\boxed{
+\begin{align*}
+\hat{H}_{ZFS}|s, m\rangle &amp;= Dm^2 |s, m\rangle - \frac{D}{3}(s(s+1))|s, m\rangle \\
+&amp;+ \frac{E}{2} (s(s+1) - m(m+1))|s, m+2\rangle \\
+&amp;+ \frac{E}{2} (s(s+1) - m(m-1))|s, m-2\rangle.
+\end{align*}}
+$$</p>
+<p>$\hat{H}_{ZFS}$ splits energy levels slightly even without an external magnetic field &ndash; there&rsquo;s no $B$ term anywhere. However, it introduces <em>forbidden</em> $|s, m\pm 2\rangle$ transitions that cause a <em>very</em> faint
+&ldquo;half-field&rdquo; response in EDMR spectra.</p>
+<p>To build a perfect simulation with the half-field response, we&rsquo;ll need to treat ZFS with care.</p>
+<br> 
+<div style="position: relative; width: 100%; margin-top: 2em;">
+  <div style="position: absolute; left: 0;">
+    <a 
+  href="/posts/nasa_derive_1/" 
+  
+  class="book-btn btn"
+>← Previous</a>
+  </div>
+  <div style="position: absolute; right: 0;">
+    <a 
+  href="/posts/nasa_derive_3/" 
+  
+  class="book-btn btn"
+>Next →</a>
+  </div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+  <div>
+  
+    <a href="/posts/nasa_derive_3/" class="flex align-center">
+      <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+      <span>The Spin Hamiltonian</span>
+    </a>
+  
+  </div>
+  <div>
+  
+    <a href="/posts/nasa_derive_1/" class="flex align-center">
+      <span>Zeeman and Hyperfine</span>
+      <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+    </a>
+  
+  </div>
+</div>
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#zero-field-splitting">Zero-Field Splitting</a>
+      <ul>
+        <li><a href="#d-and-e">$D$ and $E$</a></li>
+        <li><a href="#raising-and-lowering">Raising and Lowering</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
