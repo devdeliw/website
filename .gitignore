@@ -3,6 +3,4 @@
 public/
 resources/
 .hugo_build.lock
-
-.typ 
-
+.gitignore
