@@ -62,12 +62,12 @@ We build orthonormal spatial orbitals $phi_a, phi_b$ and define
 
 $
 Psi_S(arrow(r)_1, arrow(r)_2)
-= 1 / sqrt(2) [phi_a(1) phi_b(2) + phi_b(1) phi_a(2)],
+= 1 / sqrt(2) [phi_a (1) phi_b (2) + phi_b (1) phi_a (2)],
 $
 
 $
 Psi_A(arrow(r)_1, arrow(r)_2)
-= 1 / sqrt(2) [phi_a(1) phi_b(2) - phi_b(1) phi_a(2)].
+= 1 / sqrt(2) [phi_a (1) phi_b (2) - phi_b (1) phi_a (2)].
 $
 
 The corresponding spin states are
@@ -102,16 +102,16 @@ Define the direct and exchange integrals:
 
 $
 K
-equiv integral.double d^3 r_1 d^3 r_2 
-|phi_a(1)|^2 e^2 / (4 pi epsilon_0 r_(1 2)) |phi_b(2)|^2,
+equiv integral.double d^3 r_1 d^3 r_2 #h(1em)
+|phi_a (1)|^2 e^2 / (4 pi epsilon_0 r_(1 2)) |phi_b (2)|^2,
 $
 
 $
 J
-equiv integral.double d^3 r_1 d^3 r_2 
-phi_a^*(1) phi_b(1)
+equiv integral.double d^3 r_1 d^3 r_2 #h(1em)
+phi_a^* (1) phi_b (1)
 e^2 / (4 pi epsilon_0 r_(1 2))
-phi_b^*(2) phi_a(2).
+phi_b^* (2) phi_a (2).
 $
 
 Then

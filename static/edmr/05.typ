@@ -506,22 +506,22 @@ Indices 0–15 refer to the row/column ordering of $scr(H)$.
   width: 100%, 
   [
 $ 
-&0  |1, 1 chevron.r &&times.o |+1/2, +1/2 chevron.r \
-&1  |1, 1 chevron.r &&times.o |+1/2, -1/2 chevron.r \
-&2  |1, 1 chevron.r &&times.o |-1/2, +1/2 chevron.r \
-&3  |1, 1 chevron.r &&times.o |-1/2, -1/2 chevron.r \
-&4  |1, 0 chevron.r &&times.o |+1/2, +1/2 chevron.r \
-&5  |1, 0 chevron.r &&times.o |+1/2, -1/2 chevron.r \
-&6  |1, 0 chevron.r &&times.o |-1/2, +1/2 chevron.r \
-&7  |1, 0 chevron.r &&times.o |-1/2, -1/2 chevron.r \
-&8  |0, 0 chevron.r &&times.o |+1/2, +1/2 chevron.r \
-&9  |0, 0 chevron.r &&times.o |+1/2, -1/2 chevron.r \
-&10 |0, 0 chevron.r &&times.o |-1/2, +1/2 chevron.r \
-&11 |0, 0 chevron.r &&times.o |-1/2, -1/2 chevron.r \
-&12 |1, -1 chevron.r &&times.o |+1/2, +1/2 chevron.r \
-&13 |1, -1 chevron.r &&times.o |+1/2, -1/2 chevron.r \
-&14 |1, -1 chevron.r &&times.o |-1/2, +1/2 chevron.r \
-&15 |1, -1 chevron.r &&times.o |-1/2, -1/2 chevron.r
+&0  &&|1, 1 chevron.r &&&times.o |+1/2, +1/2 chevron.r \
+&1  &&|1, 1 chevron.r &&&times.o |+1/2, -1/2 chevron.r \
+&2  &&|1, 1 chevron.r &&&times.o |-1/2, +1/2 chevron.r \
+&3  &&|1, 1 chevron.r &&&times.o |-1/2, -1/2 chevron.r \
+&4  &&|1, 0 chevron.r &&&times.o |+1/2, +1/2 chevron.r \
+&5  &&|1, 0 chevron.r &&&times.o |+1/2, -1/2 chevron.r \
+&6  &&|1, 0 chevron.r &&&times.o |-1/2, +1/2 chevron.r \
+&7  &&|1, 0 chevron.r &&&times.o |-1/2, -1/2 chevron.r \
+&8  &&|0, 0 chevron.r &&&times.o |+1/2, +1/2 chevron.r \
+&9  &&|0, 0 chevron.r &&&times.o |+1/2, -1/2 chevron.r \
+&10 &&|0, 0 chevron.r &&&times.o |-1/2, +1/2 chevron.r \
+&11 &&|0, 0 chevron.r &&&times.o |-1/2, -1/2 chevron.r \
+&12 &&|1, -1 chevron.r &&&times.o |+1/2, +1/2 chevron.r \
+&13 &&|1, -1 chevron.r &&&times.o |+1/2, -1/2 chevron.r \
+&14 &&|1, -1 chevron.r &&&times.o |-1/2, +1/2 chevron.r \
+&15 &&|1, -1 chevron.r &&&times.o |-1/2, -1/2 chevron.r
 $
 ]
 )
