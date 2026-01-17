@@ -27,7 +27,7 @@ H
 = sum_(i=1)^2
   [
     underbrace(
-      -(planck^2 / (2 m)) nabla_i^2
+      -planck^2 / (2 m) nabla_i^2
     , upright("kinetic energy"))
     +
     underbrace(
@@ -36,7 +36,7 @@ H
   ]
   +
   underbrace(
-    (e^2 / (4 pi epsilon_0)) (1 / |arrow(r)_1 - arrow(r)_2|)
+    e^2 / (4 pi epsilon_0) 1 / (|arrow(r)_1 - arrow(r)_2|)
   , upright("Coulomb repulsion")).
 $
 
@@ -62,25 +62,25 @@ We build orthonormal spatial orbitals $phi_a, phi_b$ and define
 
 $
 Psi_S(arrow(r)_1, arrow(r)_2)
-= (1 / sqrt(2)) [phi_a(1) phi_b(2) + phi_b(1) phi_a(2)],
+= 1 / sqrt(2) [phi_a(1) phi_b(2) + phi_b(1) phi_a(2)],
 $
 
 $
 Psi_A(arrow(r)_1, arrow(r)_2)
-= (1 / sqrt(2)) [phi_a(1) phi_b(2) - phi_b(1) phi_a(2)].
+= 1 / sqrt(2) [phi_a(1) phi_b(2) - phi_b(1) phi_a(2)].
 $
 
 The corresponding spin states are
 
 $
 chi_S
-= (1 / sqrt(2)) (|arrow.t arrow.b⟩ - |arrow.b arrow.t⟩)
+= 1 / sqrt(2) (|arrow.t arrow.b⟩ - |arrow.b arrow.t⟩)
 quad (upright("singlet")),
 $
 
 $
 chi_A
-= (1 / sqrt(2)) (|arrow.t arrow.b⟩ + |arrow.b arrow.t⟩)
+= 1 / sqrt(2) (|arrow.t arrow.b⟩ + |arrow.b arrow.t⟩)
 quad (upright("triplet")).
 $
 
@@ -91,7 +91,7 @@ $
 E_0
 = ⟨phi_a| hat(h) |phi_a⟩ + ⟨phi_b| hat(h) |phi_b⟩,
 quad
-hat(h) = -(planck^2 / (2 m)) nabla^2 + V(arrow(r)).
+hat(h) = -planck^2 / (2 m) nabla^2 + V(arrow(r)).
 $
 
 Therefore, any energy splitting arises entirely from the Coulomb term.
@@ -103,14 +103,14 @@ Define the direct and exchange integrals:
 $
 K
 equiv integral.double d^3 r_1 d^3 r_2 
-|phi_a(1)|^2 (e^2 / (4 pi epsilon_0 r_(1 2))) |phi_b(2)|^2,
+|phi_a(1)|^2 e^2 / (4 pi epsilon_0 r_(1 2)) |phi_b(2)|^2,
 $
 
 $
 J
 equiv integral.double d^3 r_1 d^3 r_2 
 phi_a^*(1) phi_b(1)
-(e^2 / (4 pi epsilon_0 r_(1 2)))
+e^2 / (4 pi epsilon_0 r_(1 2))
 phi_b^*(2) phi_a(2).
 $
 
@@ -159,13 +159,13 @@ For spin-$1/2$ particles,
 $
 hat(S)_1^2 = hat(S)_2^2
 = hat(S)_x^2 + hat(S)_y^2 + hat(S)_z^2
-= ((3 planck^2) / 4) bb(I).
+= (3 planck^2) / 4 bb(1).
 $
 
 Hence,
 
 $
-hat(S)^2_("tot") = ((3 planck^2) / 2) bb(I) + 2 hat(arrow(S))_1 dot hat(arrow(S))_2.
+hat(S)^2_("tot") = (3 planck^2) / 2 bb(1) + 2 hat(arrow(S))_1 dot hat(arrow(S))_2.
 $
 
 For triplet $S_("tot") = 1$ and singlet $S_("tot") = 0$ states,
@@ -188,7 +188,7 @@ Take an ansatz $hat(P)_(1 2) = a hat(S)^2_("tot") + b bb(I)$. Solving gives the
 standard result
 
 $
-hat(P)_(1 2) = (1/2) (1 + 4 hat(arrow(S))_1 dot hat(arrow(S))_2).
+hat(P)_(1 2) = 1/2 (1 + 4 hat(arrow(S))_1 dot hat(arrow(S))_2).
 $
 
 Its eigenvalues are $-1$ on the singlet and $+1$ on the triplet manifold. An
@@ -201,7 +201,7 @@ Define $J_("ex")$ such that
 $
 hat(H)_("EX")
 = J_("ex") hat(P)_(1 2)
-= (J_("ex") / 2) (1 + 4 hat(arrow(S))_1 dot hat(arrow(S))_2).
+= J_("ex") / 2 (1 + 4 hat(arrow(S))_1 dot hat(arrow(S))_2).
 $
 
 Acting on the singlet and triplet manifolds:
