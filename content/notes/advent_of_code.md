@@ -12,3 +12,5 @@ All quoted benchmarks were ran on apple m4.
 
 [2025_Day_03.pdf](/advent_of_code/day03.pdf)
 
+[2025_Day_04.pdf](/advent_of_code/day04.pdf)
+
