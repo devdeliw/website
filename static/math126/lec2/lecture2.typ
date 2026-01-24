@@ -55,7 +55,7 @@
 ][
   The three classes of linear PDEs
 ]
-======Deval Deliwala 
+====== Deval Deliwala 
 1/22/26
 
 
