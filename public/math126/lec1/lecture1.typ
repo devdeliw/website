@@ -327,7 +327,7 @@ In $RR$, open/closed agrees with $(a, b)$ or $[a, b]$ for intervals.
 
 #example[ 
   The orthogonal complement of a vector or subspace is $
-  "span"{v}^perp " or " V^perp = { w in RR^n | chevron.l v, w, chevron.r = 0 forall v in V }
+  "span"{v}^perp " or " V^perp = { w in RR^n | chevron.l v, w chevron.r = 0 #h(0.2em)  forall v in V }
   $
 
     #align(center)[

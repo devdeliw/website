@@ -10,3 +10,4 @@ I am in the process of adding previous coursework notes I made, but for now this
 [math 126: partial differential equations](/classes/math126/)
 
 
+
