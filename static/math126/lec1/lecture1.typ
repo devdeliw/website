@@ -56,9 +56,8 @@
 ][
   Review
 ]
-01/21/2026
-
-Deval Deliwala 
+======= Deval Deliwala
+01/20/2026
 
 #set heading(numbering: "1.1")
 = Ordinary Differential Equations 
