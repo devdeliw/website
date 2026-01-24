@@ -7,6 +7,6 @@ These are notes I take on coursework. Only recently did I discover [Typst](https
 and am in the process of adding previous coursework notes here. Currently this is very bleak. 
 
 
-[math 126 / partial differential equations](/classes/math126/)
+[math 126: partial differential equations](/classes/math126/)
 
 
