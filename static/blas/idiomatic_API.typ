@@ -1,4 +1,4 @@
-#set page(width: 8.5in, height: 67in)
+#set page(width: 8.5in, height: 67.5in)
 #show link: set text(fill: rgb("#1e6bd6"))
 
 
@@ -142,9 +142,9 @@ The cleanest mental model is
     ```rust 
 struct VectorRef<'a, T> {
     data: &'a [T],   // backing storage
-    n: usize,        // logical length
-    inc: usize,      // stride in elements (BLAS: incx)
-    offset: usize,   // starting index within data
+    n: usize†,        // logical length
+    inc: usize†,      // stride in elements (BLAS: incx)
+    offset: usize†,   // starting index within data
 }
 
 struct VectorMut<'a, T> {
@@ -159,7 +159,12 @@ struct VectorMut<'a, T> {
 
 The type system makes the roles impossible to confuse: 
 - `VectorRef` means "this routine may only _read_ from it."
-- `VectorMut` means "this routine may _mutate_ it." 
+- `VectorMut` means "this routine may _mutate_ it."
+
+†Note that I use `usize`, intentionally preventing negative strides. Most 
+LAPACK drivers don't require negative strides at all. This is cleaner, 
+prevents a lot of boilerplate negative stride logic, and makes it 
+explicit only positive strides are accepted. 
 
 Already, correctness at the call site and aliasing safety via `&mut [T]` is ensured. 
 
@@ -325,8 +330,6 @@ This type system ensures the following:
   - If a function takes `MatrixMut`, the caller can't pass an immutable slice by mistake. 
 - Enforce non-aliasing 
   - `MatrixMut` originates from `&mut [T]`. Safe Rust makes it difficult to have two independent mutable borrows to the same backing buffer at once. 
-- Enable aggressive kernels 
-  - Easier for compilers to notice overlap prevention. 
 
 ==== Preventing out-of-bounds <mat-oob>
 
