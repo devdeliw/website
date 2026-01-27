@@ -1,6 +1,6 @@
 --- 
 title: "writing a memory-safe BLAS" 
-date: 2026-01-01
+date: 2026-01-03
 ---
 
 `// memory-safe BLAS views: validated Ref/Mut descriptors`

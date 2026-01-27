@@ -1,6 +1,6 @@
 --- 
 title: "simulating edmr at nasa" 
-date: 2026-01-01
+date: 2026-01-02
 ---
 
 These are my notes discussing how I simulated 
