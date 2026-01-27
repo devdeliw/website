@@ -211,7 +211,7 @@ The constructor thus ensures:
 
 
 After this, routines are allowed to work with the vectors. This also improves 
-performance. Compilers are intelligent enough today to mostly avoid bounds-checks entirely 
+performance. Compilers are intelligent enough today to _mostly/sometimes_ avoid bounds-checks entirely 
 when raw indexing (`data[idx]`) if out-of-bounds checking was already explicitly validated. 
 
 So the cost model is: 
