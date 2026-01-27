@@ -79,7 +79,6 @@ said, _"seeing the entire implementations for the kernels wrapped in unsafe {} i
 
 `u/Shnatsel` was exactly right. At the time I retaliated saying reaching BLAS performance required unsafe code, 
 to which he replied _"A handful of perfectly predictable branches per op should not be a problem"_.
-He is also Russian, so you know he's cracked. 
 
 I realized if I am trying to write a BLAS in Rust, a modern language unique for prioritizing 
 memory-safety and writing idiomatic code, *it should be `safe`, and have a cleaner API*. 
