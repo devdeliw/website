@@ -1,10 +1,25 @@
-#set page(width: 8.5in, height: 64.5in)
+#set page(width: 8.5in, height: 67in)
 #show link: set text(fill: rgb("#1e6bd6"))
 
 
-= Making a more idiomatic BLAS API
+= Making a more idiomatic BLAS API <intro>
 Deval Deliwala 
 
+= Table of Contents <toc>
+
+#v(0.5em)
+
+- #link(<intro>)[Making a more idiomatic BLAS API]
+  - #link(<first-attempt>)[My first attempt at BLAS]
+  - #link(<safe-api>)[Designing the Safe API]
+    - #link(<goals>)[Design Goals and Constraints]
+    - #link(<vectors>)[Vectors]
+      - #link(<vec-oob>)[Preventing out-of-bounds]
+    - #link(<matrices>)[Matrices]
+      - #link(<mat-oob>)[Preventing out-of-bounds]
+    - #link(<gemm>)[Modern GEMM API]
+
+#v(0.5em)
 
 Basic Linear Algebra Subprograms (#link("https://www.netlib.org/blas/")[BLAS]) is a set of low-level routines 
 that perform the most common linear algebra routines. These routines include 
@@ -14,7 +29,7 @@ matrix multiplication.
 They are the _de facto_ standard low-level routines for linear-algebra libraries 
 and were originally written in Fortran 77 in 1979. However, its API involved 
 pointers for speed and is still standard today. Here's an example function call 
-to the `GEMM` (General matrix-matrix vector multiply) routine in a C-written BLAS: 
+to the `GEMM` (General matrix-matrix multiply) routine in a C-written BLAS: 
 
 #v(1em)  
 
@@ -52,7 +67,7 @@ Put simply,
 
 #v(1em)  
 
-== My first attempt at BLAS
+== My first attempt at BLAS <first-attempt>
 
 I already made a BLAS in Rust that conforms to this pointer API. Using pointers required wrapping every  
 function in `unsafe{ }` blocks. And because the routines were _already_ unsafe, 
@@ -70,9 +85,9 @@ I realized if I am trying to write a BLAS in Rust, a modern language unique for 
 memory-safety and writing idiomatic code, *it should be `safe`, and have a cleaner API*. 
 
 
-== Designing the Safe API 
+== Designing the Safe API <safe-api>
 
-=== Design Goals and Constraints 
+=== Design Goals and Constraints <goals>
 
 The standard BLAS interface operates on _descriptors_: 
 - vectors: (`x_ptr, n, incx`) 
@@ -108,7 +123,7 @@ enforces the descriptor's validity._
 )
 #v(1em) 
 
-=== Vectors 
+=== Vectors <vectors>
 
 A BLAS vector is not defined by contiguous memory. It is defined by a _walk_ through memory: 
 - a starting position.
@@ -148,7 +163,7 @@ The type system makes the roles impossible to confuse:
 
 Already, correctness at the call site and aliasing safety via `&mut [T]` is ensured. 
 
-==== Preventing out-of-bounds
+==== Preventing out-of-bounds <vec-oob>
 
 To ensure the descriptor does not walk out of bounds we have two options: 
 
@@ -166,7 +181,7 @@ Option 1 means having
     // let x = VectorRef::new(data, n, incx, offset); 
 
     let length = n; 
-    let length_to_walk = incx * n; 
+    let length_to_walk = offset + (n - 1)*incx + 1;  
 
     assert!(length >= length_to_walk, "vector data isn't long enough!"); 
   ```
@@ -253,7 +268,7 @@ impl<'a, T> VectorRef<'a, T> {
   ]
 )
 
-=== Matrices 
+=== Matrices <matrices>
 
 Matrices justify this type system further. 
 
@@ -313,7 +328,7 @@ This type system ensures the following:
 - Enable aggressive kernels 
   - Easier for compilers to notice overlap prevention. 
 
-==== Preventing out-of-bounds 
+==== Preventing out-of-bounds <mat-oob>
 
 In column-major BLAS, the element `(i, j)` is at `offset + i + j*lda`. So `MatrixRef::new(..)` must 
 guarantee: 
@@ -393,7 +408,7 @@ impl<'a, T: Copy> MatrixRef<'a, T> {
 
 Once these rules are validated, kernels can compute addresses with `i + j*lda` freely. 
 
-=== Modern `GEMM` API 
+=== Modern `GEMM` API <gemm>
 
 The GEMM routine is 
 
