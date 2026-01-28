@@ -1,4 +1,4 @@
-#set page(width: 8.5in, height: 115in)
+#set page(width: 8.5in, height: 116.5in)
 #show link: set text(fill: rgb("#1e6bd6"))
 #import "@preview/lovelace:0.3.0": *
 
@@ -12,11 +12,13 @@ Deval Deliwala
 - #link(<level1>)[Level 1 BLAS]
   - #link(<optimizing_sdot>)[Optimizing the Dot Product]
     - #link(<sdot_naive>)[Naive implementation]
+      - #link(<sdot_benchmark_naive>)[Naive Benchmark]
     - #link(<sdot_optimized>)[Optimized Implementation]
+      - #link(<sdot_benchmark_optim>)[Optimized Benchmark]
   - #link(<optimizing_saxpy>)[Optimizing Vector Addition]
     - #link(<saxpy_naive>)[Naive Implementation]
     - #link(<saxpy_optimized>)[Optimized Implementation]
-    - #link(<llvm_impressive>)[LLVM is very impressive]
+    - #link(<saxpy_benchmark>)[Benchmarks]
       - #link(<analyzing_assembly>)[Analyzing Assembly]
         - #link(<what_to_look_for>)[What to look for in the assembly]
         - #link(<naive_autovec>)[Naive saxpy autovectorizes]
@@ -59,6 +61,8 @@ where $n$ is the length of $arrow(x)$ and $arrow(y)$.
 
 This routine does not mutate or overwrite any vector. It only outputs the calculated `f32` product. 
 So I use `VectorRef`s. 
+
+#v(0.5em)  
 
 === Naive implementation <sdot_naive>
 
@@ -138,17 +142,21 @@ pub fn sdot (
   ]
 )
 
+#v(0.5em)  
 
-When vectors $x$ and $y$ contain 1024 elements,This routine runs in 750 nanoseconds on average, which is already extremely fast. On modern CPUs, LLVM can often vectorize patterns like
+==== Naive Benchmark <sdot_benchmark_naive>
+
+When vectors $x$ and $y$ contain 1024 elements,This routine runs in *750 nanoseconds* on average, 
+which is already extremely fast. On modern CPUs, LLVM can often vectorize patterns like
 
 #align(center)[```rust acc_sum += xk * yk ```]
 
 into SIMD instructions automatically when the access pattern is simple and contiguous. 
 The work that has gone into making modern compilers like LLVM intelligent enough to do this is incredible.
 
-As I'll show in the #link(<analyzing_assembly>)[Assembly section] at the end for SAXPY, these instructions compile down to 
-SIMD instructions for multiplying and adding. 
-
+As I'll show in the #link(<analyzing_assembly>)[Assembly section] at the end for SAXPY, these instructions automatically 
+compile down to SIMD instructions for multiplying and adding.
+#v(0.5em)  
 
 
 === Optimized Implementation <sdot_optimized>
@@ -308,6 +316,10 @@ $
 Despite vector registers only storing 4 `f32`s at a time, processing 8 registers (`LANES = 32`) 
 at a time is more efficient than matching native register width. 
 
+#v(0.5em)  
+
+==== Optimized Benchmark <sdot_benchmark_optim>
+
 When vectors $x$ and $y$ contain 1024 elements, this routine runs in 
 
 $ 
@@ -316,8 +328,10 @@ $
 &"LANES = 32:" && 125"ns". 
 $ 
 
-These are all extremely fast. But setting `LANES = 32` is fastest and 10.328$times$ faster 
+These are all extremely fast. But setting `LANES = 32` is fastest and *10.328$times$ faster*
 than the naive scalar loop implementation.
+
+#v(0.5em)  
 
 == Optimizing Vector Addition <optimizing_saxpy>
 
@@ -326,11 +340,13 @@ $
 y <- alpha x + y, 
 $ 
 
-*A*lpha*X**P*lus*Y*, and $y$ gets overwritten with the solution. Hence, 
+*A* lpha *X* *P* lus *Y*, and $y$ gets overwritten with the solution. Hence, 
 we use a `VectorRef` for $x$ and a mutable `VectorMut` for $y$. 
 
 The procedure is similar to the dot product. However, the SIMD-optimized 
-improvement is very different. 
+results are very different.
+
+#v(0.5em)  
 
 === Naive Implementation <saxpy_naive>
 
@@ -405,9 +421,10 @@ for (xk, yk) in xs.iter().zip(ys.iter_mut()) {
   ]
 )
 
-
 After going through the SIMD-optimized implementation, this example really shows how impressive 
-LLVM is. I'll show the benchmarks after the optimized section below. 
+LLVM is. I will show the naive benchmarks after the optimized section below. 
+
+#v(0.5em)  
 
 === Optimized Implementation <saxpy_optimized>
 
@@ -516,20 +533,24 @@ difference is overwriting $y$'s `VectorMut`in the process, which is accomplished
 in the SIMD fast path. 
 
 
-=== LLVM is very impressive <llvm_impressive>
+#v(0.5em)  
+
+=== Benchmarks <saxpy_benchmark>
 
 Here are the benchmarks (again on Apple M4): 
 
 For vectors $x$ and $y$ of length 1024, the naive implementation takes 83 nanoseconds on average. 
 The optimized implementation takes 83 nanoseconds on average. 
 
-The two routines run at the _exact same speed_. This is because LLVM recognizes the SAXPY pattern and emits NEON vector multiply + add in the fast path:
+The two routines run at the _exact same speed_.
+This is because LLVM recognizes the SAXPY pattern and emits NEON vector 
+multiply + add in the fast path:
 
 #align(center)[```rust
 *yt += alpha * *xt; 
 ```]
 
-lowering it into NEON SIMD instructions when the data is contiguous. The naive implementation's code 
+and automatically lowers it into NEON SIMD instructions when the data is contiguous. The naive implementation's code 
 is 40 lines less, much more readable, but is just as fast because of how well engineered LLVM is. 
 
 === Analyzing Assembly <analyzing_assembly>
@@ -764,7 +785,7 @@ kernels as explicitly vectorized code when the access patterns are simple
 and contiguous.
 
 #block( 
-  fill: luma(240), 
+  fill: luma(250), 
   width: 100%, 
   inset: 10pt, 
   [ 
