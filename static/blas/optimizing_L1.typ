@@ -1,9 +1,29 @@
-#set page(width: 8.5in, height: 120in)
+#set page(width: 8.5in, height: 114.5in)
 #show link: set text(fill: rgb("#1e6bd6"))
 #import "@preview/lovelace:0.3.0": *
 
-= Level 1 BLAS 
-Deval Deliwala 
+= Level 1 BLAS <level1>
+Deval Deliwala
+
+= Table of Contents <toc>
+
+#v(0.5em)
+
+- #link(<level1>)[Level 1 BLAS]
+  - #link(<optimizing_sdot>)[Optimizing the Dot Product]
+    - #link(<sdot_naive>)[Naive implementation]
+    - #link(<sdot_optimized>)[Optimized Implementation]
+  - #link(<optimizing_saxpy>)[Optimizing Vector Addition]
+    - #link(<saxpy_naive>)[Naive Implementation]
+    - #link(<saxpy_optimized>)[Optimized Implementation]
+    - #link(<llvm_impressive>)[LLVM is very impressive]
+      - #link(<analyzing_assembly>)[Analyzing Assembly]
+        - #link(<what_to_look_for>)[What to look for in the assembly]
+        - #link(<naive_autovec>)[Naive saxpy autovectorizes]
+        - #link(<simd_same_neon>)[SIMD saxpy lowers to the same NEON structure]
+        - #link(<why_equally_fast>)[Why both implementations are equally fast]
+
+#v(0.5em) 
 
 BLAS is divided into three levels: 
 - Level 1 - vector-vector routines.
@@ -26,7 +46,7 @@ intuitively allow function calls to be impossible to confuse:
 
 #v(2em)  
 
-== Optimizing the Dot Product
+== Optimizing the Dot Product <optimizing_sdot>
 
 The `sdot` routine calculates the dot product of two vectors: 
 
@@ -40,7 +60,7 @@ where $n$ is the length of $arrow(x)$ and $arrow(y)$.
 This routine does not mutate or overwrite any vector. It only outputs the calculated `f32` product. 
 So I use `VectorRef`s. 
 
-=== Naive implementation
+=== Naive implementation <sdot_naive>
 
 Contiguous memory means the vector is tightly packed. The next element is at the next index. 
 
@@ -126,12 +146,12 @@ When vectors $x$ and $y$ contain 1024 elements,This routine runs in 750 nanoseco
 into SIMD instructions automatically when the access pattern is simple and contiguous. 
 The work that has gone into making modern compilers like LLVM intelligent enough to do this is incredible.
 
-As I'll show in the Assembly section at the end for SAXPY, these instructions compile down to 
+As I'll show in the #link(<analyzing_assembly>)[Assembly section] at the end for SAXPY, these instructions compile down to 
 SIMD instructions for multiplying and adding. 
 
 
 
-=== Optimized Implementation
+=== Optimized Implementation <sdot_optimized>
 
 However, I can make it faster by writing the SIMD myself. I use `portable-simd`, which 
 #link("https://doc.rust-lang.org/std/simd/index.html#operations-use-the-best-instructions-available")["compile to the best available SIMD instructions"]
@@ -299,7 +319,7 @@ $
 These are all extremely fast. But setting `LANES = 32` is fastest and 10.328$times$ faster 
 than the naive scalar loop implementation.
 
-== Optimizing Vector Addition 
+== Optimizing Vector Addition <optimizing_saxpy>
 
 The `saxpy` routine performs 
 $ 
@@ -312,7 +332,7 @@ we use a `VectorRef` for $x$ and a mutable `VectorMut` for $y$.
 The procedure is similar to the dot product. However, the SIMD-optimized 
 improvement is very different. 
 
-=== Naive Implementation 
+=== Naive Implementation <saxpy_naive>
 
 #block( 
   fill: luma(250), 
@@ -389,7 +409,7 @@ for (xk, yk) in xs.iter().zip(ys.iter_mut()) {
 After going through the SIMD-optimized implementation, this example really shows how impressive 
 LLVM is. I'll show the benchmarks after the optimized section below. 
 
-=== Optimized Implementation 
+=== Optimized Implementation <saxpy_optimized>
 
 The SIMD-procedure is roughly the same as with the dot product `sdot` routine. 
 
@@ -489,14 +509,14 @@ pub fn saxpy (
 The only 
 difference is overwriting $y$'s `VectorMut`in the process, which is accomplished via 
 
-```rust 
+#align(center)[```rust 
 *yc = out.to_array(); 
-```
+```]
 
 in the SIMD fast path. 
 
 
-=== LLVM is very impressive 
+=== LLVM is very impressive <llvm_impressive>
 
 Here are the benchmarks (again on Apple M4): 
 
@@ -505,14 +525,14 @@ The optimized implementation takes 83 nanoseconds on average.
 
 The two routines run at the _exact same speed_. This is because LLVM recognizes the SAXPY pattern and emits NEON vector multiply + add in the fast path:
 
-```rust
+#align(center)[```rust
 *yt += alpha * *xt; 
-```
+```]
 
 lowering it into NEON SIMD instructions when the data is contiguous. The naive implementation's code 
 is 40 lines less, much more readable, but is just as fast because of how well engineered LLVM is. 
 
-=== Analyzing Assembly
+=== Analyzing Assembly <analyzing_assembly>
 
 The naive and SIMD implementations of `saxpy` run at the exact same speed.
 This is not accidental, and it is not because the SIMD version is ineffective.
@@ -526,7 +546,7 @@ by memory bandwidth, not by arithmetic.
 
 #v(1em)
 
-==== What to look for in the assembly
+==== What to look for in the assembly <what_to_look_for>
 
 For this comparison, only three instruction patterns matter:
 
@@ -540,7 +560,7 @@ out.
 
 #v(1em)
 
-==== Naive saxpy autovectorizes
+==== Naive saxpy autovectorizes <naive_autovec>
 
 The core of the naive implementation is:
 
@@ -584,22 +604,31 @@ no bounds checks:
 core::slice::index::slice_index_fail
 ``` 
 occuring within this loop. This is because we wrote the `for` loop as: 
+
+#block(
+fill: luma(250), 
+width: 100%, 
+inset: 8pt, [
 ```rust 
 for (xc, yc) in xv.iter().zip(yv.iter_mut()) { 
   ...
 }
-```, 
+```]) 
 
 directly iterating over chunks `xc, yc` in `xv, yv` so the compiler knows 
 these chunks exist within `xv, yv`. If I instead wrote 
 
+#block(
+fill: luma(250), 
+width: 100%, 
+inset: 8pt, [
 ```rust 
 for (idx1, idx2) in (0..n).zip(0..n) { 
   let xc = xv[idx1]; 
   let yc = yv[idx2]; 
   ...
 }
-```
+```])
 
 without explicitly defining `let n = xv.len()` beforehand, it would have been 
 much more likely for bounds checks to appear and slow down the routine. 
@@ -651,7 +680,7 @@ This is the same update performed one element at a time:
 
 #v(1em)
 
-==== SIMD saxpy lowers to the same NEON structure
+==== SIMD saxpy lowers to the same NEON structure <simd_same_neon>
 
 The `portable-simd` implementation expresses vectorization explicitly in
 Rust, but LLVM lowers it into a NEON loop with the same shape.
@@ -710,7 +739,7 @@ identical.
 
 #v(1em)
 
-==== Why both implementations are equally fast
+==== Why both implementations are equally fast <why_equally_fast>
 
 In SAXPY, each element requires:
 
