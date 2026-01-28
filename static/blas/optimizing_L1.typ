@@ -56,7 +56,7 @@ $
 arrow(x) dot arrow(y) = sum_(i=0)^(n-1) x_i y_i.  
 $ 
 
-where $n$ is the length of $arrow(x)$ and $arrow(y)$. 
+in single precision `f32`s, where $n$ is the length of $arrow(x)$ and $arrow(y)$. 
 
 
 This routine does not mutate or overwrite any vector. It only outputs the calculated `f32` product. 
@@ -294,14 +294,14 @@ This means SIMD can apply the same arithmetic to four `f32`s in parallel.
 Specifically, 
 
 $ 
-vec(x_1, x_2, x_3, x_4) * vec(y_1, y_2, y_3, y_4) = vec(x_1y_1, x_2y_2, x_3y_3, x_4y_4) 
+vec(x_1, x_2, x_3, x_4) * vec(y_1, y_2, y_3, y_4) = vec(x_1y_1, x_2y_2, x_3y_3, x_4y_4), 
 $ 
 
-Applies the same instruction across four lanes at once. Based on this, 
+applies the same instruction across four lanes at once. Based on this, 
 setting `LANES = 4` would be reasonable. This would separate $x$ and $y$ into `chunks` of 4 `f32`s at a time,
 which is perfect for Apple M4's 128-bit registers. 
 
-HHowever, within the hot loop, there is still per-iteration overhead: loop control, bounds/tail handling,
+However, within the hot loop, there is still per-iteration overhead: loop control, bounds/tail handling,
 and moving chunks in and out of SIMD values. Increasing to `LANES = 32` batches more work per iteration,
 so the loop runs 8$times$ fewer iterations than `LANES = 4`. This is because 32 `f32`s get processed per iteration, instead of just 4.
 
@@ -314,7 +314,7 @@ $
 $ 
 
 Despite vector registers only storing 4 `f32`s at a time, processing 8 registers (`LANES = 32`) 
-at a time is more efficient than matching native register width. 
+at a time is more efficient than matching native register width, as I show below. 
 
 #v(0.5em)  
 
@@ -335,13 +335,14 @@ than the naive scalar loop implementation.
 
 == Optimizing Vector Addition <optimizing_saxpy>
 
-The `saxpy` routine performs 
+The `axpy` routine performs 
 $ 
 y <- alpha x + y, 
 $ 
 
-*A* lpha *X* *P* lus *Y*, and $y$ gets overwritten with the solution. Hence, 
-we use a `VectorRef` for $x$ and a mutable `VectorMut` for $y$. 
+i.e. *A* lpha *X* *P* lus *Y*, and $y$ gets overwritten with the solution. Hence, 
+for single-precision `saxpy`, 
+I use `VectorRef` for $x$ and a mutable `VectorMut` for $y$ containing `f32`s.  
 
 The procedure is similar to the dot product. However, the SIMD-optimized 
 results are very different.
@@ -406,7 +407,7 @@ pub fn saxpy (
 
 I hope this code is understandable just by reading through it. 
 It is very clean and elegant by directly iterating through every 
-$x_k$ and $y_k$ in $x$ and $y$, and overwritting $y_k <- alpha x_k + y$ in the process: 
+$x_k$ and $y_k$ in $x$ and $y$, and overwriting $y_k <- alpha x_k + y$ in the process: 
 
 #block( 
   fill: luma(250), 
@@ -543,7 +544,7 @@ For vectors $x$ and $y$ of length 1024, the naive implementation takes 83 nanose
 The optimized implementation takes 83 nanoseconds on average. 
 
 The two routines run at the _exact same speed_.
-This is because LLVM recognizes the SAXPY pattern and emits NEON vector 
+This is because LLVM recognizes the saxpy pattern and emits NEON vector 
 multiply + add in the fast path:
 
 #align(center)[```rust
@@ -619,12 +620,12 @@ LBB0_31:
 ```
 ])
 
-This loop performs the exact SAXPY operation in vector form. It is crucial to notice 
+This loop performs the exact saxpy operation in vector form. It is crucial to notice 
 no bounds checks: 
 ```asm 
 core::slice::index::slice_index_fail
 ``` 
-occuring within this loop. This is because we wrote the `for` loop as: 
+occurring within this loop. This is because we wrote the `for` loop as: 
 
 #block(
 fill: luma(250), 
@@ -667,7 +668,7 @@ These are the opcodes that help read the assembly above:
     broadcast across all lanes.
 - Add the corresponding `y` vectors:
   - `ldp q5, q6, ...` and `ldp q7, q16, ...` load the `y` data.
-  - `fadd.4s v1, v5, v1` is the SAXPY update: `v1 <- v5 + v1`.
+  - `fadd.4s v1, v5, v1` is the saxpy update: `v1 <- v5 + v1`.
     The same pattern repeats for `v2/v6`, `v3/v7`, and `v4/v16`.
 - Store the updated `y` back to memory:
   - `stp q1, q2, ...` and `stp q3, q4, ...` are *store-pair* instructions.
