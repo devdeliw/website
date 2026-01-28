@@ -154,8 +154,7 @@ which is already extremely fast. On modern CPUs, LLVM can often vectorize patter
 into SIMD instructions automatically when the access pattern is simple and contiguous. 
 The work that has gone into making modern compilers like LLVM intelligent enough to do this is incredible.
 
-As I'll show in the #link(<analyzing_assembly>)[Assembly section] at the end for SAXPY, these instructions automatically 
-compile down to SIMD instructions for multiplying and adding.
+I'll show this explicitly in the #link(<analyzing_assembly>)[Assembly section] for SAXPY. 
 #v(0.5em)  
 
 
@@ -407,7 +406,7 @@ pub fn saxpy (
 
 I hope this code is understandable just by reading through it. 
 It is very clean and elegant by directly iterating through every 
-$x_k$ and $y_k$ in $x$ and $y$, and overwriting $y_k <- alpha x_k + y$ in the process: 
+$x_k$ and $y_k$ in $x$ and $y$, and overwriting $y_k <- alpha x_k + y_k$ in the process: 
 
 #block( 
   fill: luma(250), 
