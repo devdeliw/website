@@ -573,8 +573,8 @@ for (xk, yk) in xs.iter().zip(ys.iter_mut()) {
 ])
 
 LLVM recognizes this as a SAXPY pattern and emits a NEON loop in the
-contiguous fast path. The following block from
-`coral::naive::saxpy::saxpy` is the hot loop:
+contiguous fast path. The following block from this
+naive `saxpy` implementation is the hot loop:
 
 #block(fill: luma(250), width: 100%, inset: 10pt, [
 ```asm
@@ -685,7 +685,7 @@ This is the same update performed one element at a time:
 The `portable-simd` implementation expresses vectorization explicitly in
 Rust, but LLVM lowers it into a NEON loop with the same shape.
 
-The hot loop from `coral::level1::saxpy::saxpy` is:
+The hot loop from the optimized `saxpy` implementation is:
 
 #block(fill: luma(250), width: 100%, inset: 10pt, [
 ```asm
@@ -762,4 +762,15 @@ This is a concrete example of how strong LLVM’s autovectorization is for
 Level 1 BLAS routines: clean, idiomatic code can compile into the same NEON
 kernels as explicitly vectorized code when the access patterns are simple
 and contiguous.
+
+#block( 
+  fill: luma(240), 
+  width: 100%, 
+  inset: 10pt, 
+  [ 
+    #align(center)[#link("https://github.com/devdeliw/coral")[CORAL]]
+  ]
+)
+
+
 
