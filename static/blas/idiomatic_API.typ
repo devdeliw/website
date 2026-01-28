@@ -45,7 +45,8 @@ void cblas_sgemm(const CBLAS_LAYOUT Layout, const CBLAS_TRANSPOSE TransA,
 
 It has 14 arguments! Modern programming recommendations suggest functions to have 
 no more than *7* arguments for codebase readability. NASA also #link("https://www.grc.nasa.gov/www/winddocs/guidelines/pgmstds.pdf")[suggests]
-not using pointers at all! 
+not using pointers at all! I'm not trying to appeal to authority, but emphasize the 
+importance of readable code and memory-safety. 
 
 The reason the BLAS API is standardized to this day is mostly because of _inertia_ and prioritizing 
 explicitness. It is verbose, but is modular, direct, and called from _many_ higher-level linear algebra 
@@ -142,7 +143,7 @@ The cleanest mental model is
 struct VectorRef<'a, T> {
     data: &'a [T],   // backing storage
     n: usize†,        // logical length
-    inc: usize†,      // stride in elements (BLAS: incx)
+    inc: usize†,      // stride in elements 
     offset: usize†,   // starting index within data
 }
 
