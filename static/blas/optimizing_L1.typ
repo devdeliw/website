@@ -524,7 +524,7 @@ pub fn saxpy (
 
 
 The only 
-difference is overwriting $y$'s `VectorMut`in the process, which is accomplished via 
+difference is overwriting $y$'s `VectorMut` in the process, which is accomplished via 
 
 #align(center)[```rust 
 *yc = out.to_array(); 
@@ -551,7 +551,7 @@ multiply + add in the fast path:
 ```]
 
 and automatically lowers it into NEON SIMD instructions when the data is contiguous. The naive implementation's code 
-is 40 lines less, much more readable, but is just as fast because of how well engineered LLVM is. 
+is 40 lines less, much more readable, but is just as fast because of how well engineered LLVM is and the memory-bound nature of Level 1 BLAS. 
 
 === Analyzing Assembly <analyzing_assembly>
 
