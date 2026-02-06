@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A clear explanation of how memory is structured, accessed, and optimized for performance">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/memory/">
+  <meta property="og:site_name" content="my undergrad work">
+  <meta property="og:title" content="Understanding Memory">
+  <meta property="og:description" content="A clear explanation of how memory is structured, accessed, and optimized for performance">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-10-25T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-10-25T00:00:00+00:00">
+    <meta property="article:tag" content="BLAS">
+
+
+  <meta itemprop="name" content="Understanding Memory">
+  <meta itemprop="description" content="A clear explanation of how memory is structured, accessed, and optimized for performance">
+  <meta itemprop="datePublished" content="2025-10-25T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-10-25T00:00:00+00:00">
+  <meta itemprop="wordCount" content="2122">
+  <meta itemprop="keywords" content="BLAS">
+
+<title>Understanding Memory | my undergrad work</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/posts/memory/">
+<link rel="stylesheet" href="/book.min.6970156cec683193d93c9c4edaf0d56574e4361df2e0c1be4f697ae81c3ba55f.css" integrity="sha256-aXAVbOxoMZPZPJxO2vDVZXTkNh3y4MG&#43;T2l66Bw7pV8=" crossorigin="anonymous">
+
+
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.5ff57f75a7c3b3930a57ac47ed03a509ee7876851e106d57b09ed00c80cfebff.js" integrity="sha256-X/V/dafDs5MKV6xH7QOlCe54doUeEG1XsJ7QDIDP6/8=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>my undergrad work</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul><li><a href="/posts/" title="posts">posts</a></li><li><a href="/optimizing/" title="optimizing">optimizing</a></li><li><a href="/resume/" title="resume">resume</a></li></ul>
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Understanding Memory</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#memory">Memory</a></li>
+    <li><a href="#static-and-dynamic-ram">Static and Dynamic RAM</a>
+      <ul>
+        <li><a href="#sram">SRAM</a></li>
+        <li><a href="#dram">DRAM</a></li>
+      </ul>
+    </li>
+    <li><a href="#accessing-memory">Accessing Memory</a></li>
+    <li><a href="#the-cache">The Cache</a>
+      <ul>
+        <li><a href="#implementation">Implementation</a></li>
+        <li><a href="#hits-and-misses">Hits and Misses</a></li>
+      </ul>
+    </li>
+    <li><a href="#locality-and-contiguity">Locality and Contiguity</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Understanding Memory
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="/icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>October 25, 2025</span>
+  </div>
+
+
+
+  
+  <div class="text-small">
+    
+      <a href="/categories/software/">Software</a>
+  </div>
+  
+
+  
+  <div class="text-small">
+    
+      <a href="/tags/blas/">BLAS</a>
+  </div>
+  
+
+
+  <div class="book-post-content markdown-inner"><link rel="stylesheet" href="/katex/katex.min.css" /><script defer src="/katex/katex.min.js"></script><script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body, {&#34;delimiters&#34;:[{&#34;left&#34;:&#34;$$&#34;,&#34;right&#34;:&#34;$$&#34;,&#34;display&#34;:true},{&#34;left&#34;:&#34;$&#34;,&#34;right&#34;:&#34;$&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\(&#34;,&#34;right&#34;:&#34;\\)&#34;,&#34;display&#34;:false},{&#34;left&#34;:&#34;\\[&#34;,&#34;right&#34;:&#34;\\]&#34;,&#34;display&#34;:true}]});"></script>
+<p>Before diving into how BLAS is written to be fast, it&rsquo;s essential to understand
+memory. Specifically, how data <em>is stored</em> in memory and how it <em>is fed</em> to
+the processor, which performs the computations. All BLAS does is optimize these two
+operations for a specific computer architecture. CORAL, for instance, targets AArch64 architectures.</p>
+<p>Future posts on BLAS will refer back to concepts explained here.</p>
+<blockquote class='book-hint '>
+<p>The content in this post is <em><strong>heavily</strong></em> taken from <a href="https://people.freebsd.org/~lstewart/articles/cpumemory.pdf"><em>What Every Programmer
+Should Know About
+Memory</em></a> by Ulrich Drepper.
+It&rsquo;s phenomenal. Unless otherwise linked, all numerical values come from this paper.</p></blockquote><blockquote class="book-hint warning">
+<p><strong>Heuristics Ahead</strong> <br>
+Cycle counts, sizes, and policies shown here are approximate heuristics.<br>
+They vary by CPU architecture and memory configuration.</p>
+</blockquote>
+<hr>
+<h2 id="memory">Memory<a class="anchor" href="#memory">#</a></h2>
+<p><em>Memory</em> is a physical structure that stores digital information as
+electrical states. A single <em>bit</em> of memory represents either a logical 0 or 1
+by maintaining distinct, measurable voltages inside microscopic circuits. These
+circuits exist in layers of <em>memory hierarchy</em>, a set of memory storage levels
+that trade off speed, capacity, and energy.</p>
+<blockquote class="book-hint info">
+<p>A fast BLAS aims to keep its working data in the fastest available level of the hierarchy.</p>
+</blockquote>
+<blockquote class="book-hint default">
+<p><em><strong>Definition</strong></em> <br>
+A <strong>clock cycle</strong> is one complete oscillation of a processor&rsquo;s clock signal. It&rsquo;s
+the periodic rise and fall of voltage that synchronizes every operation in the
+CPU &ndash; the smallest <strong>unit of computational time</strong>.</p>
+</blockquote>
+<p>At the lowest level are <em>registers</em> inside the CPU itself. Accessing data from
+registers takes $\leq 1$ cycle. Above registers are <em>caches</em>,
+which exist in three sub-levels. Accessing cached data takes between $\sim$3-60 cycles
+depending on which sub-level is accessed. Beyond caches lies the main
+memory. Accessing data from main memory takes $\sim$200-400 cycles. Together these
+levels form the hierarchy that moves data from storage to the processor.</p>
+<br>
+<p align="center">
+  <img src="/CPU.svg">
+</p>
+<br>
+<p>Naturally, the lower level storages are faster to read and write data to.
+However, they are <em>much smaller</em> in size, trading capacity for speed. This will
+be critical when discussing packing strategies for BLAS.</p>
+<h2 id="static-and-dynamic-ram">Static and Dynamic RAM<a class="anchor" href="#static-and-dynamic-ram">#</a></h2>
+<p>All working memory in a computer is built on one of two forms of Random Access Memory (RAM):
+<strong>Static</strong> RAM (SRAM)  and <strong>Dynamic</strong> RAM (DRAM). Let&rsquo;s discuss why there
+are two forms at all, understand how they work, and their read/write speeds.</p>
+<h3 id="sram">SRAM<a class="anchor" href="#sram">#</a></h3>
+<div style="display: flex; justify-content: center;">
+  <div
+    style="
+      mask: url('https://upload.wikimedia.org/wikipedia/commons/3/31/SRAM_Cell_%286_Transistors%29.svg') no-repeat center / contain;
+      -webkit-mask: url('https://upload.wikimedia.org/wikipedia/commons/3/31/SRAM_Cell_%286_Transistors%29.svg') no-repeat center / contain;
+      background-color: #898989;
+      width: 70%;
+      aspect-ratio: 1 / 1;
+    "
+  ></div>
+</div>
+<p>This is one SRAM cell that can store a 0 or 1. The core of the cell is formed by
+four transistors $M_1$ to $M_4$ that form two <em>cross-coupled</em> inverters (NOT
+gates). This means each inverter output feeds the input of the other, shown
+below.</p>
+<p align="center">
+  <img src="/cross-coupled.svg">
+</p>
+<p>This loop, where the output of one inverter drives the input of the other,
+creates <em>bistability</em>. The mutual inversion forms a feedback loop that can hold
+one of two stable states, in the form of low or high voltages:</p>
+<p>$$
+\begin{align*}
+Q = 1,\quad &amp;\bar{Q} = 0 \\
+Q = 0,\quad &amp;\bar{Q} = 1
+\end{align*}
+$$</p>
+<p>This is the foundation of SRAM. These states can be held indefinitely as long as
+power $V_{dd}$ is available to the cell &ndash; SRAM is <strong>static</strong>.</p>
+<h3 id="dram">DRAM<a class="anchor" href="#dram">#</a></h3>
+<p align="center">
+  <img src="/DRAM.svg">
+</p>
+<p>DRAM, in its structure, is much simpler than SRAM. It consists of a single
+transistor $M$ and capacitor $C$. A DRAM cell keeps its state in $C$.
+$M$ is used to guard access to the state.</p>
+<p>A stored 1 means the capacitor is charged; a 0 means discharged. However, a
+modern DRAM capacitor is <em><strong>tiny</strong></em> &ndash; on the order of 20-40 femtofarads. To store
+a 1, a charge of $\sim 36 \times 10^{-15} C$ is placed on the capacitor. That&rsquo;s
+36 femtocoulombs, or about 225,000 electrons.</p>
+<p>Capacitors discharge or &ldquo;leak&rdquo;. Every $\sim 64$ms they have to be refreshed/recharged. This
+doesn&rsquo;t stall the whole memory, but it does take up some cycles. To read data on the capacitor also requires discharging
+it, <em>which takes more cycles</em>. But now the charge on the capacitor is
+depleted, so every read also is followed by an operation to recharge the
+capacitor, <em>which takes even more cycles</em>.</p>
+<p>DRAM cells, however, are much smaller than SRAM cells. Packing many DRAM cells close together is
+much simpler, and <em>less expensive</em>.  For this reason, caches use SRAM cells, where speed is critical. Main memory uses DRAM cells, where capacity is critical. A typical L1 cache may contain <em>hundreds of thousands</em> of SRAM cells, whereas main memory contains <em>trillions</em> of DRAM cells.</p>
+<h2 id="accessing-memory">Accessing Memory<a class="anchor" href="#accessing-memory">#</a></h2>
+<p>Both SRAM and DRAM cells are arranged in a 2D array. To access a row, the <em>wordline</em> $WL$ is
+raised. It&rsquo;s a conductive path shared by all cells in a row.</p>
+<p>In SRAM, this opens two
+access transistors &ndash; $M_5$ and $M_6$ that allow the SRAM states to be read or
+written to via the <em>bitline</em> $BL$.</p>
+<p>In DRAM, the raised wordline instead
+activates the <em>single access transistor</em> $M$ that connects the capacitor $C$ to its
+bitline.</p>
+<p>Reading or writing a bit in either SRAM or DRAM roughly follows these steps:</p>
+<div class="book-steps ">
+<ol>
+<li>
+<p><strong>Select a Row (WL)</strong> <br>
+The cache controller raises a wordline. In SRAM this opens two access
+transistors. In DRAM this opens a single access transistor.</p>
+</li>
+<li>
+<p><strong>Connect to the Bitlines (BL)</strong> <br>
+Each column of cells shares a bitline. When connected, the cell either
+slightly raises or slightly lowers the voltage on that bitline depending on
+whether it stores 0 or 1.</p>
+<p>In SRAM, this is fast. In DRAM, this takes more time
+(discharging and charging capacitors).</p>
+</li>
+<li>
+<p><strong>Sense Voltage Differences</strong> <br>
+The voltage change is incredibly small, only a few millivolts. Nearby
+<strong>sense amplifiers</strong> detect which direction (increase or decrease) the voltage
+change occurred. Then they amplify the difference into a full digital 0V or 1V
+signal.</p>
+</li>
+<li>
+<p><strong>Deliver to the CPU</strong> <br>
+The sensed bits are combined into a word (for example, 64 bits), and
+transferred along metal interconnects towards the CPU&rsquo;s registers. Inside the
+processor, these signals are now conventional digital values, ready for
+arithmetic.</p>
+</li>
+</ol>
+</div>
+<h2 id="the-cache">The Cache<a class="anchor" href="#the-cache">#</a></h2>
+<p>The gap between CPU speed and DRAM speed is vast. Modern processors can perform
+hundreds of arithmetic operations in the time it takes to fetch one value from
+main memory. To close this gap, CPUs use multiple levels of <em>cache memory</em> built
+from SRAM.</p>
+<blockquote class="book-hint info">
+<p>Caches hold recently used data so that repeated accesses are fast.</p>
+</blockquote>
+<p>$$
+\begin{align*}
+&amp;\text{Level} &amp;&amp;\text{Composition} &amp;&amp;&amp;\text{Access Time} &amp;&amp;&amp;&amp;\text{Typical Size}
+&amp;&amp;&amp;&amp;&amp;\text{Scope} \\
+&amp;\text{L1 Cache} &amp;&amp;\text{SRAM} &amp;&amp;&amp;\sim\text{3 cycles} &amp;&amp;&amp;&amp;\text{32-64KB}
+&amp;&amp;&amp;&amp;&amp;\text{Per core} \\
+&amp;\text{L2 Cache} &amp;&amp;\text{SRAM} &amp;&amp;&amp;\sim\text{10 cycles} &amp;&amp;&amp;&amp;\text{256KB-1MB}
+&amp;&amp;&amp;&amp;&amp;\text{Per core or cluster} \\
+&amp;\text{L3 Cache} &amp;&amp;\text{SRAM} &amp;&amp;&amp;\sim\text{30-60 cycles} &amp;&amp;&amp;&amp;\text{4-64MB}
+&amp;&amp;&amp;&amp;&amp;\text{Shared among cores} \\
+&amp;\text{Main Memory} &amp;&amp;\text{DRAM} &amp;&amp;&amp;\sim\text{200-400 cycles} &amp;&amp;&amp;&amp;\text{GBs}
+&amp;&amp;&amp;&amp;&amp;\text{System-wide}
+\end{align*}
+$$</p>
+<p>Each level acts as a local buffer for the one beneath it, ensuring that
+frequently used data remains as close to the CPU as possible.</p>
+<p>When the CPU requests data, it first searches through the caches. If it&rsquo;s found
+in L1, that&rsquo;s an <strong>L1 cache hit</strong>, and optimal. If it&rsquo;s not found in L1, it
+searches through L2, then L3. If it&rsquo;s not found in L1-L3, it&rsquo;s a <strong>cache miss</strong>,
+and the data must be fetched from main-memory; <em>much</em> slower.</p>
+<p>Writing to cache often requires making room. When space is
+needed, modified lines are written back to L2 on line eviction, which may in turn write to L3,
+and so on. Each write-back takes clock cycles.</p>
+<p>The difficulty in writing a fast BLAS is fitting as much as possible in L1-L2 and minimizing
+the number of cycles used to move memory around. This is discussed
+<a href="#locality-and-contiguity">below</a>.</p>
+<h3 id="implementation">Implementation<a class="anchor" href="#implementation">#</a></h3>
+<p>Each cache level (L1, L2, L3) is implemented as a 2D array of cache lines, just
+like how SRAM and DRAM are organized into rows and columns. However, unlike with
+DRAM, cache must be able to quickly decide whether a given memory address (that
+points to requested physical memory) is already stored inside it, and if so, <em>where</em>.
+This lookup must happen in as few cycles as possible.</p>
+<h4 id="designs">Designs<a class="anchor" href="#designs">#</a></h4>
+<p>When the CPU requests a memory address, the cache must check if that address
+exists in its storage. The <strong>address bits</strong> of any memory request are divided
+into three parts that tell the cache exactly <em>where to look</em> and <em>what to
+verify</em>.</p>
+<p>$$
+\begin{align*}
+\text{Address Bits} = [\text{ Tag } | \text{ Set Index } | \text{ Block Offset }]
+\end{align*}
+$$</p>
+<blockquote class="book-hint default">
+<p><em><strong>Definition</strong></em> <br>
+The <strong>Block Offset</strong> bits specify the location of the exact byte <em>within</em> a single cache line.
+Once the correct line is found, these bits identify the requested byte in the line.</p>
+</blockquote>
+<blockquote class="book-hint default">
+<p><em><strong>Definition</strong></em> <br>
+The <strong>Set Index</strong> bits choose which &ldquo;set&rdquo;, or horizontal row of cache lines to check. Each set
+contains several &ldquo;ways&rdquo; (typically 4-16 lines) that can all hold different
+blocks of memory.</p>
+<p>Only the lines in this one set are searched; the rest of the cache is
+ignored.</p>
+</blockquote>
+<blockquote class="book-hint default">
+<p><em><strong>Definition</strong></em> <br>
+The <strong>tag</strong> bits identify <em>which block of main memory</em> the requested cache line is from.
+When the CPU looks up an address, the tag from that address is compared to
+the stored tags of all ways in the chosen set.</p>
+<p>If a tag matches, it&rsquo;s a cache hit. If no tag matches, it&rsquo;s a cache miss.</p>
+</blockquote>
+<h3 id="hits-and-misses">Hits and Misses<a class="anchor" href="#hits-and-misses">#</a></h3>
+<p>If a tag matches in L1, then L1 already holds the 64-byte block containing the requested address.
+The cache uses the Block Offset bits to select the exact bytes needed, and the data is returned to the CPU within $\sim$3 cycles.</p>
+<p>If no tag matches, it’s a cache miss. The cache must fetch the entire 64-byte block from the next level of the hierarchy (L2, L3, or DRAM).
+This process unfolds roughly as follows:</p>
+<div class="book-steps ">
+<ol>
+<li>
+<p><strong>Miss detected (1-2 cycles)</strong> <br>
+The cache controller recognizes the tag is not present and signals a miss</p>
+</li>
+<li>
+<p><strong>Next-level lookup ($\sim$10 cycles for L2)</strong> <br>
+The controller forwards the request to the next cache level. If L2 holds the
+block, it&rsquo;s returned and placed in L1.</p>
+</li>
+<li>
+<p><strong>Propagated miss ($\sim$30-60 cycles for L3)</strong> <br>
+If L2 also misses, the request cascades to L3, losing more cycles.</p>
+</li>
+<li>
+<p><strong>Main memory access ($\sim$200-400 cycles)</strong> <br>
+If all cache levels miss, the controller fetches the block from DRAM. This
+is hundreds of cycles slower than an L1 hit.</p>
+</li>
+<li>
+<p><strong>Line replacement ($\sim$1-2 cycles)</strong> <br>
+Once the data arrives, the cache writes it to an appropriate set. If the set
+is full, one line is evicted.</p>
+</li>
+<li>
+<p><strong>Retry (1 cycle)</strong> <br>
+The CPU re-attempts the load, which now hits in L1.</p>
+</li>
+</ol>
+</div>
+<p>The key takeaway is the huge latency difference between L1/L2 hits and misses.
+It can stall the processor for tens to hundreds of cycles,
+depending on how deep the request travels down the hierarchy. Mastering this gap &ndash; between
+a few cycles for a hit and hundreds for a miss &ndash; is the <em><strong>essence of high-performance
+BLAS</strong></em>. It&rsquo;s what makes cache efficiency so critical for CPU performance and writing
+fast code.</p>
+<h2 id="locality-and-contiguity">Locality and Contiguity<a class="anchor" href="#locality-and-contiguity">#</a></h2>
+<p>I hope I&rsquo;ve made it very clear that performance depends on <em>how data is
+arranged</em> in memory. If values that are used together are also stored
+together, the CPU can reuse cache lines efficiently, producing many hits per
+fetch.</p>
+<p>Two principles govern this:</p>
+<ol>
+<li><strong>Spatial Locality</strong>: <br>data near recently used data is likely to be used soon.</li>
+<li><strong>Temporal Locality</strong>: <br>data recently used will likely be used again.</li>
+</ol>
+<p>For example, consider a for loop:</p>
+<pre><code>let x: Vec&lt;f32&gt; = vec![1.0, 2.0, 3.0, 4.0]; 
+for &amp;val in &amp;x { 
+    func(&amp;val) // a function call 
+}
+</code></pre>
+<p>The vector <code>x</code> is a contiguous heap array of 4 <code>f32</code>s, 16 bytes total. Since
+each cache line is 64 bytes, all four elements of <code>x</code> reside inside the same
+line. Then, when the loop first loads <code>x[0]</code>, the entire 64-byte line is fetched
+into L1. Then, accesses to <code>x[1]</code>, <code>x[2]</code>, <code>x[3]</code> will hit in L1 because they&rsquo;re
+in that same cache line &ndash; <strong>spatial locality</strong>.</p>
+<p><code>func()</code> is a function that may be distant from <code>x</code> in memory. But because calls to
+<code>func()</code> are close in time, its instructions are loaded in L1 as well (assuming
+they fit)&ndash;
+<strong>temporal locality</strong>.</p>
+<blockquote class="book-hint info">
+<p><strong>Pause Here</strong> <br>
+The above two paragraphs are the most important to understand in this post.
+Spatial and temporal locality are the twin principles every high-performance program is built around.</p>
+</blockquote> 
+<blockquote class="book-hint info">
+<p>There are two types of L1 caches per CPU core:</p>
+<ol>
+<li><strong>L1d</strong> &ndash;data cache (for loads/stores like the vector <code>x</code>)</li>
+<li><strong>L1i</strong> &ndash;instruction cache (for fetched and decoded instructions like <code>func</code>)</li>
+</ol>
+</blockquote>
+<h2 id="summary">Summary<a class="anchor" href="#summary">#</a></h2>
+<ol>
+<li><strong>Memory stores data</strong> as stable voltage states in physical circuits.</li>
+<li><strong>SRAM</strong> retains its state through feedback; <strong>DRAM</strong> requires refresh.</li>
+<li><strong>Caches</strong> made of SRAM bridge the speed gap between DRAM and the CPU.</li>
+<li><strong>Cache lines</strong> exist to exploit spatial and temporal locality.</li>
+<li><strong>BLAS</strong> leverages these properties by reorganizing data to maximize reuse.</li>
+</ol>
+<p>Fast code is not just fast arithmetic. It is the precise
+choreography of data as it moves from memory to computation and back.</p>
+<hr>
+<p>For a deeper understanding, I highly recommend reading through
+<a href="https://people.freebsd.org/~lstewart/articles/cpumemory.pdf"><em>What Every Programmer Should Know About Memory</em></a> by Ulrich Drepper.
+This post was abstracted and focused on cache mechanics. Drepper&rsquo;s paper
+offers a more in-depth, elegant overview of how memory systems operate.</p>
+<br> 
+<div style="position: relative; width: 100%; margin-top: 2em;">
+  <div style="position: absolute; left: 0;">
+    <a 
+  href="/posts/coral_intro/" 
+  
+  class="book-btn btn"
+>← Previous</a>
+  </div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+  <div>
+  
+    <a href="/posts/benchmarks-aarch64/" class="flex align-center">
+      <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+      <span>coral-aarch64 benchmarks</span>
+    </a>
+  
+  </div>
+  <div>
+  
+    <a href="/posts/coral_intro/" class="flex align-center">
+      <span>What is CORAL?</span>
+      <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+    </a>
+  
+  </div>
+</div>
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#memory">Memory</a></li>
+    <li><a href="#static-and-dynamic-ram">Static and Dynamic RAM</a>
+      <ul>
+        <li><a href="#sram">SRAM</a></li>
+        <li><a href="#dram">DRAM</a></li>
+      </ul>
+    </li>
+    <li><a href="#accessing-memory">Accessing Memory</a></li>
+    <li><a href="#the-cache">The Cache</a>
+      <ul>
+        <li><a href="#implementation">Implementation</a></li>
+        <li><a href="#hits-and-misses">Hits and Misses</a></li>
+      </ul>
+    </li>
+    <li><a href="#locality-and-contiguity">Locality and Contiguity</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
