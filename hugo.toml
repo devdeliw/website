@@ -12,6 +12,9 @@ theme = 'shibui'
         name = "resume" 
         url  = "/resume.pdf"
         weight = 2 
+    [[menu.main]] 
+        name = "if your name is Annika" 
+        url  = "/valentine/index.html"
 
 
 

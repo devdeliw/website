@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentine Flipbook</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="site-title">Valentines Website V2</div>
+    <main class="stage" id="stage">
+      <section class="cover" id="cover" aria-label="Closed flipbook">
+        <div class="cover-inner">
+          <div class="cover-title">A Tiny Flipbook</div>
+          <div class="cover-sub">Click to open</div>
+        </div>
+      </section>
+
+      <section class="book hidden" id="book" aria-live="polite">
+        <div class="page left" id="left-page" role="button" aria-label="Previous page" tabindex="0">
+          <img id="img-left" alt="" />
+        </div>
+        <div class="page right" id="right-page" role="button" aria-label="Next page" tabindex="0">
+          <img id="img-right" alt="" />
+          <div class="page-turn"></div>
+        </div>
+      </section>
+
+      <div class="caption hidden" id="caption"></div>
+      <div class="action hidden" id="action"></div>
+
+      <section class="single hidden" id="single" aria-live="polite">
+        <img id="img-single" alt="" />
+      </section>
+      <div class="single-caption hidden" id="single-caption"></div>
+      <div class="single-action hidden" id="single-action"></div>
+    </main>
+    <div class="hearts hidden" id="hearts"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
