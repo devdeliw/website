@@ -12,6 +12,3 @@ Most recently, I wrote a native memory-safe Rust BLAS (basic linear algebra subp
 called [CORAL](https://github.com/devdeliw/coral/tree/main). It reaches performance 
 "competitive" with OpenBLAS. 
 
-**P.S. If your name is Annika** [click this link](/valentine/index.html)
-
-
